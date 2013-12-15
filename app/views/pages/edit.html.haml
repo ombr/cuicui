@@ -11,7 +11,7 @@
       %ul
         -@page.images.each do |image|
           %li
-            =image_tag image.image.url(:thumbnail), title: image.exifs['ImageDescription']
+            =image_tag image.image.url(:thumbnail), title: image.description
       = simple_form_for Image.new, url: site_page_images_path(site_id: @site, page_id: @page, method: :post) do |f|
         = cloudinary_js_config
         = cl_image_upload_tag(:image_id, crop: :limit, width: 1000, height: 1000, html: { class: 'image_upload' })
