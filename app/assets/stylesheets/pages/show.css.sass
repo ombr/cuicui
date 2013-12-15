@@ -1,0 +1,23 @@
+.page
+  padding: 0 15px
+  height: 100%
+  .content
+    height: 100%
+  .message
+    height: 100%
+    @extend .col-md-3
+    position: relative
+  #description
+    position: absolute
+    bottom: 0
+    padding-bottom: 200px
+    @media (max-width: $screen-md-min)
+      bottom: inherit
+      padding-bottom: 0
+    @media (max-height: 600px)
+      padding-bottom: 0
+
+  .images
+    @extend .col-md-9
+    height: 100%
+    overflow: hidden

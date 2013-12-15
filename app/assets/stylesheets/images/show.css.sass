@@ -1,0 +1,45 @@
+.image
+  position: relative
+  width: 100%
+  height: 100%
+
+.viewer
+  text-align: center
+  .content
+    height: 100%
+    img
+      // Center the image
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      margin: auto
+      // resize the picture
+      max-height: 100%
+      max-width: 100%
+  .control
+    opacity: 0.5
+    position: absolute
+    font-size: 300%
+    color: white
+  .next-previous
+    top: 0
+    width: 20%
+    height: 100%
+    p
+      @extend .glyphicon
+      padding: 5px
+      top: 47%
+  .next
+    @extend .next-previous
+    right: 0
+    text-align: right
+    p
+      @extend .glyphicon-chevron-right
+  .previous
+    @extend .next-previous
+    text-align: left
+    left: 0
+    p
+      @extend .glyphicon-chevron-left
