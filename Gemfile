@@ -31,6 +31,8 @@ gem 'haml'
 
 gem 'bootstrap-sass', '~> 3.0.3.0'
 
+gem 'simple_form'
+
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl'
