@@ -1,0 +1,11 @@
+.page
+  .row
+    .col-sm-3
+      %h1= @page.name
+      = simple_form_for [@site, @page] do |f|
+        = f.input :name
+        = f.input :description
+        = f.submit class: 'btn btn-primary'
+    .col-sm-9
+      %h1 Preview
+      %iframe{src: "#{site_page_path(site_id: @site, id: @page)}", style: 'height: 800px; width: 100%;'}

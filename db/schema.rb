@@ -12,7 +12,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215113246) do
+ActiveRecord::Schema.define(version: 20131215120642) do
+
+  create_table "pages", force: true do |t|
+    t.string  "name"
+    t.text    "description"
+    t.integer "site_id"
+  end
 
   create_table "sites", force: true do |t|
     t.string   "name"

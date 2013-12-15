@@ -1,16 +1,13 @@
 class SitesController < ApplicationController
   def show
     @site = Site.find(params[:id])
-    md = Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML,
-      autolink: true,
-      space_after_headers: true
-    )
-    @description = md.render(@site.description).html_safe
+    first_page = @site.pages.first
+    redirect_to site_page_path(site_id: @site, id: first_page) if first_page
   end
 
   def edit
     @site = Site.find(params[:id])
+    render layout: 'admin'
   end
 
   def update

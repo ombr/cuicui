@@ -5,7 +5,9 @@ Cuicui::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  resources :sites, only: [:show, :edit, :update]
+  resources :sites, only: [:show, :edit, :update] do
+    resources :pages, only: [:show, :edit]
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

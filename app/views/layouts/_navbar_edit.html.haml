@@ -1,0 +1,13 @@
+%nav.navbar.navbar-fixed-top.navbar-inverse{role: 'navigation'}
+  .navbar-header
+    %button.navbar-toggle{'data-target' => '#nav-content', 'data-toggle' => 'collapse', type: 'button'}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to site.name, edit_site_path(id: site), class:'navbar-brand'
+  #nav-content.collapse.navbar-collapse
+    %ul.nav.navbar-nav
+      - site.pages.each do |page|
+        %li{class: (page == @page ? 'active' : '')}
+          = link_to page.name, edit_site_page_path(site_id: site, id: page)

@@ -10,7 +10,9 @@ describe SitesController do
 
     it { response.code.should == '200' }
     it('assigns @site') { assigns(:site).should == site }
+    it('render layout admin') { response.should render_template(:admin) }
   end
+
   describe '#update' do
     it 'change the name' do
       expect do
@@ -35,6 +37,12 @@ describe SitesController do
     it 'respond 200' do
       get :show, id: site
       response.code.should == '200'
+    end
+
+    it 'redirect to first_page if defined' do
+      page = FactoryGirl.create :page, site: site
+      get :show, id: site
+      response.should redirect_to site_page_path(site_id: site, id: page)
     end
 
     it 'assigns @site' do

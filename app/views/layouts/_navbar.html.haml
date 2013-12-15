@@ -8,11 +8,6 @@
     = link_to site.name, root_path, class:'navbar-brand'
   #nav-content.collapse.navbar-collapse
     %ul.nav.navbar-nav
-      %li
-        = link_to 'Portofolio', 'portofolio.html'
-      %li
-        = link_to 'publications', 'publications.html'
-      %li
-        = link_to 'Les photographes', 'photographes.html'
-      %li
-        = link_to 'Contact', 'mailto:contact@studiocuicui.com'
+      - site.pages.each do |page|
+        %li{class: (page == @page ? 'active' : '')}
+          = link_to page.name, site_page_path(site_id: site, id: page)
