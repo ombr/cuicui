@@ -11,3 +11,5 @@
       - site.pages.each do |page|
         %li{class: (page == @page ? 'active' : '')}
           = link_to page.name, edit_site_page_path(site_id: site, id: page)
+      %li
+        = link_to '+', new_site_page_path(site_id: site)

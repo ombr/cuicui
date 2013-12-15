@@ -2,6 +2,7 @@
   .row
     .col-sm-3
       %h1= @page.name
+      =link_to 'delete', site_page_path(site_id: @site, id: @page), method: :delete
       = simple_form_for [@site, @page] do |f|
         = f.input :name
         = f.input :description

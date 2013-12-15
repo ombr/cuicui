@@ -6,7 +6,7 @@ Cuicui::Application.routes.draw do
   root 'welcome#index'
 
   resources :sites, only: [:show, :edit, :update] do
-    resources :pages, only: [:show, :edit]
+    resources :pages, only: [:show, :edit, :update, :new, :create, :destroy]
   end
 
   # Example of regular route:
