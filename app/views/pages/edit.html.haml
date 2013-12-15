@@ -5,8 +5,18 @@
       =link_to 'delete', site_page_path(site_id: @site, id: @page), method: :delete
       = simple_form_for [@site, @page] do |f|
         = f.input :name
-        = f.input :description
+        = f.input :description, input_html: { rows: 8 }
         = f.submit class: 'btn btn-primary'
+      %h2 Images
+      %ul
+        -@page.images.each do |image|
+          %li
+            =image_tag image.image.url(:thumbnail), title: image.exifs['ImageDescription']
+      = simple_form_for Image.new, url: site_page_images_path(site_id: @site, page_id: @page, method: :post) do |f|
+        = cloudinary_js_config
+        = cl_image_upload_tag(:image_id, crop: :limit, width: 1000, height: 1000, html: { class: 'image_upload' })
+        = f.submit
+
     .col-sm-9
       %h1 Preview
       %iframe{src: "#{site_page_path(site_id: @site, id: @page)}", style: 'height: 800px; width: 100%;'}

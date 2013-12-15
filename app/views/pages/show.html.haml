@@ -5,8 +5,8 @@
       #description
         = @description
     .images.rotation
-      - %w[_CUI0430.jpg _DSF2952.jpg _IMG2537-Modifier.jpg _IMG6142.jpg _IMG6812.jpg _IMG7906.jpg _NK20653.jpg _NKA5531.jpg 110124_113608.jpg 120623_110242-2.jpg 120803_144131.jpg 121001_113238-2.jpg].each_with_index do |image, i|
-        .image{id: "test#{i}"}
+      - @page.images.each do |image|
+        .image
           .viewer
             .content
-              = image_tag "http://looksnice.ch/cuicui/images/sllideshow%20index/#{image}", title: 'test'
+              = image_tag image.image, title: image.description

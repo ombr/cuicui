@@ -12,10 +12,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215120642) do
+ActiveRecord::Schema.define(version: 20131215153255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "images", force: true do |t|
+    t.integer "page_id"
+    t.string  "image"
+    t.text    "exifs"
+  end
 
   create_table "pages", force: true do |t|
     t.string  "name"

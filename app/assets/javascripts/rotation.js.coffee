@@ -6,4 +6,4 @@ $ ->
     setInterval(()->
       i++
       $('.rotation').scrollTop((i%total)*$(items[0]).height())
-    ,7000)
+    ,5000)
