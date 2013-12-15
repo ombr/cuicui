@@ -33,6 +33,10 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'simple_form'
 gem 'redcarpet'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :test do
   gem 'sqlite3'
   gem 'rspec-rails'
