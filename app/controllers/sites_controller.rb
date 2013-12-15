@@ -1,6 +1,12 @@
 class SitesController < ApplicationController
   def show
     @site = Site.find(params[:id])
+    md = Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML,
+      autolink: true,
+      space_after_headers: true
+    )
+    @description = md.render(@site.description).html_safe
   end
 
   def edit
@@ -14,6 +20,6 @@ class SitesController < ApplicationController
   end
 
   def site_params
-    params.require(:site).permit(:name)
+    params.require(:site).permit(:name, :description)
   end
 end

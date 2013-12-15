@@ -18,6 +18,12 @@ describe SitesController do
       end.to change { site.reload.name }.to('test')
     end
 
+    it 'change the description' do
+      expect do
+        put :update, id: site, site: { description: 'test' }
+      end.to change { site.reload.description }.to('test')
+    end
+
     it 'redirect to edit' do
       put :update, id: site, site: { name: 'test' }
       response.should redirect_to edit_site_path(id: site)

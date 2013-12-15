@@ -32,6 +32,7 @@ gem 'haml'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 
 gem 'simple_form'
+gem 'redcarpet'
 
 group :test do
   gem 'rspec-rails'

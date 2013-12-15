@@ -4,9 +4,7 @@
     .message
       #description
         %img{alt: "Studio CuiCui | photographie | Paris | Aude Boissaye et Sébastien Randé", height: "56", src: "http://looksnice.ch/cuicui/images/Logo/Logo-Studio-CuiCui_transp_300px.png", width: "262"}/
-        %h3 photographie | Paris
-        %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
-        %p Aude Boissaye et Sébastien Randé
+        = @description
     .images.rotation
       - %w[_CUI0430.jpg _DSF2952.jpg _IMG2537-Modifier.jpg _IMG6142.jpg _IMG6812.jpg _IMG7906.jpg _NK20653.jpg _NKA5531.jpg 110124_113608.jpg 120623_110242-2.jpg 120803_144131.jpg 121001_113238-2.jpg].each_with_index do |image, i|
         .image{id: "test#{i}"}
