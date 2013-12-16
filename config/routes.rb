@@ -7,7 +7,11 @@ Cuicui::Application.routes.draw do
 
   resources :sites, only: [:show, :edit, :update] do
     resources :pages, only: [:show, :edit, :update, :new, :create, :destroy] do
-      resources :images, only: [:create]
+      resources :images, only: [:create] do
+        collection do
+          get :create #Hack for cloudinary !!
+        end
+      end
     end
   end
 

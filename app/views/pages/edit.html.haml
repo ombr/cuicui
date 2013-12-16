@@ -12,10 +12,16 @@
         -@page.images.each do |image|
           %li
             =image_tag image.image.url(:thumbnail), title: image.description
-      = simple_form_for Image.new, url: site_page_images_path(site_id: @site, page_id: @page, method: :post) do |f|
-        = cloudinary_js_config
-        = cl_image_upload_tag(:image_id, crop: :limit, width: 1000, height: 1000, html: { class: 'image_upload' })
-        = f.submit
+
+        - url = site_page_images_url(site_id: @site, page_id: @page)
+        = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true) do
+          - params =  Cloudinary::Uploader.build_upload_params(callback: url)
+          - params[:signature] = Cloudinary::Utils.api_sign_request(params, Cloudinary.config.api_secret)
+          - params[:api_key] = Cloudinary.config.api_key
+          - params.each do |name, value|
+            = hidden_field_tag(name, value, :id => nil) if value.present?
+          %input{type: :file, name: :file}
+          %input{name: :commit, type: :submit, value: 'Upload'}
 
     .col-sm-9
       %h1 Preview

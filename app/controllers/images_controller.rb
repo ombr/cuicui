@@ -3,9 +3,12 @@ class ImagesController < ApplicationController
     @site = Site.find(params[:site_id])
     @page = @site.pages.find(params[:page_id])
     @image = @page.images.build
-    @image.image = params[:image_id]
+    path = "#{params[:resource_type]}/#{params[:type]}/v#{params[:version]}/#{params[:public_id]}"
+    path += ".#{params[:format]}" if params[:format].present?
+    path += "##{params[:signature]}"
+    @image.image = path
+    @image.exifs = Cloudinary::Api.resource(params[:public_id], exif: true)['exif']
     @image.save!
-    @image.update exifs: Cloudinary::Api.resource(@image.image.file.public_id, exif: true)['exif']
     redirect_to edit_site_page_path(site_id: @site, id: @page)
   end
 end
