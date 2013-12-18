@@ -1,4 +1,4 @@
-$ ->
+$(window).on 'page:change', ->
   $('.images').append $('.images').data('images')
   items = $('.rotation .image')
   total = items.length

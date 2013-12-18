@@ -9,4 +9,4 @@
     - images = capture_haml do
       = render images
     .images.rotation{:'data-images' => images}
-      = render first_image
+      = render first_image if first_image
