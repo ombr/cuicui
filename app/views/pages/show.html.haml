@@ -1,8 +1,9 @@
-.page
+.page{class: "layout-#{@layout}"}
   .content
-    .message
-      #description
-        = @description
+    - if @description.present?
+      .message
+        #description
+          = @description
 
     - images = @page.images.all
     - first_image = images.shift

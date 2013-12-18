@@ -11,4 +11,10 @@ class ImagesController < ApplicationController
     @image.save!
     redirect_to edit_site_page_path(site_id: @site, id: @page)
   end
+
+  def show
+    @site = Site.find(params[:site_id])
+    @page = @site.pages.find(params[:page_id])
+    @image = @page.images.find(params[:id])
+  end
 end

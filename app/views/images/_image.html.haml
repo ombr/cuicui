@@ -2,3 +2,9 @@
   .viewer
     .content
       = image_tag image.image.url(:full), title: image.description
+      - if image.lower_item
+        =link_to site_page_image_path(site_id: image.page.site, page_id: image.page, id: image.lower_item) , class: 'control previous preload' do
+          %p
+      - if image.higher_item
+        =link_to site_page_image_path(site_id: image.page.site, page_id: image.page, id: image.higher_item), class: 'control next preload' do
+          %p

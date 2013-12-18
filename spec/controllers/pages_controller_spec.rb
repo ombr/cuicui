@@ -6,12 +6,30 @@ describe PagesController do
   let(:site) { FactoryGirl.create :site }
 
   describe '#show' do
-    before :each do
-      get :show, site_id: page.site, id: page
+    render_views
+    context 'default' do
+      before :each do
+        get :show, site_id: page.site, id: page
+      end
+      it('returns 200') { response.code.should == '200' }
+      it('assigns @site') { assigns(:site).should == page.site }
+      it('assigns @page') { assigns(:page).should == page }
+      it('assigns @description') { assigns(:description).should == "<h3>Super description</h3>\n" }
     end
-    it('returns 200') { response.code.should == '200' }
-    it('assigns @site') { assigns(:site).should == page.site }
-    it('assigns @page') { assigns(:page).should == page }
+
+    context 'without and image' do
+      let(:image) { FactoryGirl.create :image, page: page }
+      let(:page) { FactoryGirl.create :page, description: '', site: site }
+      it('redirect_to_first_image') do
+        image
+        get :show, site_id: page.site, id: page
+        response.should redirect_to site_page_image_path(
+          site_id: site,
+          page_id: page,
+          id: page.images.first
+        )
+      end
+    end
   end
 
   describe '#edit' do

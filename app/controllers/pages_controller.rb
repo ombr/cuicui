@@ -2,12 +2,10 @@ class PagesController < ApplicationController
   def show
     @site = Site.find(params[:site_id])
     @page = @site.pages.find(params[:id])
-    md = Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML,
-      autolink: true,
-      space_after_headers: true
-    )
-    @description = md.render(@page.description || '').html_safe
+    if @page.description.blank? && @page.images.count > 0
+      return redirect_to site_page_image_path(page_id: @page, id: @page.images.first)
+    end
+    @description = @page.description_html.html_safe
   end
 
   def edit

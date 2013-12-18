@@ -8,8 +8,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :full do
-    cloudinary_transformation :transformation => [
-      {width: 1200, height: 1200, crop: :limit, quality: 80, flags: 'progressive'}
+    cloudinary_transformation transformation: [
+      { width: 1500, height: 1000, crop: :limit, quality: 80, flags: 'progressive' }
     ]
   end
 end
