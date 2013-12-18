@@ -5,7 +5,8 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    = link_to site.name, edit_site_path(id: site), class:'navbar-brand'
+    = link_to edit_site_path(id: site), class:'navbar-brand' do
+      .glyphicon.glyphicon-wrench
   #nav-content.collapse.navbar-collapse
     %ul.nav.navbar-nav
       - site.pages.each do |page|

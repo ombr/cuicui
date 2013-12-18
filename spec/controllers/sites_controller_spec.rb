@@ -14,6 +14,13 @@ describe SitesController do
   end
 
   describe '#update' do
+
+    it 'change the css' do
+      expect do
+        put :update, id: site, site: { css: 'test' }
+      end.to change { site.reload.css }.to('test')
+    end
+
     it 'change the name' do
       expect do
         put :update, id: site, site: { name: 'test' }
