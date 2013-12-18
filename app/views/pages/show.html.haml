@@ -1,12 +1,12 @@
-= render 'layouts/navbar', site: @site
 .page
   .content
     .message
       #description
         = @description
-    .images.rotation
-      - @page.images.each do |image|
-        .image
-          .viewer
-            .content
-              = image_tag image.image, title: image.description
+
+    - images = @page.images.all
+    - first_image = images.shift
+    - images = capture_haml do
+      = render images
+    .images.rotation{:'data-images' => images}
+      = render first_image
