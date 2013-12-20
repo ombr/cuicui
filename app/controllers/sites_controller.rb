@@ -1,8 +1,10 @@
 class SitesController < ApplicationController
+  load_and_authorize_resource
+
   def show
     @site = Site.find(params[:id])
     first_page = @site.pages.first
-    redirect_to site_page_path(site_id: @site, id: first_page) if first_page
+    redirect_to page_path(id: first_page) if first_page
   end
 
   def edit

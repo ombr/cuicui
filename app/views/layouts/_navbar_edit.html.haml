@@ -10,7 +10,12 @@
   #nav-content.collapse.navbar-collapse
     %ul.nav.navbar-nav
       - site.pages.each do |page|
-        %li{class: (page == @page ? 'active' : '')}
-          = link_to page.name, edit_site_page_path(site_id: site, id: page)
+        - unless page.new_record?
+          %li{class: (page == @page ? 'active' : '')}
+            = link_to page.name, edit_page_path(id: page)
       %li
         = link_to '+', new_site_page_path(site_id: site)
+    %ul.nav.navbar-nav.navbar-right
+      %li
+        = link_to destroy_user_session_path do
+          %i.glyphicon.glyphicon-log-out

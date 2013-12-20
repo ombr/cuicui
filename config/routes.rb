@@ -1,4 +1,5 @@
 Cuicui::Application.routes.draw do
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -6,14 +7,20 @@ Cuicui::Application.routes.draw do
   root 'welcome#index'
 
   resources :sites, only: [:show, :edit, :update] do
-    resources :pages, only: [:show, :edit, :update, :new, :create, :destroy] do
-      resources :images, only: [:show, :create] do
-        collection do
-          get :create # Hack for cloudinary !!
-        end
+    resources :pages, shallow: true
+  end
+
+  resources :pages do
+    resources :images, only: [:create] do
+      collection do
+        get :create # Hack for cloudinary !!
       end
     end
   end
+
+  get '/:id', to: 'pages#show', as: :s_page
+
+  resources :images, only: [:show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

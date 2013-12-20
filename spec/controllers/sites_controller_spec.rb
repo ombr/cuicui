@@ -41,20 +41,26 @@ describe SitesController do
   end
 
   describe '#show' do
-    it 'respond 200' do
-      get :show, id: site
-      response.code.should == '200'
+
+    context 'without page' do
+      before :each do
+        get :show, id: site
+      end
+
+      it_responds_200
+
+      it 'assigns @site' do
+        assigns(:site).should == site
+      end
     end
 
-    it 'redirect to first_page if defined' do
-      page = FactoryGirl.create :page, site: site
-      get :show, id: site
-      response.should redirect_to site_page_path(site_id: site, id: page)
+    context 'with one page' do
+      it 'redirect to first_page if defined' do
+        page = FactoryGirl.create :page, site: site
+        get :show, id: site
+        response.should redirect_to page_path(id: page)
+      end
     end
 
-    it 'assigns @site' do
-      get :show, id: site
-      assigns(:site).should == site
-    end
   end
 end

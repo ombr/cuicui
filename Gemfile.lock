@@ -30,9 +30,11 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     aws_cf_signer (0.1.2)
+    bcrypt-ruby (3.1.2)
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
     builder (3.1.4)
+    cancan (1.6.10)
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -47,6 +49,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    devise (3.2.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     dotenv (0.9.0)
     dotenv-rails (0.9.0)
@@ -72,6 +80,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.2)
+    orm_adapter (0.5.0)
     pg (0.17.0)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -148,6 +157,8 @@ GEM
     uglifier (2.3.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -155,9 +166,11 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   bootstrap-sass (~> 3.0.3.0)
+  cancan
   carrierwave
   cloudinary
   coffee-rails (~> 4.0.0)
+  devise
   dotenv-rails
   factory_girl
   haml

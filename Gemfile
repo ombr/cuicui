@@ -25,6 +25,9 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'carrierwave'
 gem 'cloudinary'
 
+gem 'devise'
+gem 'cancan'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 

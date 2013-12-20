@@ -2,6 +2,6 @@
   .row
     .col-sm-4.col-md-offset-4
       %h1 New page
-      = simple_form_for [@site, @page] do |f|
+      = simple_form_for [@site,@page] do |f|
         = f.input :name
         = f.submit class: 'btn btn-primary'

@@ -10,7 +10,7 @@ class Image < ActiveRecord::Base
   end
 
   def self.reindex
-    Page.all.each do |page|
+    Page.to_a.each do |page|
       i = 0
       page.images.each do |image|
         image.update(position: i)

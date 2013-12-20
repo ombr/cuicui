@@ -2,8 +2,8 @@
   .row
     .col-sm-3
       %h1= @page.name
-      =link_to 'delete', site_page_path(site_id: @site, id: @page), method: :delete
-      = simple_form_for [@site, @page] do |f|
+      =link_to 'delete', page_path(site_id: @site, id: @page), method: :delete
+      = simple_form_for @page do |f|
         = f.input :name
         = f.input :description, input_html: { rows: 8 }
         = f.submit class: 'btn btn-primary'
@@ -13,7 +13,7 @@
           %li
             =image_tag image.image.url(:thumbnail), title: image.description
 
-        - url = site_page_images_url(site_id: @site, page_id: @page)
+        - url = page_images_url(site_id: @site, page_id: @page)
         = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true) do
           - params =  Cloudinary::Uploader.build_upload_params(callback: url)
           - params[:signature] = Cloudinary::Utils.api_sign_request(params, Cloudinary.config.api_secret)
@@ -25,4 +25,4 @@
 
     .col-sm-9
       %h1 Preview
-      %iframe{src: "#{site_page_path(site_id: @site, id: @page)}", style: 'height: 800px; width: 100%;'}
+      %iframe{src: "#{page_path(site_id: @site, id: @page)}", style: 'height: 800px; width: 100%;'}
