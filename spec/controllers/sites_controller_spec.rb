@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe SitesController do
   let(:site) { FactoryGirl.create :site }
+  let(:user) { FactoryGirl.create :user }
 
   describe '#edit' do
     before :each do
+      sign_in user
       get :edit, id: site
     end
 
@@ -17,23 +19,27 @@ describe SitesController do
 
     it 'change the css' do
       expect do
+        sign_in user
         put :update, id: site, site: { css: 'test' }
       end.to change { site.reload.css }.to('test')
     end
 
     it 'change the name' do
       expect do
+        sign_in user
         put :update, id: site, site: { name: 'test' }
       end.to change { site.reload.name }.to('test')
     end
 
     it 'change the description' do
       expect do
+        sign_in user
         put :update, id: site, site: { description: 'test' }
       end.to change { site.reload.description }.to('test')
     end
 
     it 'redirect to edit' do
+      sign_in user
       put :update, id: site, site: { name: 'test' }
       response.should redirect_to edit_site_path(id: site)
     end

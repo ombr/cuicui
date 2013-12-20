@@ -5,6 +5,9 @@ Cuicui::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  resources :users do
+    root 'sites#index'
+  end
 
   resources :sites, only: [:show, :edit, :update] do
     resources :pages, shallow: true

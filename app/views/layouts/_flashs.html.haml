@@ -1,0 +1,5 @@
+.row
+  .col-md-12
+    - flash.each do |name, msg|
+      %div.alert{class: "alert-#{name}"}
+        =msg

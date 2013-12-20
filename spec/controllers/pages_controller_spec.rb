@@ -4,6 +4,7 @@ describe PagesController do
 
   let(:page) { FactoryGirl.create :page }
   let(:site) { FactoryGirl.create :site }
+  let(:user) { FactoryGirl.create :user }
 
   describe '#show' do
     render_views
@@ -30,6 +31,7 @@ describe PagesController do
 
   describe '#edit' do
     before :each do
+      sign_in user
       get :edit, site_id: page.site, id: page
     end
     it_responds_200
@@ -51,11 +53,13 @@ describe PagesController do
 
     it('create a new page') do
       expect do
+        sign_in user
         post :create, site_id: site, page: { name: 'test' }
       end.to change { Page.count }.by(1)
     end
 
     it 'redirect to edit' do
+      sign_in user
       post :create, site_id: site, page: { name: 'test' }
       response.should redirect_to edit_page_path(id: Page.first)
     end
@@ -67,11 +71,13 @@ describe PagesController do
     it('delete the page') do
       page
       expect do
+        sign_in user
         delete :destroy, id: page
       end.to change { Page.count }.by(-1)
     end
 
     it 'redirect to edit site' do
+      sign_in user
       delete :destroy, id: page
       response.should redirect_to edit_site_path(id: page.site)
     end
@@ -81,17 +87,20 @@ describe PagesController do
   describe '#update' do
     it('update the name') do
       expect do
+        sign_in user
         put :update, id: page, page: { name: 'test' }
       end.to change { page.reload.name }.to 'test'
     end
 
     it('update the description') do
       expect do
+        sign_in user
         put :update, id: page, page: { description: 'test' }
       end.to change { page.reload.description }.to 'test'
     end
 
     it 'redirect to edit' do
+      sign_in user
       put :update, id: page, page: { name: 'test' }
       response.should redirect_to edit_page_path(id: page.reload)
     end
