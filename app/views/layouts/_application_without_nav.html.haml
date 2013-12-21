@@ -4,9 +4,14 @@
     %title=yield(:page_title)
     %meta{name: 'viewport', content: 'user-scalable=no, width=device-width, initial-scale=1.0'}
     - if @site and @site.css
-      %style
-        = @site.css
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+      :css
+        #{@site.css}
+    - if cookies[:css_loaded].present?
+      = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    - else
+      %style{:'data-css' => asset_path('application.css')}
+        =Rails.application.assets.find_asset('application.css').to_s.html_safe
     = csrf_meta_tags
-  = yield
+  %body
+    = yield
+    = render 'layouts/async_js' ,path: 'application'

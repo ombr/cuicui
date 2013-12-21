@@ -1,9 +1,9 @@
 .main
   .page.row
-    - if @description.present?
+    - if @page.description.present?
       .message.col-md-3
         #description
-          = @description
+          = @page.description_html.html_safe
 
     - images = @page.images.to_a
     - first_image = images.shift

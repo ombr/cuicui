@@ -13,11 +13,21 @@ class PagesController < ApplicationController
                               only: [:edit, :show, :destroy, :update]
   load_and_authorize_resource :site, only: [:new, :create]
 
+  def index
+    @site = Site.first
+    return redirect_to new_user_session_path if @site.nil?
+    @page = @site.pages.first
+    return redirect_to new_user_session_path if @page.nil?
+    if @page.description.blank? && @page.images.count > 0
+      return redirect_to image_path(id: @page.images.first)
+    end
+    render :show
+  end
+
   def show
     if @page.description.blank? && @page.images.count > 0
       return redirect_to image_path(id: @page.images.first)
     end
-    @description = @page.description_html.html_safe
   end
 
   def edit

@@ -6,6 +6,48 @@ describe PagesController do
   let(:site) { FactoryGirl.create :site }
   let(:user) { FactoryGirl.create :user }
 
+  describe '#index' do
+    render_views
+    it 'redirect to login if there is no site' do
+      get :index
+      response.should redirect_to new_user_session_path
+    end
+
+    it 'redirect to login if there is no page for the site' do
+      site
+      get :index
+      response.should redirect_to new_user_session_path
+    end
+
+    context 'without description and image' do
+      let(:image) { FactoryGirl.create :image, page: page }
+      let(:page) { FactoryGirl.create :page, description: '', site: site }
+      it('redirect_to_first_image') do
+        image
+        get :index
+        response.should redirect_to page.images.first
+      end
+    end
+
+    it 'assigns page' do
+      page
+      get :index
+      assigns(:page).should == page
+    end
+
+    it 'assigns site' do
+      site
+      get :index
+      assigns(:site).should == site
+    end
+
+    it 'respond 200 when there is a page' do
+      page
+      get :index
+      response.code.should == '200'
+    end
+
+  end
   describe '#show' do
     render_views
     context 'default' do
@@ -15,10 +57,9 @@ describe PagesController do
       it_responds_200
       it('assigns @site') { assigns(:site).should == page.site }
       it('assigns @page') { assigns(:page).should == page }
-      it('assigns @description') { assigns(:description).should == "<h3>Super description</h3>\n" }
     end
 
-    context 'without and image' do
+    context 'without description and image' do
       let(:image) { FactoryGirl.create :image, page: page }
       let(:page) { FactoryGirl.create :page, description: '', site: site }
       it('redirect_to_first_image') do

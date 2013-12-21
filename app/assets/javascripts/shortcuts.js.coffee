@@ -20,9 +20,9 @@ $ ()->
 
   $(document).keydown (event)->
     switch event.which
-      when 39, 32, 13, 9, 40
+      when 39, 32, 13, 40
         go 'next'
-      when 37, 8, 16, 38
+      when 37, 8, 38
         go 'previous'
       when 27
         go 'home'

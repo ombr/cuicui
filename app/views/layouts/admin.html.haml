@@ -1,5 +1,4 @@
 = render layout: 'layouts/application_without_nav' do
-  %body.admin
-    = render 'layouts/navbar_edit', site: @site
-    = render 'layouts/flashs'
-    = yield
+  = render 'layouts/navbar_edit', site: @site
+  = render 'layouts/flashs'
+  = yield
