@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
   load_and_authorize_resource :page, only: [:create]
 
   def create
-    return redirect_to edit_page_path(id: @page), danger: params[:error] if params[:error]
+    return redirect_to edit_page_path(id: @page), flash: { error: params[:error] } if params[:error]
     @image = @page.images.build
     path = "#{params[:resource_type]}/#{params[:type]}/v#{params[:version]}/#{params[:public_id]}"
     path += ".#{params[:format]}" if params[:format].present?
