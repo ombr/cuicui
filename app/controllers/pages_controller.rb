@@ -1,5 +1,12 @@
 class PagesController < ApplicationController
-  load_and_authorize_resource only: [:edit, :show, :destroy, :update]
+  load_and_authorize_resource only: [
+    :edit,
+    :show,
+    :destroy,
+    :update,
+    :move_higher,
+    :move_lower
+  ]
   load_and_authorize_resource :site,
                               through: :page,
                               singleton: true,
@@ -35,6 +42,16 @@ class PagesController < ApplicationController
   def update
     @page.update(page_params)
     redirect_to edit_page_path(@page)
+  end
+
+  def move_higher
+    @page.move_higher
+    redirect_to edit_page_path @page
+  end
+
+  def move_lower
+    @page.move_lower
+    redirect_to edit_page_path @page
   end
 
   def page_params

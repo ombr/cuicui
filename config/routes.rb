@@ -14,6 +14,10 @@ Cuicui::Application.routes.draw do
   end
 
   resources :pages do
+    member do
+      put :move_higher
+      put :move_lower
+    end
     resources :images, only: [:create] do
       collection do
         get :create # Hack for cloudinary !!

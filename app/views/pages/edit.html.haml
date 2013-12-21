@@ -1,7 +1,14 @@
 .page#image-edit
   .row
     .col-sm-3
-      %h1= @page.name
+      %h1
+        - unless @page.last?
+          =link_to move_lower_page_path(@page), method: :put do
+            %small.glyphicon.glyphicon-chevron-left
+        = @page.name
+        - unless @page.first?
+          =link_to move_higher_page_path(@page), method: :put do
+            %small.glyphicon.glyphicon-chevron-right
       =link_to 'delete', page_path(site_id: @site, id: @page), method: :delete
       = simple_form_for @page do |f|
         = f.input :name
@@ -14,7 +21,7 @@
         - params[:signature] = Cloudinary::Utils.api_sign_request(params, Cloudinary.config.api_secret)
         - params[:api_key] = Cloudinary.config.api_key
         - params.each do |name, value|
-          = hidden_field_tag(name, value, :id => nil) if value.present?
+          = hidden_field_tag(name, value, id: nil) if value.present?
         %input{type: :file, name: :file}
         %input{name: :commit, type: :submit, value: 'Upload'}
         %ul.image-list

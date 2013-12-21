@@ -15,4 +15,14 @@ class Page < ActiveRecord::Base
   def to_param
     "#{id}-#{name.parameterize}"
   end
+
+  def self.reindex
+    Site.all.each do |site|
+      i = 1
+      site.pages.each do |page|
+        page.update(position: i)
+        i += 1
+      end
+    end
+  end
 end
