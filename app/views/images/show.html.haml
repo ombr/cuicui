@@ -1,2 +1,5 @@
-#image
-  =render @image
+.main
+  #image.row
+    .col-md-12{style: 'height: 100%'}
+      = render @image
+    = render 'layouts/nav', site: @site

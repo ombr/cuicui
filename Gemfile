@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'haml'
 
 gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'bourbon'
 
 gem 'simple_form'
 

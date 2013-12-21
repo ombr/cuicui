@@ -1,0 +1,7 @@
+- if site
+  .col-md-12.nav
+    %nav.navbar.navbar-inverse{ role: 'navigation' }
+      %ul.nav.navbar-nav
+        - site.pages.each do |page|
+          %li{class: (page == @page ? 'active' : '')}
+            = link_to page.name, page_path(id: page)

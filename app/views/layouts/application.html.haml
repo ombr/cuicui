@@ -1,5 +1,4 @@
 = render layout: 'layouts/application_without_nav' do
-  %body.viewer
+  %body
     = render 'layouts/flashs'
     = yield
-    = render 'layouts/navbar', site: @site

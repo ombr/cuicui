@@ -1,7 +1,7 @@
-.page{class: "layout-#{@layout}"}
-  .content
+.main
+  .page.row
     - if @description.present?
-      .message
+      .message.col-md-3
         #description
           = @description
 
@@ -9,5 +9,7 @@
     - first_image = images.shift
     - images = capture_haml do
       = render images
-    .images.rotation{:'data-images' => images}
+    .images.col-md-9.rotation
+      -#{:'data-images' => images}
       = render first_image if first_image
+    = render 'layouts/nav', site: @site
