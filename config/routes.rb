@@ -23,7 +23,12 @@ Cuicui::Application.routes.draw do
 
   get '/:id', to: 'pages#show', as: :s_page
 
-  resources :images, only: [:show]
+  resources :images, only: [:show, :destroy] do
+    member do
+      put :move_higher
+      put :move_lower
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

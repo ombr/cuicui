@@ -1,6 +1,14 @@
 class ImagesController < ApplicationController
-  load_and_authorize_resource only: [:show]
-  load_and_authorize_resource :page, through: :image, singleton: true, only: [:show]
+  load_and_authorize_resource only: [:show, :move_higher, :move_lower, :destroy]
+  load_and_authorize_resource :page,
+                              through: :image,
+                              singleton: true,
+                              only: [
+                                :show,
+                                :move_higher,
+                                :move_lower,
+                                :destroy
+                              ]
   load_and_authorize_resource :site, through: :page, singleton: true, only: [:show]
 
   load_and_authorize_resource :page, only: [:create]
@@ -17,6 +25,21 @@ class ImagesController < ApplicationController
     redirect_to edit_page_path(id: @page)
   end
 
+  def move_higher
+    @image.move_higher
+    redirect_to edit_page_path @page
+  end
+
+  def move_lower
+    @image.move_lower
+    redirect_to edit_page_path @page
+  end
+
   def show
+  end
+
+  def destroy
+    @image.destroy
+    redirect_to edit_page_path @page
   end
 end
