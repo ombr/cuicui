@@ -9,7 +9,6 @@
     - first_image = images.shift
     - images = capture_haml do
       = render images
-    .images.col-md-9.rotation
-      -#{:'data-images' => images}
+    .images.col-md-9.rotation{:'data-images' => images}
       = render first_image if first_image
     = render 'layouts/nav', site: @site
