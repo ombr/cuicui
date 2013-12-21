@@ -46,6 +46,10 @@ gem 'acts_as_list'
 
 gem 'redcarpet'
 
+gem 'unicorn'
+gem 'rack-timeout'
+gem 'newrelic_rpm'
+
 group :production do
   gem 'rails_12factor'
 end
