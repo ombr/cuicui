@@ -5,6 +5,7 @@ todo:
 - order pages
 - admin link
 - nice admin login !
+- no redirect to edit on home when connected
 - edit image description
 - favicon
 - segment.io

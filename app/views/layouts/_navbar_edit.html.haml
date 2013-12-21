@@ -11,10 +11,10 @@
     %ul.nav.navbar-nav
       - site.pages.each do |page|
         - unless page.new_record?
-          %li{class: (page == @page ? 'active' : '')}
-            = link_to page.name, edit_page_path(id: page)
-      %li
-        = link_to '+', new_site_page_path(site_id: site)
+          = tab_link(edit_page_path(id: page)) do
+            = page.name
+      = tab_link(new_site_page_path(site_id: site)) do
+        .glyphicon.glyphicon-plus
     %ul.nav.navbar-nav.navbar-right
       %li
         = link_to destroy_user_session_path do
