@@ -2,13 +2,7 @@
   .row
     .col-sm-3
       %h1
-        - unless @page.last?
-          =link_to move_lower_page_path(@page), method: :put do
-            %small.glyphicon.glyphicon-chevron-left
         = @page.name
-        - unless @page.first?
-          =link_to move_higher_page_path(@page), method: :put do
-            %small.glyphicon.glyphicon-chevron-right
       =link_to 'delete', page_path(site_id: @site, id: @page), method: :delete
       = simple_form_for @page do |f|
         = f.input :name

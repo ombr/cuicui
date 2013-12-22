@@ -11,8 +11,18 @@
     %ul.nav.navbar-nav
       - site.pages.each do |page|
         - unless page.new_record?
-          = tab_link(edit_page_path(id: page)) do
-            = page.name
+          - if @page and @page == page
+            %li.active.with_positions
+              - unless page.last?
+                =link_to move_lower_page_path(page), method: :put do
+                  %span.glyphicon.glyphicon-chevron-left
+              = link_to page.name, edit_page_path(id: page)
+              - unless page.first?
+                =link_to move_higher_page_path(page), method: :put do
+                  %span.glyphicon.glyphicon-chevron-right
+          - else
+            = tab_link(edit_page_path(id: page)) do
+              = page.name
       = tab_link(new_site_page_path(site_id: site)) do
         .glyphicon.glyphicon-plus
     %ul.nav.navbar-nav.navbar-right
