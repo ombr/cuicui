@@ -36,6 +36,7 @@ class ImagesController < ApplicationController
   end
 
   def show
+    expires_in 5.minutes, public: true
   end
 
   def destroy

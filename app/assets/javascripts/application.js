@@ -6,3 +6,4 @@
 //= require shortcuts
 //= require jquery.cookie
 //= require css
+//= require preload
