@@ -27,7 +27,7 @@ Cuicui::Application.routes.draw do
 
   get '/:id', to: 'pages#show', as: :s_page
 
-  resources :images, only: [:show, :destroy] do
+  resources :images, only: [:show, :destroy, :edit, :update] do
     member do
       put :move_higher
       put :move_lower

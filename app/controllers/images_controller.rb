@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  load_and_authorize_resource only: [:show, :move_higher, :move_lower, :destroy]
+  load_and_authorize_resource only: [:show, :move_higher, :move_lower, :destroy, :edit, :update]
   load_and_authorize_resource :page,
                               through: :image,
                               singleton: true,
@@ -7,9 +7,11 @@ class ImagesController < ApplicationController
                                 :show,
                                 :move_higher,
                                 :move_lower,
-                                :destroy
+                                :destroy,
+                                :edit,
+                                :update
                               ]
-  load_and_authorize_resource :site, through: :page, singleton: true, only: [:show]
+  load_and_authorize_resource :site, through: :page, singleton: true, only: [:show, :edit]
 
   load_and_authorize_resource :page, only: [:create]
 
@@ -39,8 +41,22 @@ class ImagesController < ApplicationController
     expires_in 5.minutes, public: true
   end
 
+  def edit
+    render layout: 'admin'
+  end
+
+  def update
+    @image.update!(image_params)
+    #redirect_to edit_image_path(id: @image)
+    redirect_to edit_page_path(id: @page)
+  end
+
   def destroy
     @image.destroy
     redirect_to edit_page_path @page
+  end
+
+  def image_params
+    params.require(:image).permit(:description)
   end
 end

@@ -19,6 +19,41 @@ describe ImagesController do
 
   end
 
+  describe '#edit' do
+    before :each do
+      sign_in user
+    end
+
+    before :each do
+      get :edit, id: image
+    end
+
+    it_responds_200
+    it('assigns site') { assigns(:site).should == site }
+    it('assigns page') { assigns(:page).should == page }
+    it('assigns image') { assigns(:image).should == image }
+    it('render layout admin') { response.should render_template(:admin) }
+  end
+
+  describe '#update' do
+    before :each do
+      sign_in user
+    end
+
+    it 'redirect to edit' do
+      sign_in user
+      put :update, id: image, image: { description: 'test' }
+      response.should redirect_to edit_page_path(id: image.page)
+    end
+
+    it('update the description') do
+      expect do
+        sign_in user
+        put :update, id: image, image: { description: 'test' }
+      end.to change { image.reload.description }.to 'test'
+    end
+  end
+
   describe '#delete' do
     before :each do
       sign_in user

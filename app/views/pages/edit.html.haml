@@ -23,6 +23,8 @@
             %li
               .image
                 =image_tag image.image.url(:thumbnail), title: image.description
+                =link_to edit_image_path(image), class: 'control edit' do
+                  %span.glyphicon.glyphicon-wrench
                 =link_to image_path(image), method: :delete, class: 'control delete' do
                   %span.glyphicon.glyphicon-remove
                 - unless image.first?

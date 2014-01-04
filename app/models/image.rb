@@ -5,8 +5,14 @@ class Image < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   def description
+    return self[:description] if self[:description]
     return exifs['ImageDescription'] if exifs && exifs['ImageDescription']
     nil
+  end
+
+  def extract_exifs
+    exifs = Cloudinary::Api.resource(image.file.public_id, exif: true)['exif']
+    save!
   end
 
   def self.reindex
