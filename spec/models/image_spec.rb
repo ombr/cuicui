@@ -11,10 +11,10 @@ describe Image do
     it 'extract the exifs from cloudinary' do
       pending 'The factory should be improved first.'
       image
-      Cloudinary::Api.should_receive(:resource).and_return({exifs: {key: :value}})
+      Cloudinary::Api.should_receive(:resource).and_return(exifs: { key: :value })
       expect do
         image.extract_exifs
-      end.to change{image.exifs}
+      end.to change { image.exifs }
 
     end
 
