@@ -41,6 +41,7 @@ gem 'haml'
 
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'bourbon'
+gem 'jquery-fileupload-rails'
 
 gem 'simple_form'
 

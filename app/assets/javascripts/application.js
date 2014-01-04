@@ -7,3 +7,5 @@
 //= require jquery.cookie
 //= require css
 //= require preload
+//= require jquery-fileupload/basic
+//= require fileupload

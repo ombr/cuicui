@@ -10,29 +10,17 @@
         = f.submit class: 'btn btn-primary'
       %h2 Images
       - url = page_images_url(site_id: @site, page_id: @page)
-      = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true) do
+      = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true, class: 'fileupload') do
         - params =  Cloudinary::Uploader.build_upload_params(callback: url)
         - params[:signature] = Cloudinary::Utils.api_sign_request(params, Cloudinary.config.api_secret)
         - params[:api_key] = Cloudinary.config.api_key
         - params.each do |name, value|
           = hidden_field_tag(name, value, id: nil) if value.present?
-        %input{type: :file, name: :file}
+        %input{type: :file, name: :file, multiple: true}
         %input{name: :commit, type: :submit, value: 'Upload'}
         %ul.image-list
           -@page.images.each do |image|
-            %li
-              .image
-                =image_tag image.image.url(:thumbnail), title: image.description
-                =link_to edit_image_path(image), class: 'control edit' do
-                  %span.glyphicon.glyphicon-wrench
-                =link_to image_path(image), method: :delete, class: 'control delete' do
-                  %span.glyphicon.glyphicon-remove
-                - unless image.first?
-                  =link_to move_higher_image_path(image), method: :put, class: 'control down' do
-                    %span.glyphicon.glyphicon-chevron-down
-                - unless image.last?
-                  =link_to move_lower_image_path(image), method: :put, class: 'control up' do
-                    %span.glyphicon.glyphicon-chevron-up
+            = render 'images/image_edit', image: image
 
 
     .col-sm-9

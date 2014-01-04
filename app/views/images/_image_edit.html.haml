@@ -1,0 +1,13 @@
+%li
+  .image
+    =image_tag image.image.url(:thumbnail), title: image.description
+    =link_to edit_image_path(image), class: 'control edit' do
+      %span.glyphicon.glyphicon-wrench
+    =link_to image_path(image), method: :delete, class: 'control delete' do
+      %span.glyphicon.glyphicon-remove
+    - unless image.first?
+      =link_to move_higher_image_path(image), method: :put, class: 'control down' do
+        %span.glyphicon.glyphicon-chevron-down
+    - unless image.last?
+      =link_to move_lower_image_path(image), method: :put, class: 'control up' do
+        %span.glyphicon.glyphicon-chevron-up

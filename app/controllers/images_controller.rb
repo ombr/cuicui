@@ -26,7 +26,11 @@ class ImagesController < ApplicationController
     @image.image = path
     @image.exifs = Cloudinary::Api.resource(params[:public_id], exif: true)['exif']
     @image.save!
-    redirect_to edit_page_path(id: @page)
+    if request.xhr?
+      render 'create.js' #with cloudinary we need to force the format ;-(
+    else
+      redirect_to edit_page_path(id: @page)
+    end
   end
 
   def move_higher
