@@ -23,7 +23,7 @@
           - else
             = tab_link(edit_page_path(id: page)) do
               = page.name
-      = tab_link(new_site_page_path(site_id: site)) do
+      = tab_link(new_site_page_path(site_id: site), html_options: { id: 'new_page'} ) do
         .glyphicon.glyphicon-plus
     %ul.nav.navbar-nav.navbar-right
       %li

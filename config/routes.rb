@@ -5,6 +5,7 @@ Cuicui::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'pages#index'
+
   resources :users do
     root 'sites#index'
   end
@@ -25,14 +26,18 @@ Cuicui::Application.routes.draw do
     end
   end
 
-  get '/:id', to: 'pages#show', as: :s_page
-
   resources :images, only: [:show, :destroy, :edit, :update] do
     member do
       put :move_higher
       put :move_lower
     end
   end
+
+  devise_scope :user do
+    get '/admin', to: 'devise/sessions#new'
+  end
+
+  get '/:id', to: 'pages#show', as: :s_page
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

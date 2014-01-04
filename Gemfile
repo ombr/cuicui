@@ -61,6 +61,7 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_girl'
+  gem 'capybara'
 end
 
 group :doc do

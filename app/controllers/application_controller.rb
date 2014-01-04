@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
     flash[:danger] = exception.message
     redirect_to new_user_session_path
   end
+
+  private
+
+    def after_sign_in_path_for(resource_or_scope)
+      edit_site_path id: Site.first
+    end
 end
