@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/ombr/cloudinary_gem.git
+  revision: 5b666855f12c7a31729156c935ce397fb9a662fc
+  branch: patch-1
+  specs:
+    cloudinary (1.0.66)
+      aws_cf_signer
+      rest-client
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -48,9 +57,6 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
-    cloudinary (1.0.66)
-      aws_cf_signer
-      rest-client
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -197,7 +203,7 @@ DEPENDENCIES
   cancan
   capybara
   carrierwave
-  cloudinary
+  cloudinary!
   coffee-rails (~> 4.0.0)
   devise
   dotenv-rails
