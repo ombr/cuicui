@@ -11,7 +11,11 @@ class Image < ActiveRecord::Base
   end
 
   def extract_exifs
-    self[:exifs] = Cloudinary::Api.resource(image.file.public_id, exif: true)['exif']
+    self[:exifs] = Cloudinary::Api.resource(
+      image.file.public_id,
+      type: :private,
+      exif: true
+      )['exif']
     save!
   end
 

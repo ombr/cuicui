@@ -24,8 +24,8 @@ class ImagesController < ApplicationController
     path += ".#{params[:format]}" if params[:format].present?
     path += "##{params[:signature]}"
     @image.image = path
-    @image.exifs = Cloudinary::Api.resource(params[:public_id], exif: true)['exif']
     @image.save!
+    @image.extract_exifs
     if request.xhr?
       render 'create.js' #with cloudinary we need to force the format ;-(
     else

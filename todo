@@ -1,42 +1,41 @@
 todo:
 
-- Multiple upload
 - design next prev
 - page active (images +index)
-- secure image carrierewave
+- full screen image
 - w3c ?
 - title
 - alt+ image size
-- delete recursive
 - admin menu responsive...
 - Layout ??
 - Diaporama option
 - Contrôle next prev on images
-- markdown editor ( or sample)
-- deployment arnaud...
 - preview... IPhone/android
-- full screen image
-
+- delete recursive
+- deployment arnaud...
 - nice admin login !
-- no redirect to edit on home when connected
-- edit image description
+
+- secure image carrierewave
+- Site -> language
+- markdown editor ( or sample)
 - favicon
 - segment.io
-- unicorn
 - sitemap
 - emails
 - facebook
 - home page images rotation optimisation
-- home logo
-- language
+- home logo ??
 - preview iphone
 - preview ordinateur
 - preview ipad
 
 
+
+Forces :
+
 - Responsive
 - Simple
-- pictures firsts
+- pictures first
 - CDN enabled
 - Super fast
 - IE ??

@@ -3,6 +3,9 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
+  make_private
+  eager
+
   version :thumbnail do
     resize_to_fill(200, 100)
   end

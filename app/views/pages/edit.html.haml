@@ -11,7 +11,7 @@
       %h2 Images
       - url = page_images_url(site_id: @site, page_id: @page)
       = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true, class: 'fileupload') do
-        - params =  Cloudinary::Uploader.build_upload_params(callback: url)
+        - params =  Cloudinary::Uploader.build_upload_params(callback: url, type: :private)
         - params[:signature] = Cloudinary::Utils.api_sign_request(params, Cloudinary.config.api_secret)
         - params[:api_key] = Cloudinary.config.api_key
         - params.each do |name, value|
