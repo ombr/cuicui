@@ -1,4 +1,4 @@
-#image-edit.col-sm-3
+.col-sm-4
   %h1
     = @page.name
   =link_to 'delete', page_path(site_id: @site, id: @page), method: :delete
@@ -6,7 +6,8 @@
     = f.input :name
     = f.input :description, input_html: { rows: 8 }
     = f.submit class: 'btn btn-primary'
-  %h2 Images
+#image-edit.col-sm-8
+  %h1 Images
   - url = page_images_url(site_id: @site, page_id: @page)
   = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true, class: 'fileupload') do
     - params =  Cloudinary::Uploader.build_upload_params(callback: url, type: :private)
@@ -21,6 +22,6 @@
         = render 'images/image_edit', image: image
 
 
-.col-sm-9
+.col-sm-12
   %h1 Preview
   %iframe{src: "#{page_path(site_id: @site, id: @page)}", style: 'height: 800px; width: 100%;'}
