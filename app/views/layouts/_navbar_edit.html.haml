@@ -21,6 +21,6 @@
                 = page.name
       = tab_link(new_site_page_path(site_id: site), html_options: { id: 'new_page'} ) do
         .glyphicon.glyphicon-plus
-      %li
+      %li.pull-right
         = link_to destroy_user_session_path do
           Log out
