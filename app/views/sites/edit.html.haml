@@ -1,9 +1,7 @@
-.page
-  .row{style: 'height: 100%'}
-    .col-md-4.col-md-offset-4
-      %h1= @site.name
-      = simple_form_for @site,  html: {class: 'form-horizontal' } do |f|
-        = f.input :name
-        = f.input :description, as: :text, input_html: { rows: 10 }
-        = f.input :css, input_html: { rows: 30}
-        = f.submit class: 'btn btn-primary'
+.col-md-4.col-md-offset-4
+  %h1= @site.name
+  = simple_form_for @site,  html: {class: 'form-horizontal' } do |f|
+    = f.input :name
+    = f.input :description, as: :text, input_html: { rows: 10 }
+    = f.input :css, input_html: { rows: 30}
+    = f.submit class: 'btn btn-primary'
