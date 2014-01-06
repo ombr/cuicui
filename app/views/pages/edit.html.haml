@@ -1,28 +1,27 @@
-.page#image-edit
-  .row
-    .col-sm-3
-      %h1
-        = @page.name
-      =link_to 'delete', page_path(site_id: @site, id: @page), method: :delete
-      = simple_form_for @page do |f|
-        = f.input :name
-        = f.input :description, input_html: { rows: 8 }
-        = f.submit class: 'btn btn-primary'
-      %h2 Images
-      - url = page_images_url(site_id: @site, page_id: @page)
-      = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true, class: 'fileupload') do
-        - params =  Cloudinary::Uploader.build_upload_params(callback: url, type: :private)
-        - params[:signature] = Cloudinary::Utils.api_sign_request(params, Cloudinary.config.api_secret)
-        - params[:api_key] = Cloudinary.config.api_key
-        - params.each do |name, value|
-          = hidden_field_tag(name, value, id: nil) if value.present?
-        %input{type: :file, name: :file, multiple: true}
-        %input{name: :commit, type: :submit, value: 'Upload'}
-        %ul.image-list
-          -@page.images.each do |image|
-            = render 'images/image_edit', image: image
+.col-sm-4
+  %h1
+    = @page.name
+  =link_to 'delete', page_path(site_id: @site, id: @page), method: :delete
+  = simple_form_for @page do |f|
+    = f.input :name
+    = f.input :description, input_html: { rows: 8 }
+    = f.submit class: 'btn btn-primary'
+#image-edit.col-sm-8
+  %h1 Images
+  - url = page_images_url(site_id: @site, page_id: @page)
+  = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true, class: 'fileupload') do
+    - params =  Cloudinary::Uploader.build_upload_params(callback: url, type: :private)
+    - params[:signature] = Cloudinary::Utils.api_sign_request(params, Cloudinary.config.api_secret)
+    - params[:api_key] = Cloudinary.config.api_key
+    - params.each do |name, value|
+      = hidden_field_tag(name, value, id: nil) if value.present?
+    %input{type: :file, name: :file, multiple: true}
+    %input{name: :commit, type: :submit, value: 'Upload'}
+    %ul.image-list
+      -@page.images.each do |image|
+        = render 'images/image_edit', image: image
 
 
-    .col-sm-9
-      %h1 Preview
-      %iframe{src: "#{page_path(site_id: @site, id: @page)}", style: 'height: 800px; width: 100%;'}
+.col-sm-12
+  %h1 Preview
+  %iframe{src: "#{page_path(site_id: @site, id: @page)}", style: 'height: 800px; width: 100%;'}

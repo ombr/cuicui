@@ -1,14 +1,9 @@
-%nav.navbar.navbar-fixed-top.navbar-inverse{role: 'navigation'}
-  .navbar-header
-    %button.navbar-toggle{'data-target' => '#nav-content', 'data-toggle' => 'collapse', type: 'button'}
-      %span.sr-only Toggle navigation
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    = link_to edit_site_path(id: site), class:'navbar-brand' do
-      .glyphicon.glyphicon-wrench
-  #nav-content.collapse.navbar-collapse
+.col-md-12.nav
+  %nav.navbar.navbar-inverse{role: 'navigation'}
     %ul.nav.navbar-nav
+      %li
+        = link_to edit_site_path(id: site) do
+          .glyphicon.glyphicon-wrench
       - site.pages.each do |page|
         - unless page.new_record?
           - if @page and @page == page
@@ -21,11 +16,11 @@
                 =link_to move_higher_page_path(page), method: :put do
                   %span.glyphicon.glyphicon-chevron-right
           - else
-            = tab_link(edit_page_path(id: page)) do
-              = page.name
+            %li
+              = tab_link(edit_page_path(id: page)) do
+                = page.name
       = tab_link(new_site_page_path(site_id: site), html_options: { id: 'new_page'} ) do
         .glyphicon.glyphicon-plus
-    %ul.nav.navbar-nav.navbar-right
-      %li
+      %li.pull-right
         = link_to destroy_user_session_path do
-          %i.glyphicon.glyphicon-log-out
+          Log out

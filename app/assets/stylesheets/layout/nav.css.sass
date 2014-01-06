@@ -1,9 +1,6 @@
-.main
-  margin-top: -$navbar-height
-body
-  padding-top: $navbar-height
 //fullscreen bar
 .nav
+  width: 100%
   background: $navbar-inverse-bg
 .navbar
   border: 0
@@ -12,5 +9,8 @@ body
   li
     padding-left: 15px
 li.active.with_positions
+  font-size: 0
   a
-    float: left
+    font-size: $font-size-base
+    margin-right: -0.25em
+    display: inline-block

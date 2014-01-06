@@ -1,1 +1,1 @@
-$('.image-list').prepend("<%= j render('images/image_edit.html', image: @image) %>")
+$('.image-list').html("<%= j render(partial: 'images/image_edit.html', collection: @images, as: :image) %>")

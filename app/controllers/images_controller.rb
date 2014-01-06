@@ -26,6 +26,7 @@ class ImagesController < ApplicationController
     @image.image = path
     @image.save!
     @image.extract_exifs
+    @images = @page.images
     if request.xhr?
       render 'create.js' #with cloudinary we need to force the format ;-(
     else
