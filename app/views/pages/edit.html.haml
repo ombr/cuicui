@@ -1,5 +1,8 @@
 .page#image-edit
   .row
+    = render 'layouts/nav', site: @site
+    = render 'layouts/navbar_edit', site: @site
+  .row
     .col-sm-3
       %h1
         = @page.name
