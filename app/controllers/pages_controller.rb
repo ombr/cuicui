@@ -28,6 +28,7 @@ class PagesController < ApplicationController
     if @page.description.blank? && @page.images.count > 0
       return redirect_to image_path(id: @page.images.first)
     end
+    @image = @page.images.first if @page.images.first
   end
 
   def edit

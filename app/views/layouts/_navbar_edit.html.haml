@@ -2,7 +2,7 @@
   %nav.navbar.navbar-inverse{role: 'navigation'}
     %ul.nav.navbar-nav
       %li
-        = link_to edit_site_path(id: site) do
+        = tab_link edit_site_path(id: site) do
           .glyphicon.glyphicon-wrench
       - site.pages.each do |page|
         - unless page.new_record?
