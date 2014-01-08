@@ -7,6 +7,10 @@
       - if image.lower_item
         =link_to image.lower_item , class: 'control previous preload' do
           %p
+
+      - if image.lower_items.first
+        =link_to image.lower_items.last , class: 'control first preload' do
+          %p
       - if image.higher_item
         =link_to image.higher_item, class: 'control next preload' do
           %p

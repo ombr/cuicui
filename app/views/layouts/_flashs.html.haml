@@ -1,5 +1,4 @@
 - flash.each do |name, msg|
-  .row
-    .col-md-12
-      %div.alert{class: bootstrap_class_for(name)}
-        =msg
+  .col-md-12
+    %div.alert{class: bootstrap_class_for(name)}
+      =msg
