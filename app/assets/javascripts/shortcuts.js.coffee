@@ -1,6 +1,5 @@
 $ ()->
   go = (destination)->
-    return if not $(".#{destination}").is(':visible')
     $(".#{destination}")[0].click()
   Hammer(document.body,{
     swipe: true
