@@ -1,18 +1,18 @@
 todo:
 
 - diaporama home !!
-- page active (images +index)
+- image#show inside pages.
+- sidekiq cloudinary !
 - segment.io
 - w3c ?
 - alt+ image size
 - title
 - design next prev
 - stop preview / bouton select preview
-- admin menu responsive...
 - Diaporama option
 - Contrôle next prev on images
 - preview...IPhone/android
-- delete recursive + limit delete
+- delete recursive ||  limit delete
 - nice admin login !
 - Layout ??
 - validation name page
