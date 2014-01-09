@@ -18,9 +18,6 @@ class PagesController < ApplicationController
     return redirect_to new_user_session_path if @site.nil?
     @page = @site.pages.first
     return redirect_to new_user_session_path if @page.nil?
-    if @page.description.blank? && @page.images.count > 0
-      return redirect_to image_path(id: @page.images.first)
-    end
     @image = @page.images.first if @page.images.first
     expires_in 5.minutes, public: true
     render :show
