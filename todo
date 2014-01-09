@@ -3,33 +3,33 @@ todo:
 - diaporama home !!
 - image#show inside pages.
 - segment.io
-- w3c ?
+
+Bugs :
 - validation name page
 - confirmation suppression page
-- alt+ image size
-- stop preview / bouton select preview
-- Diaporama option
-- Contrôle next prev on images
-- preview...IPhone/android
 - delete recursive ||  limit delete
+- 404 ?
+- 500 ?
+Improvements :
+- alt+ image size
+- Diaporama option
+- preview...IPhone/android
 - nice admin login !
-- Layout ??
+- facebook
+- sitemap
+- robots.txt
 
 - favicon
 
 - sidekiq cloudinary !
-- facebook
-- sitemap
 
+Later :
 - video
 - galerie privee
 - Site -> language
-- markdown editor ( or sample)
 - emails
-- preview iphone
-- preview ordinateur
-- preview ipad
 - home logo ??
+- markdown editor ( or sample)
 
 
 Forces :
