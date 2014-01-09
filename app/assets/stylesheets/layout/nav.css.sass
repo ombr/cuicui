@@ -1,11 +1,18 @@
+$progress-height: 2px
+.progress
+  width: 0
+  font-size: 0
+  height: $progress-height
+  background: green
+  margin: 0
+  border: 1px solid green
+  border-radius: 1px
 .nav-bottom
-  margin-top: -$navbar-height
+  margin-top: -$progress-height - $navbar-height
+
 
 .navbar
   border: 0
-
-.col-nav
-  padding: 0
 
 // Ack bootstrap for full with navbar
 .navbar-nav

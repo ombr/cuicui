@@ -2,11 +2,11 @@ todo:
 
 - diaporama home !!
 - image#show inside pages.
-- sidekiq cloudinary !
 - segment.io
 - w3c ?
+- validation name page
+- confirmation suppression page
 - alt+ image size
-- design next prev
 - stop preview / bouton select preview
 - Diaporama option
 - Contrôle next prev on images
@@ -14,11 +14,10 @@ todo:
 - delete recursive ||  limit delete
 - nice admin login !
 - Layout ??
-- validation name page
-- confirmation suppression page
 
 - favicon
 
+- sidekiq cloudinary !
 - facebook
 - sitemap
 

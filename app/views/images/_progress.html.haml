@@ -1,0 +1,9 @@
+- if @image
+  - total = @image.page.images.count - 1
+  - position = total -  @image.position + 1
+  .progress{ style: "width: #{(position.to_f/(total).to_f*100).round(2)}%" }
+    = position
+    \/
+    = total
+- else
+  .progress
