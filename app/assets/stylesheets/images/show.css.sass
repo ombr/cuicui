@@ -22,7 +22,7 @@
       max-height: 100%
       max-width: 100%
   .control
-    opacity: 0.5
+    opacity: 0.8
     position: absolute
     font-size: 300%
     color: black
@@ -41,7 +41,10 @@
     width: 20%
     height: 100%
     p
+      font-size: 0
       @extend .glyphicon
+      &:before
+        font-size: 40px
       top: 47%
   .next
     @extend .next-previous
