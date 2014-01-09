@@ -22,6 +22,7 @@ class PagesController < ApplicationController
       return redirect_to image_path(id: @page.images.first)
     end
     @image = @page.images.first if @page.images.first
+    expires_in 5.minutes, public: true
     render :show
   end
 
@@ -30,6 +31,7 @@ class PagesController < ApplicationController
       return redirect_to image_path(id: @page.images.first)
     end
     @image = @page.images.first if @page.images.first
+    expires_in 5.minutes, public: true
   end
 
   def edit
