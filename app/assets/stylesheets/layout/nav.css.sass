@@ -1,13 +1,24 @@
-//fullscreen bar
-.nav
-  width: 100%
-  background: $navbar-inverse-bg
+$progress-height: 2px
+.progress-images
+  width: 0
+  font-size: 0
+  height: $progress-height
+  background: green
+  margin: 0
+  border: 1px solid green
+  border-radius: 1px
+.nav-bottom
+  margin-top: -$progress-height - $navbar-height
+
+
 .navbar
   border: 0
-  .nav.navbar-nav
-    margin: 0 -15px
-  li
-    padding-left: 15px
+
+// Ack bootstrap for full with navbar
+.navbar-nav
+  margin: 0
+
+// For admin position
 li.active.with_positions
   font-size: 0
   a

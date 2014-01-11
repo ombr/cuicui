@@ -1,8 +1,8 @@
-.col-md-12.nav
+.col-md-12.col-fullscreen
   %nav.navbar.navbar-inverse{role: 'navigation'}
     %ul.nav.navbar-nav
       %li
-        = link_to edit_site_path(id: site) do
+        = tab_link edit_site_path(id: site) do
           .glyphicon.glyphicon-wrench
       - site.pages.each do |page|
         - unless page.new_record?

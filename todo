@@ -10,18 +10,22 @@ todo:
 - head > <title></title>
 - alt+ image size
 - design next prev
+- image#show inside pages.
+- segment.io
+- w3c ?
+- validation name page
+- confirmation suppression page
 - stop preview / bouton select preview
 - Diaporama option
 - Contrôle next prev on images
 - preview...IPhone/android
-- delete recursive + limit delete
+- delete recursive ||  limit delete
 - nice admin login !
 - Layout ??
-- validation name page
-- confirmation suppression page
 
 - favicon
 
+- sidekiq cloudinary !
 - facebook
 - sitemap
 

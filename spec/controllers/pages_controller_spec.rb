@@ -22,11 +22,13 @@ describe PagesController do
     context 'without description and image' do
       let(:image) { FactoryGirl.create :image, page: page }
       let(:page) { FactoryGirl.create :page, description: '', site: site }
-      it('redirect_to_first_image') do
+      render_views
+      before :each do
         image
         get :index
-        response.should redirect_to page.images.first
       end
+
+      it_responds_200
     end
 
     it 'assigns page' do

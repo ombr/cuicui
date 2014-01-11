@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
   private
 
     def after_sign_in_path_for(resource_or_scope)
-      edit_site_path id: Site.first
+      first_page = Site.first.pages.first
+      if first_page
+        edit_page_path id: first_page
+      else
+        new_site_page_path site_id: Site.first
+      end
     end
 end

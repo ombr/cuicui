@@ -1,15 +1,13 @@
-.fullscreen
-  .page.row
-    - if @page.description.present?
-      .message.col-md-3
-        #description
-          = @page.description_html.html_safe
+- if @page.description.present?
+  .col-md-3.message
+    .description
+      = @page.description_html.html_safe
+  .col-md-9.images.rotation
+    - if @image
+      = render @image
+- else
+  - if @image
+    .col-md-12.images
+      = render @image
 
-    - images = @page.images.to_a
-    - first_image = images.shift
-    - images = capture_haml do
-      = render images
-    .images.col-md-9.rotation{:'data-images' => images, style: 'padding: 0'}
-      = render first_image if first_image
-  .row
-    = render 'layouts/nav', site: @site
+= render 'layouts/nav', site: @site

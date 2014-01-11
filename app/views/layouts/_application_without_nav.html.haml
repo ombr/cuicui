@@ -1,8 +1,8 @@
-!!!
+!!!5
 %html
   %head
-    %title=yield(:page_title)
-    %meta{name: 'viewport', content: 'user-scalable=no, width=device-width, initial-scale=1.0'}
+    %title="#{(@site.name if @site)} #{yield(:page_title)}"
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
     - if @site and @site.css
       :css
         #{@site.css}

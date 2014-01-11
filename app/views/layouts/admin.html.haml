@@ -1,7 +1,5 @@
 = render layout: 'layouts/application_without_nav' do
-  = render 'layouts/flashs'
-  .main
-    .row
-      = render 'layouts/navbar_edit', site: @site
-    .row
-      = yield
+  .row
+    = render 'layouts/navbar_edit', site: @site
+    = render 'layouts/flashs'
+    = yield

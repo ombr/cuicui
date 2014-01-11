@@ -1,7 +1,8 @@
 - if site
-  .col-md-12.nav
+  .col-md-12.col-fullscreen.nav-bottom
+    = render 'images/progress'
     %nav.navbar.navbar-inverse{ role: 'navigation' }
       %ul.nav.navbar-nav
         - site.pages.each do |page|
-          = tab_link(page_path(id: page)) do
-            = page.name
+          %li{ class: (:active if page == @page)}
+            = link_to page.name ,page_path(id: page)
