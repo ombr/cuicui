@@ -1,6 +1,14 @@
 .images
-  padding: 0 0 $navbar-height 0 // Images full screen with space for navbar :-D
   height: 100%
+
+// Menu get back on wide screen !
+@media (min-width: $screen-md-min)
+  .images
+    .menu
+      display: none
+    padding: 0 0 $navbar-height 0 // Images full screen with space for navbar :-D
+  .nav-bottom
+    margin-top: -$progress-height - $navbar-height
 
 @media (min-width: $screen-md-min)
   .message

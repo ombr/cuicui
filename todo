@@ -12,6 +12,7 @@ todo:
 - design next prev
 - image#show inside pages.
 - segment.io
+- auto deploy ?
 
 Bugs :
 - validation name page
@@ -19,7 +20,11 @@ Bugs :
 - delete recursive ||  limit delete
 - 404 ?
 - 500 ?
+- autohide flash
+- menu admin pages style
+
 Improvements :
+
 - alt+ image size
 - stop preview / bouton select preview
 - Diaporama option

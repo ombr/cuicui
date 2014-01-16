@@ -1,7 +1,7 @@
 - if site
   .col-md-12.col-fullscreen.nav-bottom
     = render 'images/progress'
-    %nav.navbar.navbar-inverse{ role: 'navigation' }
+    %nav.navbar.navbar-inverse{ role: 'navigation', id: 'nav' }
       %ul.nav.navbar-nav
         - site.pages.each do |page|
           %li{ class: (:active if page == @page)}
