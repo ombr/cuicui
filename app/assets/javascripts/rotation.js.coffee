@@ -1,4 +1,5 @@
 $ ()->
+  return
   $rotation = $('.rotation')
   if $rotation.length > 0
     setTimeout(->
