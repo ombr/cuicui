@@ -1,11 +1,24 @@
 #image
   height: 100%
 
+@include keyframes(fadeOut)
+  0%
+    opacity: 1
+  80%
+    opacity: 1
+  to
+    opacity: 0
+.anim
+
 .image
   position: relative
   width: 100%
   height: 100%
 
+
+.viewer.show-control
+  .control
+    opacity: 1
 .viewer
   text-align: center
   .content
@@ -22,44 +35,45 @@
       max-height: 100%
       max-width: 100%
   .control
-    opacity: 0.8
+    text-decoration: none
+    opacity: 0
+    @include animation(fadeOut 3s ease-in)
+    @include transition (opacity .5s ease-in)
     position: absolute
     font-size: 300%
-    color: black
+    color: grey
   .menu
     left: 0
     right: 0
     text-align: center
     bottom: 0
   .image-description
-    position: absolute
+    background: blue
     font-size: 14px
     text-align: left
-    border-left: 25px solid #333333
+    background: white
     padding: 5px
     font-weight: bold
     z-index: 10
     left: 0
-    top: 10px
+    right: 0
+    top: 0px
   .next-previous
     top: 0
     width: 20%
     height: 100%
     p
-      font-size: 0
-      @extend .glyphicon
+      position: relative
       &:before
         font-size: 40px
       top: 47%
+  .first
+    display: none
   .next
     @extend .next-previous
     right: 0
     text-align: right
-    p
-      @extend .glyphicon-chevron-right
   .previous
     @extend .next-previous
     text-align: left
     left: 0
-    p
-      @extend .glyphicon-chevron-left

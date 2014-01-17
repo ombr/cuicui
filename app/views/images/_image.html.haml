@@ -2,19 +2,19 @@
   .viewer
     .content
       - if image.description.present?
-        .image-description= image.description
+        .control.image-description
+          %p= image.description
       = image_tag image.image.url(:full), alt: image.description, title: image.description
       - if image.lower_item
         =link_to image.lower_item , class: 'control previous preload' do
-          %p previous
-
-      - if image.lower_items.first
-        =link_to image.lower_items.last , class: 'control first preload' do
-          %p
+          %p= '<'
       - if image.higher_item
         =link_to image.higher_item, class: 'control next preload' do
-          %p next
-      = link_to '#nav', class: 'control menu' do
-        .glyphicon.glyphicon-arrow-down
+          %p= '>'
+      - if image.lower_items.first
+        =link_to image.lower_items.last , class: 'control first preload' do
+          %p= '<<'
+      = link_to '#nav', class: 'control menu auto-hide anim' do
+        = 'v'
         menu
-        .glyphicon.glyphicon-arrow-down
+        = 'v'

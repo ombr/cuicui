@@ -9,3 +9,4 @@
 //= require preload
 //= require jquery-fileupload/basic
 //= require fileupload
+//= require image-control
