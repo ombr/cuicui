@@ -2,7 +2,7 @@
   .viewer
     .content
       - if image.description.present?
-        .control.image-description
+        .image-description
           %p= image.description
       = image_tag image.image.url(:full), alt: image.description, title: image.description
       - if image.lower_item
@@ -16,6 +16,4 @@
           %p= '<<'
       = link_to '#nav', class: 'control menu' do
         %p
-          %span.fa.fa-angle-double-down
-          menu
           %span.fa.fa-angle-double-down
