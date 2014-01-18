@@ -78,6 +78,8 @@ GEM
     execjs (2.0.2)
     factory_girl (4.3.0)
       activesupport (>= 3.0.0)
+    font-awesome-rails (4.0.3.1)
+      railties (>= 3.2, < 5.0)
     haml (4.0.4)
       tilt
     hike (1.2.3)
@@ -208,6 +210,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl
+  font-awesome-rails
   haml
   jbuilder (~> 1.2)
   jquery-cookie-rails
