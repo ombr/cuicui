@@ -14,8 +14,8 @@
       - if image.lower_items.first
         =link_to image.lower_items.last , class: 'control first preload' do
           %p= '<<'
-      = link_to '#nav', class: 'control menu auto-hide anim' do
+      = link_to '#nav', class: 'control menu' do
         %p
-          = 'v'
+          .glyphicon.glyphicon-arrow-down
           menu
-          = 'v'
+          .glyphicon.glyphicon-arrow-down
