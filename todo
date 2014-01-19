@@ -1,18 +1,12 @@
 todo:
 
 - diaporama home !!
-- page active (images +index)
-- bug flash messages (on top of topbar)
-- redirect /admin to first page of create_page
 - split admin javascript and stylesheet from main application
 - segment.io
 - w3c ?
 - head > <title></title>
 - alt+ image size
-- design next prev
 - image#show inside pages.
-- segment.io
-- auto deploy ?
 
 Bugs :
 - validation name page
@@ -25,8 +19,6 @@ Bugs :
 
 Improvements :
 
-- alt+ image size
-- stop preview / bouton select preview
 - Diaporama option
 - preview...IPhone/android
 - nice admin login !
@@ -36,15 +28,13 @@ Improvements :
 
 - favicon
 
-- sidekiq cloudinary !
-
 Later :
 - video
 - galerie privee
-- Site -> language
 - emails
 - home logo ??
 - markdown editor ( or sample)
+- Site -> language NO !!
 
 
 Forces :
