@@ -3,13 +3,20 @@
   height: 100%
 
 // Menu get back on wide screen !
+
 @media (min-width: $screen-md-min)
   .images
-    .menu
-      display: none
+    .viewer .control.menu
+      opacity: 0
     padding: 0 0 $navbar-height 0 // Images full screen with space for navbar :-D
   .nav-bottom
-    margin-top: -$progress-height - $navbar-height
+    margin-top: - $navbar-height
+
+// Annimation on responsive :-D
+.nav-bottom
+  @include transition(margin-top .5s ease-in)
+.images
+  @include transition(padding-bottom .5s ease-in)
 
 @media (min-width: $screen-md-min)
   .message
@@ -22,8 +29,3 @@
     display: table-cell
     vertical-align: middle
     text-align: justify
-
-.rotation
-  .control,
-  .image-description
-    display: none

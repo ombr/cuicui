@@ -9,7 +9,8 @@
 
 .viewer.show-control
   .control,
-  .image-description
+  .image-description,
+  .image-progress
     opacity: 1
 .viewer
   text-align: center
@@ -41,6 +42,17 @@
     right: 0
     text-align: center
     bottom: 0
+    @include transition (opacity .5s ease-in)
+  .image-progress
+    position: absolute
+    bottom: 0
+    right: 0
+    padding: 5px
+    z-index: 10
+    background: white
+    background-color: rgba(255, 255, 255, 0.7)
+    @include transition (opacity .5s ease-in)
+    opacity: 0
   .image-description
     opacity: 0
     @include transition (opacity .5s ease-in)
