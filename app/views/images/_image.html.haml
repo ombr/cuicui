@@ -12,13 +12,13 @@
         %span.total=total
       = image_tag image.image.url(:full), alt: image.description, title: image.description
       - if image.lower_item
-        =link_to image.lower_item , class: 'control previous preload' do
+        =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'control previous preload' do
           %p.fa.fa-angle-left
       - if image.higher_item
-        =link_to image.higher_item, class: 'control next preload' do
+        =link_to s_image_path(page_id: image.page, id: image.higher_item), class: 'control next preload' do
           %p.fa.fa-angle-right
       - if image.lower_items.first
-        =link_to image.lower_items.last , class: 'control first preload' do
+        =link_to s_image_path(page_id: image.page, id: image.lower_items.last) , class: 'control first preload' do
           %p= '<<'
       = link_to '#nav', class: 'control menu' do
         %p

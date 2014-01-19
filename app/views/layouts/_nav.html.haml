@@ -4,4 +4,4 @@
       %ul.nav.navbar-nav
         - site.pages.each do |page|
           %li{ class: (:active if page == @page)}
-            = link_to page.name ,page_path(id: page)
+            = link_to page.name, s_page_path(id: page)

@@ -19,7 +19,7 @@ Cuicui::Application.routes.draw do
       put :move_higher
       put :move_lower
     end
-    resources :images, only: [:create] do
+    resources :images, only: [:show, :create] do
       collection do
         get :create # Hack for cloudinary !!
       end
@@ -38,6 +38,7 @@ Cuicui::Application.routes.draw do
   end
 
   get '/:id', to: 'pages#show', as: :s_page
+  get '/:page_id/:id', to: 'images#show', as: :s_image
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

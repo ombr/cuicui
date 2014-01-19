@@ -45,8 +45,8 @@ class ImagesController < ApplicationController
   end
 
   def show
-    render 'pages/show'
     expires_in 5.minutes, public: true
+    render 'pages/show' unless request.xhr?
   end
 
   def edit

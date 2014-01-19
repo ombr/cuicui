@@ -28,4 +28,12 @@ class Image < ActiveRecord::Base
       end
     end
   end
+
+  def to_param
+    if description
+      "#{id}-#{description.parameterize[0..60]}"
+    else
+      id
+    end
+  end
 end
