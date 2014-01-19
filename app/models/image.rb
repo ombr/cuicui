@@ -33,7 +33,7 @@ class Image < ActiveRecord::Base
     if description
       "#{id}-#{description.parameterize[0..60]}"
     else
-      id
+      id.to_s
     end
   end
 end
