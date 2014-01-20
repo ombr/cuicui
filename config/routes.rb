@@ -1,5 +1,5 @@
 Cuicui::Application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: :sessions, registrations: :registrations }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -34,7 +34,7 @@ Cuicui::Application.routes.draw do
   end
 
   devise_scope :user do
-    get '/admin', to: 'devise/sessions#new'
+    get '/admin', to: 'sessions#new'
   end
 
   get '/:id', to: 'pages#show', as: :s_page
