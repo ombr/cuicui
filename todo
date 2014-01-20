@@ -5,7 +5,6 @@ todo:
 - w3c ?
 - head > <title></title>
 - alt+ image size
-- image#show inside pages.
 
 Bugs :
 - validation name page
@@ -14,13 +13,11 @@ Bugs :
 - 404 ?
 - 500 ?
 - autohide flash
-- menu admin pages style
 
 Improvements :
 
 - Diaporama option
 - preview...IPhone/android
-- nice admin login !
 - facebook
 - sitemap
 - robots.txt

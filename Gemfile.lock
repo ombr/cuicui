@@ -36,6 +36,7 @@ GEM
       tzinfo (~> 0.3.37)
     acts_as_list (0.3.0)
       activerecord (>= 3.0)
+    analytics-ruby (0.0.1)
     arel (4.0.1)
     atomic (1.1.14)
     aws_cf_signer (0.1.2)
@@ -209,6 +210,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  analytics-ruby (< 1.0)
   bootstrap-sass (~> 3.0.3.0)
   bourbon
   cancan

@@ -54,6 +54,7 @@ gem 'redcarpet'
 gem 'unicorn'
 gem 'rack-timeout'
 gem 'newrelic_rpm'
+gem 'analytics-ruby', '<1.0'
 
 group :production do
   gem 'rails_12factor'
