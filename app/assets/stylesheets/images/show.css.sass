@@ -6,12 +6,27 @@
   width: 100%
   height: 100%
 
+@include keyframes(fadeOut)
+  0%
+    opacity: 1
+  80%
+    opacity: 1
+  to
+    opacity: 0
 
 .viewer.show-control
   .control,
   .image-description,
   .image-progress
     opacity: 1
+
+.viewer.first-control
+  .control,
+  .image-description,
+  .image-progress
+    opacity: 1
+    @include animation(fadeOut 6s ease-in)
+    @include animation-fill-mode(forwards)
 .viewer
   text-align: center
   .content

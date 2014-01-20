@@ -1,5 +1,5 @@
 .image
-  .viewer
+  .viewer{class: ('first-control' unless cookies['first-control'] == 't')}
     .content
       - if image.description.present?
         .image-description
