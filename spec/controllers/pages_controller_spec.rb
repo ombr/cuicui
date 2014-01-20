@@ -67,7 +67,7 @@ describe PagesController do
       it('redirect_to_first_image') do
         image
         get :show, site_id: page.site, id: page
-        response.should redirect_to page.images.first
+        response.should redirect_to s_image_path(page_id: page, id: page.images.first)
       end
     end
   end

@@ -25,7 +25,7 @@ class PagesController < ApplicationController
 
   def show
     if @page.description.blank? && @page.images.count > 0
-      return redirect_to image_path(id: @page.images.first)
+      return redirect_to s_image_path(page_id: @page, id: @page.images.first)
     end
     @image = @page.images.first if @page.images.first
     expires_in 5.minutes, public: true
