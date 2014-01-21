@@ -14,20 +14,29 @@
   to
     opacity: 0
 
-.viewer.show-control
-  .control,
-  .image-description,
-  .image-progress
-    opacity: 1
+.images.rotation
+  .viewer
+    .control,
+    .image-description,
+    .image-progress
+      @include animation(none)
+      opacity: 0
 
-.viewer.first-control
+
+.viewer.hide-control
   .control,
   .image-description,
   .image-progress
-    opacity: 1
-    @include animation(fadeOut 6s ease-in)
+    opacity: 0
+
+.viewer.auto-control
+  .control,
+  .image-description,
+  .image-progress
+    @include animation(fadeOut 3s ease-in)
     @include animation-fill-mode(forwards)
 .viewer
+  height: 100%
   text-align: center
   .content
     height: 100%
@@ -43,11 +52,10 @@
       max-height: 100%
       max-width: 100%
   .control
+    opacity: 1
     p
       display: inline
     text-decoration: none
-    opacity: 0
-    @include transition (opacity .5s ease-in)
     position: absolute
     font-size: 60px
     color: black
@@ -57,7 +65,7 @@
     right: 0
     text-align: center
     bottom: 0
-    @include transition (opacity .5s ease-in)
+    opacity: 1
   .image-progress
     position: absolute
     bottom: 0
@@ -66,11 +74,9 @@
     z-index: 10
     background: white
     background-color: rgba(255, 255, 255, 0.7)
-    @include transition (opacity .5s ease-in)
-    opacity: 0
+    opacity: 1
   .image-description
-    opacity: 0
-    @include transition (opacity .5s ease-in)
+    opacity: 1
     position: absolute
     p
       background: none
