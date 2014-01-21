@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.2'
-
 gem 'pg'
 
 # Use SCSS for stylesheets
@@ -54,7 +53,6 @@ gem 'redcarpet'
 gem 'unicorn'
 gem 'rack-timeout'
 gem 'newrelic_rpm'
-gem 'analytics-ruby', '<1.0'
 
 group :production do
   gem 'rails_12factor'

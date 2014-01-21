@@ -18,14 +18,6 @@ after_fork do |server, worker|
     puts 'Unicorn worker intercepting TERM && doing nothing. Wait for master to send QUIT'
   end
 
-  if defined? AnalyticsRuby &&  ENV['SEGMENT_IO'].present?
-    Analytics = AnalyticsRuby
-    Analytics.init(
-      secret: ENV['SEGMENT_IO'],
-      on_error: Proc { |status, msg| print msg }
-    )
-  end
-
   defined?(ActiveRecord::Base) &&
     ActiveRecord::Base.establish_connection
 end
