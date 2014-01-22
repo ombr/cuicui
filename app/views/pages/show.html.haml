@@ -9,6 +9,11 @@
   - if @image
     .col-md-12.images
       = render @image
+    - if @image.description.present?
+      .col-md-12.image-description
+        .row
+          .col-md-12
+            = @image.description
   - else
     .col-md-12.images
       Oups, this page is empty, but there is a menu if you scroll...
