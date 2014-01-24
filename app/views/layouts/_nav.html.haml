@@ -1,7 +1,7 @@
 - if site
-  .col-md-12.col-fullscreen.nav-bottom.main-nav
+  .col-md-12.col-fullscreen.nav-bottom
     %nav.navbar.navbar-inverse{ role: 'navigation', id: 'nav' }
-      %ul.nav.navbar-nav
+      %ul.nav.navbar-nav.main-nav
         - site.pages.each do |page|
           %li{ class: (:active if page == @page)}
             = link_to page.name, s_page_path(id: page)
