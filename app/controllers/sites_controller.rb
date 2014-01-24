@@ -14,6 +14,10 @@ class SitesController < ApplicationController
 
   def update
     @site = Site.find(params[:id])
+    unless params[:site][:favicon].nil?
+      Cloudinary::Uploader.upload(params[:site][:favicon], public_id: 'favicon', format: :ico)
+      flash[:success] = I18n.t 'sites.favicon_updated'
+    end
     @site.update(site_params)
     redirect_to edit_site_path(id: @site)
   end

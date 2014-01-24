@@ -1,9 +1,8 @@
 .col-md-12.col-fullscreen
   %nav.navbar.navbar-inverse{role: 'navigation'}
     %ul.nav.navbar-nav
-      %li
-        = tab_link edit_site_path(id: site) do
-          .glyphicon.glyphicon-wrench
+      = tab_link edit_site_path(id: site) do
+        .glyphicon.glyphicon-wrench
       - site.pages.each do |page|
         - unless page.new_record?
           - if @page and @page == page
@@ -16,11 +15,11 @@
                 =link_to move_higher_page_path(page), method: :put do
                   %span.glyphicon.glyphicon-chevron-right
           - else
-            %li
-              = tab_link(edit_page_path(id: page)) do
-                = page.name
+            = tab_link(edit_page_path(id: page)) do
+              = page.name
       = tab_link(new_site_page_path(site_id: site)) do
         .glyphicon.glyphicon-plus
-      %li.pull-right
+    %ul.nav.navbar-nav.pull-right
+      %li
         = link_to destroy_user_session_path do
           Log out
