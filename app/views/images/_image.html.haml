@@ -1,15 +1,6 @@
 .image
-  .viewer.auto-control
+  .viewer
     .content
-      - if image.description.present?
-        .image-description
-          %p= image.description
-      .image-progress
-        - total = @image.page.images.count
-        - position = total -  @image.position + 1
-        %span.position=position
-        %span.sep /
-        %span.total=total
       = image_tag image.image.url(:full), alt: image.description, title: image.description
       - if image.lower_item
         =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'control previous preload' do
@@ -23,3 +14,9 @@
       = link_to '#nav', class: 'control menu' do
         %p
           %span.fa.fa-angle-double-down
+      .image-progress
+        - total = @image.page.images.count
+        - position = total -  @image.position + 1
+        %span.position=position
+        %span.sep /
+        %span.total=total

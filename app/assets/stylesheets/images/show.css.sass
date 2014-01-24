@@ -23,18 +23,19 @@
       opacity: 0
 
 
-.viewer.hide-control
-  .control,
-  .image-description,
-  .image-progress
-    opacity: 0
+//.viewer.hide-control
+  //.control,
+  //.image-description,
+  //.image-progress
+    //opacity: 0
 
-.viewer.auto-control
-  .control,
-  .image-description,
-  .image-progress
-    @include animation(fadeOut 3s ease-in)
-    @include animation-fill-mode(forwards)
+// CSS 3 auto hide
+//.viewer
+  //.control,
+  //.image-description,
+  //.image-progress
+    //@include animation(fadeOut 3s ease-in)
+    //@include animation-fill-mode(forwards)
 .viewer
   height: 100%
   text-align: center
@@ -57,7 +58,7 @@
       display: inline
     text-decoration: none
     position: absolute
-    font-size: 60px
+    font-size: 40px
     color: black
   .menu
     text-shadow: 0px 0px 3px white
@@ -75,19 +76,6 @@
     background: white
     background-color: rgba(255, 255, 255, 0.7)
     opacity: 1
-  .image-description
-    opacity: 1
-    position: absolute
-    p
-      background: none
-    text-align: left
-    background: white
-    background-color: rgba(255, 255, 255, 0.7)
-    padding: 5px
-    z-index: 10
-    left: 0
-    right: 0
-    top: 0px
   .next-previous
     text-shadow: 0px 0px 3px white
     top: 0
