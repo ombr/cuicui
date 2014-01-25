@@ -4,6 +4,13 @@ describe SitesController do
   let(:site) { FactoryGirl.create :site }
   let(:user) { FactoryGirl.create :user }
 
+  describe '#robots' do
+    render_views
+    it 'respond 200' do
+      get :robots
+    end
+  end
+
   describe '#edit' do
     before :each do
       sign_in user

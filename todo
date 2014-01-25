@@ -1,9 +1,6 @@
 todo:
 
 - split admin javascript and stylesheet from main application
-- segment.io
-- w3c ?
-- head > <title></title>
 - alt+ image size
 
 Bugs :
@@ -22,15 +19,11 @@ Improvements :
 - sitemap
 - robots.txt
 
-- favicon
-
 Later :
 - video
-- galerie privee
 - emails
 - home logo ??
 - markdown editor ( or sample)
-- Site -> language NO !!
 
 
 Forces :
@@ -41,3 +34,7 @@ Forces :
 - CDN enabled
 - Super fast
 - IE ??
+
+A ne pas faire :
+
+- Site -> language NO !!

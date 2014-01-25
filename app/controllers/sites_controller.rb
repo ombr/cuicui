@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource only: [:show, :edit, :update]
 
   def show
     @site = Site.find(params[:id])
@@ -20,6 +20,12 @@ class SitesController < ApplicationController
     end
     @site.update(site_params)
     redirect_to edit_site_path(id: @site)
+  end
+
+  def robots
+    @allow = false
+    @allow = true if URI.parse("http://#{ENV['DOMAIN']}").host == request.host
+    render layout: false
   end
 
   def site_params

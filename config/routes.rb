@@ -37,6 +37,7 @@ Cuicui::Application.routes.draw do
     get '/admin', to: 'sessions#new'
   end
 
+  get '/robots.txt', to: 'sites#robots'
   get '/:id', to: 'pages#show', as: :s_page
   get '/:page_id/:id', to: 'images#show', as: :s_image
 
