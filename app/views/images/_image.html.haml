@@ -1,22 +1,21 @@
-.image
+.image.col-md-12.col-fullscreen
   .viewer
     .content
       = image_tag image.image.url(:full), alt: image.description, title: image.description
-      - if image.higher_item
-        =link_to s_image_path(page_id: image.page, id: image.higher_item) , class: 'control previous preload' do
-          %p.fa.fa-angle-left
       - if image.lower_item
-        =link_to s_image_path(page_id: image.page, id: image.lower_item), class: 'control next preload' do
+        =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'control next preload' do
           %p.fa.fa-angle-right
-      - if image.lower_items.last
-        =link_to s_image_path(page_id: image.page, id: image.lower_items.first) , class: 'control first preload' do
+      - if image.higher_item
+        =link_to s_image_path(page_id: image.page, id: image.higher_item), class: 'control previous preload' do
+          %p.fa.fa-angle-left
+      - if image.higher_items.first
+        =link_to s_image_path(page_id: image.page, id: image.higher_items.first) , class: 'control first preload' do
           %p= '<<'
-      = link_to '#nav', class: 'control menu' do
-        %p
-          %span.fa.fa-angle-double-down
       .image-progress
-        - total = @image.page.images.count
-        - position = total -  @image.position + 1
-        %span.position=position
+        %span.position=@image.position
         %span.sep /
-        %span.total=total
+        %span.total=@image.page.images.count
+
+  - if @image.description.present?
+    .image-description
+      = @image.description

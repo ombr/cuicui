@@ -6,6 +6,30 @@
   @include transition (margin .1s ease-in)
   margin: 0
 
+.navbar-inverse
+  background: none
+.navbar-toggle
+  background: #101010
+.navbar-collapse
+  background: #101010
+  padding: 0
+  margin-top: -$navbar-height
+.navbar-toggle
+  //float: left
+  margin: 0
+  height: 40px
+  //margin-left: 10px
+  //margin-right: 10px
+
+//Menu fullscreen
+//@media (max-width: $grid-float-breakpoint)
+  //.description
+    //padding-top: $navbar-height
+@media (min-width: $grid-float-breakpoint)
+  body
+    padding-top: $navbar-height
+
+
 // For admin position
 li.active.with_positions
   font-size: 0

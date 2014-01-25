@@ -1,36 +1,46 @@
-.images
-  padding: 0
-  height: 100%
+//.image
+  //padding-top: $navbar-height
+
+//@include keyframes(showMenu)
+  //0%
+    //margin-top: -500px
+  //100%
+    //margin-top: 0
+//.nav-bottom
+  //position: absolute
+  //left: 0
+  //right: 0
+  //top: 0
+  //@include animation(showMenu 5s ease-in)
+  //@include animation-delay(1s)
+  //@include animation-fill-mode(both)
+  //margin-top: -5000px
 
 // Menu get back on wide screen !
-@media (min-width: $screen-md-min)
-  .image-description
-    position: absolute
-    top: 0
-    background: white
-    background-color: rgba(255, 255, 255, 0.7)
-  .images
-    .viewer .control.menu
-      @include animation(none)
-      opacity: 0
-    padding: 0 0 $navbar-height 0 // Images full screen with space for navbar :-D
-  .nav-bottom
-    margin-top: - $navbar-height
+//@media (min-width: $screen-md-min)
+  //.image-description
+    //position: absolute
+    //top: 0
+    //background: white
+    //background-color: rgba(255, 255, 255, 0.7)
+  //.images
+    //.viewer .control.menu
+      //@include animation(none)
+      //opacity: 0
+    //padding: 0 0 $navbar-height 0 // Images full screen with space for navbar :-D
+  //.nav-bottom
+    //margin-top: - $navbar-height
 
-// Annimation on responsive :-D
-.nav-bottom
-  @include transition(margin-top .5s ease-in)
-.images
-  @include transition(padding-bottom .5s ease-in)
 
-@media (min-width: $screen-md-min)
-  .message
-    height: 100%
-    padding-top: 100px
-
+// Message is centred
 .message
   display: table
   .description
     display: table-cell
     vertical-align: middle
     text-align: justify
+// Message is not fully centred
+@media (min-width: $screen-md-min)
+  .message
+    height: 100%
+    padding-top: 100px
