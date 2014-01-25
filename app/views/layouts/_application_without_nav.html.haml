@@ -4,13 +4,16 @@
     %title="#{(@site.name if @site)} #{yield(:page_title)}"
     %link{ rel: 'shortcut icon', href: cl_image_path('favicon', format: :ico)}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
-    - begin
-      - if @site and @site.css
-        :sass
-          #{@site.css}
-    - rescue Exception=> e
-      /
-        = e.message
+    - if @site
+      - if @site.metas.present?
+        =raw @site.metas
+      - begin
+        - if @site.css.present?
+          :sass
+            #{@site.css}
+      - rescue Exception=> e
+        /
+          = e.message
     - if cookies[:css_loaded].present?
       = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     - else

@@ -60,6 +60,13 @@ describe SitesController do
       end.to change { site.reload.css }.to('test')
     end
 
+    it 'change the google_site_verification' do
+      expect do
+        sign_in user
+        put :update, id: site, site: { metas: 'test' }
+      end.to change { site.reload.metas }.to('test')
+    end
+
     it 'change the name' do
       expect do
         sign_in user
