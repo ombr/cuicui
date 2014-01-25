@@ -1,6 +1,7 @@
 //= require jquery
-//= require hammer.min
+//= require menu
 //= require bootstrap/collapse
+//= require hammer.min
 //= require rotation
 //= require shortcuts
 //= require jquery.cookie
