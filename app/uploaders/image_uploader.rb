@@ -16,7 +16,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :full do
     eager
     cloudinary_transformation transformation: [
-      { width: 1600, height: 1400, crop: :limit, quality: 80, flags: 'progressive' }
+      { width: 1920, height: 1400, crop: :limit, quality: 80, flags: 'progressive' }
     ]
   end
 end
