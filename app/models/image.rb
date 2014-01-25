@@ -29,6 +29,11 @@ class Image < ActiveRecord::Base
     end
   end
 
+  def priority
+    total = page.images.count
+    (total - position + 1).to_f / (total).to_f
+  end
+
   def to_param
     if description
       "#{id}-#{description.parameterize[0..60]}"

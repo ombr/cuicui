@@ -11,6 +11,27 @@ describe SitesController do
     end
   end
 
+  describe '#sitemap' do
+    render_views
+
+    it 'respond 200' do
+      get :sitemap
+      response.code.should == '200'
+    end
+
+    it 'assigns @urls' do
+      get :sitemap
+      assigns(:urls).class.should == Array
+    end
+
+    it '@urls include images url' do
+      create :image
+      get :sitemap
+      urls = Image.all.map { |i| s_image_url(page_id: i.page, id: i) }
+      (urls - assigns(:urls).map { |u| u[:loc] }).length.should == 0
+    end
+  end
+
   describe '#edit' do
     before :each do
       sign_in user

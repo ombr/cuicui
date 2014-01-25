@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe PagesController do
 
-  let(:page) { FactoryGirl.create :page }
-  let(:site) { FactoryGirl.create :site }
+  let(:page) { FactoryGirl.create :page, site: site }
+  let(:site) { Site.first }
   let(:user) { FactoryGirl.create :user }
 
   describe '#index' do

@@ -28,6 +28,18 @@ class SitesController < ApplicationController
     render layout: false
   end
 
+  def sitemap
+    @urls = []
+    Image.order(:position).each do |i|
+      @urls << {
+        loc: s_image_url(page_id: i.page, id: i),
+        changefreq: :weekly,
+        priority: i.priority
+      }
+    end
+    render layout: false, formats: [:xml]
+  end
+
   def site_params
     params.require(:site).permit(:name, :description, :css)
   end

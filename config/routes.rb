@@ -37,7 +37,8 @@ Cuicui::Application.routes.draw do
     get '/admin', to: 'sessions#new'
   end
 
-  get '/robots.txt', to: 'sites#robots'
+  get '/robots.txt', to: 'sites#robots', defaults: { format: :txt }
+  get '/sitemap.xml', to: 'sites#sitemap', as: :sitemap, defaults: { format: :xml }
   get '/:id', to: 'pages#show', as: :s_page
   get '/:page_id/:id', to: 'images#show', as: :s_image
 
