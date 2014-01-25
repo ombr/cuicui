@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
   belongs_to :site
-  has_many :images, -> { order('position DESC') }
+  has_many :images, -> { order('position') }
   acts_as_list scope: :site
 
   def description_html

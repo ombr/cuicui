@@ -1,5 +1,5 @@
 class Site < ActiveRecord::Base
-  has_many :pages, -> { order('position DESC') }
+  has_many :pages, -> { order('position') }
 
   class << self
     def first
