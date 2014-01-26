@@ -13,9 +13,9 @@
 .navbar-collapse
   background: #101010
   padding: 0
-  margin-top: -$navbar-height
 .navbar-toggle
   //float: left
+  z-index: 999
   margin: 0
   height: 40px
   //margin-left: 10px
@@ -33,7 +33,12 @@
   @include animation(fadeIn 3s ease-in)
 
 //Menu fullscreen
-//@media (max-width: $grid-float-breakpoint)
+@media (max-width: $grid-float-breakpoint)
+  .navbar-collapse
+    position: relative
+    top: -40px
+  //position: relative
+  //top: -$navbar-height
   //.description
     //padding-top: $navbar-height
 @media (min-width: $grid-float-breakpoint)

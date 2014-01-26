@@ -23,13 +23,19 @@
       opacity: 0
 
 .image-description
-  z-index: 999
+  padding-top: 5px
+  z-index: 2
   position: relative
-  top: -20px
-  margin-right: 40px
+  top: -40px
+  text-align: center
+  min-height: 40px
+  margin-padding: 40px
   background: white
-  background-color: rgba(255, 255, 255, 0.7)
 
+@media (min-width: $screen-md-min)
+  .viewer
+    padding-top: 5%
+    padding-bottom: 5%
 // CSS 3 auto hide
 //.viewer
   //.control,
@@ -37,6 +43,12 @@
   //.image-progress
     //@include animation(fadeOut 3s ease-in)
     //@include animation-fill-mode(forwards)
+
+// POUR AUDE :
+
+.image-progress
+  display: none !important
+
 .viewer
   height: 100%
   text-align: center
@@ -73,7 +85,8 @@
     position: absolute
     bottom: 0
     right: 0
-    padding: 5px
+    height: 40px
+    padding-top: 5px
     z-index: 10
     background: white
     background-color: rgba(255, 255, 255, 0.7)
@@ -93,9 +106,9 @@
     display: none
   .next
     @extend .next-previous
-    right: 0
+    right: 20px
     text-align: right
   .previous
     @extend .next-previous
     text-align: left
-    left: 0
+    left: 20px
