@@ -1,12 +1,12 @@
 = render 'layouts/nav', site: @site
 - if @page.description.present?
-  .col-md-4.message
+  .col-md-8.images.rotation.col-md-push-4
+    - if @image
+      = render @image
+  .col-md-4.message.col-md-pull-8
     .description
       .description-width
         = @page.description_html.html_safe
-  .col-md-8.images.rotation
-    - if @image
-      = render @image
 - else
   - if @image
     = render @image
