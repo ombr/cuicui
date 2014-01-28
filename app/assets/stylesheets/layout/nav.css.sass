@@ -21,16 +21,17 @@
   //margin-left: 10px
   //margin-right: 10px
 
-//@include keyframes(fadeIn)
-  //0%
-    //opacity: 0
-  //80%
-    //opacity: 0
-  //to
-    //opacity: 1
+@include keyframes(fadeIn)
+  0%
+    opacity: 0
+  80%
+    opacity: 0
+  to
+    opacity: 1
 
-//.navbar-no-js
-  //@include animation(fadeIn 3s ease-in)
+@media (max-width: $grid-float-breakpoint)
+  .navbar-no-js
+    @include animation(fadeIn 3s ease-in)
 
 //Menu fullscreen
 @media (max-width: $grid-float-breakpoint)
