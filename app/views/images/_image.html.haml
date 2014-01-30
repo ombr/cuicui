@@ -1,7 +1,7 @@
-.image.col-md-12.col-fullscreen
+.image.col-md-12.col-fullscreen{itemscope: '', itemtype: 'http://schema.org/Photograph'}
   .viewer
     .content
-      = image_tag image.image.url(:full), alt: image.description, title: image.description
+      = image_tag image.image.url(:full), alt: image.description, title: image.description, itemprop: 'url'
       - if image.lower_item
         =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'control next preload' do
           %p.fa.fa-angle-right next
@@ -18,4 +18,4 @@
 
   - if @image.description.present?
     .image-description
-      = @image.description
+      %span{itemprop: 'description'}= @image.description
