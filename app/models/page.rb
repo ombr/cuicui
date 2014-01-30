@@ -3,7 +3,7 @@ class Page < ActiveRecord::Base
   has_many :images, -> { order('position') }
   acts_as_list scope: :site
 
-  def description_html
+  def description_rendered
     md = Redcarpet::Markdown.new(
       Redcarpet::Render::HTML,
       autolink: true,

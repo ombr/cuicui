@@ -5,6 +5,8 @@
   = simple_form_for @page do |f|
     = f.input :name
     = f.input :description, input_html: { rows: 8 }
+    .admin-advanced
+      = f.input :description_html, class: 'advanced-admin', input_html: { rows: 8 }
     = f.submit class: 'btn btn-primary'
 #image-edit.col-sm-8
   %h1 Images

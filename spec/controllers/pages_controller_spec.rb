@@ -135,6 +135,13 @@ describe PagesController do
       end.to change { page.reload.name }.to 'test'
     end
 
+    it('update the description_html') do
+      expect do
+        sign_in user
+        put :update, id: page, page: { description_html: 'test' }
+      end.to change { page.reload.description_html }.to 'test'
+    end
+
     it('update the description') do
       expect do
         sign_in user
@@ -188,5 +195,4 @@ describe PagesController do
       end
     end
   end
-
 end
