@@ -4,11 +4,19 @@ todo:
 - alt+ image size
 - copie d'un site a un autre
 - HTML5 offline version :-D
+- contact + bug recording
+- flash messages
+- preview button
+- fullscreen + update menu
+- upload full screen
+- legende image corect
+- facebook conflict javascript ?
+- menu dropdown js/hover ?
 
 Bugs :
 - validation name page
 - confirmation suppression page
-- delete recursive ||  limit delete
+- delete recursive ||  limit delete ou garbage collector ?
 - 404 ?
 - 500 ?
 - autohide flash
