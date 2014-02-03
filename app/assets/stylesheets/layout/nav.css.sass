@@ -1,43 +1,100 @@
-.navbar
-  border: 0
+$menu-height: 50px
+$menu-background: #101010
+$menu-color: $gray-light
+#nav
+  width: 100%
+  z-index: 9999
+  position: fixed
+  top: 0
+  right: 0
+  &.nav-collapse
+    ul
+      display: none
+  &.nojs
+    &:hover,
+      ul
+        display: block
+    ul
+      display: block
+      display: none
+  ul
+    padding: 0
+    width: 100%
+    position: absolute
+    right: 0
+    //top: -$menu-height
+    list-style-type: none
+  li.active a
+    background: #090909
+
+  a
+    &:hover
+      color: $gray-lighter
+    text-transform: uppercase
+    padding-left: 15px
+    padding-top: 15px
+    height: $menu-height
+    display: block
+    text-decoration: none
+    color: $menu-color
+    background: $menu-background
+
+  .menu
+    //background: none
+    z-index: 999
+    position: absolute
+    right: 0
+    top: 0
+    height: $menu-height
+    padding: 15px
+    display: block
+@media (min-width: 300px)
+  #nav
+    ul
+      width: 300px
+
+
+
+//.navbar
+  //border: 0
 
 // Ack bootstrap for full with navbar
-.navbar-nav
-  @include transition (margin .1s ease-in)
-  margin: 0
+//.navbar-nav
+  //@include transition (margin .1s ease-in)
+  //margin: 0
 
-.navbar-inverse
-  background: none
-.navbar-toggle
-  background: #101010
-.navbar-collapse
+//.navbar-inverse
+  //background: none
+//.navbar-toggle
+  //background: #101010
+//.navbar-collapse
   //background: #101010
   //padding: 0
-.navbar-toggle
-  //float: left
-  z-index: 999
-  margin: 0
-  height: 40px
+//.navbar-toggle
+  ////float: left
+  //z-index: 999
+  //margin: 0
+  //height: 40px
   //margin-left: 10px
   //margin-right: 10px
 
-@include keyframes(fadeIn)
-  0%
-    opacity: 0
-  80%
-    opacity: 0
-  to
-    opacity: 1
+//@include keyframes(fadeIn)
+  //0%
+    //opacity: 0
+  //80%
+    //opacity: 0
+  //to
+    //opacity: 1
 
-@media (max-width: $grid-float-breakpoint)
-  .navbar-no-js
-    @include animation(fadeIn 3s ease-in)
+//@media (max-width: $grid-float-breakpoint)
+  //.navbar-no-js
+    //@include animation(fadeIn 3s ease-in)
 
 //Menu fullscreen
-@media (max-width: $grid-float-breakpoint)
-  .navbar-collapse
-    position: relative
-    top: -$navbar-height
+//@media (max-width: $grid-float-breakpoint)
+  //.navbar-collapse
+    //position: relative
+    //top: -$navbar-height
   //position: relative
   //top: -$navbar-height
   //.description
@@ -48,12 +105,3 @@
     //top: -5%
   //body
     //padding-top: $navbar-height
-
-
-// For admin position
-li.active.with_positions
-  font-size: 0
-  a
-    font-size: $font-size-base
-    margin-right: -0.25em
-    display: inline-block

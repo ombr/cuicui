@@ -1,5 +1,13 @@
 - if site
-  %nav.navbar.navbar-default.navbar-fixed-top{ role: 'navigation' }
+  %nav#nav.nojs
+    %a.menu{href: '#'}
+      =t('.menu', default: 'Menu')
+    %ul
+      - site.pages.each do |page|
+        %li{ class: (:active if page == @page) }
+          = link_to page.name, s_page_path(id: page)
+-#
+  %nav.navbar.navbar-inverse.navbar-fixed-top{ role: 'navigation' }
     .navbar-header
       %button.navbar-toggle{ 'data-target' => '#nav', 'data-toggle' => 'collapse', type: 'button' }
         %span.sr-only Toggle navigation
@@ -8,6 +16,3 @@
         %span.icon-bar
     #nav.navbar-collapse.navbar-no-js.in
       %ul.nav.navbar-nav.main-nav
-        - site.pages.each do |page|
-          %li{ class: (:active if page == @page) }
-            = link_to page.name, s_page_path(id: page)

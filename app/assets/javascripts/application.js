@@ -7,3 +7,4 @@
 //= require jquery.cookie
 //= require css
 //= require preload
+//= require navbar
