@@ -19,7 +19,7 @@ class PagesController < ApplicationController
     @page = @site.pages.first
     return redirect_to new_user_session_path if @page.nil?
     @image = @page.images.first if @page.images.first
-    expires_in 5.minutes, public: true
+    expires_in 5.minutes, public: true if Rails.env.production?
     render :show
   end
 
@@ -28,7 +28,7 @@ class PagesController < ApplicationController
       return redirect_to s_image_path(page_id: @page, id: @page.images.first)
     end
     @image = @page.images.first if @page.images.first
-    expires_in 5.minutes, public: true
+    expires_in 5.minutes, public: true if Rails.env.production?
   end
 
   def edit
