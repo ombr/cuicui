@@ -1,4 +1,5 @@
 $ ->
+  return if(window.parent.frames.length > 0)
   $preloads = $('.preload')
   if $preloads.length > 0
     $preloads.each (i,e)->
