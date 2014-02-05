@@ -15,7 +15,7 @@
           .controls
             .wmd-panel
               #wmd-button-bar
-              %textarea.text.optional.form-control.wmd-input{name: 'page[description]', rows: '8'}= f.object.description
+              %textarea.text.optional.form-control#wmd-input{name: 'page[description]', rows: '8'}= f.object.description
               #wmd-preview.wmd-panel.wmd-preview= f.object.description_rendered.html_safe
         .admin-advanced
           = f.input :description_html, class: 'advanced-admin', input_html: { rows: 8 }
