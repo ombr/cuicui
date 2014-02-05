@@ -5,16 +5,15 @@ todo:
 - HTML5 offline version :-D
 - contact + bug recording
 - flash messages
-- upload full screen
-- theme light/dark
+- autohide flash
+- bug language site (enable select languages)
+- Moteur de recherche description, keywords, ....
 
-Bugs :
 - validation name page
-- confirmation suppression page
-- delete recursive ||  limit delete ou garbage collector ?
+- garbage collector ?
 - 404 ?
 - 500 ?
-- autohide flash
+- theme light/dark
 
 Improvements :
 
@@ -28,7 +27,7 @@ Later :
 - video
 - emails
 - home logo ??
-- markdown editor ( or sample)
+- Page index pictures ??
 
 
 Forces :
