@@ -43,6 +43,7 @@ gem 'bootstrap-sass', '~> 3.1.0'
 gem 'font-awesome-rails'
 gem 'bourbon'
 gem 'jquery-fileupload-rails'
+gem 'pagedown-rails'
 
 gem 'simple_form'
 

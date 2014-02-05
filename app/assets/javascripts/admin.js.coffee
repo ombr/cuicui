@@ -9,3 +9,7 @@
 //= require preload
 //= require jquery-fileupload/basic
 //= require fileupload
+//= require markdown.converter
+//= require markdown.sanitizer
+//= require markdown.editor
+//= require pagedown
