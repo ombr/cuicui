@@ -12,7 +12,7 @@
     = render 'layouts/flashs'
     = yield
     - if current_user
-      = intercom_script_tag({ user_id: "#{ENV['DOMAIN']}-#{current_user.email}",
+      = intercom_script_tag({ user_id: Digest::SHA1.hexdigest("#{ENV['DOMAIN']}-#{current_user.email}"),
                               email: current_user.email,
                               created_at: current_user.created_at,
-                              custom_data: {pages: Page.count, images: Image.count}})
+                              custom_data: {pages: Page.count, images: Image.count, site: ENV['DOMAIN']}})
