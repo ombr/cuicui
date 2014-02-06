@@ -44,6 +44,7 @@ gem 'font-awesome-rails'
 gem 'bourbon'
 gem 'jquery-fileupload-rails'
 #gem 'pagedown-rails'
+gem "intercom-rails"
 
 gem 'simple_form'
 
