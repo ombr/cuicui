@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  skip_after_filter :intercom_rails_auto_include
+
   if ENV['AUTH_NAME'] && ENV['AUTH_PASS']
     http_basic_authenticate_with name: ENV['AUTH_NAME'], password: ENV['AUTH_PASS']
   end
