@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :site do
-    name 'Studio Cuicui'
+    title 'Studio Cuicui'
   end
 end

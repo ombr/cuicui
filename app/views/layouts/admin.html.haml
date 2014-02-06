@@ -1,7 +1,7 @@
 !!!5
 %html
   %head
-    %title="#{(@site.name if @site)} #{yield(:page_title)}"
+    %title="#{(@site.title if @site)} #{yield(:page_title)}"
     %link{ rel: 'shortcut icon', href: cl_image_path('favicon', format: :ico)}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
     = stylesheet_link_tag 'admin', media: "all"

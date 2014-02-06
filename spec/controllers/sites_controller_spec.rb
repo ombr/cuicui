@@ -67,11 +67,11 @@ describe SitesController do
       end.to change { site.reload.metas }.to('test')
     end
 
-    it 'change the name' do
+    it 'change the title' do
       expect do
         sign_in user
-        put :update, id: site, site: { name: 'test' }
-      end.to change { site.reload.name }.to('test')
+        put :update, id: site, site: { title: 'test' }
+      end.to change { site.reload.title }.to('test')
     end
 
     it 'change the description' do
@@ -83,7 +83,7 @@ describe SitesController do
 
     it 'redirect to edit' do
       sign_in user
-      put :update, id: site, site: { name: 'test' }
+      put :update, id: site, site: { title: 'test' }
       response.should redirect_to edit_site_path(id: site)
     end
 
