@@ -2,7 +2,7 @@
 - if @page.description.present? || @page.description_html.present?
   .col-md-8.images.rotation.col-md-push-4
     - if @image
-      = render @image
+      = render @image, no_controls: true
   .col-md-4.message.col-md-pull-8
     .description
       .description-width
