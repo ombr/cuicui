@@ -46,7 +46,11 @@ class ImagesController < ApplicationController
 
   def show
     expires_in 5.minutes, public: true if Rails.env.production?
-    render 'pages/show' unless request.xhr?
+    if request.xhr?
+      render layout: false
+    else
+      render 'pages/show'
+    end
   end
 
   def edit
