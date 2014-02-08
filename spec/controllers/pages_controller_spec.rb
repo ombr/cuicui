@@ -119,10 +119,10 @@ describe PagesController do
       end.to change { Page.count }.by(-1)
     end
 
-    it 'redirect to edit site' do
+    it 'redirect to edit site', :focus do
       sign_in user
       delete :destroy, id: page
-      response.should redirect_to edit_site_path(id: page.site)
+      response.should redirect_to new_site_page_path(site_id: page.site)
     end
 
   end

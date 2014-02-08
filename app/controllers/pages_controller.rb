@@ -47,7 +47,7 @@ class PagesController < ApplicationController
 
   def destroy
     @page.destroy!
-    redirect_to edit_site_path(id: @site)
+    redirect_to new_site_page_path(site_id: @site)
   end
 
   def update
