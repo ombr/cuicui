@@ -3,7 +3,6 @@
     .col-sm-12
       %h1
         = @page.name
-        =link_to t('.preview'), page_path(site_id: @site, id: @page), class: 'btn btn-success', target: '_blank'
         =link_to t('.delete'), page_path(site_id: @site, id: @page), class: 'btn btn-danger', method: :delete, confirm: t('.delete_confirm', default: 'Are you sure ?')
   .row
     .col-sm-4
@@ -20,6 +19,7 @@
         .admin-advanced
           = f.input :description_html, class: 'advanced-admin', input_html: { rows: 8 }
         = f.submit class: 'btn btn-primary'
+        = f.submit t('.update_and_preview', default: 'Update and preview'), name: 'preview', class: 'btn btn-success'
     #image-edit.col-sm-8
       %h3=t '.Images'
       - url = page_images_url(site_id: @site, page_id: @page)

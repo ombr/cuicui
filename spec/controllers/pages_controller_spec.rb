@@ -92,6 +92,15 @@ describe PagesController do
     it('assigns @page') { assigns(:page).class.should == Page }
   end
 
+  describe '#preview' do
+    before :each do
+      sign_in user
+      get :preview, id: page
+    end
+    it_responds_200
+    it('assigns @page') { assigns(:page).should == page }
+  end
+
   describe '#create' do
 
     it 'render new with an empty name' do
@@ -160,6 +169,12 @@ describe PagesController do
       sign_in user
       put :update, id: page, page: { name: 'test' }
       response.should redirect_to edit_page_path(id: page.reload)
+    end
+
+    it 'redirect to preview if sended with preview' do
+      sign_in user
+      put :update, id: page, page: { name: 'test' }, preview: 'Update and preview'
+      response.should redirect_to preview_page_path(id: page.reload)
     end
   end
 

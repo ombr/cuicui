@@ -5,7 +5,8 @@ class PagesController < ApplicationController
     :destroy,
     :update,
     :move_higher,
-    :move_lower
+    :move_lower,
+    :preview
   ]
   load_and_authorize_resource :site,
                               through: :page,
@@ -29,6 +30,10 @@ class PagesController < ApplicationController
     end
     @image = @page.images.first if @page.images.first
     expires_in 5.minutes, public: true if Rails.env.production?
+  end
+
+  def preview
+    render layout: 'admin'
   end
 
   def edit
@@ -56,6 +61,7 @@ class PagesController < ApplicationController
 
   def update
     @page.update(page_params)
+    return redirect_to preview_page_path(@page) if params[:preview]
     redirect_to edit_page_path(@page)
   end
 
