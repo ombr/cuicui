@@ -13,8 +13,10 @@ todo:
 - delete page => New Page !
 - edit image link to go back !
 - Site configure production mode ??? (Admin only)
-- Navigatino preview (Iframe for preview + go back + save and preview)
+- Navigation preview (Iframe for preview + go back + save and preview)
 - No menu one page !
+- reflow android + resize browser...
+- push state on scroll !!
 
 - Another editor ? With color ?
 - validation name page
@@ -27,7 +29,6 @@ todo:
 
 Improvements :
 
-- Scroll images plutot que gauche droite !!
 - copie d'un site a un autre
 - Diaporama option
 - preview...IPhone/android
