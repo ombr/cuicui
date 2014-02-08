@@ -5,7 +5,6 @@ todo:
 - contact + bug recording
 - bug language site (enable select languages)
 - Navbar bootstrap on admin ! (fix 15 px bug)
-- edit image link to go back !
 - Site configure production mode ??? (Admin only)
 - Navigation preview (Iframe for preview + go back + save and preview)
 - push state on scroll !!

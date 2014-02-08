@@ -94,6 +94,13 @@ describe PagesController do
 
   describe '#create' do
 
+    it 'render new with an empty name' do
+      sign_in user
+      post :create, site_id: site, page: { name: '' }
+      response.should render_template :new
+      response.should render_template 'admin'
+    end
+
     it('create a new page') do
       expect do
         sign_in user
@@ -119,7 +126,7 @@ describe PagesController do
       end.to change { Page.count }.by(-1)
     end
 
-    it 'redirect to edit site', :focus do
+    it 'redirect to edit site' do
       sign_in user
       delete :destroy, id: page
       response.should redirect_to new_site_page_path(site_id: page.site)

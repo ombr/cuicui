@@ -41,8 +41,12 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = @site.pages.create! page_params
-    redirect_to edit_page_path(id: @page)
+    @page = @site.pages.build page_params
+    if @page.save
+      return redirect_to edit_page_path(id: @page)
+    else
+      return render :new, layout: 'admin'
+    end
   end
 
   def destroy

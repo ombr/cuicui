@@ -3,4 +3,5 @@
 .col-md-4.col-md-offset-4
   = simple_form_for @image do |f|
     = f.input :description, input_html: {value: f.object.description }
-    = f.submit
+    = f.submit class: 'btn btn-primary'
+    = link_to t('.cancel'), edit_page_path(@page), class: 'btn btn-default'
