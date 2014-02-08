@@ -45,12 +45,18 @@ $menu-color: $gray-light
 
   .menu
     //background: none
+    &:before
+      content: '\02630'
+      font-family: 'entypo'
+      font-size: 35px
+    font-size: 0
     z-index: 999
     position: absolute
     right: 0
     top: 0
     height: $menu-height
-    padding: 18px
+    width: $menu-height
+    padding: 1px 14px
     display: block
 @media (min-width: 300px)
   #nav

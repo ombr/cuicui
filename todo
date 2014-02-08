@@ -1,12 +1,20 @@
 todo:
 
+- fullscreen homepage
+- fleche typo entypo
+- theme light/dark par page.
+- legendes justifie a droite
+- pas de legende sur la home. (hack)
+- Pas de mot menu
+
+
+- z-index upload image
 - flash messages
 - autohide flash
 - contact + bug recording
 - bug language site (enable select languages)
+- remove undo, redo !!!
 - Navbar bootstrap on admin ! (fix 15 px bug)
-- Site configure production mode ??? (Admin only)
-- Navigation preview (Iframe for preview + go back + save and preview)
 - push state on scroll !!
 - reflow android + resize browser...
 
@@ -17,10 +25,10 @@ todo:
 - 500 ?
 - theme light/dark
 - typos
-- Cache production ??
 
 Improvements :
 
+- Site configure production mode ??? (Admin only)
 - alt+ image size
 - HTML5 offline version :-D
 - copie d'un site a un autre

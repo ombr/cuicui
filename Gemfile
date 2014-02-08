@@ -43,6 +43,7 @@ gem 'haml'
 
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'font-awesome-rails'
+gem 'entypo-rails'
 gem 'bourbon'
 gem 'oily_png'
 gem 'compass-rails'

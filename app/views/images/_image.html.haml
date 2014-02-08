@@ -5,10 +5,10 @@
       - unless defined? no_controls
         - if image.lower_item
           =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'control next preload' do
-            %p.icons-arrow-right2 next
+            %p next
         - if image.higher_item
           =link_to s_image_path(page_id: image.page, id: image.higher_item), class: 'control previous preload', :'data-target-id' => "image-#{image.higher_item.id}" do
-            %p.icons-arrow-left2 previous
+            %p previous
         - if image.higher_items.first
           =link_to s_image_path(page_id: image.page, id: image.higher_items.first) , class: 'control first preload' do
             %p= '<<'

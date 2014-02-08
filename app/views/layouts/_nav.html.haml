@@ -1,6 +1,6 @@
 - if site && site.pages.count > 1
   %nav#nav.nojs
-    %a.menu.fa.fa-th-list{href: '#nav'}
+    %a.menu{href: '#nav'}
       =t('.menu', default: 'Menu')
     %ul
       - site.pages.each do |page|
