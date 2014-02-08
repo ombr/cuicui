@@ -2,17 +2,14 @@ todo:
 
 - flash messages
 - autohide flash
-- alt+ image size
 - contact + bug recording
 - bug language site (enable select languages)
 - Navbar bootstrap on admin ! (fix 15 px bug)
-- delete page => New Page !
 - edit image link to go back !
 - Site configure production mode ??? (Admin only)
 - Navigation preview (Iframe for preview + go back + save and preview)
-- No menu one page !
-- reflow android + resize browser...
 - push state on scroll !!
+- reflow android + resize browser...
 
 - Moteur de recherche description, keywords, ....
 - Another editor ? With color ?
@@ -26,6 +23,7 @@ todo:
 
 Improvements :
 
+- alt+ image size
 - HTML5 offline version :-D
 - copie d'un site a un autre
 - Diaporama option
