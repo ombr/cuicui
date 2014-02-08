@@ -3,24 +3,29 @@
     list-style: none
   .image-list
     .image
+      float: left
       position: relative
       width: 200px
       margin: 5px
       white-space: nowrap
       .control
+        z-index: 999
         text-align: center
-        font-size: 20px
         position: absolute
+        background: rgba(255,255,255, 0.8)
         display: block
       .delete
+        input
+          color: $brand-danger
         right: 0
         top: 0
       .edit
+        padding: 10px
         right: 0
         bottom: 0
-      .up
+      .next
+        top: 40%
+        right: 0
+      .previous
         left: 0
-        bottom: 20px
-      .down
-        left: -1px
-        bottom: 0px
+        top: 40%

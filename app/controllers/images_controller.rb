@@ -34,16 +34,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  def move_higher
-    @image.move_higher
-    redirect_to edit_page_path @page
-  end
-
-  def move_lower
-    @image.move_lower
-    redirect_to edit_page_path @page
-  end
-
   def show
     expires_in 5.minutes, public: true if Rails.env.production?
     if request.xhr?
@@ -59,6 +49,10 @@ class ImagesController < ApplicationController
 
   def update
     @image.update!(image_params)
+    if params[:image] && params[:image][:position]
+      @image.insert_at(params[:image][:position].to_i)
+      @image.save!
+    end
     redirect_to edit_page_path(id: @page)
   end
 

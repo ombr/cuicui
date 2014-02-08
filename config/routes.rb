@@ -26,12 +26,7 @@ Cuicui::Application.routes.draw do
     end
   end
 
-  resources :images, only: [:show, :destroy, :edit, :update] do
-    member do
-      put :move_higher
-      put :move_lower
-    end
-  end
+  resources :images, only: [:show, :destroy, :edit, :update]
 
   devise_scope :user do
     get '/admin', to: 'sessions#new'

@@ -52,6 +52,12 @@ describe ImagesController do
         put :update, id: image, image: { description: 'test' }
       end.to change { image.reload.description }.to 'test'
     end
+
+    it 'update the position using insert_at' do
+      Image.any_instance.should_receive(:insert_at).with(2)
+      sign_in user
+      put :update, id: image, image: { position: 2 }
+    end
   end
 
   describe '#delete' do
@@ -67,44 +73,6 @@ describe ImagesController do
     it 'redirect to edit_page' do
       delete :destroy, id: image
       response.should redirect_to edit_page_path page
-    end
-  end
-  context 'ordering' do
-    before :each do
-      sign_in user
-    end
-    let(:image2) { FactoryGirl.create :image, page: page }
-    let(:image3) { FactoryGirl.create :image, page: page }
-
-    describe '#move_higer' do
-
-      it 'change position' do
-        expect do
-          put :move_higher, id: image2
-        end.to change { image2.reload.position }.by(-1)
-      end
-
-      it 'redirect to edit_page' do
-        put :move_higher, id: image
-        response.should redirect_to edit_page_path page
-      end
-    end
-
-    describe '#move_lower' do
-
-      it 'change position' do
-        image
-        image2
-        image3
-        expect do
-          put :move_lower, id: image2
-        end.to change { image2.reload.position }.by(1)
-      end
-
-      it 'redirect to edit_page' do
-        put :move_lower, id: image
-        response.should redirect_to edit_page_path page
-      end
     end
   end
 end

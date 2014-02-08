@@ -37,6 +37,6 @@
           = hidden_field_tag(name, value, id: nil) if value.present?
         %input{type: :file, name: :file, multiple: true}
         %input{name: :commit, type: :submit, value: 'Upload'}
-        %ul.image-list
-          -@page.images.each do |image|
-            = render 'images/image_edit', image: image
+      %ul.image-list
+        -@page.images.each do |image|
+          = render 'images/image_edit', image: image
