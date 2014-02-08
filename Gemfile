@@ -42,6 +42,8 @@ gem 'haml'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'font-awesome-rails'
 gem 'bourbon'
+gem 'oily_png'
+gem 'compass-rails'
 gem 'jquery-fileupload-rails'
 #gem 'pagedown-rails'
 gem "intercom-rails"

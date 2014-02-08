@@ -4,10 +4,10 @@
       = image_tag image.image.url(:full), alt: image.description, title: image.description, itemprop: 'url'
       - if image.lower_item
         =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'control next preload' do
-          %p.fa.fa-angle-right next
+          %p.icons-arrow-right2 next
       - if image.higher_item
-        =link_to s_image_path(page_id: image.page, id: image.higher_item), class: 'control previous preload' do
-          %p.fa.fa-angle-left previous
+        =link_to s_image_path(page_id: image.page, id: image.higher_item), class: 'control previous preload', :'data-target-id' => "image-#{image.higher_item.id}" do
+          %p.icons-arrow-left2 previous
       - if image.higher_items.first
         =link_to s_image_path(page_id: image.page, id: image.higher_items.first) , class: 'control first preload' do
           %p= '<<'
