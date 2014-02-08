@@ -2,13 +2,10 @@ $ ()->
   go = (destination)->
     $items = $(".#{destination}")
     scroll = $(window).scrollTop()
-    console.log "WINDOW ?"
-    console.log scroll
     if $items.length > 0
       $items.each (i, e)->
         $e = $(e)
         if $e.offset().top >= scroll
-          console.log e
           e.click()
           return false
   Hammer(document.body,{

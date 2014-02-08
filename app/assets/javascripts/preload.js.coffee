@@ -5,13 +5,12 @@ $ ->
     $('.next.preload').each (i,e)->
       $link = $ e
       $link.removeClass('preload')
-      $.get($link.attr('href'), {}, (data)->
+      $.get($link.attr('href'), {xhr: true}, (data)->
         $image = $($link.parents('.image')[0])
         $data = $(data)
         $image.after($data)
         $link.attr('href', '#' + $(data).attr('id'))
         if number_preload > 0
-          console.log number_preload
           number_preload--
           callback()
         #$('body').trigger('loaded')
