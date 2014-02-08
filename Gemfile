@@ -20,6 +20,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'touchpunch-rails'
 gem 'jquery-cookie-rails'
 
 gem 'dotenv-rails', groups: [:development, :test]

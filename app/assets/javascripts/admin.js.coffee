@@ -1,5 +1,7 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.sortable
+//= require jquery.ui.touch-punch
 //= require hammer.min
 //= require bootstrap
 //= require rotation
@@ -13,3 +15,4 @@
 //= require pagedown/Markdown.Sanitizer
 //= require pagedown/Markdown.Editor
 //= require pagedown
+//= require images/sort
