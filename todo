@@ -1,9 +1,10 @@
 todo:
 
 - theme light/dark par page.
-- legendes justifie a droite
+- legendes justifie a droite :-S
 
-- z-index upload image
+- add a title on every link !! (add a page, delete,...)
+- alt+ image size (when cloudinary is slow...)
 - flash messages
 - autohide flash
 - contact + bug recording
@@ -24,9 +25,7 @@ todo:
 Improvements :
 
 - Site configure production mode ??? (Admin only)
-- alt+ image size
 - HTML5 offline version :-D
-- copie d'un site a un autre
 - Diaporama option
 - preview...IPhone/android
 - facebook
@@ -34,6 +33,7 @@ Improvements :
 - robots.txt
 
 Later :
+- copie d'un site a un autre
 - video
 - emails
 - home logo ??
