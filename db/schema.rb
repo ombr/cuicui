@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140206183735) do
+ActiveRecord::Schema.define(version: 20140212125425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140206183735) do
     t.integer "site_id"
     t.integer "position"
     t.text    "description_html", default: ""
+    t.string  "theme",            default: "light"
   end
 
   create_table "sites", force: true do |t|

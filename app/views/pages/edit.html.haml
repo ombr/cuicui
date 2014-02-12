@@ -9,6 +9,7 @@
       %h3=t('.content')
       = simple_form_for @page do |f|
         = f.input :name
+        = f.input :theme, collection: %w[light dark], prompt: false
         .control-group.text.optional.page_description
           %label.text.optional.control-label{for: 'page_description'} Description
           .controls

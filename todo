@@ -1,6 +1,8 @@
 todo:
 
 - theme light/dark par page.
+- left right shortcut ???
+- add validator on theme ?
 
 - add a title on every link !! (add a page, delete,...)
 - alt+ image size (when cloudinary is slow...)
@@ -17,7 +19,6 @@ todo:
 - garbage collector ?
 - 404 ?
 - 500 ?
-- theme light/dark
 - typos
 
 Improvements :
