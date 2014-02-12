@@ -1,7 +1,6 @@
 todo:
 
 - theme light/dark par page.
-- legendes justifie a droite :-S
 
 - add a title on every link !! (add a page, delete,...)
 - alt+ image size (when cloudinary is slow...)
@@ -9,7 +8,6 @@ todo:
 - autohide flash
 - contact + bug recording
 - bug language site (enable select languages)
-- remove undo, redo !!!
 - Navbar bootstrap on admin ! (fix 15 px bug)
 - push state on scroll !!
 - reflow android + resize browser...

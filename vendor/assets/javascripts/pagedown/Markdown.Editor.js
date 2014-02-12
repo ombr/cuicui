@@ -1483,15 +1483,15 @@
             }));
             //buttons.hr = makeButton("wmd-hr-button", getString("hr"), "-180px", bindCommand("doHorizontalRule"));
             //makeSpacer(3);
-            buttons.undo = makeButton("wmd-undo-button", getString("undo"), "-200px", null);
-            buttons.undo.execute = function (manager) { if (manager) manager.undo(); };
+            //buttons.undo = makeButton("wmd-undo-button", getString("undo"), "-200px", null);
+            //buttons.undo.execute = function (manager) { if (manager) manager.undo(); };
 
-            var redoTitle = /win/.test(nav.platform.toLowerCase()) ?
-                getString("redo") :
-                getString("redomac"); // mac and other non-Windows platforms
+            //var redoTitle = /win/.test(nav.platform.toLowerCase()) ?
+                //getString("redo") :
+                //getString("redomac"); // mac and other non-Windows platforms
 
-            buttons.redo = makeButton("wmd-redo-button", redoTitle, "-220px", null);
-            buttons.redo.execute = function (manager) { if (manager) manager.redo(); };
+            //buttons.redo = makeButton("wmd-redo-button", redoTitle, "-220px", null);
+            //buttons.redo.execute = function (manager) { if (manager) manager.redo(); };
 
             if (helpOptions) {
                 var helpButton = document.createElement("li");
