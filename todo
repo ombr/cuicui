@@ -23,6 +23,7 @@ todo:
 
 Improvements :
 
+- Add css inline (perf optimisation)
 - Site configure production mode ??? (Admin only)
 - HTML5 offline version :-D
 - Diaporama option

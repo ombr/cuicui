@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
   validates :name, presence: true
+  validates :theme, inclusion: { in: %w(light dark) }
   belongs_to :site
   has_many :images, -> { order('position') }
   acts_as_list scope: :site
