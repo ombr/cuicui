@@ -9,3 +9,4 @@
 //= require preload
 //= require navbar
 //= require legende
+//= require image_active

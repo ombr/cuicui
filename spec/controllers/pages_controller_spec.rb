@@ -151,7 +151,7 @@ describe PagesController do
       end.to change { page.reload.name }.to 'test'
     end
 
-    it 'update the theme', :focus do
+    it 'update the theme' do
       expect do
         sign_in user
         put :update, id: page, page: { theme: 'light' }

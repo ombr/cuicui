@@ -33,14 +33,11 @@ $ ->
 
 
 
+
   #animation = false
   #$destination = null
-  #$window = $(window)
 
 
-  #$images = $('.image')
-  #if $images[0]
-    #$($images[0]).addClass('active')
   #closer = (from, to, step)->
     #console.log "#{from} -> #{to} (#{step})"
     #if Math.abs(from-to) < step
