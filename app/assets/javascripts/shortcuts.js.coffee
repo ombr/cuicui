@@ -30,6 +30,7 @@ $ ()->
           $(window).scrollTop('0px')
       when 27
         go 'home'
+    return true
       #else
         #console.log event.which
   $('body').on 'click', '.image', (e)->

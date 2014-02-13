@@ -110,7 +110,7 @@ describe PagesController do
       response.should render_template 'admin'
     end
 
-    it('create a new page') do
+    it 'create a new page' do
       expect do
         sign_in user
         post :create, site_id: site, page: { name: 'test' }
@@ -154,8 +154,8 @@ describe PagesController do
     it 'update the theme' do
       expect do
         sign_in user
-        put :update, id: page, page: { theme: 'light' }
-      end.to change { page.reload.theme }.to 'light'
+        put :update, id: page, page: { theme: 'dark' }
+      end.to change { page.reload.theme }.to 'dark'
     end
 
     it('update the description_html') do
