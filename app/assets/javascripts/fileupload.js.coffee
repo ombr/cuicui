@@ -6,7 +6,7 @@ $ ->
     $progress = $('.progress', $uploading)
     #$progress.hide()
     $bar = $('.progress-bar', $progress)
-    $bar.width('50%')
+    $bar.width('0%')
     $('body').prepend($uploading)
     $('input[type="submit"]',$e).hide()
     $('input[type="file"]',$e).fileupload(

@@ -1,6 +1,19 @@
 todo:
 
-- left right shortcut ???
+- sur grand ecran on affiche les legendes en bas...
+- pas de preloading en scroll... (a voir pour porfoli ??)
+- Texte apres les images pour aude !
+- TODO : Hide css 3 arrows on load
+- remove arrow back ??
+- plus de preload !!
+- auto create first page
+- No cache ??
+- preremplir page description
+- favicon upload pourcentage !
+- trim page name !
+- petite traduction avec liste des formats prit en charge
+- position de la description (petite marge ??)
+- after upload reload page (bug image)
 
 - add a title on every link !! (add a page, delete,...)
 - alt+ image size (when cloudinary is slow...)
