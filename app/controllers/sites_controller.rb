@@ -19,6 +19,7 @@ class SitesController < ApplicationController
       flash[:success] = I18n.t 'sites.favicon_updated'
     end
     @site.update(site_params)
+    flash[:success] = I18n.t('sites.update.success')
     redirect_to edit_site_path(id: @site)
   end
 

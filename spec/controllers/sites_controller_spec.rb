@@ -87,6 +87,12 @@ describe SitesController do
       response.should redirect_to edit_site_path(id: site)
     end
 
+    it 'flash a message' do
+      sign_in user
+      put :update, id: site, site: { title: 'test' }
+      flash[:success].should == I18n.t('sites.update.success')
+    end
+
   end
 
   describe '#show' do

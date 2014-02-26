@@ -3,6 +3,16 @@ en:
     labels:
       site:
         title: 'Your portfoli title'
+  layouts:
+    navbar_edit:
+      see: 'See my site'
+  sites:
+    update:
+      success: 'The site has been updated !'
+
+  images:
+    update:
+      success: 'The image has been updated !'
   pages:
     add: 'Create a new page.'
     create:

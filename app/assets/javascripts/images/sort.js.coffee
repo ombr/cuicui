@@ -1,7 +1,7 @@
 $ ()->
   $('.image-list').each (i,list)->
-    $('.next', list).hide()
-    $('.previous', list).hide()
+    #$('.next', list).hide()
+    #$('.previous', list).hide()
     $(list).sortable(
       update: (e, ui) ->
         $form = $('.next,.previous', ui.item)

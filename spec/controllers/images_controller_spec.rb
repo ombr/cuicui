@@ -58,6 +58,12 @@ describe ImagesController do
       sign_in user
       put :update, id: image, image: { position: 2 }
     end
+
+    it 'flash a message' do
+      sign_in user
+      put :update, id: image, image: { description: 'test' }
+      flash[:success].should == I18n.t('images.update.success')
+    end
   end
 
   describe '#delete' do

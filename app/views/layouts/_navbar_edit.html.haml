@@ -23,5 +23,9 @@
           .glyphicon.glyphicon-plus
       %ul.nav.navbar-nav.pull-right
         %li
-          = link_to destroy_user_session_path do
-            Log out
+          .navbar-form
+            = link_to root_path, target: '_blank', class: 'btn btn-success', title: t('.see') do
+              .fa.fa-eye
+              = t '.see'
+            = link_to destroy_user_session_path, class: 'btn btn-danger', title: 'log out' do
+              .fa.fa-sign-out
