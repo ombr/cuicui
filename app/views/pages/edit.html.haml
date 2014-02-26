@@ -22,7 +22,9 @@
         = f.submit class: 'btn btn-primary'
         = f.submit t('.update_and_preview', default: 'Update and preview'), name: 'preview', class: 'btn btn-success'
     #image-edit.col-sm-8
-      %h3=t '.Images'
+      %h3
+        =t '.Images'
+        %small= t('.images_description')
       - url = page_images_url(site_id: @site, page_id: @page)
       = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true, class: 'fileupload') do
         .uploading{style: 'display: none'}

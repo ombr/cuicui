@@ -19,3 +19,5 @@ en:
       initial_description: "# %{page_name}\n\nThis is my amazing description."
     update:
       success: 'The page has been updated !'
+    edit:
+      images_description: '(jpg, png, gif, pdf, ai, psd...)'
