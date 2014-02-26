@@ -28,14 +28,14 @@ class ImagesController < ApplicationController
     @image.extract_exifs
     @images = @page.images
     if request.xhr?
-      render 'create.js' #with cloudinary we need to force the format ;-(
+      render 'create.js' # with cloudinary we need to force the format ;-(
     else
       redirect_to edit_page_path(id: @page)
     end
   end
 
   def show
-    expires_in 5.minutes, public: true if Rails.env.production?
+    # expires_in 5.minutes, public: true if Rails.env.production?
     if request.xhr?
       render layout: false
     else
