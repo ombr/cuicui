@@ -47,6 +47,7 @@ class PagesController < ApplicationController
 
   def create
     @page = @site.pages.build page_params
+    @page.description = I18n.t('pages.create.initial_description', page_name: page_params[:name])
     if @page.save
       return redirect_to edit_page_path(id: @page)
     else
@@ -62,6 +63,7 @@ class PagesController < ApplicationController
   def update
     @page.update(page_params)
     return redirect_to preview_page_path(@page) if params[:preview]
+    flash[:success] = t('.success')
     redirect_to edit_page_path(@page)
   end
 

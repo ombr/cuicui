@@ -4,6 +4,7 @@
       %ul.nav.navbar-nav
         = tab_link edit_site_path(id: site) do
           .glyphicon.glyphicon-wrench
+          = site.title
         - site.pages.each do |page|
           - unless page.new_record?
             - if @page and @page == page
@@ -18,7 +19,7 @@
             - else
               = tab_link(edit_page_path(id: page)) do
                 = page.name
-        = tab_link(new_site_page_path(site_id: site)) do
+        = tab_link(new_site_page_path(site_id: site), html_options: { title: t('pages.add')}) do
           .glyphicon.glyphicon-plus
       %ul.nav.navbar-nav.pull-right
         %li

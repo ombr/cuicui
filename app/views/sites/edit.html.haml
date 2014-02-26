@@ -2,17 +2,18 @@
   .row
     .col-md-12
       %h1= @site.title
-    = simple_form_for @site,  html: {class: 'form-horizontal' } do |f|
-      .col-md-6
-        = f.input :title
-        .admin-advanced
-          = f.input :description, as: :text, input_html: { rows: 10 }
-          = f.input :metas, as: :text, input_html: { rows: 4 }
-          = f.input :favicon, as: :file
-          .alert.alert-warning
-            = t '.warning', default: 'It can take some time before the favicon gets updated...'
-      .col-md-6
-        .admin-advanced
-          = f.input :css, input_html: { rows: 30}
-      .col-md-12
-        = f.submit class: 'btn btn-primary'
+    .col-md-12
+      = simple_form_for @site,  html: {class: 'form-horizontal' } do |f|
+        .col-md-6
+          = f.input :title
+          .admin-advanced
+            = f.input :description, as: :text, input_html: { rows: 10 }
+            = f.input :metas, as: :text, input_html: { rows: 4 }
+            = f.input :favicon, as: :file
+            .alert.alert-warning
+              = t '.warning', default: 'It can take some time before the favicon gets updated...'
+        .col-md-6
+          .admin-advanced
+            = f.input :css, input_html: { rows: 30}
+        .col-md-12
+          = f.submit class: 'btn btn-primary'

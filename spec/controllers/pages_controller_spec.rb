@@ -183,6 +183,12 @@ describe PagesController do
       put :update, id: page, page: { name: 'test' }, preview: 'Update and preview'
       response.should redirect_to preview_page_path(id: page.reload)
     end
+
+    it 'flash a message' do
+      sign_in user
+      put :update, id: page, page: { name: 'test' }
+      flash[:success].should == I18n.t('pages.update.success')
+    end
   end
 
   context 'ordering' do
