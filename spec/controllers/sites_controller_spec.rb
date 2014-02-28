@@ -50,7 +50,6 @@ describe SitesController do
         .with('FAVICON_FILE', public_id: 'favicon', format: :ico)
       sign_in user
       put :update, id: site, site: { favicon: 'FAVICON_FILE' }
-      flash[:success].should == I18n.t('sites.favicon_updated')
     end
 
     it 'change the css' do
