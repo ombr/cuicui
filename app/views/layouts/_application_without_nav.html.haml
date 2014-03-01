@@ -27,7 +27,7 @@
         %style{:'data-css' => asset_path('application.css')}
           =Rails.application.assets.find_asset('application.css').to_s.html_safe
     = csrf_meta_tags
-  %body{ class: ("page-#{@page.name.parameterize}" unless @page.nil?) }
+  %body{ class: "#{body_class} #{("page-#{@page.name.parameterize} #{@page.theme}" unless @page.nil?)}" }
     = yield
     - if ENV['SEGMENT_IO'].present?
       :javascript

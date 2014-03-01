@@ -2,13 +2,7 @@
 //= require jquery_ujs
 //= require jquery.ui.sortable
 //= require jquery.ui.touch-punch
-//= require hammer.min
 //= require bootstrap
-//= require rotation
-//= require shortcuts
-//= require jquery.cookie
-//= require css
-//= require preload
 //= require jquery-fileupload/basic
 //= require fileupload
 //= require pagedown/Markdown.Converter

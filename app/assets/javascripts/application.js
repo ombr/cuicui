@@ -1,12 +1,6 @@
 //= require jquery
-//= require menu
-//= require bootstrap/collapse
-//= require hammer.min
-//= require rotation
+//= require jquery.hammer.min
 //= require shortcuts
-//= require jquery.cookie
-//= require css
 //= require preload
 //= require navbar
-//= require legende
 //= require image_active

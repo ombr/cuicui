@@ -10,7 +10,6 @@ $ ->
         $data = $(data)
         $image.after($data)
         $link.attr('href', '#' + $(data).attr('id'))
-        $link.hide()
         if number_preload > 0
           number_preload--
           callback()
@@ -22,7 +21,6 @@ $ ->
       if $(target).length > 0
         $link.removeClass('preload')
         $link.attr 'href', target
-        $link.hide()
 
   callback()
   #$('body').on('loaded', callback)

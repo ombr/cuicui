@@ -1,24 +1,29 @@
-$ ()->
+$ ->
+  $window = $(window)
   go = (destination)->
+    scroll = $window.scrollTop()
+    height = $window.height()
     $items = $("#{destination}")
-    scroll = $(window).scrollTop()
     click = false
-    if $items.length > 0
-      $items.each (i, e)->
-        $e = $(e)
-        if $e.offset().top >= scroll
-          e.click()
-          click = true
-          return false
+    $items.each (i, e)->
+      console.log e
+      $e = $(e)
+      if Math.abs($e.offset().top - scroll) < height/2
+        e.click()
+        click = true
+        return false
+    if not(click) and destination == '.previous'
+      $window.scrollTop('0px')
+      click = true
     return click
-  Hammer(document.body,{
+  $('body').hammer({
     swipe: true
     swipe_max_touches: 1
     swipe_velocity: 0.01
     }).on('swiperight',()->
-      go 'previous'
+      go '.active .previous'
     ).on('swipeleft',()->
-      go 'next'
+      go '.active .next'
     )
 
   $(document).keydown (event)->

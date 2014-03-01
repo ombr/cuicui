@@ -1,36 +1,120 @@
-#image
-  height: 100%
-
-.images
-  height: 100%
-  padding: 0
-.image
-  width: 100%
-  height: 100%
-
-@include keyframes(fadeOut)
-  0%
-    opacity: 1
-  80%
-    opacity: 1
-  to
-    opacity: 0
-
-.js
-  .image
-    margin-bottom: 50px
-.images.rotation
-  .viewer
-    .control,
-    .image-progress
-      opacity: 0
-
-.image-description
-  span
-    max-width: 600px
+.pages-show,
+.images-show
+  .main-image
+    max-width: 100%
+    max-height: 98%
+    height: auto
     display: block
     margin: 0 auto
+  .image-description
     text-align: center
+    background: $background-color
+    background: rgba($background-color, 0.7)
+    padding: 2px 0
+  .image
+    margin-bottom: 50px
+
+  &.js
+    .control
+      display: none
+
+// Center image with arrows on big screens
+@media (min-width: $screen-md-min)
+  .pages-show,
+  .images-show
+    // We show the arrows
+    &.js
+      .control
+        display: block
+    // No scrollbar
+    overflow: hidden
+    // Image centered + max size
+    .image,
+    .viewer,
+    .content
+      height: 100%
+    .main-image
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      margin: auto
+      max-height: 100%
+      max-width: 100%
+
+    .viewer
+      position: relative
+    .image-description
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+
+    .previous,
+    .next
+      position: absolute
+      top: $menu-height
+      bottom: 0
+      width: 20%
+      z-index: 1
+      font-size: 0
+      p
+        position: absolute
+        top: 43%
+        padding: 0 10px
+        &:after
+          color: $text-color
+          font-size: 40px
+          font-family: entypo
+          content: '\0E766'
+    .previous
+      p
+        &:after
+          content: '\0E765'
+      top: 0
+      left: 0
+    .next
+      right: 0
+      p
+        right: 0
+    //.viewer
+      //position: relative
+
+//#image
+  //height: 100%
+
+//.images
+  //height: 100%
+  //padding: 0
+//.image
+  //width: 100%
+  //height: 100%
+
+//@include keyframes(fadeOut)
+  //0%
+    //opacity: 1
+  //80%
+    //opacity: 1
+  //to
+    //opacity: 0
+
+//.js
+  //.image
+    //margin-bottom: 50px
+//.images.rotation
+  //.viewer
+    //.control,
+    //.image-progress
+      //opacity: 0
+
+//.image-description
+  //span
+    //max-width: 600px
+    //display: block
+    //margin: 0 auto
+    //text-align: center
+
   //min-height: 40px
 
 //@media (min-width: $screen-md-min)
@@ -45,94 +129,89 @@
     //@include animation(fadeOut 3s ease-in)
     //@include animation-fill-mode(forwards)
 
-// POUR AUDE :
-
-.image-progress
-  display: none !important
-
-.viewer
-  height: 100%
-  text-align: center
-  .content
-    position: relative
-    height: 100%
-    img
-      // Center the image
-      position: absolute
-      top: 0
-      left: 0
-      right: 0
-      bottom: 0
-      margin: auto
-      // resize the picture
-      max-height: 100%
-      max-width: 100%
-  .control
-    opacity: 1
-    p
-      display: inline
-    text-decoration: none
-    position: absolute
-    font-size: 60px
-    color: black
-  .menu
-    left: 0
-    right: 0
-    text-align: center
-    bottom: 0
-    opacity: 1
-  .image-progress
-    position: absolute
-    bottom: 0
-    right: 0
-    height: 40px
-    padding-top: 5px
-    z-index: 10
-    background: white
-    background-color: rgba(255, 255, 255, 0.7)
-    opacity: 1
-  .next-previous
-    top: 0
-    padding-top: $menu-height
-    width: 20%
-    height: 100%
-    font-size: 0
-    p
-      display: inline-block
-      position: relative
-      top: 43%
-      &:after,
-      &:before
-        color: white
-        font-size: 40px
-        font-family: 'entypo'
-        position: relative
-      &:before
-        color: black
-  .first
-    display: none
-  .next
-    @extend .next-previous
-    right: 20px
-    text-align: right
-    p
-      &:before,
-      &:after
-        content: '\0E766'
-      &:before
-        right: -0.45em
-  .previous
-    @extend .next-previous
-    text-align: left
-    left: 20px
-    p
-      &:before,
-      &:after
-        content: '\0E765'
-      &:before
-        color: white
-        z-index: 1
-      &:after
-        color: black
-      &:after
-        left: -0.45em
+//.viewer
+  //height: 100%
+  //text-align: center
+  //.content
+    //position: relative
+    //height: 100%
+    //img
+       Center the image
+      //position: absolute
+      //top: 0
+      //left: 0
+      //right: 0
+      //bottom: 0
+      //margin: auto
+       resize the picture
+      //max-height: 100%
+      //max-width: 100%
+  //.control
+    //opacity: 1
+    //p
+      //display: inline
+    //text-decoration: none
+    //position: absolute
+    //font-size: 60px
+    //color: black
+  //.menu
+    //left: 0
+    //right: 0
+    //text-align: center
+    //bottom: 0
+    //opacity: 1
+  //.image-progress
+    //position: absolute
+    //bottom: 0
+    //right: 0
+    //height: 40px
+    //padding-top: 5px
+    //z-index: 10
+    //background: white
+    //background-color: rgba(255, 255, 255, 0.7)
+    //opacity: 1
+  //.next-previous
+    //top: 0
+    //padding-top: $menu-height
+    //width: 20%
+    //height: 100%
+    //font-size: 0
+    //p
+      //display: inline-block
+      //position: relative
+      //top: 43%
+      //&:after,
+      //&:before
+        //color: white
+        //font-size: 40px
+        //font-family: 'entypo'
+        //position: relative
+      //&:before
+        //color: black
+  //.first
+    //display: none
+  //.next
+    //@extend .next-previous
+    //right: 20px
+    //text-align: right
+    //p
+      //&:before,
+      //&:after
+        //content: '\0E766'
+      //&:before
+        //right: -0.45em
+  //.previous
+    //@extend .next-previous
+    //text-align: left
+    //left: 20px
+    //p
+      //&:before,
+      //&:after
+        //content: '\0E765'
+      //&:before
+        //color: white
+        //z-index: 1
+      //&:after
+        //color: black
+      //&:after
+        //left: -0.45em

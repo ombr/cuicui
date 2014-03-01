@@ -51,6 +51,7 @@ gem "intercom-rails"
 
 gem 'simple_form'
 
+gem 'flutie'
 gem 'acts_as_list'
 
 gem 'redcarpet'
