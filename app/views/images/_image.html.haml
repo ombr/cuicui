@@ -1,4 +1,4 @@
-.image.col-md-12.col-fullscreen{itemscope: '', itemtype: 'http://schema.org/Photograph', id: "image-#{image.id}", class: 'full'}
+.image.col-md-12.col-fullscreen{itemscope: '', itemtype: 'http://schema.org/Photograph', id: "image-#{image.id}", class: ('full' if image.full)}
   .viewer
     .content
       - unless defined? no_controls

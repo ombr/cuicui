@@ -59,6 +59,13 @@ describe ImagesController do
       put :update, id: image, image: { position: 2 }
     end
 
+    it 'update full' do
+      expect do
+        sign_in user
+        put :update, id: image, image: { full: true }
+      end.to change { image.reload.full }.to true
+    end
+
     it 'flash a message' do
       sign_in user
       put :update, id: image, image: { description: 'test' }
