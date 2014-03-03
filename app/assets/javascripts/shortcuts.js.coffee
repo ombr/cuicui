@@ -38,6 +38,18 @@ $ ->
     return true
       #else
         #console.log event.which
+
+  delta = 0
+  $('body').on 'mousewheel', (event)->
+    return if $('body').css('overflow') != 'hidden'
+    delta += event.deltaY * event.deltaFactor
+    if Math.abs(delta) > 250
+      console.log 'GO !'
+      if delta > 0
+        go '.previous'
+      else
+        go '.next'
+      delta = 0
   $('body').on 'click', '.image', (e)->
     if e.target.nodeName == 'IMG'
       window.location = '#' + $(this).attr('id')
