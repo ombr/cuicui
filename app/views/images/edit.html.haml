@@ -4,5 +4,12 @@
   = simple_form_for @image do |f|
     = f.input :description, input_html: {value: f.object.description }
     = f.input :full
+    .control-group.text.optional.page_description
+      %label.text.optional.control-label{for: 'image_content'} Description
+      .controls
+        .wmd-panel
+          #wmd-button-bar
+          %textarea.text.optional.form-control#wmd-input{name: 'image[content]', rows: '8'}= f.object.content
+          #wmd-preview.wmd-panel.wmd-preview= f.object.content_rendered.html_safe
     = f.submit class: 'btn btn-primary'
     = link_to t('.cancel'), edit_page_path(@page), class: 'btn btn-default'

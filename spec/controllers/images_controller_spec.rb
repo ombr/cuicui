@@ -46,7 +46,15 @@ describe ImagesController do
       response.should redirect_to edit_page_path(id: image.page)
     end
 
-    it('update the description') do
+
+    it 'update the content' do
+      expect do
+        sign_in user
+        put :update, id: image, image: { content: 'test' }
+      end.to change { image.reload.content }.to 'test'
+    end
+
+    it 'update the description' do
       expect do
         sign_in user
         put :update, id: image, image: { description: 'test' }

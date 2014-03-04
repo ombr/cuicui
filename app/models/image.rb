@@ -19,6 +19,15 @@ class Image < ActiveRecord::Base
     save!
   end
 
+  def content_rendered
+    md = Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML,
+      autolink: true,
+      space_after_headers: true
+    )
+    md.render(content || '')
+  end
+
   def self.reindex
     Page.all.each do |page|
       i = 1
