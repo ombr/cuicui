@@ -43,7 +43,7 @@ describe ImagesController do
     it 'redirect to edit' do
       sign_in user
       put :update, id: image, image: { description: 'test' }
-      response.should redirect_to edit_page_path(id: image.page)
+      response.should redirect_to edit_image_path(id: image.reload)
     end
 
 

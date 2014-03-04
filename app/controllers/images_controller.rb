@@ -54,7 +54,7 @@ class ImagesController < ApplicationController
       @image.save!
     end
     flash[:success] = t('.success')
-    redirect_to edit_page_path(id: @page)
+    redirect_to edit_image_path(id: @image)
   end
 
   def destroy
