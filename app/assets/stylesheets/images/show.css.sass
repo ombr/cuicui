@@ -7,20 +7,13 @@
     height: auto
     display: block
     margin: 0 auto
-  .image-content
-    position: absolute
-    top: 50%
-    left: 50%
-    max-width: 450px
-    padding: 20px
-    border-radius: 20px
-    background: $background-color
-    background: rgba($background-color, 0.7)
   .image-description
     text-align: center
     background: $background-color
     background: rgba($background-color, 0.7)
     padding: 2px 0
+  .image-content
+    padding: 10px
   .image
     margin-bottom: 50px
 
@@ -34,7 +27,15 @@
   .pages-index,
   .images-show
 
-
+    .image-content
+      position: absolute
+      top: 50%
+      left: 50%
+      max-width: 450px
+      padding: 20px
+      border-radius: 20px
+      background: $background-color
+      background: rgba($background-color, 0.7)
     .image.full
       .main-image
         //Full size !

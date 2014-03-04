@@ -9,12 +9,12 @@
           =link_to s_image_path(page_id: image.page, id: image.higher_item), class: 'control previous preload', :'data-target-id' => "image-#{image.higher_item.id}" do
             %p previous
       = image_tag image.image.url(:full), alt: image.description, title: image.description, class: 'main-image', itemprop: 'url', style: "background-image: url('#{image.image.url(:full)}')"
-      - if image.content.present?
-        .image-content
-          = image.content_rendered.html_safe
       - if image.description.present?
         .image-description
           %span{itemprop: 'description'}= image.description
+      - if image.content.present?
+        .image-content
+          = image.content_rendered.html_safe
         -# if image.higher_items.first
           =link_to s_image_path(page_id: image.page, id: image.higher_items.first) , class: 'control first preload' do
             %p= '<<'
