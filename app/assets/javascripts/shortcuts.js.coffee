@@ -28,9 +28,9 @@ $ ->
 
   $(document).keydown (event)->
     switch event.which
-      when 32, 39, 13
+      when 32, 39, 13, 40
         go '.active .next'
-      when 37, 8
+      when 37, 8, 38
         unless go '.active .previous'
           $(window).scrollTop('0px')
       when 27
