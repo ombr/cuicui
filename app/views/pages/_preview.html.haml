@@ -1,4 +1,5 @@
 .screen
   .preview-disabled= t('.no-preview', default: 'Javascript must be enabled to see the preview')
   .iframe-preview
-    %iframe{src: url, sandbox: 'allow-scripts'}
+    %iframe{src: url}
+    .content-drag

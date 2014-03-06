@@ -1,4 +1,5 @@
 $ ->
+  return if window!=window.top
   $('body').addClass('js')
   number_preload = 3
   callback = ->

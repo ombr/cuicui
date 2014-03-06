@@ -2,6 +2,7 @@
 //= require jquery.zoomer
 //= require jquery_ujs
 //= require jquery.ui.sortable
+//= require jquery.ui.draggable
 //= require jquery.ui.touch-punch
 //= require bootstrap
 //= require jquery-fileupload/basic

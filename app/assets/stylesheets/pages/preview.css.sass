@@ -13,16 +13,36 @@
   color: white
 
 .js
+  .screen
+    position: relative
   .preview-disabled
     display: none
+  .content-drag
+    width: 100px
+    height: 10px
+    cursor: move
+    padding: 0
+    margin: 0
+    z-index: 1
+    position: absolute
+    top: 50%
+    left: 50%
+    font-size: 0
 
 .iframe-preview
+  position: relative
   iframe
     border: none
     display: none
     width: 100%
     height: 100%
   border: none
+  .zoomer-cover
+    box-shadow: none !important
+    a
+      cursor: default
+      pointer-events: none
+      background: transparent !important
   .zoomer-wrapper
     border: 1px solid
 .preview-back
