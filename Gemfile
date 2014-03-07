@@ -72,6 +72,12 @@ group :test do
   gem 'capybara'
 end
 
+group :development do
+  gem 'spring'
+  gem 'pry-rails'
+  gem 'meta_request'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
