@@ -13,7 +13,7 @@
         .image-description
           %span{itemprop: 'description'}= image.description
       - if image.content.present?
-        .image-content
+        .image-content{style: image.content_css}
           = image.content_rendered.html_safe
         -# if image.higher_items.first
           =link_to s_image_path(page_id: image.page, id: image.higher_items.first) , class: 'control first preload' do

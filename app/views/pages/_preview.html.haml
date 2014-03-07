@@ -2,4 +2,4 @@
   .preview-disabled= t('.no-preview', default: 'Javascript must be enabled to see the preview')
   .iframe-preview
     %iframe{src: url}
-    .content-drag
+    .content-drag{style: (drag_style if defined?(drag_style))}
