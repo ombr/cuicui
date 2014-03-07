@@ -52,6 +52,7 @@ class ImagesController < ApplicationController
     if params[:image] && params[:image][:position]
       @image.insert_at(params[:image][:position].to_i)
       @image.save!
+      return redirect_to edit_page_path(id: @image.page)
     end
     flash[:success] = t('.success')
     redirect_to edit_image_path(id: @image)

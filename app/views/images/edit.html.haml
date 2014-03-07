@@ -1,6 +1,6 @@
 .col-md-12
   .row
-    .col-md-5
+    .col-md-4
       = simple_form_for @image do |f|
         = f.input :description, input_html: {value: f.object.description }
         = f.input :full
@@ -14,5 +14,5 @@
               #wmd-preview.wmd-panel.wmd-preview= f.object.content_rendered.html_safe
         = f.submit class: 'btn btn-primary'
         = link_to t('.cancel'), edit_page_path(@page), class: 'btn btn-default'
-    .col-md-7
+    .col-md-8
       =render 'pages/preview', url: s_image_path(page_id: @image.page, id: @image), drag_style: @image.content_css

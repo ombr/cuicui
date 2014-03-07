@@ -69,10 +69,19 @@ describe ImagesController do
       end.to change { image.reload.description }.to 'test'
     end
 
-    it 'update the position using insert_at' do
-      Image.any_instance.should_receive(:insert_at).with(2)
-      sign_in user
-      put :update, id: image, image: { position: 2 }
+    context 'when update the position' do
+      it 'update the position using insert_at' do
+        Image.any_instance.should_receive(:insert_at).with(2)
+        sign_in user
+        put :update, id: image, image: { position: 2 }
+      end
+
+      it 'redirect to edit page' do
+        sign_in user
+        put :update, id: image, image: { position: 2 }
+        response.should redirect_to edit_page_path(id: image.page)
+      end
+
     end
 
     it 'update full' do

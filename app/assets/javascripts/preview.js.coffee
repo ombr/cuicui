@@ -1,6 +1,5 @@
 $ ->
-  $iframe_preview = $('.iframe-preview')
-  $iframe_preview.each (i,e)->
+  iframe_preview=(e)->
     $e = $(e)
     width = $e.width()
     $iframe = $('iframe', e)
@@ -17,7 +16,6 @@ $ ->
     update_drag_size = ()->
       drag_width = $content.outerWidth()*zoom
       drag_height = $content.outerHeight()*zoom
-      console.log drag_width
       $drag.width(drag_width)
       $drag.height(drag_height)
     position_to_css = (pos, size, total, top, bottom)->
@@ -42,16 +40,13 @@ $ ->
         $drag.draggable(
           containment: '.iframe-preview'
           drag: (event, ui)->
-            #percent = (el, key, pos, size, total)->
-              #p = (pos/total*100)
-              #el.css(key, (pos/total*100)+'%')
             style = position_to_css(ui.position.top, drag_height, $e.height(), 'top', 'bottom')
             style += position_to_css(ui.position.left, drag_width, $e.width(), 'left', 'right')
             $content.attr('style', style)
             $('#image_content_css').val(style)
-            console.log style
-              #el.css(key, (pos/total*100)+'%')
-            #percent($content, 'top', ui.position.top, width, $e.height())
-            #percent($content, 'left', ui.position.left,height, $e.width())
         )
     )
+  $('.iframe-preview').each (i,e)->
+    $(window).resize ()->
+      window.location = window.location
+    iframe_preview(e)

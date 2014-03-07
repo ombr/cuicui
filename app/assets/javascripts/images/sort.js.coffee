@@ -3,6 +3,7 @@ $ ()->
     #$('.next', list).hide()
     #$('.previous', list).hide()
     $(list).sortable(
+      handle: '.handle'
       update: (e, ui) ->
         $form = $('.next,.previous', ui.item)
         $input = $('input[name="image[position]"]', $form)
