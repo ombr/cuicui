@@ -1,20 +1,16 @@
 .col-sm-12
   .row
     .col-sm-12
-      %h1
-        = @page.name
-        =link_to t('.delete'), page_path(site_id: @site, id: @page), class: 'btn btn-danger', method: :delete, confirm: t('.delete_confirm', default: 'Are you sure ?')
-  .row
-    .col-sm-4
-      %h3=t('.content')
       = simple_form_for @page do |f|
-        = f.input :name
-        = f.input :theme, collection: %w[light dark], prompt: false
+        = f.input :name, input_html: { class: 'input-lg' }
+        = f.input :theme, collection: %w[light dark], prompt: false, input_html: {class: 'input-lg'}
+        = f.submit class: 'btn btn-primary btn-lg'
+        =link_to t('.delete_page'), page_path(site_id: @site, id: @page), class: 'btn btn-danger btn-xs pull-right', method: :delete, confirm: t('.delete_confirm', default: 'Are you sure ?')
         .admin-advanced
           = f.input :description_html, class: 'advanced-admin', input_html: { rows: 8 }
-        = f.submit class: 'btn btn-primary'
-        = f.submit t('.update_and_preview', default: 'Update and preview'), name: 'preview', class: 'btn btn-success'
-    #image-edit.col-sm-8
+        -#= f.submit t('.update_and_preview', default: 'Update and preview'), name: 'preview', class: 'btn btn-success'
+  .row
+    #image-edit.col-sm-12
       %h3
         =t '.Images'
         %small= t('.images_description')
@@ -36,3 +32,6 @@
       %ul.image-list
         -@page.images.each do |image|
           = render 'images/image_edit', image: image
+
+    .row
+      .col-sm-12

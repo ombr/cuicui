@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140307182947) do
     t.text    "description"
     t.boolean "full",        default: false
     t.text    "content",     default: ""
-    t.text    "content_css"
+    t.text    "content_css", default: "bottom: 22.02204265611258%;top: auto;right: 13.927145245170877%;left: auto;"
   end
 
   create_table "pages", force: true do |t|

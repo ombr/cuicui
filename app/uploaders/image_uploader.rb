@@ -9,7 +9,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   process convert: 'jpg'
 
   version :thumbnail do
-    resize_to_fill(200, 150)
+    resize_to_fill(250, 200)
+    eager
+  end
+  version :icon, from: :thumbnail do
+    resize_to_fill(40, 40)
     eager
   end
 

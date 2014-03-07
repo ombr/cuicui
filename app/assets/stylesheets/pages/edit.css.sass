@@ -8,13 +8,24 @@
 
 .pages-edit.js
   .handle
-    display: block
+    display: block !important
 .pages-edit
+  .edit_page
+    .control-group
+      display: inline-block
+    label
+      display: none
+    .btn
+      position: relative
+      top: -2px
   .ui-sortable-helper
     box-shadow: 5px 5px 20px black
     @include transition-property(box-shadow)
     @include transition-duration(0.2s)
+  .image-list .image .handle.control
+    display: none
   .handle
+    cursor: move
     padding: 10px
     top: 0
     left: 0
@@ -23,11 +34,17 @@
   ul
     list-style: none
   .image-list
+    .ui-state-highlight
+      float: left
+      display: block
+      background: $gray-lighter
+    img
+      margin: 0 auto
     .image
-      height: 150px
+      height: 200px
       float: left
       position: relative
-      width: 200px
+      width: 250px
       margin: 5px
       white-space: nowrap
       .control

@@ -46,7 +46,11 @@ $ ->
             $('#image_content_css').val(style)
         )
     )
-  $('.iframe-preview').each (i,e)->
-    $(window).resize ()->
+
+  reload = false
+  $(window).resize ()->
+    if reload
       window.location = window.location
+  $('.iframe-preview').each (i,e)->
+    reload = true
     iframe_preview(e)

@@ -1,4 +1,10 @@
 .col-md-12
+  %h3.well
+    =link_to edit_page_path(@image.page) do
+      = @image.page.name
+    - @image.page.images.each do |image|
+      = link_to edit_image_path(image) do
+        =image_tag image.image.url(:icon), title: image.description
   .row
     .col-md-4
       = simple_form_for @image do |f|

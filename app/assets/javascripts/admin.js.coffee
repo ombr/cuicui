@@ -13,5 +13,6 @@
 //= require pagedown
 //= require preview
 //= require images/sort
+//= require pages/edit
 $ ->
   $('body').addClass('js')

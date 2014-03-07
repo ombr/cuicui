@@ -1,15 +1,15 @@
 %li.image
+  .handle.control
+    %span.fa.fa-arrows
   =link_to edit_image_path(image) do
-    .handle.control
-      %span.fa.fa-arrows
     =image_tag image.image.url(:thumbnail), title: image.description
-    = simple_form_for image, method: :delete, html: { class: 'control delete' } do |f|
-      = f.submit 'x', class: 'btn btn-danger btn-link'
-    - unless image.first?
-      = simple_form_for image, method: :put, html: { class: 'control previous' } do |f|
-        = f.input :position, as: :hidden, input_html: { value: image.position-1 }
-        = f.submit '<', class: 'btn btn-link btn-primary'
-    - unless image.last?
-      = simple_form_for image, method: :put, html: { class: 'control next' } do |f|
-        = f.input :position, as: :hidden, input_html: { value: image.position+1 }
-        = f.submit '>', class: 'btn btn-link btn-primary'
+  = simple_form_for image, method: :delete, html: { class: 'control delete' } do |f|
+    = f.submit 'x', class: 'btn btn-danger btn-link'
+  - unless image.first?
+    = simple_form_for image, method: :put, html: { class: 'control previous' } do |f|
+      = f.input :position, as: :hidden, input_html: { value: image.position-1 }
+      = f.submit '<', class: 'btn btn-link btn-primary'
+  - unless image.last?
+    = simple_form_for image, method: :put, html: { class: 'control next' } do |f|
+      = f.input :position, as: :hidden, input_html: { value: image.position+1 }
+      = f.submit '>', class: 'btn btn-link btn-primary'

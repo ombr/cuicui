@@ -3,7 +3,8 @@ $ ()->
     #$('.next', list).hide()
     #$('.previous', list).hide()
     $(list).sortable(
-      handle: '.handle'
+      forcePlaceholderSize: true
+      placeholder: "ui-state-highlight"
       update: (e, ui) ->
         $form = $('.next,.previous', ui.item)
         $input = $('input[name="image[position]"]', $form)
