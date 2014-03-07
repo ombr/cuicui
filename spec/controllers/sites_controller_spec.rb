@@ -52,6 +52,14 @@ describe SitesController do
       put :update, id: site, site: { favicon: 'FAVICON_FILE' }
     end
 
+    it 'update the language' do
+      sign_in user
+      expect do
+        sign_in user
+        put :update, id: site, site: { language: 'fr' }
+      end.to change { site.reload.language }.to('fr')
+    end
+
     it 'change the css' do
       expect do
         sign_in user

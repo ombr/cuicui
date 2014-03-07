@@ -50,6 +50,7 @@ gem 'jquery-fileupload-rails'
 gem "intercom-rails"
 
 gem 'simple_form'
+gem 'language_list'
 
 gem 'flutie'
 gem 'acts_as_list'

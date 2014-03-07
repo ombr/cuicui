@@ -1,6 +1,7 @@
 !!!5
-%html
+%html{html_attrs(defined?(@site)? @site.language : :en)}
   %head
+    %meta{:charset => "utf-8"}
     %title="#{(@site.title if @site)} #{yield(:page_title)}"
     %link{ rel: 'shortcut icon', href: cl_image_path('favicon', format: :ico)}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
