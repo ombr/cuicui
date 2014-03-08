@@ -4,8 +4,8 @@ class Image < ActiveRecord::Base
   acts_as_list scope: :page
   mount_uploader :image, ImageUploader
 
-  def description
-    return self[:description] if self[:description]
+  def legend
+    return self[:legend] if self[:legend]
     return exifs['ImageDescription'] if exifs && exifs['ImageDescription']
     nil
   end
@@ -44,8 +44,8 @@ class Image < ActiveRecord::Base
   end
 
   def to_param
-    if description
-      "#{id}-#{description.parameterize[0..60]}"
+    if legend
+      "#{id}-#{legend.parameterize[0..60]}"
     else
       id.to_s
     end

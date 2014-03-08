@@ -15,7 +15,11 @@ class Page < ActiveRecord::Base
   end
 
   def to_param
-    "#{id}-#{name.parameterize}"
+    if name
+      "#{id}-#{name.parameterize}"
+    else
+      id
+    end
   end
 
   def self.reindex

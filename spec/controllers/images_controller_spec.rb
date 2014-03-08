@@ -42,11 +42,9 @@ describe ImagesController do
 
     it 'redirect to edit' do
       sign_in user
-      put :update, id: image, image: { description: 'test' }
+      put :update, id: image, image: { legend: 'test' }
       response.should redirect_to edit_image_path(id: image.reload)
     end
-
-
 
     it 'update the content_css' do
       expect do
@@ -62,11 +60,18 @@ describe ImagesController do
       end.to change { image.reload.content }.to 'test'
     end
 
-    it 'update the description' do
+    it 'update the legend' do
       expect do
         sign_in user
-        put :update, id: image, image: { description: 'test' }
-      end.to change { image.reload.description }.to 'test'
+        put :update, id: image, image: { legend: 'test' }
+      end.to change { image.reload.legend }.to 'test'
+    end
+
+    it 'update the title' do
+      expect do
+        sign_in user
+        put :update, id: image, image: { title: 'test' }
+      end.to change { image.reload.title }.to 'test'
     end
 
     context 'when update the position' do
@@ -89,12 +94,6 @@ describe ImagesController do
         sign_in user
         put :update, id: image, image: { full: true }
       end.to change { image.reload.full }.to true
-    end
-
-    it 'flash a message' do
-      sign_in user
-      put :update, id: image, image: { description: 'test' }
-      flash[:success].should == I18n.t('images.update.success')
     end
   end
 

@@ -54,7 +54,6 @@ class ImagesController < ApplicationController
       @image.save!
       return redirect_to edit_page_path(id: @image.page)
     end
-    #flash[:success] = t('.success')
     redirect_to edit_image_path(id: @image)
   end
 
@@ -64,6 +63,6 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:description, :full, :content, :content_css)
+    params.require(:image).permit(:legend, :title, :full, :content, :content_css)
   end
 end

@@ -1,4 +1,29 @@
 $ ->
+  update_iframe_content = ()->
+    content = '<h1>'+$('#image_title').val()+'</h1>'+$('.wmd-preview').html()
+    $('.iframe-preview').each (e)->
+      $iframe = $('iframe', e)
+      $content = $($iframe.contents().find('.image-content'))
+      if $content.length == 0
+        $image = $($iframe.contents().find('.image'))
+        if $image.length > 0
+          $image = $iframe.contents().find('body').html('<h1>Update the image to get the preview.</h1>')
+        else
+          return
+      $content.html(content)
+      $('.content-drag',e).trigger('refresh')
+
+  if $('.wmd-panel').length > 0
+    converter1 = Markdown.getSanitizingConverter()
+    editor1 = new Markdown.Editor(converter1)
+    editor1.run()
+    editor1.hooks.chain("onPreviewRefresh", ()->
+      update_iframe_content()
+    )
+  $('body').on 'input', '#image_title', ()->
+    update_iframe_content()
+
+
   iframe_preview=(e)->
     $e = $(e)
     width = $e.width()
@@ -34,9 +59,13 @@ $ ->
       zoom: zoom
 
       onComplete: ()->
+        $iframe.contents().find('.control').remove()
+        $iframe.contents().find('nav').remove()
         $content = $($iframe.contents().find('.image-content'))
         update_drag_size()
         $drag.show()
+        $drag.on 'refresh', ()->
+          update_drag_size()
         $drag.draggable(
           containment: '.iframe-preview'
           drag: (event, ui)->
@@ -54,3 +83,12 @@ $ ->
   $('.iframe-preview').each (i,e)->
     reload = true
     iframe_preview(e)
+
+  $('body').on('change', '#image_full', ()->
+    $('.iframe-preview').each (i,e)=>
+      $iframe = $('iframe', e)
+      if $(this).is(':checked')
+        $($iframe.contents().find('.image')).addClass('full')
+      else
+        $($iframe.contents().find('.image')).removeClass('full')
+  )

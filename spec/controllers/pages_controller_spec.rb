@@ -69,8 +69,10 @@ describe PagesController do
   end
 
   describe '#edit' do
+    render_views
     before :each do
       sign_in user
+      create :image, page: page
       get :edit, site_id: page.site, id: page
     end
     it_responds_200
@@ -80,6 +82,7 @@ describe PagesController do
   end
 
   describe '#new' do
+    render_views
     before :each do
       get :new, site_id: page.site
     end
@@ -89,6 +92,7 @@ describe PagesController do
   end
 
   describe '#preview' do
+    render_views
     before :each do
       sign_in user
       get :preview, id: page
@@ -98,7 +102,6 @@ describe PagesController do
   end
 
   describe '#create' do
-
     it 'render new with an empty name' do
       sign_in user
       post :create, site_id: site, page: { name: '' }

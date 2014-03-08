@@ -1,4 +1,5 @@
 # encoding: UTF-8
+# rubocop:disable all
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307223734) do
+ActiveRecord::Schema.define(version: 20140308000151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +22,11 @@ ActiveRecord::Schema.define(version: 20140307223734) do
     t.string  "image"
     t.text    "exifs"
     t.integer "position"
-    t.text    "description"
+    t.text    "legend"
     t.boolean "full",        default: false
     t.text    "content",     default: ""
     t.text    "content_css", default: "bottom: 22.02204265611258%;top: auto;right: 13.927145245170877%;left: auto;"
+    t.string  "title"
   end
 
   create_table "pages", force: true do |t|
@@ -43,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140307223734) do
     t.string   "description"
     t.text     "css"
     t.text     "metas"
-    t.string   "language",                 default: "en"
+    t.string   "language",    default: "en"
   end
 
   create_table "users", force: true do |t|

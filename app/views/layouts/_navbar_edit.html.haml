@@ -24,7 +24,7 @@
       %ul.nav.navbar-nav.pull-right
         %li
           .navbar-form
-            = link_to root_path, target: '_blank', class: 'btn btn-success', title: t('.see') do
+            = link_to preview_link, target: '_blank', class: 'btn btn-success', title: t('.see') do
               .fa.fa-eye
               = t '.see'
             = link_to destroy_user_session_path, class: 'btn btn-danger', title: 'log out' do

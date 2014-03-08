@@ -1,24 +1,32 @@
 .col-md-12
   %h3.well
     =link_to edit_page_path(@image.page) do
+      .fa.fa-arrow-left
       = @image.page.name
     - @image.page.images.each do |image|
       = link_to edit_image_path(image) do
-        =image_tag image.image.url(:icon), title: image.description
+        =image_tag image.image.url(:icon), title: image.legend
   .row
     .col-md-4
-      = simple_form_for @image do |f|
-        = f.input :description, input_html: {value: f.object.description }
-        = f.input :full
-        = f.input :content_css
-        .control-group.text.optional.page_description
-          %label.text.optional.control-label{for: 'image_content'} Description
-          .controls
-            .wmd-panel
-              #wmd-button-bar
-              %textarea.text.optional.form-control#wmd-input{name: 'image[content]', rows: '15'}= f.object.content
-              #wmd-preview.wmd-panel.wmd-preview= f.object.content_rendered.html_safe
-        = f.submit class: 'btn btn-primary'
-        = link_to t('.cancel'), edit_page_path(@page), class: 'btn btn-default'
+      .row
+        .col-md-12
+          = simple_form_for @image do |f|
+            = f.input :title, input_html: { class: 'input-lg'}
+            .control-group.text.optional.page_description
+              %label.text.optional.control-label{for: 'image_content'} Content
+              .controls
+                .wmd-panel
+                  #wmd-button-bar
+                  %textarea.text.optional.form-control#wmd-input{name: 'image[content]', rows: '15'}= f.object.content
+                  #wmd-preview.wmd-panel.wmd-preview= f.object.content_rendered.html_safe
+            = f.input :legend, input_html: {value: f.object.legend }
+            = f.input :full
+            = f.input :content_css
+            = f.submit class: 'btn btn-primary'
+      .row
+        .col-md-12
+        =link_to image_path(site_id: @site, id: @image), class: 'btn btn-danger btn-xs pull-right', method: :delete, confirm: t('.delete_confirm', default: 'Are you sure ?') do
+          .fa.fa-trash-o
+          = t('.delete_image')
     .col-md-8
       =render 'pages/preview', url: s_image_path(page_id: @image.page, id: @image), drag_style: @image.content_css

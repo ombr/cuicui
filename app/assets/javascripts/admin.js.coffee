@@ -10,9 +10,7 @@
 //= require pagedown/Markdown.Converter
 //= require pagedown/Markdown.Sanitizer
 //= require pagedown/Markdown.Editor
-//= require pagedown
 //= require preview
 //= require images/sort
-//= require pages/edit
 $ ->
   $('body').addClass('js')

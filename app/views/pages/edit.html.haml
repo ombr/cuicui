@@ -5,7 +5,9 @@
         = f.input :name, input_html: { class: 'input-lg' }
         = f.input :theme, collection: %w[light dark], prompt: false, input_html: {class: 'input-lg'}
         = f.submit class: 'btn btn-primary btn-lg'
-        =link_to t('.delete_page'), page_path(site_id: @site, id: @page), class: 'btn btn-danger btn-xs pull-right', method: :delete, confirm: t('.delete_confirm', default: 'Are you sure ?')
+        =link_to page_path(site_id: @site, id: @page), class: 'btn btn-danger btn-xs pull-right', method: :delete, confirm: t('.delete_confirm', default: 'Are you sure ?') do
+          .fa.fa-trash-o
+          = t('.delete_page')
         .admin-advanced
           = f.input :description_html, class: 'advanced-admin', input_html: { rows: 8 }
         -#= f.submit t('.update_and_preview', default: 'Update and preview'), name: 'preview', class: 'btn btn-success'
@@ -27,7 +29,7 @@
         - params[:api_key] = Cloudinary.config.api_key
         - params.each do |name, value|
           = hidden_field_tag(name, value, id: nil) if value.present?
-        %input{type: :file, name: :file, multiple: true}
+        %input{type: :file, name: :file, multiple: true, class: 'input input-lg'}
         %input{name: :commit, type: :submit, value: 'Upload'}
       %ul.image-list
         -@page.images.each do |image|
