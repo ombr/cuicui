@@ -96,7 +96,7 @@ $ ->
   $('body').on('change', '#image_full', ()->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
-      if $(this).is(':checked')
+      if $(this).val() == 'true'
         $($iframe.contents().find('.image')).addClass('full')
       else
         $($iframe.contents().find('.image')).removeClass('full')
