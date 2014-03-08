@@ -12,8 +12,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     resize_to_fill(250, 200)
     eager
   end
-  version :icon, from: :thumbnail do
-    resize_to_fill(40, 40)
+  version :icon do
+    resize_to_fit(80, 40)
     eager
   end
 

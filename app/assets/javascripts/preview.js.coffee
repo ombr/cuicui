@@ -7,7 +7,7 @@ $ ->
       if $content.length == 0
         $image = $($iframe.contents().find('.image'))
         if $image.length > 0
-          $image = $iframe.contents().find('body').html('<h1>Update the image to get the preview.</h1>')
+          $iframe.contents().find('body').html('<h1>Update the image to get the preview.</h1>')
         else
           return
       $content.html(content)
@@ -20,6 +20,15 @@ $ ->
     editor1.hooks.chain("onPreviewRefresh", ()->
       update_iframe_content()
     )
+
+  $('body').on 'input', '#image_legend', ()->
+    $('.iframe-preview').each (e)=>
+      $iframe = $('iframe', e)
+      $description = $($iframe.contents().find('.image-description'))
+      if $description.length > 0
+        $($iframe.contents().find('.image-description')).text($(this).val())
+      else
+        $iframe.contents().find('body').html('<h1>Update the image to get the preview.</h1>')
   $('body').on 'input', '#image_title', ()->
     update_iframe_content()
 
