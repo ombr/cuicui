@@ -86,8 +86,9 @@ $ ->
     )
 
   reload = false
+  width = $(window).width()
   $(window).resize ()->
-    if reload
+    if reload and width != $(window).width()
       window.location = window.location
   $('.iframe-preview').each (i,e)->
     reload = true
