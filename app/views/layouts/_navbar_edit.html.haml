@@ -1,6 +1,63 @@
 - if site
   .col-md-12.col-fullscreen
-    %nav.navbar.navbar-inverse{role: 'navigation'}
+
+    %nav.navbar.navbar-inverse{:role => "navigation"}
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to edit_site_path(id: site), class: 'navbar-brand' do
+            = ENV['DOMAIN']
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            = tab_link edit_site_path(id: site) do
+              .glyphicon.glyphicon-wrench
+            - site.pages.each do |page|
+              - unless page.new_record?
+                - if @page and @page == page
+                  -#%li.active
+                    - unless page.first?
+                      =link_to move_higher_page_path(page), method: :put do
+                        %span.glyphicon.glyphicon-chevron-left
+                  %li.active
+                    - unless page.first?
+                      = simple_form_for page, method: :put, html: { class: 'navbar-forn' } do |f|
+                        = f.input :position, as: :hidden, input_html: { value: page.position-1 }
+                        = f.submit '<', class: ''
+                  %li.active
+                    = link_to page.name, edit_page_path(id: page)
+                    - unless page.last?
+                      = simple_form_for page, method: :put, html: { class: 'navbar-forn' } do |f|
+                        = f.input :position, as: :hidden, input_html: { value: page.position-1 }
+                        = f.submit '>', class: 'btn btn-link'
+                  -#%li.active
+                    - unless page.last?
+                      -link_to move_lower_page_path(page), method: :put do
+                        %span.glyphicon.glyphicon-chevron-right
+                - else
+                  = tab_link(edit_page_path(id: page)) do
+                    = page.name
+            = tab_link(new_site_page_path(site_id: site), html_options: { title: t('pages.add')}) do
+              .glyphicon.glyphicon-plus
+          -#%form.navbar-form.navbar-left{:role => "search"}
+            .form-group
+              %input.form-control{:placeholder => "Search", :type => "text"}/
+            %button.btn.btn-default{:type => "submit"} Submit
+
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to preview_link, target: '_blank', title: t('.see') do
+                .fa.fa-eye
+                = t '.see'
+            %li
+              = link_to destroy_user_session_path, class: '', title: 'log out' do
+                .fa.fa-sign-out
+                = t '.log_out'
+
+    -#%nav.navbar.navbar-inverse{role: 'navigation'}
       %ul.nav.navbar-nav
         = tab_link edit_site_path(id: site) do
           .glyphicon.glyphicon-wrench
