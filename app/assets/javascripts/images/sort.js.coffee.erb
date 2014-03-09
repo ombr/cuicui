@@ -1,22 +1,25 @@
 $ ()->
-  $('.images-icons').each (i,list)->
-    $(list).sortable(
-      update: (e, ui) ->
-        url = "<%= image_path(0)%>".replace('0', $(ui.item).data('id'))
-        $.ajax(
-          url: url,
-          data:
-            'image[position]': $('li', list).index($(ui.item)) + 1,
-            _method: 'put'
-          success: ->
-            window.location = window.location
-          type: 'POST',
-        )
-    )
+  #$('.images-icons').each (i,list)->
+  #  $(list).sortable(
+  #    update: (e, ui) ->
+  #      url = "<%= image_path(0)%>".replace('0', $(ui.item).data('id'))
+  #      $.ajax(
+  #        url: url,
+  #        data:
+  #          'image[position]': $('li', list).index($(ui.item)) + 1,
+  #          _method: 'put'
+  #        success: ->
+  #          window.location = window.location
+  #        type: 'POST',
+  #      )
+  #  )
   $('.image-list').each (i,list)->
+    $('.control.previous',list).hide()
+    $('.control.next',list).hide()
     $(list).sortable(
       forcePlaceholderSize: true
       placeholder: "ui-state-highlight"
+      handle: '.handle'
       update: (e, ui) ->
         $form = $('.next,.previous', ui.item)
         $input = $('input[name="image[position]"]', $form)
