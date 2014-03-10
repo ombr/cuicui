@@ -8,15 +8,15 @@
         - if image.higher_item
           =link_to s_image_path(page_id: image.page, id: image.higher_item), class: 'control previous preload', :'data-target-id' => "image-#{image.higher_item.id}" do
             %p previous
-      = image_tag image.image.url(:full), alt: image.legend, title: image.legend, class: 'main-image', itemprop: 'url', style: "background-image: url('#{image.image.url(:full)}')"
-      - if image.legend.present?
-        .image-description
-          %span{itemprop: 'description'}= image.legend
       - if image.content.present? || image.title.present?
         .image-content{style: image.content_css}
           - if image.title
             %h1=image.title
           = image.content_rendered.html_safe
+      = image_tag image.image.url(:full), alt: image.legend, title: image.legend, class: 'main-image', itemprop: 'url', style: "background-image: url('#{image.image.url(:full)}')"
+      - if image.legend.present?
+        .image-description
+          %span{itemprop: 'description'}= image.legend
         -# if image.higher_items.first
           =link_to s_image_path(page_id: image.page, id: image.higher_items.first) , class: 'control first preload' do
             %p= '<<'
