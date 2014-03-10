@@ -81,6 +81,7 @@ $ ->
             style = position_to_css(ui.position.top, drag_height, $e.height(), 'top', 'bottom')
             style += position_to_css(ui.position.left, drag_width, $e.width(), 'left', 'right')
             $content.attr('style', style)
+            $('#image_content_css').trigger('change')
             $('#image_content_css').val(style)
         )
     )
