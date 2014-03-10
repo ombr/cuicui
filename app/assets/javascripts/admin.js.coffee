@@ -12,5 +12,6 @@
 //= require pagedown/Markdown.Editor
 //= require preview
 //= require images/sort
+//= require editwarning
 $ ->
   $('body').addClass('js')
