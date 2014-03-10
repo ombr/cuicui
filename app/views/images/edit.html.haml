@@ -22,9 +22,9 @@
         = f.input :legend, input_html: {value: f.object.legend }
         = f.input :full, as: :select, prompt: false
         = f.input :content_css
+        = f.submit class: 'btn btn-primary pull-right'
         =link_to image_path(site_id: @site, id: @image), class: 'btn btn-danger', method: :delete, data: { confirm: t('.delete_confirm', default: 'Are you sure ?') } do
           .fa.fa-trash-o
           = t('.delete_image')
-        = f.submit class: 'btn btn-primary pull-right'
     .col-md-8
       =render 'pages/preview', url: s_image_path(page_id: @image.page, id: @image, no_cache: SecureRandom.uuid), drag_style: @image.content_css

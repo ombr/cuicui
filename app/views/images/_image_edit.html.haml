@@ -3,6 +3,8 @@
     %span.fa.fa-arrows
   =link_to edit_image_path(image) do
     =image_tag image.image.url(:thumbnail), title: image.legend
+  =link_to edit_image_path(image), class: 'control edit' do
+    .fa.fa-pencil
   = simple_form_for image, method: :delete, html: { class: 'control delete' } do |f|
     = f.submit 'x', class: 'btn btn-danger btn-link'
   - unless image.first?
