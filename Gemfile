@@ -27,7 +27,7 @@ gem 'jquery-cookie-rails'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'carrierwave'
-gem 'cloudinary', github: 'ombr/cloudinary_gem', branch: 'patch-1'
+gem 'cloudinary', github: 'cloudinary/cloudinary_gem', branch: 'master'
 
 gem 'devise'
 gem 'cancan'

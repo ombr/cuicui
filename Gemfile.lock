@@ -1,9 +1,9 @@
 GIT
-  remote: git://github.com/ombr/cloudinary_gem.git
-  revision: 5b666855f12c7a31729156c935ce397fb9a662fc
-  branch: patch-1
+  remote: git://github.com/cloudinary/cloudinary_gem.git
+  revision: 3cc223a7e1e90a37a2e1a1cf47b652f7b962130c
+  branch: master
   specs:
-    cloudinary (1.0.66)
+    cloudinary (1.0.69)
       aws_cf_signer
       rest-client
 
@@ -222,7 +222,7 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (2.2.1)
       coffee-rails
-    tzinfo (0.3.38)
+    tzinfo (0.3.39)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
