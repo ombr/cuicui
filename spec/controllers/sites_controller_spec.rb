@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe SitesController do
-  let(:site) { FactoryGirl.create :site }
-  let(:user) { FactoryGirl.create :user }
+  let(:site) { create :site }
+  let(:user) { create :user }
 
   describe '#robots' do
     render_views

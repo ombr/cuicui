@@ -143,6 +143,21 @@ describe PagesController do
   end
 
   describe '#update' do
+
+    context 'when update the position' do
+      it 'update the position using insert_at' do
+        Page.any_instance.should_receive(:insert_at).with(2)
+        sign_in user
+        put :update, id: page, page: { position: 2 }
+      end
+
+      it 'redirect to edit page' do
+        sign_in user
+        put :update, id: page, page: { position: 2 }
+        response.should redirect_to edit_page_path(id: page)
+      end
+    end
+
     it('update the name') do
       expect do
         sign_in user

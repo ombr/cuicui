@@ -1,7 +1,7 @@
 - if site
   .col-md-12.col-fullscreen
 
-    %nav.navbar.navbar-inverse{:role => "navigation"}
+    %nav#nav.navbar.navbar-inverse{:role => "navigation"}
       .container-fluid
         .navbar-header
           %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
@@ -24,14 +24,15 @@
                         %span.glyphicon.glyphicon-chevron-left
                   %li.active
                     - unless page.first?
-                      = simple_form_for page, method: :put, html: { class: 'navbar-forn' } do |f|
+                      = simple_form_for page, method: :put do |f|
                         = f.input :position, as: :hidden, input_html: { value: page.position-1 }
-                        = f.submit '<', class: ''
+                        = f.submit '<', class: 'btn btn-link'
                   %li.active
                     = link_to page.name, edit_page_path(id: page)
+                  %li.active
                     - unless page.last?
-                      = simple_form_for page, method: :put, html: { class: 'navbar-forn' } do |f|
-                        = f.input :position, as: :hidden, input_html: { value: page.position-1 }
+                      = simple_form_for page, method: :put do |f|
+                        = f.input :position, as: :hidden, input_html: { value: page.position+1 }
                         = f.submit '>', class: 'btn btn-link'
                   -#%li.active
                     - unless page.last?
