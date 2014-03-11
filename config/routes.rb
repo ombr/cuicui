@@ -17,8 +17,6 @@ Cuicui::Application.routes.draw do
   resources :pages do
     member do
       get :preview
-      put :move_higher
-      put :move_lower
     end
     resources :images, only: [:show, :create] do
       collection do

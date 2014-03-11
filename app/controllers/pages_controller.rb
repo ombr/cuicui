@@ -72,16 +72,6 @@ class PagesController < ApplicationController
     redirect_to edit_page_path(@page)
   end
 
-  def move_higher
-    @page.move_higher
-    redirect_to edit_page_path @page
-  end
-
-  def move_lower
-    @page.move_lower
-    redirect_to edit_page_path @page
-  end
-
   def page_params
     params.require(:page).permit(:name, :description, :description_html, :theme)
   end

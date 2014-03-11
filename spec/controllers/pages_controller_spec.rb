@@ -204,44 +204,4 @@ describe PagesController do
       flash[:success].should == I18n.t('pages.update.success')
     end
   end
-
-  context 'ordering' do
-    before :each do
-      sign_in user
-    end
-
-    let(:page2) { FactoryGirl.create :page, site: page.site }
-    let(:page3) { FactoryGirl.create :page, site: page.site }
-
-    describe '#move_higer' do
-
-      it 'change position' do
-        expect do
-          put :move_higher, id: page2
-        end.to change { page2.reload.position }.by(-1)
-      end
-
-      it 'redirect to edit_page' do
-        put :move_higher, id: page
-        response.should redirect_to edit_page_path page
-      end
-    end
-
-    describe '#move_lower' do
-
-      it 'change position' do
-        page
-        page2
-        page3
-        expect do
-          put :move_lower, id: page2
-        end.to change { page2.reload.position }.by(1)
-      end
-
-      it 'redirect to edit_page' do
-        put :move_lower, id: page
-        response.should redirect_to edit_page_path page
-      end
-    end
-  end
 end
