@@ -1,5 +1,4 @@
 # encoding: UTF-8
-# rubocop:disable all
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -25,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140308000151) do
     t.text    "legend"
     t.boolean "full",        default: false
     t.text    "content",     default: ""
-    t.text    "content_css", default: "bottom: 22.02204265611258%;top: auto;right: 13.927145245170877%;left: auto;"
+    t.text    "content_css"
     t.string  "title"
   end
 

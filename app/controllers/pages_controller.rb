@@ -62,6 +62,11 @@ class PagesController < ApplicationController
 
   def update
     @page.update(page_params)
+    if params[:page] && params[:page][:position]
+      @page.insert_at(params[:page][:position].to_i)
+      @page.save!
+      return redirect_to edit_page_path(id: @page)
+    end
     return redirect_to preview_page_path(@page) if params[:preview]
     flash[:success] = t('.success')
     redirect_to edit_page_path(@page)
