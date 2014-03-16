@@ -4,9 +4,8 @@ class PagesController < ApplicationController
     :show,
     :destroy,
     :update,
-    :move_higher,
-    :move_lower,
-    :preview
+    :preview,
+    :index
   ]
   load_and_authorize_resource :site,
                               through: :page,
@@ -15,19 +14,21 @@ class PagesController < ApplicationController
   load_and_authorize_resource :site, only: [:new, :create]
 
   def index
+  end
+
+  def first
     @site = Site.first
     return redirect_to new_user_session_path if @site.nil?
     @page = @site.pages.first
     return redirect_to new_user_session_path if @page.nil?
     @image = @page.images.first if @page.images.first
-    # expires_in 5.minutes, public: true if Rails.env.production?
     render :show
   end
 
   def show
-    #if @page.description.blank? && @page.images.count > 0
-      #return redirect_to s_image_path(page_id: @page, id: @page.images.first)
-    #end
+    # if @page.description.blank? && @page.images.count > 0
+      # return redirect_to s_image_path(page_id: @page, id: @page.images.first)
+    # end
     @image = @page.images.first if @page.images.first
     # expires_in 5.minutes, public: true if Rails.env.production?
   end

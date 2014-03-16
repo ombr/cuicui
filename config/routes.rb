@@ -4,11 +4,7 @@ Cuicui::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#index'
-
-  resources :users do
-    root 'sites#index'
-  end
+  root 'pages#first'
 
   resources :sites, only: [:show, :edit, :update] do
     resources :pages, shallow: true

@@ -6,16 +6,17 @@ describe PagesController do
   let(:site) { Site.first }
   let(:user) { FactoryGirl.create :user }
 
-  describe '#index' do
+  describe '#first' do
     render_views
+
     it 'redirect to login if there is no site' do
-      get :index
+      get :first
       response.should redirect_to new_user_session_path
     end
 
     it 'redirect to login if there is no page for the site' do
       site
-      get :index
+      get :first
       response.should redirect_to new_user_session_path
     end
 
@@ -25,7 +26,7 @@ describe PagesController do
       render_views
       before :each do
         image
-        get :index
+        get :first
       end
 
       it_responds_200
@@ -33,19 +34,19 @@ describe PagesController do
 
     it 'assigns page' do
       page
-      get :index
+      get :first
       assigns(:page).should == page
     end
 
     it 'assigns site' do
       site
-      get :index
+      get :first
       assigns(:site).should == site
     end
 
     it 'respond 200 when there is a page' do
       page
-      get :index
+      get :first
       response.code.should == '200'
     end
 
