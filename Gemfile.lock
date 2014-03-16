@@ -270,7 +270,6 @@ DEPENDENCIES
   rails_12factor
   redcarpet
   rspec-rails
-  sass (= 3.2.14)
   sass-rails
   sdoc
   sentry-raven
