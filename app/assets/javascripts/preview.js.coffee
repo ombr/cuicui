@@ -63,11 +63,12 @@ $ ->
     $iframe.zoomer(
       width: width
       height: height
+      zoom: zoom
       message: ''
       messageURL: '#'
-      zoom: zoom
 
       onComplete: ()->
+        $iframe.contents().find('body').height("#{ref_height}px") # Firefox body height
         $iframe.contents().find('.control').remove()
         $iframe.contents().find('nav').remove()
         $content = $($iframe.contents().find('.image-content'))

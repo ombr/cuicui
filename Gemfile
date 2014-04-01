@@ -8,6 +8,7 @@ gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
+gem 'sass', '3.2.14'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
@@ -60,6 +61,7 @@ gem 'redcarpet'
 gem 'unicorn'
 gem 'rack-timeout'
 gem 'newrelic_rpm'
+gem 'foreman'
 
 group :production do
   gem 'rails_12factor'
