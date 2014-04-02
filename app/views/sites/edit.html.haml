@@ -1,5 +1,5 @@
 .col-md-4.col-md-offset-2
-  %h2
+  %h1
     = @site.title
   = simple_form_for @site,  html: {class: 'form-horizontal' } do |f|
     = f.input :title, input_html: {class: 'input-lg'}
@@ -13,7 +13,7 @@
       = f.input :css, input_html: { rows: 30}
     = f.submit class: 'btn btn-primary'
 .col-md-4
-  %h2 Account
+  %h1 Account
   = simple_form_for(@current_user, url: user_registration_path, html: { :method => :put }) do |f|
     = f.error_notification
     .form-inputs
@@ -22,3 +22,9 @@
       = f.input :current_password, hint: 'we need your current password to confirm your changes', required: true
     .form-actions
       = f.button :submit, 'Update', class: 'btn btn-primary'
+.col-md-8.col-md-offset-2
+  %h1 Usage
+  %h3 Storage
+  =progress(Cloudinary::Api.usage["storage"]["used_percent"])
+  %h3 Bandwith
+  =progress(Cloudinary::Api.usage["bandwidth"]["used_percent"])

@@ -6,6 +6,15 @@ describe PagesController do
   let(:site) { Site.first }
   let(:user) { FactoryGirl.create :user }
 
+  describe '#index' do
+    before :each do
+      get :index
+    end
+
+    it('assigns site') { assigns(:site).should == site }
+    it('assigns pages') { assigns(:pages).should == site.pages.all }
+  end
+
   describe '#first' do
     render_views
 

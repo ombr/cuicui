@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   load_and_authorize_resource :site, only: [:new, :create]
 
   def index
+    @site = Site.first
   end
 
   def first
