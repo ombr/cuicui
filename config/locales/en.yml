@@ -1,5 +1,9 @@
 en:
   simple_form:
+    placeholders:
+      site:
+        title: 'Title of your site'
+        description: 'Description of your site for search engine.'
     labels:
       site:
         title: 'Your portfoli title'
