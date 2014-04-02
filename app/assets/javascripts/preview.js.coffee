@@ -1,16 +1,19 @@
 $ ->
   update_iframe_content = ()->
-    content = '<h1>'+$('#image_title').val()+'</h1>'+$('.wmd-preview').html()
+    content = ''
+    title = $('#image_title').val()
+    if title
+      content += '<h1>'+title+'</h1>'
+    content += $('.wmd-preview').html()
     $('.iframe-preview').each (e)->
       $iframe = $('iframe', e)
       $content = $($iframe.contents().find('.image-content'))
-      if $content.length == 0
-        $image = $($iframe.contents().find('.image'))
-        if $image.length > 0
-          $iframe.contents().find('body').html('<h1>Update the image to get the preview.</h1>')
-        else
-          return
-      $content.html(content)
+      return if $content.length == 0
+      if content
+        $content.show()
+        $content.html(content)
+      else
+        $content.hide()
       $('.content-drag',e).trigger('refresh')
 
   if $('.wmd-panel').length > 0
@@ -24,11 +27,14 @@ $ ->
   $('body').on 'input', '#image_legend', ()->
     $('.iframe-preview').each (e)=>
       $iframe = $('iframe', e)
-      $description = $($iframe.contents().find('.image-description'))
-      if $description.length > 0
-        $($iframe.contents().find('.image-description')).text($(this).val())
+      $legende = $($iframe.contents().find('.image-description'))
+      return if $legende.length == 0
+      legende = $(this).val()
+      if legende
+        $legende.show()
+        $legende.text(legende)
       else
-        $iframe.contents().find('body').html('<h1>Update the image to get the preview.</h1>')
+        $legende.hide()
   $('body').on 'input', '#image_title', ()->
     update_iframe_content()
 

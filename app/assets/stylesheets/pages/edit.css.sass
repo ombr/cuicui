@@ -12,12 +12,10 @@
 .pages-edit
   .edit_page
     .control-group
-      display: inline-block
+      @include inline-block
+      vertical-align: bottom
     label
       display: none
-    .btn
-      position: relative
-      top: -2px
   .ui-sortable-helper
     box-shadow: 5px 5px 20px black
     @include transition-property(box-shadow)
