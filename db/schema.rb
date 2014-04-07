@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140308000151) do
     t.text    "legend"
     t.boolean "full",        default: false
     t.text    "content",     default: ""
-    t.text    "content_css"
+    t.text    "content_css", default: "bottom: 22.02204265611258%;top: auto;right: 13.927145245170877%;left: auto;"
     t.string  "title"
   end
 
