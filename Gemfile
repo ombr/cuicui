@@ -7,7 +7,7 @@ gem 'rails', '4.0.3'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.0'
 gem 'sass', '3.2.14'
 
 # Use Uglifier as compressor for JavaScript assets
