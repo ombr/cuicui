@@ -73,6 +73,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'factory_girl'
   gem 'capybara'
+  gem 'capybara-email'
+  gem 'launchy'
 end
 
 group :development do
