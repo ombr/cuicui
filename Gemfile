@@ -58,6 +58,11 @@ gem 'acts_as_list'
 
 gem 'redcarpet'
 
+gem 'memcachier'
+gem 'dalli'
+gem 'kgio'
+gem 'rack-cache'
+
 gem 'unicorn'
 gem 'rack-timeout'
 gem 'newrelic_rpm'

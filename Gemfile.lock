@@ -70,6 +70,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    dalli (2.7.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -122,6 +123,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     meta_request (0.3.0)
       callsite
       rack-contrib
@@ -145,6 +147,8 @@ GEM
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
     rack-test (0.6.2)
@@ -254,6 +258,7 @@ DEPENDENCIES
   carrierwave
   cloudinary!
   coffee-rails
+  dalli
   devise
   dotenv-rails
   entypo-rails
@@ -268,12 +273,15 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   jquery-ui-rails
+  kgio
   language_list
   launchy
+  memcachier
   meta_request
   newrelic_rpm
   pg
   pry-rails
+  rack-cache
   rack-timeout
   rails (= 4.0.3)
   rails_12factor

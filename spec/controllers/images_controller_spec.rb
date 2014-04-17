@@ -17,6 +17,10 @@ describe ImagesController do
     it('assigns page') { assigns(:page).should == page }
     it('assigns image') { assigns(:image).should == image }
 
+    it 'uses http caching' do
+      response.headers['ETag'].should be_present
+    end
+
   end
 
   describe '#edit' do
