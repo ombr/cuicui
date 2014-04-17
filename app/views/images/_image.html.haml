@@ -22,3 +22,35 @@
         -#%span.position=@image.position
         -#%span.sep /
         -#%span.total=@image.page.images.count
+-content_for :head do
+  - title = 'asd'
+  - description = @image.legend
+  - image = @image.image.url(:thumbnail)
+  - url = image_url(id: @image)
+  %meta{property: 'og:title', content: title}
+  %meta{property: 'og:image', content: image}
+  %meta{property: 'og:description', content: description}
+  %meta{property: 'og:url', content: url}
+  %meta{property: 'og:site_name', content: @site.title}
+  %meta{property: 'og:see_also', content: root_url}
+  %meta{property: 'og:type', content: 'article'}
+  - facebook_app = ''
+  - facebook_admin = ''
+  %meta{property: 'og:app_id', content: 12}
+  %meta{property: 'fb:admins', content: ''}
+
+  - twitter_id = '@ombr'
+  %meta{property: 'twitter:card', content: 'photo'}
+  %meta{property: 'twitter:title', content: title}
+  %meta{property: 'twitter:site', content: twitter_id}
+  %meta{property: 'twitter:creator', content: twitter_id}
+  %meta{property: 'twitter:image:src', content: image}
+
+  - google_id= 'asdasd'
+  %link{rel: 'author', href: "https://plus.google.com/#{google_id}/posts"}
+  %link{rel: 'publisher', href: "https://plus.google.com/#{google_id}"}
+
+  -# <html itemscope itemtype="http://schema.org/Article">
+  %meta{property: 'description', content: description}
+  %meta{property: 'name', content: title}
+  %meta{property: 'image', content: image}
