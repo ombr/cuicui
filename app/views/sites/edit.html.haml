@@ -13,6 +13,12 @@
       = f.input :css, input_html: { rows: 30}
     = f.submit class: 'btn btn-primary'
 .col-md-4
+  %h1 Usage
+  %h3 Storage
+  =progress(Cloudinary::Api.usage["storage"]["used_percent"])
+  %h3 Bandwith
+  =progress(Cloudinary::Api.usage["bandwidth"]["used_percent"])
+-#.col-md-4
   %h1 Account
   = simple_form_for(@current_user, url: user_registration_path, html: { :method => :put }) do |f|
     = f.error_notification
@@ -22,9 +28,3 @@
       = f.input :current_password, hint: 'we need your current password to confirm your changes', required: true
     .form-actions
       = f.button :submit, 'Update', class: 'btn btn-primary'
-.col-md-8.col-md-offset-2
-  %h1 Usage
-  %h3 Storage
-  =progress(Cloudinary::Api.usage["storage"]["used_percent"])
-  %h3 Bandwith
-  =progress(Cloudinary::Api.usage["bandwidth"]["used_percent"])
