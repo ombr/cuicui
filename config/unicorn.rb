@@ -1,23 +1,27 @@
-worker_processes Integer(ENV['WEB_CONCURRENCY'] || 3)
-timeout 15
+# https://devcenter.heroku.com/articles/rails-unicorn
+
+worker_processes (ENV['WEB_CONCURRENCY'] || 3).to_i
+timeout (ENV['WEB_TIMEOUT'] || 5).to_i
 preload_app true
-listen ENV['PORT'] || 3000
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do
-    puts 'Unicorn master intercepting TERM && sending myself QUIT instead'
+    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
     Process.kill 'QUIT', Process.pid
   end
 
-  defined?(ActiveRecord::Base) &&
-    ActiveRecord::Base.connection.disconnect!
+  ActiveRecord::Base.connection.disconnect!  if defined? ActiveRecord::Base
 end
 
 after_fork do |server, worker|
   Signal.trap 'TERM' do
-    puts 'Unicorn worker intercepting TERM && doing nothing. Wait for master to send QUIT'
+    puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to sent QUIT'
   end
 
-  defined?(ActiveRecord::Base) &&
-    ActiveRecord::Base.establish_connection
+  if defined? ActiveRecord::Base
+    config = Rails.application.config.database_configuration[Rails.env]
+    config['reaping_frequency'] = (ENV['DB_REAPING_FREQUENCY'] || 10).to_i
+    config['pool'] = (ENV['DB_POOL'] || 2).to_i
+    ActiveRecord::Base.establish_connection(config)
+  end
 end

@@ -33,7 +33,6 @@ gem 'cloudinary', github: 'cloudinary/cloudinary_gem', branch: 'master'
 gem 'devise'
 gem 'cancan'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'sentry-raven'
 
@@ -47,8 +46,8 @@ gem 'font-awesome-rails'
 gem 'entypo-rails'
 gem 'bourbon'
 gem 'jquery-fileupload-rails'
-#gem 'pagedown-rails'
-gem "intercom-rails"
+# gem 'pagedown-rails'
+gem 'intercom-rails'
 
 gem 'simple_form'
 gem 'language_list'

@@ -29,7 +29,7 @@ describe 'Main features', :feature do
     page.fill_in 'user_password_confirmation', with: 'SuperSecret'
     expect do
       click_on 'Change my password'
-    end.to change {user.reload.encrypted_password}
+    end.to change { user.reload.encrypted_password }
   end
 
 end
