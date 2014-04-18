@@ -84,6 +84,7 @@ end
 
 group :development do
   gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'pry-rails'
   gem 'meta_request'
 end

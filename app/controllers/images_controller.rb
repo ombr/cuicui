@@ -1,3 +1,4 @@
+# ImageController
 class ImagesController < ApplicationController
   load_and_authorize_resource only: [:show, :destroy, :edit, :update]
   load_and_authorize_resource :page,
@@ -11,7 +12,10 @@ class ImagesController < ApplicationController
                                 :edit,
                                 :update
                               ]
-  load_and_authorize_resource :site, through: :page, singleton: true, only: [:show, :edit]
+  load_and_authorize_resource :site,
+                              through: :page,
+                              singleton: true,
+                              only: [:show, :edit]
 
   load_and_authorize_resource :page, only: [:create]
 
@@ -36,7 +40,7 @@ class ImagesController < ApplicationController
 
   def show
     # expires_in 5.minutes, public: true if Rails.env.production?
-    if stale? [@site, @page, @image], public: true
+    if stale? [@site, @page, @image]
       if request.xhr?
         render layout: false
       else
@@ -65,6 +69,10 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:legend, :title, :full, :content, :content_css)
+    params.require(:image).permit(:legend,
+                                  :title,
+                                  :full,
+                                  :content,
+                                  :content_css)
   end
 end

@@ -1,3 +1,4 @@
+# Image
 class Image < ActiveRecord::Base
   serialize :exifs
   belongs_to :page
