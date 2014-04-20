@@ -20,22 +20,16 @@ class ImagesController < ApplicationController
   load_and_authorize_resource :page, only: [:create]
 
   def create
-    if params[:error]
-      return redirect_to edit_page_path(id: @page), flash: { error: params[:error] }
-    end
+    return redirect_to edit_page_path(id: @page),
+                       flash: { error: params[:error] } if params[:error]
     @image = @page.images.build
-    path = "#{params[:resource_type]}/#{params[:type]}/v#{params[:version]}/#{params[:public_id]}"
-    path += ".#{params[:format]}" if params[:format].present?
-    path += "##{params[:signature]}"
-    @image.image = path
+    @image.image = cloudinary_path
     @image.save!
     @image.extract_exifs
     @images = @page.images
-    if request.xhr?
-      render 'create.js' # with cloudinary we need to force the format ;-(
-    else
-      redirect_to edit_page_path(id: @page)
-    end
+    # with cloudinary we need to force the format ;-(
+    return render 'create.js' if request.xhr?
+    redirect_to edit_page_path(id: @page)
   end
 
   def show
@@ -74,5 +68,15 @@ class ImagesController < ApplicationController
                                   :full,
                                   :content,
                                   :content_css)
+  end
+
+  private
+
+  def cloudinary_path
+    path = "#{params[:resource_type]}/#{params[:type]}"
+    path += "/v#{params[:version]}/#{params[:public_id]}"
+    path += ".#{params[:format]}" if params[:format].present?
+    path += "##{params[:signature]}"
+    path
   end
 end

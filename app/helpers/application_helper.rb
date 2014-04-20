@@ -1,3 +1,4 @@
+# ApplicationHelper
 module ApplicationHelper
   def bootstrap_class_for(flash_type)
     bootstrap = { success: 'success',
@@ -13,7 +14,9 @@ module ApplicationHelper
   end
 
   def preview_link
-    return s_image_path(page_id: @image.page, id: @image) if @image && @image.id
+    if @image && @image.id
+      return s_image_path(page_id: @image.page, id: @image)
+    end
     return s_page_path(id: @page) if @page && @page.id
     root_path
   end
@@ -36,11 +39,16 @@ module ApplicationHelper
     style = 'progress-bar progress-bar-success'
     width = percent
     if percent > 100
-      width = 100
-      style = 'progress-bar progress-bar-danger'
+      width, style = [100, 'progress-bar progress-bar-danger']
     elsif percent > 80
       style = 'progress-bar progress-bar-warning'
     end
-    content_tag(:div, class: style, style: "width: #{width}%") { "#{percent}%" }
+    content_tag(:div, class: style, style: "width: #{width}%") do
+      "#{percent}%"
+    end
+  end
+
+  def title
+    page_title app_name: (@site.title if @site)
   end
 end

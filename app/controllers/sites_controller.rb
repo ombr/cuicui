@@ -1,3 +1,4 @@
+# SitesController
 class SitesController < ApplicationController
   load_and_authorize_resource only: [:show, :edit, :update]
 
@@ -15,7 +16,9 @@ class SitesController < ApplicationController
   def update
     @site = Site.find(params[:id])
     unless params[:site][:favicon].nil?
-      Cloudinary::Uploader.upload(params[:site][:favicon], public_id: 'favicon', format: :ico)
+      Cloudinary::Uploader.upload(params[:site][:favicon],
+                                  public_id: 'favicon',
+                                  format: :ico)
       flash[:success] = I18n.t 'sites.favicon_updated'
     end
     @site.update(site_params)

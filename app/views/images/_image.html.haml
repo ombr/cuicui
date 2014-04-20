@@ -22,16 +22,15 @@
         -#%span.position=@image.position
         -#%span.sep /
         -#%span.total=@image.page.images.count
+-content_for :page_title, image.seo_title
 -content_for :head do
-  - title = 'asd'
-  - description = @image.legend
-  - image = @image.image.url(:thumbnail)
-  - url = image_url(id: @image)
+  - description = image.seo_description
+  - image_url = image.image.url(:social)
   %meta{property: 'og:title', content: title}
-  %meta{property: 'og:image', content: image}
+  %meta{property: 'og:image', content: image_url}
   %meta{property: 'og:description', content: description}
-  %meta{property: 'og:url', content: url}
-  %meta{property: 'og:site_name', content: @site.title}
+  %meta{property: 'og:url', content: s_image_url(page_id: image.page, id: image)}
+  %meta{property: 'og:site_name', content: image.page.site.title}
   %meta{property: 'og:see_also', content: root_url}
   %meta{property: 'og:type', content: 'article'}
   - facebook_app = ''
@@ -44,7 +43,7 @@
   %meta{property: 'twitter:title', content: title}
   %meta{property: 'twitter:site', content: twitter_id}
   %meta{property: 'twitter:creator', content: twitter_id}
-  %meta{property: 'twitter:image:src', content: image}
+  %meta{property: 'twitter:image:src', content: image_url}
 
   - google_id= 'asdasd'
   %link{rel: 'author', href: "https://plus.google.com/#{google_id}/posts"}
@@ -53,4 +52,4 @@
   -# <html itemscope itemtype="http://schema.org/Article">
   %meta{property: 'description', content: description}
   %meta{property: 'name', content: title}
-  %meta{property: 'image', content: image}
+  %meta{property: 'image', content: image_url}

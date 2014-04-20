@@ -2,6 +2,8 @@
 class Image < ActiveRecord::Base
   serialize :exifs
   belongs_to :page
+  has_one :site, through: :page
+
   acts_as_list scope: :page
   mount_uploader :image, ImageUploader
 
@@ -45,6 +47,18 @@ class Image < ActiveRecord::Base
   def priority
     total = page.images.count
     (total - position + 1).to_f / (total).to_f
+  end
+
+  def seo_title
+    return title unless title.blank?
+    return content unless content.blank?
+    return legend unless legend.blank?
+    "#{site.title} : #{page.name}"
+  end
+
+  def seo_description
+    return content unless content.blank?
+    legend
   end
 
   def to_param
