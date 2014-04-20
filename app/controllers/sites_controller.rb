@@ -45,6 +45,11 @@ class SitesController < ApplicationController
   end
 
   def site_params
-    params.require(:site).permit(:title, :description, :css, :metas, :language)
+    params.require(:site).permit(:title,
+                                 :description,
+                                 :css,
+                                 :metas,
+                                 :language,
+                                 :twitter_id)
   end
 end

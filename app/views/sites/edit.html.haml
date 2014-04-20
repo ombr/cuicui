@@ -5,6 +5,7 @@
     = f.input :title, input_html: {class: 'input-lg'}
     = f.input :description, as: :text, input_html: { rows: 10 }
     = f.input :language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]}, prompt: false
+    = f.input :twitter_id
     .admin-advanced
       = f.input :metas, as: :text, input_html: { rows: 4 }
       = f.input :favicon, as: :file

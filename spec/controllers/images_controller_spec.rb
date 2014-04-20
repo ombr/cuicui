@@ -9,16 +9,31 @@ describe ImagesController do
   describe '#show' do
     render_views
 
-    before :each do
-      get :show, id: image
-    end
-    it_responds_200
-    it('assigns site') { assigns(:site).should == site }
-    it('assigns page') { assigns(:page).should == page }
-    it('assigns image') { assigns(:image).should == image }
+    context 'render_view' do
+      before :each do
+        get :show, id: image
+      end
+      it_responds_200
+      it('assigns site') { assigns(:site).should == site }
+      it('assigns page') { assigns(:page).should == page }
+      it('assigns image') { assigns(:image).should == image }
 
-    it 'uses http caching' do
-      response.headers['ETag'].should be_present
+      it 'uses http caching' do
+        response.headers['ETag'].should be_present
+      end
+    end
+
+    context 'with site.twitter_id defined' do
+      it 'render the meta' do
+        site.update(twitter_id: '@ombr')
+        get :show, id: image
+        expect(
+          response.body
+        ).to include "<meta content='@ombr' property='twitter:site'>"
+        expect(
+          response.body
+        ).to include "<meta content='@ombr' property='twitter:creator'>"
+      end
     end
 
   end

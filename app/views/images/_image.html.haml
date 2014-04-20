@@ -38,12 +38,13 @@
   %meta{property: 'og:app_id', content: 12}
   %meta{property: 'fb:admins', content: ''}
 
-  - twitter_id = '@ombr'
   %meta{property: 'twitter:card', content: 'photo'}
   %meta{property: 'twitter:title', content: title}
-  %meta{property: 'twitter:site', content: twitter_id}
-  %meta{property: 'twitter:creator', content: twitter_id}
   %meta{property: 'twitter:image:src', content: image_url}
+  - twitter_id = image.site.twitter_id
+  - if twitter_id
+    %meta{property: 'twitter:site', content: twitter_id}
+    %meta{property: 'twitter:creator', content: twitter_id}
 
   - google_id= 'asdasd'
   %link{rel: 'author', href: "https://plus.google.com/#{google_id}/posts"}

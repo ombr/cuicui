@@ -40,6 +40,7 @@ class Image < ActiveRecord::Base
       end
     end
   end
+
   def self.cleanup
     Image.find_each { |i| i.destroy if i.page.nil? }
   end

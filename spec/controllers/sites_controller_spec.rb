@@ -74,6 +74,13 @@ describe SitesController do
       end.to change { site.reload.metas }.to('test')
     end
 
+    it 'change the twitter_id' do
+      expect do
+        sign_in user
+        put :update, id: site, site: { twitter_id: '@ombr' }
+      end.to change { site.reload.twitter_id }.to('@ombr')
+    end
+
     it 'change the title' do
       expect do
         sign_in user
