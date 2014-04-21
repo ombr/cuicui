@@ -1,11 +1,11 @@
 $ ->
   edit = false
-  $('body').on 'input', ()->
+  $('body').on 'input', '.warn-on-exit', ()->
+    edit = true
+  $('body').on 'change', '.warn-on-exit', ()->
     edit = true
   $('body').on 'submit', ()->
     edit = false
     true
-  $('body').on 'change', ()->
-    edit = true
   $(window).bind 'beforeunload', (e)->
-    return 'Some change are not saved.' if edit
+    return 'Some changes are not saved.' if edit
