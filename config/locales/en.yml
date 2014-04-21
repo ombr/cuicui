@@ -5,6 +5,8 @@ en:
         title: 'Title of your site'
         description: 'Description of your site for search engine.'
     labels:
+      image:
+        full: Fullscreen
       site:
         title: 'Your portfoli title'
   layouts:

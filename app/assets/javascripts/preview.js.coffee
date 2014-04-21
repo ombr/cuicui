@@ -74,7 +74,8 @@ $ ->
       messageURL: '#'
 
       onComplete: ()->
-        $iframe.contents().find('body').height("#{ref_height}px") # Firefox body height
+        # Firefox body height
+        $iframe.contents().find('body').height("#{ref_height}px")
         $iframe.contents().find('.control').remove()
         $iframe.contents().find('nav').remove()
         $content = $($iframe.contents().find('.image-content'))
@@ -85,8 +86,16 @@ $ ->
         $drag.draggable(
           containment: '.iframe-preview'
           drag: (event, ui)->
-            style = position_to_css(ui.position.top, drag_height, $e.height(), 'top', 'bottom')
-            style += position_to_css(ui.position.left, drag_width, $e.width(), 'left', 'right')
+            style = position_to_css(ui.position.top,
+                                    drag_height,
+                                    $e.height(),
+                                    'top',
+                                    'bottom')
+            style += position_to_css(ui.position.left,
+                                     drag_width,
+                                     $e.width(),
+                                     'left',
+                                     'right')
             $content.attr('style', style)
             $('#image_content_css').trigger('change')
             $('#image_content_css').val(style)
