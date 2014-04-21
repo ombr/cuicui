@@ -50,9 +50,10 @@
 
           %ul.nav.navbar-nav.navbar-right
             %li
-              = link_to preview_link, target: '_blank', title: t('.see') do
-                .fa.fa-eye
-                = t '.see'
+              = link_to preview_link, target: '_blank', title: t('.see'), class: 'preview' do
+                .btn.btn-success
+                  .fa.fa-eye
+                  = t '.see'
             %li
               = link_to destroy_user_session_path, class: '', title: 'log out' do
                 .fa.fa-sign-out
