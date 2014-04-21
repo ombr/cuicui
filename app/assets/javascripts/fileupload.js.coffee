@@ -14,8 +14,9 @@ $ ->
       dataType: 'html',
       headers: { "X-Requested-With": "XMLHttpRequest" }
       start: ()->
-      progressall: (e, data)->
+        $bar.width("0%")
         $uploading.show()
+      progressall: (e, data)->
         $bar.width("#{parseInt(data.loaded / data.total * 100, 10)}%")
       stop: ()->
         $uploading.hide()
