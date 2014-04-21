@@ -50,6 +50,8 @@ class SitesController < ApplicationController
                                  :css,
                                  :metas,
                                  :language,
-                                 :twitter_id)
+                                 :twitter_id,
+                                 :facebook_id,
+                                 :facebook_app_id)
   end
 end

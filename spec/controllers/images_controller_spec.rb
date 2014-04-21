@@ -36,6 +36,26 @@ describe ImagesController do
       end
     end
 
+    context 'with site.facebook_id defined' do
+      it 'render the meta' do
+        site.update(facebook_id: 'ombr')
+        get :show, id: image
+        expect(
+          response.body
+        ).to include "<meta content='ombr' property='fb:admins'>"
+      end
+    end
+
+    context 'with site.facebook_app_id defined' do
+      it 'render the meta' do
+        site.update(facebook_app_id: '1212')
+        get :show, id: image
+        expect(
+          response.body
+        ).to include "<meta content='1212' property='og:app_id'>"
+      end
+    end
+
   end
 
   describe '#edit' do

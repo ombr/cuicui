@@ -35,8 +35,10 @@
   %meta{property: 'og:type', content: 'article'}
   - facebook_app = ''
   - facebook_admin = ''
-  %meta{property: 'og:app_id', content: 12}
-  %meta{property: 'fb:admins', content: ''}
+  - unless image.site.facebook_app_id.blank?
+    %meta{property: 'og:app_id', content: image.site.facebook_app_id}
+  - unless image.site.facebook_id.blank?
+    %meta{property: 'fb:admins', content: image.site.facebook_id}
 
   %meta{property: 'twitter:card', content: 'photo'}
   %meta{property: 'twitter:title', content: title}
