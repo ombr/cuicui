@@ -52,6 +52,7 @@ class SitesController < ApplicationController
                                  :language,
                                  :twitter_id,
                                  :facebook_id,
-                                 :facebook_app_id)
+                                 :facebook_app_id,
+                                 :google_plus_id)
   end
 end

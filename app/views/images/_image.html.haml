@@ -48,9 +48,10 @@
     %meta{property: 'twitter:site', content: twitter_id}
     %meta{property: 'twitter:creator', content: twitter_id}
 
-  - google_id= 'asdasd'
-  %link{rel: 'author', href: "https://plus.google.com/#{google_id}/posts"}
-  %link{rel: 'publisher', href: "https://plus.google.com/#{google_id}"}
+  - google_id= image.site.google_plus_id
+  - unless google_id.blank?
+    %link{rel: 'author', href: "https://plus.google.com/#{google_id}/posts"}
+    %link{rel: 'publisher', href: "https://plus.google.com/#{google_id}"}
 
   -# <html itemscope itemtype="http://schema.org/Article">
   %meta{property: 'description', content: description}

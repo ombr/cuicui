@@ -95,6 +95,13 @@ describe SitesController do
       end.to change { site.reload.facebook_app_id }.to('ombr')
     end
 
+    it 'change the google_id' do
+      expect do
+        sign_in user
+        put :update, id: site, site: { google_plus_id: 'ombr' }
+      end.to change { site.reload.google_plus_id }.to('ombr')
+    end
+
     it 'change the title' do
       expect do
         sign_in user

@@ -46,6 +46,18 @@ describe ImagesController do
       end
     end
 
+    context 'with site.google_plus_id defined' do
+      it 'render the meta' do
+        site.update(google_plus_id: '1212')
+        get :show, id: image
+        expect(
+          response.body
+        ).to include(
+          "<link href='https://plus.google.com/1212/posts' rel='author'>"
+        )
+      end
+    end
+
     context 'with site.facebook_app_id defined' do
       it 'render the meta' do
         site.update(facebook_app_id: '1212')
