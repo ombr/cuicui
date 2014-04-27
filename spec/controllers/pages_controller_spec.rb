@@ -12,7 +12,7 @@ describe PagesController do
     end
 
     it('assigns site') { assigns(:site).should == site }
-    it('assigns pages') { assigns(:pages).should == site.pages.all }
+    it('assigns pages') { assigns(:pages).should == site.pages.to_a }
   end
 
   describe '#first' do
@@ -204,7 +204,9 @@ describe PagesController do
 
     it 'redirect to preview if sended with preview' do
       sign_in user
-      put :update, id: page, page: { name: 'test' }, preview: 'Update and preview'
+      put :update, id: page,
+                   page: { name: 'test' },
+                   preview: 'Update and preview'
       response.should redirect_to preview_page_path(id: page.reload)
     end
 
