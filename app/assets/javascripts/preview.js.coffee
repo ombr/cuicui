@@ -14,7 +14,7 @@ $ ->
         $content.html(content)
       else
         $content.hide()
-      $('.content-drag',e).trigger('refresh')
+      $iframe.trigger('refresh')
 
   if $('.wmd-panel').length > 0
     converter1 = Markdown.getSanitizingConverter()
@@ -45,19 +45,24 @@ $ ->
     $iframe = $('iframe', e)
     $iframe.show()
     $drag = $('.content-drag',e)
-    ref_width = 1920
-    ref_height = 1080
+    sizes = $iframe.data('size').split('x')
+    ref_width = sizes[0]
+    ref_height = sizes[1]
     zoom = width/ref_width
     height = ref_height * zoom
 
     $content = null
     drag_width = 0
     drag_height = 0
+
+
     update_drag_size = ()->
+      $drag.attr('style', $('#image_content_css').val())
       drag_width = $content.outerWidth()*zoom
       drag_height = $content.outerHeight()*zoom
       $drag.width(drag_width)
       $drag.height(drag_height)
+      $drag.show()
     position_to_css = (pos, size, total, top, bottom)->
       if pos > total - size - pos
         "#{bottom}: #{((total-pos-size)/total*100)+'%'};#{top}: auto;"
@@ -81,10 +86,13 @@ $ ->
         $content = $($iframe.contents().find('.image-content'))
         update_drag_size()
         $drag.show()
-        $drag.on 'refresh', ()->
+        $iframe.on 'refresh', ()->
           update_drag_size()
         $drag.draggable(
-          containment: '.iframe-preview'
+          containment: $e
+          stop: ()->
+            $('.iframe-preview').each (i,e)=>
+              $('iframe', e).trigger('refresh')
           drag: (event, ui)->
             style = position_to_css(ui.position.top,
                                     drag_height,
@@ -96,7 +104,6 @@ $ ->
                                      $e.width(),
                                      'left',
                                      'right')
-            $content.attr('style', style)
             $('#image_content_css').trigger('change')
             $('#image_content_css').val(style)
         )
@@ -111,11 +118,15 @@ $ ->
     reload = true
     iframe_preview(e)
 
-  $('body').on('change', '#image_full', ()->
+  $('body').on 'change', '#image_content_css', ()->
+    $('.iframe-preview').each (i,e)=>
+      $iframe = $('iframe', e)
+      $($iframe.contents().find('.image-content')).attr('style', $(this).val())
+
+  $('body').on 'change', '#image_full', ()->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
       if $(this).val() == 'true'
         $($iframe.contents().find('.image')).addClass('full')
       else
         $($iframe.contents().find('.image')).removeClass('full')
-  )

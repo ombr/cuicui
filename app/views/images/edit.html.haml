@@ -26,5 +26,18 @@
         =link_to image_path(site_id: @site, id: @image), class: 'btn btn-danger', method: :delete, data: { confirm: t('.delete_confirm', default: 'Are you sure ?') } do
           .fa.fa-trash-o
           = t('.delete_image')
-    .col-md-8
-      =render 'pages/preview', url: s_image_path(page_id: @image.page, id: @image, no_cache: SecureRandom.uuid), drag_style: @image.content_css
+    .col-md-8#previews
+      .col-md-12
+        .col-md-7
+          %h3= t('.desktop')
+          =render 'pages/preview', url: s_image_path(page_id: @image.page, id: @image, no_cache: SecureRandom.uuid), drag_style: @image.content_css, size: '1920x1080', style: 'desktop'
+      .col-md-12
+        .col-md-5
+          %h3= t('laptop')
+          =render 'pages/preview', url: s_image_path(page_id: @image.page, id: @image, no_cache: SecureRandom.uuid), drag_style: @image.content_css, size: '1366x768', style: 'laptop'
+        .col-md-4
+          %h3= t('tablet')
+          =render 'pages/preview', url: s_image_path(page_id: @image.page, id: @image, no_cache: SecureRandom.uuid), drag_style: @image.content_css, size: '1010x660', style: 'tablet'
+        .col-md-2
+          %h3= t('phone')
+          =render 'pages/preview', url: s_image_path(page_id: @image.page, id: @image, no_cache: SecureRandom.uuid), drag_style: @image.content_css, size: '640x1136', style: 'phone'

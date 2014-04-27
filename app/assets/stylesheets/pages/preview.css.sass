@@ -1,10 +1,44 @@
 .screen
-  padding: 3% 3%
-  padding-bottom: 30%
-  background-image: url(image-path('monitor.svg'))
-  background-position: top
-  background-size: 100% auto
-  background-repeat: no-repeat
+  margin: 20px
+  &.desktop
+    border: 20px black solid
+    border-radius: 10px
+  &.laptop
+    border: 10px black solid
+    border-radius: 10px
+    position: relative
+    &:after
+      position: absolute
+      right: -5%
+      left: -5%
+      bottom: -25px
+      content: ''
+      border: 0.5em grey solid
+      border-radius: 0.5em
+  &.tablet
+    border: 1em black solid
+    border-radius: 0.7em
+    position: relative
+    &:after
+      position: absolute
+      right: -3%
+      top: 50%
+      content: ''
+      border: 0.3em grey solid
+      border-radius: 0.3em
+  &.phone
+    border: 5px black solid
+    border-radius: 5px
+    border-bottom: 25px black solid
+  .iframe-preview
+    background: black
+//   padding-bottom: 30%
+//   background-image: url(image-path('monitor.svg'))
+//   background-position: top
+//   background-size: 100% auto
+//   background-repeat: no-repeat
+// .content-drag
+//   background: blue
 
 .preview-disabled
   margin-top: 40%

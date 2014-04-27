@@ -1,5 +1,5 @@
-.screen
+.screen{class: defined?(style) ? style : ''}
   .preview-disabled= t('.no-preview', default: 'Javascript must be enabled to see the preview')
   .iframe-preview
-    %iframe{src: url}
+    %iframe{ src: url, 'data-size' => (defined?(size) ? size : '1920x1080') }
     .content-drag{style: (drag_style if defined?(drag_style))}
