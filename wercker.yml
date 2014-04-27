@@ -1,0 +1,41 @@
+box: wercker/rvm
+# Build definition
+# See the Rails section on the wercker devcenter:
+# http://devcenter.wercker.com/articles/languages/ruby/settingup-rails4.html
+# You will want to define your database as follows:
+services:
+  - wercker/postgresql
+# See more about services on our devcenter:
+# http://devcenter.wercker.com/articles/services/
+build:
+    steps:
+        # Uncomment this to force RVM to use a specific Ruby version
+        # - rvm-use:
+        #       version: 2.1.0
+
+        # A step that executes `bundle install` command
+        - bundle-install
+
+        # A step that prepares the database.yml using the database in services
+        - rails-database-yml
+
+        - script:
+               name: ENV
+               code: export SECRET_KEY_BASE=test
+
+        - script:
+               name: cloudinary
+               code: export CLOUDINARY_URL=cloudinary://123123123123:sdsfsdfsdfsdfsf@sadaasdasd
+        - script:
+               name: migrate
+               code: bundle exec rake db:migrate
+        # Add more steps here:
+        - script:
+               name: rspec
+               code: bundle exec rspec
+deploy:
+    steps:
+        - heroku-deploy
+        - script:
+            name: Update database
+            code: heroku run rake db:migrate -a $HEROKU_APP_NAME
