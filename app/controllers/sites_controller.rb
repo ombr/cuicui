@@ -53,6 +53,7 @@ class SitesController < ApplicationController
                                  :twitter_id,
                                  :facebook_id,
                                  :facebook_app_id,
-                                 :google_plus_id)
+                                 :google_plus_id,
+                                 :google_analytics_id)
   end
 end

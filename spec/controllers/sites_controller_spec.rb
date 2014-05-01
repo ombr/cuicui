@@ -116,6 +116,13 @@ describe SitesController do
       end.to change { site.reload.description }.to('test')
     end
 
+    it 'change the google analytics id' do
+      expect do
+        sign_in user
+        put :update, id: site, site: { google_analytics_id: 'UA-57611035-1' }
+      end.to change { site.reload.google_analytics_id }.to('UA-576110360')
+    end
+
     it 'redirect to edit' do
       sign_in user
       put :update, id: site, site: { title: 'test' }
