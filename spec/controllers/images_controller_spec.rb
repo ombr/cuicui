@@ -104,6 +104,13 @@ describe ImagesController do
       end.to change { image.reload.content_css }.to 'top: 20%;'
     end
 
+    it 'update the image_css' do
+      expect do
+        sign_in user
+        put :update, id: image, image: { image_css: 'top: 20%;' }
+      end.to change { image.reload.image_css }.to 'top: 20%;'
+    end
+
     it 'update the content' do
       expect do
         sign_in user

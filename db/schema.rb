@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427155851) do
+ActiveRecord::Schema.define(version: 20140503093524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140427155851) do
     t.text    "content",     default: ""
     t.text    "content_css", default: "bottom: 22.02204265611258%;top: auto;right: 13.927145245170877%;left: auto;"
     t.string  "title"
+    t.text    "image_css"
   end
 
   create_table "pages", force: true do |t|

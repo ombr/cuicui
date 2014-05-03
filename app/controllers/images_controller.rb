@@ -67,7 +67,8 @@ class ImagesController < ApplicationController
                                   :title,
                                   :full,
                                   :content,
-                                  :content_css)
+                                  :content_css,
+                                  :image_css)
   end
 
   private

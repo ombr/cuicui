@@ -118,6 +118,14 @@ $ ->
     reload = true
     iframe_preview(e)
 
+
+  $('body').on 'change', '#image_image_css', ()->
+    $('.iframe-preview').each (i,e)=>
+      $iframe = $('iframe', e)
+      $image = $($iframe.contents().find('.main-image'))
+      style = "background-image: url('#{$image.attr('src')}');" + $(this).val()
+      $image.attr('style', style)
+
   $('body').on 'change', '#image_content_css', ()->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
@@ -130,3 +138,8 @@ $ ->
         $($iframe.contents().find('.image')).addClass('full')
       else
         $($iframe.contents().find('.image')).removeClass('full')
+
+  $('body').on 'change', 'input.image-css-position', (e)->
+    $('#image_image_css').val(
+      $(this).data('style')+"background-position: #{$(this).val()};"
+    ).trigger('change')

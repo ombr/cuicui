@@ -12,7 +12,7 @@
         - if image.title
           %h1=image.title
         = image.content_rendered.html_safe
-      = image_tag image.image.url(:full), alt: image.legend, title: image.legend, class: 'main-image', itemprop: 'url', style: "background-image: url('#{image.image.url(:full)}')"
+      = image_tag image.image.url(:full), alt: image.legend, title: image.legend, class: 'main-image', itemprop: 'url', style: "background-image: url(#{image.image.url(:full)}); #{image.image_css}"
       .image-description{ style: ('display: none;' unless image.legend.present?) }
         %span{itemprop: 'description'}= image.legend
         -# if image.higher_items.first
