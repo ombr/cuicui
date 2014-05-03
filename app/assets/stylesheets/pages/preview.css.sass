@@ -1,31 +1,39 @@
 .screen
   margin: 20px
   &.desktop
-    border: 20px black solid
-    border-radius: 10px
+    border: 0.8em black solid
+    border-radius: 0.4em
   &.laptop
-    border: 10px black solid
-    border-radius: 10px
+    border: 1em black solid
+    border-radius: 1em
+    position: relative
+    margin-bottom: 3em
+    &:after
+      position: absolute
+      right: 50%
+      top: -0.5em
+      content: ''
+      border: 0.2em white solid
+      border-radius: 0.2em
+    &:before
+      position: absolute
+      right: -10%
+      left: -10%
+      bottom: -2.5em
+      content: ''
+      border: 0.7em black solid
+      border-radius: 0.3em
+  &.tablet
+    border: 1.5em black solid
+    border-radius: 1em
     position: relative
     &:after
       position: absolute
-      right: -5%
-      left: -5%
-      bottom: -25px
+      right: -1.2em
+      top: 50%
       content: ''
       border: 0.5em grey solid
       border-radius: 0.5em
-  &.tablet
-    border: 1em black solid
-    border-radius: 0.7em
-    position: relative
-    &:after
-      position: absolute
-      right: -3%
-      top: 50%
-      content: ''
-      border: 0.3em grey solid
-      border-radius: 0.3em
   &.phone
     border: 5px black solid
     border-radius: 5px
