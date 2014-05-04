@@ -21,8 +21,9 @@
   %h1 Usage
   %h3 Storage
   =progress(Cloudinary::Api.usage["storage"]["used_percent"])
-  %h3 Bandwith
-  =progress(Cloudinary::Api.usage["bandwidth"]["used_percent"])
+  /
+    %h3 Bandwith
+    =progress(Cloudinary::Api.usage["bandwidth"]["used_percent"])
 -#.col-md-4
   %h1 Account
   = simple_form_for(@current_user, url: user_registration_path, html: { :method => :put }) do |f|
