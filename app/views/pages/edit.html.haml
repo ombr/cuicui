@@ -28,7 +28,7 @@
         - params[:api_key] = Cloudinary.config.api_key
         - params.each do |name, value|
           = hidden_field_tag(name, value, id: nil) if value.present?
-        %input{type: :file, name: :file, multiple: true, class: 'input input-lg'}
+        %input{type: :file, name: :file, multiple: true}
         %input{name: :commit, type: :submit, value: 'Upload'}
       %ul.image-list
         -@page.images.each do |image|
