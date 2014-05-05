@@ -21,6 +21,15 @@ describe ImagesController do
       it 'uses http caching' do
         response.headers['ETag'].should be_present
       end
+
+      it 'invalidate caching on update' do
+        get :show, id: image
+        etag = response.headers['ETag']
+        image.touch
+        assigns(:image).reload
+        get :show, id: image
+        response.headers['ETag'].should_not eq etag
+      end
     end
 
     context 'with site.twitter_id defined' do

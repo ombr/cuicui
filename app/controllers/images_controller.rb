@@ -34,7 +34,7 @@ class ImagesController < ApplicationController
 
   def show
     # expires_in 5.minutes, public: true if Rails.env.production?
-    if stale? [@site, @page, @image]
+    stale?([@site, @page, @image])do
       if request.xhr?
         render layout: false
       else

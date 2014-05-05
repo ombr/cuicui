@@ -11,31 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503093524) do
+ActiveRecord::Schema.define(version: 20140505113049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "images", force: true do |t|
-    t.integer "page_id"
-    t.string  "image"
-    t.text    "exifs"
-    t.integer "position"
-    t.text    "legend"
-    t.boolean "full",        default: false
-    t.text    "content",     default: ""
-    t.text    "content_css", default: "bottom: 22.02204265611258%;top: auto;right: 13.927145245170877%;left: auto;"
-    t.string  "title"
-    t.text    "image_css"
+    t.integer  "page_id"
+    t.string   "image"
+    t.text     "exifs"
+    t.integer  "position"
+    t.text     "legend"
+    t.boolean  "full",        default: false
+    t.text     "content",     default: ""
+    t.text     "content_css", default: "bottom: 22.02204265611258%;top: auto;right: 13.927145245170877%;left: auto;"
+    t.string   "title"
+    t.text     "image_css"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pages", force: true do |t|
-    t.string  "name"
-    t.text    "description"
-    t.integer "site_id"
-    t.integer "position"
-    t.text    "description_html", default: ""
-    t.string  "theme",            default: "light"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "site_id"
+    t.integer  "position"
+    t.text     "description_html", default: ""
+    t.string   "theme",            default: "light"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sites", force: true do |t|
