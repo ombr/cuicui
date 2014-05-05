@@ -1,7 +1,7 @@
 # Image
 class Image < ActiveRecord::Base
   serialize :exifs
-  belongs_to :page
+  belongs_to :page, touch: true
   has_one :site, through: :page
 
   acts_as_list scope: :page
