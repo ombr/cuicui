@@ -1,4 +1,4 @@
-.image.col-md-12.col-fullscreen{itemscope: '', itemtype: 'http://schema.org/Photograph', id: "image-#{image.id}", class: ('full' if image.full), 'data-url'=> s_image_path(page_id: image.page, id: image)}
+.image.col-md-12.col-fullscreen{itemscope: '', itemtype: 'http://schema.org/Photograph', id: "image-#{image.id}", class: ('full' if image.full), 'data-url'=> s_image_path(page_id: image.page, id: image), 'data-title'=>image.seo_title}
   .viewer
     .content
       - unless defined? no_controls

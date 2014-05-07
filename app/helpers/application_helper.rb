@@ -49,6 +49,6 @@ module ApplicationHelper
   end
 
   def title
-    page_title app_name: (@site.title if @site)
+    page_title app_name: ''
   end
 end
