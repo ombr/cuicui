@@ -1,9 +1,10 @@
 .image.col-md-12.col-fullscreen{itemscope: '', itemtype: 'http://schema.org/Photograph', id: "image-#{image.id}", class: ('full' if image.full), 'data-url'=> s_image_path(page_id: image.page, id: image), 'data-title'=>image.seo_title}
   .viewer
     .content
-      - if image.title
-        %h1=image.title
-      = image.content_rendered.html_safe
+      .image-content{style: "#{'display: none;' unless image.content.present? || image.title.present?} #{image.content_css}"}
+        - if image.title.present?
+          %h1=image.title
+        = image.content_rendered.html_safe
       = image_tag image.image.url(:full), alt: image.legend, title: image.legend, class: 'main-image', itemprop: 'url', style: "background-image: url(#{image.image.url(:full)}); #{image.image_css}"
       .image-description{ style: ('display: none;' unless image.legend.present?) }
         %span{itemprop: 'description'}= image.legend
@@ -11,10 +12,13 @@
         - if image.lower_item
           =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'scroll control next preload', 'data-scroll'=> "#image-#{image.lower_item.id}" do
             %p next
+        -# else
+          =link_to s_image_path(page_id: image.page, id: image.page.images.first) , class: 'control restart', 'data-scroll'=> "#image-#{image.page.images.first}" do
+            %p Back to first image
+
         - if image.higher_item
           =link_to s_image_path(page_id: image.page, id: image.higher_item) , class: 'scroll control previous preload', 'data-scroll'=> "#image-#{image.higher_item.id}" do
             %p previous
-      .image-content{style: "#{'display: none;' unless image.content.present? || image.title.present?} #{image.content_css}"}
         -# if image.higher_items.first
           =link_to s_image_path(page_id: image.page, id: image.higher_items.first) , class: 'control first preload' do
             %p= '<<'
