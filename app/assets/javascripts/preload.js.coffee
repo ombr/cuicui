@@ -1,35 +1,49 @@
 $ ->
+  $window = $(window)
+  $body = $('body')
   return if window!=window.top
   $('body').addClass('js')
-  number_preload = 3
-  callback = ->
+  preload = ->
+    preloaded = $body.prop('scrollHeight') - $window.scrollTop() - $window.height()
+    return unless preloaded < 3 * $window.height()
     $('.next.preload').each (i,e)->
       $link = $ e
       $link.removeClass('preload')
       $.get($link.attr('href'), {xhr: true}, (data)->
         $image = $($link.parents('.image')[0])
-        $data = $(data)
+        $data = $(data).find('.image')
         $image.after($data)
-        $link.attr('href', '#' + $(data).attr('id'))
-        if number_preload > 0
-          number_preload--
-          callback()
-        $('body').trigger('loaded')
+        preload()
       , 'html')
-    $('.previous.preload').each (i,e)->
-      $link = $ e
-      target = '#'+$link.data('target-id')
-      if $(target).length > 0
-        $link.removeClass('preload')
-        $link.attr 'href', target
+    # $('.previous.preload').each (i,e)->
+    #   $link = $ e
+    #   target = '#'+$link.data('target-id')
+    #   if $(target).length > 0
+    #     $link.removeClass('preload')
+    #     $link.attr 'href', target
 
-  callback()
-  #$('body').on('loaded', callback)
-  $window = $(window)
+  preload()
+  #$('body').on('loaded', preload)
   $window.scroll (e)->
-    if $('body').prop('scrollHeight') - $window.scrollTop() < 6 * $window.height()
-      callback()
+    preload()
 
+  $('body').on 'click', 'a.scroll', (e)->
+    $e = $(this)
+    destination = $e.data('scroll')
+    if $(destination).length > 0
+      e.preventDefault()
+      History.pushState(
+        { anchor: destination },
+        $e.data('title'), $e.attr('href')
+      )
+      return false
+    true
+  History.Adapter.bind window,'statechange',->
+    state = History.getState()
+    if state.data.anchor
+      $destination = $(state.data.anchor)
+      if $destination.length > 0
+        $(window).scrollTop($destination.position().top)
 
 
 

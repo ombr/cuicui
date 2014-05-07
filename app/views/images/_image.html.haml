@@ -1,12 +1,12 @@
-.image.col-md-12.col-fullscreen{itemscope: '', itemtype: 'http://schema.org/Photograph', id: "image-#{image.id}", class: ('full' if image.full)}
+.image.col-md-12.col-fullscreen{itemscope: '', itemtype: 'http://schema.org/Photograph', id: "image-#{image.id}", class: ('full' if image.full), 'data-url'=> s_image_path(page_id: image.page, id: image)}
   .viewer
     .content
       - unless defined? no_controls
         - if image.lower_item
-          =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'control next preload' do
+          =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'scroll control next preload', 'data-scroll'=> "#image-#{image.lower_item.id}" do
             %p next
         - if image.higher_item
-          =link_to s_image_path(page_id: image.page, id: image.higher_item), class: 'control previous preload', :'data-target-id' => "image-#{image.higher_item.id}" do
+          =link_to s_image_path(page_id: image.page, id: image.higher_item) , class: 'scroll control previous preload', 'data-scroll'=> "#image-#{image.higher_item.id}" do
             %p previous
       .image-content{style: "#{'display: none;' unless image.content.present? || image.title.present?} #{image.content_css}"}
         - if image.title

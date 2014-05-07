@@ -2,6 +2,7 @@
 //= require jquery.hammer.min
 //= require jquery.mousewheel
 //= require jquery.zoomer
+//= require jquery.history
 //= require shortcuts
 //= require preload
 //= require navbar

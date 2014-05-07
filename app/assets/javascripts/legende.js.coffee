@@ -1,4 +1,5 @@
 $ ()->
+  return
   place_description = (image)->
     $img = $('img', image)
     if $img.height() == 0
