@@ -1,20 +1,42 @@
+get_image = ($link, callback)->
+  $link.removeClass('preload')
+  $.get($link.attr('href'), (data)->
+    $image = $(data).find('.image')
+    callback($image)
+  , 'html')
+
 $ ->
   $window = $(window)
+  $document = $(document)
+  threshold = $window.height() * 3
   $body = $('body')
   return if window!=window.top
   $('body').addClass('js')
   preload = ->
     preloaded = $body.prop('scrollHeight') - $window.scrollTop() - $window.height()
-    return unless preloaded < 3 * $window.height()
-    $('.next.preload').each (i,e)->
-      $link = $ e
-      $link.removeClass('preload')
-      $.get($link.attr('href'), {xhr: true}, (data)->
+    if preloaded < threshold
+      $('.next.preload').each (i,e)->
+        $link = $ e
         $image = $($link.parents('.image')[0])
-        $data = $(data).find('.image')
-        $image.after($data)
-        preload()
-      , 'html')
+        get_image $link, ($new_image)->
+          # $('.preload.previous', $new_image).removeClass('preload')
+          $image.after($new_image)
+          preload()
+
+    # This is a bad idea...
+    # if $window.scrollTop() < threshold and $body.prop('scrollHeight') > 2*$window.height()
+    #   $('.previous.preload').each (i,e)->
+    #     $link = $ e
+    #     $image = $($link.parents('.image')[0])
+    #     get_image $link, ($new_image)->
+    #       $('.preload.next', $new_image).removeClass('preload')
+    #       before_insert = $image.position().top
+    #       old_height = $(document).height()
+    #       old_scroll = $window.scrollTop()
+    #       $new_image = $image.before($new_image)
+    #       $new_image.css('height: 200px')
+    #       $document.scrollTop(old_scroll + $document.height() - old_height)
+    #       preload()
     # $('.previous.preload').each (i,e)->
     #   $link = $ e
     #   target = '#'+$link.data('target-id')
@@ -52,7 +74,6 @@ $ ->
 
 
   #closer = (from, to, step)->
-    #console.log "#{from} -> #{to} (#{step})"
     #if Math.abs(from-to) < step
       #return to
     #else
@@ -69,15 +90,12 @@ $ ->
       #if Math.abs($e.offset().top - scroll) < height/2
         #return false if $e.hasClass('active')
         #setTimeout(()->
-          #console.log '4 - END ANNIMATION !'
           #animation = false
         #,0)
         #animation = true
         #$e.addClass('active')
         #$destination = $e
-        #console.log "3 - ANIM START !"
         #next_step = Math.round(scroll-1)
-        #console.log next_step
         #$('body').scrollTop(next_step)
         #animation = false
         #$('body').animate(
@@ -86,7 +104,6 @@ $ ->
           #setTimeout(()->
             #$('.image').removeClass('active')
             #$e.addClass('active')
-            #console.log '4 - END ANNIMATION !'
             #animation = false
           #,0)
         #)
@@ -108,20 +125,12 @@ $ ->
     #if $destination != null
       #dest_top = $destination.offset().top
       #top = $window.scrollTop()
-      #console.log "MOVE ??"
-      #console.log top
-      #console.log next_step
       #if Math.abs(next_step - top) > 5
-        #console.log 'STOP ??'
         #$destination = null
-        #console.log "ERROR MOVE ?"
       #next_step = closer(top, dest_top, 5)
-      #console.log "MOVE TO : #{next_step}"
       #if next_step == dest_top
-        #console.log 'STOP !!'
         #$destination = null
       #setTimeout(()->
-        #console.log "WE MOVE :-D#{next_step}"
         #$('body').scrollTop(next_step)
       #,10)
     #else
