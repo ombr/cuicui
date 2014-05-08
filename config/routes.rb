@@ -1,7 +1,8 @@
 Cuicui::Application.routes.draw do
   devise_for :users, controllers: {
     sessions: :sessions,
-    registrations: :registrations
+    registrations: :registrations,
+    passwords: :passwords
   }
   root 'pages#first'
 

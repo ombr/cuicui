@@ -1,3 +1,4 @@
+# SessionsController
 class SessionsController < Devise::SessionsController
   layout 'admin'
   def new
