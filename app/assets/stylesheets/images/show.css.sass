@@ -19,11 +19,16 @@
     z-index: 100
     padding: 10px
   .image
+    &:last-child
+      margin-bottom: 0
     margin-bottom: 50px
 
+  .control.previous
+    display: block
   &.js
     .control
       display: none
+
 
 // Center image with arrows on big screens
 @media (min-width: $screen-md-min)

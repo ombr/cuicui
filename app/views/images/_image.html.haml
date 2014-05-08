@@ -22,10 +22,17 @@
         -# if image.higher_items.first
           =link_to s_image_path(page_id: image.page, id: image.higher_items.first) , class: 'control first preload' do
             %p= '<<'
-      -#.image-progress
-        -#%span.position=@image.position
-        -#%span.sep /
-        -#%span.total=@image.page.images.count
+  - if image.last?
+    %hr
+    %ul.nav.nav-pills.nav-stacked
+      - image.page.site.pages.each do |page|
+        %li{class: ('active' if page == image.page)}
+          = link_to page.name, page_path(page)
+
+  -#.image-progress
+    -#%span.position=@image.position
+    -#%span.sep /
+    -#%span.total=@image.page.images.count
 -content_for :page_title, image.seo_title
 -content_for :head do
   - description = image.seo_description

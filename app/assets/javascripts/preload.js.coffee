@@ -8,7 +8,7 @@ get_image = ($link, callback)->
 $ ->
   $window = $(window)
   $document = $(document)
-  threshold = $window.height() * 3
+  threshold = $window.height() * 6
   $body = $('body')
   return if window!=window.top
   $('body').addClass('js')

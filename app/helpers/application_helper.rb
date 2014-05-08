@@ -49,6 +49,6 @@ module ApplicationHelper
   end
 
   def title
-    page_title app_name: ''
+    page_title app_name: '', separator: ''
   end
 end
