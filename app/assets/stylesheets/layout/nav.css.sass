@@ -63,14 +63,18 @@ $menu-color: $gray-light
     width: 300px
 
 // End page nav :
-ul.nav.nav-pills.nav-stacked
-  background: $gray-lighter
-  a
-    &:hover
-      color: $gray-dark
-    text-decoration: none
-    color: $menu-color
-    text-transform: uppercase
+.last-image-menu
+  ul.nav
+    background: $gray-lighter
+    a
+      &:hover
+        color: $gray-dark
+      text-decoration: none
+      color: $menu-color
+      text-transform: uppercase
+@media (min-width: $screen-md-min)
+  .last-image-menu
+    display: none
 
 
 
