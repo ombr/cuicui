@@ -8,8 +8,7 @@ cache = (key, callback, process)->
       callback(data)
     else
       if cached != data
-        console.log 'A new version is available !'
-
+        window.localStorage.clear()
 
 get_image = ($link, callback)->
   $link.removeClass('preload')
