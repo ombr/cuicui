@@ -61,6 +61,7 @@ gem 'redcarpet'
 # gem 'dalli'
 # gem 'kgio'
 gem 'rack-cache'
+gem 'rack-offline'
 
 gem 'unicorn'
 gem 'rack-timeout'
