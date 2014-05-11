@@ -1,9 +1,9 @@
 cache = (key, callback, process)->
-  return process(key, callback) # unless window.localStorage
+  return process(key, callback) unless window.localStorage
   cached = window.localStorage.getItem(key)
   callback(cached) if cached != null
   process key, (data)->
-    window.localStorage[key] = data
+    window.localStorage.setItem(key, data)
     if cached == null
       callback(data)
     else
