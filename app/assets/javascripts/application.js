@@ -6,4 +6,5 @@
 //= require shortcuts
 //= require preload
 //= require navbar
+//= require history
 //= require image_active

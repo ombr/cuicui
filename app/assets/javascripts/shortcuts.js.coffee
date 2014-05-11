@@ -6,7 +6,6 @@ $ ->
     $items = $("#{destination}")
     click = false
     $items.each (i, e)->
-      console.log e
       $e = $(e)
       if Math.abs($e.offset().top - scroll) < height/2
         e.click()
@@ -16,16 +15,15 @@ $ ->
       $window.scrollTop('0px')
       click = true
     return click
-  $('body').hammer({
-    swipe: true
-    swipe_max_touches: 1
-    swipe_velocity: 0.01
-    }).on('swiperight',()->
-      go '.active .previous'
-    ).on('swipeleft',()->
-      go '.active .next'
-    )
-
+  # $('body').hammer({
+  #   swipe: true
+  #   swipe_max_touches: 1
+  #   swipe_velocity: 0.01
+  #   }).on('swiperight',()->
+  #     go '.active .previous'
+  #   ).on('swipeleft',()->
+  #     go '.active .next'
+  #   )
   $(document).keydown (event)->
     switch event.which
       when 32, 39, 13, 40
@@ -37,19 +35,16 @@ $ ->
         go 'home'
     return true
       #else
-        #console.log event.which
+        # console. log event.which
 
   delta = 0
   $('body').on 'mousewheel', (event)->
     return if $('body').css('overflow') != 'hidden'
     delta += event.deltaY * event.deltaFactor
     if Math.abs(delta) > 250
-      console.log 'GO !'
       if delta > 0
         go '.previous'
       else
-        go '.next'
+        unless go '.next'
+          go '.restart'
       delta = 0
-  $('body').on 'click', '.image', (e)->
-    if e.target.nodeName == 'IMG'
-      window.location = '#' + $(this).attr('id')

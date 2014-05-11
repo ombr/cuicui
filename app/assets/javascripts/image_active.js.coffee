@@ -3,7 +3,7 @@ $ ()->
   if $images[0]
     $($images[0]).addClass('active')
   $window = $(window)
-  $window.scroll (e)->
+  callback = ->
     scroll = $window.scrollTop()
     height = $window.height()
     $('.image').each (i, e)->
@@ -12,4 +12,8 @@ $ ()->
         return false if $e.hasClass('active')
         $('.image').removeClass('active')
         $e.addClass('active')
-        History.pushState({}, $e.data('title'), $e.data('url'))
+        History.replaceState({}, $e.data('title'), $e.data('url'))
+  timeout = null
+  $window.scroll ->
+    clearTimeout(timeout)
+    timeout = setTimeout callback, 500

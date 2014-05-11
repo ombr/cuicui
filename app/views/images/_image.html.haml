@@ -12,23 +12,22 @@
         - if image.lower_item
           =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'scroll control next preload', 'data-scroll'=> "#image-#{image.lower_item.id}" do
             %p next
-        -# else
-          =link_to s_image_path(page_id: image.page, id: image.page.images.first) , class: 'control restart', 'data-scroll'=> "#image-#{image.page.images.first}" do
-            %p Back to first image
-
         - if image.higher_item
           =link_to s_image_path(page_id: image.page, id: image.higher_item) , class: 'scroll control previous preload', 'data-scroll'=> "#image-#{image.higher_item.id}" do
             %p previous
+        -# if image.last? and image.page.images.count > 1
+          =link_to s_image_path(page_id: image.page, id: image.page.images.first) , class: 'control restart', 'data-scroll'=> "#image-#{image.page.images.first}" do
+            %p Back to first image
         -# if image.higher_items.first
           =link_to s_image_path(page_id: image.page, id: image.higher_items.first) , class: 'control first preload' do
             %p= '<<'
   - if image.last?
     .last-image-menu
-      %hr
+      = link_to '', site_pages_path(site_id: image.site), class: 'index'
       %ul.nav.nav-pills.nav-stacked
         - image.page.site.pages.each do |page|
           %li{class: ('active' if page == image.page)}
-            = link_to page.name, page_path(page)
+            = link_to page.name, s_page_path(page)
 
   -#.image-progress
     -#%span.position=@image.position

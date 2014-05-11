@@ -131,13 +131,48 @@
       p
         right: 0
         &:after
-          content: '\021B0'
+          content: '\027F2'
     .next
       right: 0
       p
         right: 0
     //.viewer
       //position: relative
+
+// End page nav :
+.last-image-menu
+  ul.nav
+    background: $gray-lighter
+    a
+      &:hover
+        color: $gray-dark
+      text-decoration: none
+      color: $menu-color
+      text-transform: uppercase
+
+@media (min-width: $screen-md-min)
+  .last-image-menu
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    &.enabled
+      .index
+        display: none
+      .nav
+        max-width: 300px
+        margin: 0 auto
+        display: block
+      background: rgba($gray-darker, 0.8)
+    .nav
+      display: none
+    .index
+      position: absolute
+      top: $menu-height
+      left: 20%
+      right: 0
+      bottom: 0
 
 //#image
   //height: 100%
