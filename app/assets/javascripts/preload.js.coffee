@@ -23,6 +23,7 @@ $ ->
   if window.applicationCache
     window.applicationCache.addEventListener 'updateready', ()->
       if (window.applicationCache.status == window.applicationCache.UPDATEREADY)
+        window.localStorage.clear()
         window.location.reload()
   return if window!=window.top
   $window = $(window)
