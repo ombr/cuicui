@@ -1,5 +1,5 @@
 !!!5
-%html{lang: (@site.language if @site) || 'en'}
+%html{lang: (@site.language if @site) || 'en', manifest: '/application.manifest'}
   %head
     %title= title
     %link{ rel: 'shortcut icon', href: cl_image_path('favicon', format: :ico)}
