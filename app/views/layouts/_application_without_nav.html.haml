@@ -20,9 +20,9 @@
         /
           = e.message
     - if @page
-      = stylesheet_link_tag "application-#{@page.theme}", media: 'all', 'data-turbolinks-track' => true
+      = stylesheet_link_tag "application-#{@page.theme}", media: 'all'
     - else
-      = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+      = stylesheet_link_tag 'application', media: 'all'
     -# if cookies[:css_loaded].present?
       - else
         %style{:'data-css' => asset_path('application.css')}

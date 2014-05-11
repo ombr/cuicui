@@ -1,16 +1,35 @@
+cache = (key, callback, process)->
+  return process(key, callback) # unless window.localStorage
+  cached = window.localStorage.getItem(key)
+  callback(cached) if cached != null
+  process key, (data)->
+    window.localStorage[key] = data
+    if cached == null
+      callback(data)
+    else
+      if cached != data
+        console.log 'A new version is available !'
+
+
 get_image = ($link, callback)->
   $link.removeClass('preload')
-  $.get($link.attr('href'), (data)->
-    $image = $(data).find('.image')
-    callback($image)
-  , 'html')
+  href = $link.attr('href')
+  cache href, callback, (href, process_callback)->
+    $.get(href, (data)->
+      image = $(data).find('.image').parent().html()
+      process_callback(image)
+    , 'html')
 
 $ ->
+  if window.applicationCache
+    window.applicationCache.addEventListener 'updateready', ()->
+      if (window.applicationCache.status == window.applicationCache.UPDATEREADY)
+        window.location.reload()
+  return if window!=window.top
   $window = $(window)
   $document = $(document)
   threshold = $window.height() * 6
   $body = $('body')
-  return if window!=window.top
   $('body').addClass('js')
   preload = ->
     preloaded = $body.prop('scrollHeight') - $window.scrollTop() - $window.height()
@@ -18,9 +37,9 @@ $ ->
       $('.next.preload').each (i,e)->
         $link = $ e
         $image = $($link.parents('.image')[0])
-        get_image $link, ($new_image)->
+        get_image $link, (new_image)->
           # $('.preload.previous', $new_image).removeClass('preload')
-          $image.after($new_image)
+          $image.after(new_image)
           preload()
 
     # This is a bad idea...
