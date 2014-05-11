@@ -41,7 +41,7 @@ Cuicui::Application.routes.draw do
         cache ActionController::Base.helpers.asset_path("entypo.#{ext}")
       end
       cache ActionController::Base.helpers.asset_path('application.js')
-      network '/'
+      network '*'
     end
     get '/application.manifest' => offline
   else
