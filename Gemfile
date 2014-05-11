@@ -36,8 +36,7 @@ gem 'cancan'
 gem 'turbolinks'
 gem 'sentry-raven'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'
 
 gem 'haml'
 
@@ -66,7 +65,6 @@ gem 'rack-offline'
 gem 'unicorn'
 gem 'rack-timeout'
 gem 'newrelic_rpm'
-gem 'foreman'
 
 group :production do
   gem 'rails_12factor'
@@ -83,6 +81,7 @@ group :test do
 end
 
 group :development do
+  gem 'foreman'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'pry-rails'
