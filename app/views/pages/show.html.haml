@@ -1,4 +1,5 @@
-= render 'layouts/nav', site: @site
+- content_for :nav do
+  = render 'layouts/nav', site: @site
 - if @image
   = render @image
 - else

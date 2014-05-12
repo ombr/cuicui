@@ -29,6 +29,7 @@
           =Rails.application.assets.find_asset('application.css').to_s.html_safe
     = csrf_meta_tags
   %body{ class: "#{body_class} #{("page-#{@page.name.parameterize} #{@page.theme}" unless @page.nil?)}" }
+    = yield :nav
     = yield
     - if @site && @site.google_analytics_id
       :javascript

@@ -1,18 +1,23 @@
+live_update = (data)->
+  $data = $(data)
+  $destination = $('#' + $data.attr('id'))
+  if $destination.length > 0
+    $destination.replaceWith($data)
+
 cache = (key, callback, process)->
   return process(key, callback) unless window.localStorage
   cached = window.localStorage.getItem(key)
   callback(cached) if cached != null
   process key, (data)->
-    window.localStorage.setItem(key, data)
     if cached == null
+      window.localStorage.setItem(key, data)
       callback(data)
     else
       if cached != data
-        window.localStorage.clear()
+        window.localStorage.setItem(key, data)
+        live_update(data)
 
-get_image = ($link, callback)->
-  $link.removeClass('preload')
-  href = $link.attr('href')
+get_image = (href, callback)->
   cache href, callback, (href, process_callback)->
     $.get(href, (data)->
       image = $(data).find('.image').parent().html()
@@ -20,13 +25,14 @@ get_image = ($link, callback)->
     , 'html')
 
 $ ->
-  if window.applicationCache
-    window.applicationCache.addEventListener 'updateready', ()->
-      if (window.applicationCache.status == window.applicationCache.UPDATEREADY)
-        window.localStorage.clear()
-        window.location.reload()
-  return if window!=window.top
   $window = $(window)
+  if window.applicationCache
+    $(window.applicationCache).bind 'updateready', ->
+      if (window.applicationCache.status == window.applicationCache.UPDATEREADY)
+        window.location.reload()
+  $window.bind 'storage',(e)->
+    live_update e.originalEvent.newValue
+  return if window!=window.top
   $document = $(document)
   threshold = $window.height() * 6
   $body = $('body')
@@ -37,7 +43,9 @@ $ ->
       $('.next.preload').each (i,e)->
         $link = $ e
         $image = $($link.parents('.image')[0])
-        get_image $link, (new_image)->
+        $link.removeClass('preload')
+        href = $link.attr('href')
+        get_image href, (new_image)->
           # $('.preload.previous', $new_image).removeClass('preload')
           $image.after(new_image)
           preload()
