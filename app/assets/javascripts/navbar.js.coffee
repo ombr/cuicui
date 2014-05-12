@@ -8,3 +8,11 @@ $ ->
     if $(e.target).parents('nav').length == 0
       $('#nav').removeClass('nav-show')
   $('#nav').removeClass('nojs')
+
+  $document = $(document)
+  setInterval(->
+    if $document.width() / window.innerWidth > 1.2
+      $('#nav').hide()
+    else
+      $('#nav').show()
+  ,500)
