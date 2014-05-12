@@ -13,4 +13,11 @@ $ ()->
         $('.image').removeClass('active')
         $e.addClass('active')
         History.replaceState({}, $e.data('title'), $e.data('url'))
-  setInterval callback, 500
+  didScroll = false
+  $(window).scroll ->
+    didScroll = true
+  setInterval(->
+    if didScroll
+      didScroll = false
+      callback()
+  ,250)

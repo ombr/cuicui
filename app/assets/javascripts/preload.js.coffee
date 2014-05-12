@@ -72,6 +72,12 @@ $ ->
     #     $link.attr 'href', target
 
   preload()
-  #$('body').on('loaded', preload)
-  setInterval preload, 500
-  timeout = null
+
+  didScroll = false
+  $(window).scroll ->
+    didScroll = true
+  setInterval(->
+    if didScroll
+      didScroll = false
+      preload()
+  ,250)
