@@ -13,7 +13,4 @@ $ ()->
         $('.image').removeClass('active')
         $e.addClass('active')
         History.replaceState({}, $e.data('title'), $e.data('url'))
-  timeout = null
-  $window.scroll ->
-    clearTimeout(timeout)
-    timeout = setTimeout callback, 500
+  setInterval callback, 500

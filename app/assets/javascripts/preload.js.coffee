@@ -73,7 +73,5 @@ $ ->
 
   preload()
   #$('body').on('loaded', preload)
+  setInterval preload, 500
   timeout = null
-  $window.scroll ->
-    clearTimeout(timeout)
-    timeout = setTimeout preload, 500
