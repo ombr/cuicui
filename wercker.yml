@@ -20,25 +20,25 @@ build:
         - rails-database-yml
 
         - script:
-               name: ENV
-               code: export SECRET_KEY_BASE=test
+             name: ENV
+             code: export SECRET_KEY_BASE=test
         - script:
-               name: Domain
-               code: export DOMAIN=test.com
+             name: Domain
+             code: export DOMAIN=test.com
         - script:
-               name: cloudinary
-               code: export CLOUDINARY_URL=cloudinary://123123123123:sdsfsdfsdfsdfsf@sadaasdasd
+             name: cloudinary
+             code: export CLOUDINARY_URL=cloudinary://123123123123:sdsfsdfsdfsdfsf@sadaasdasd
         - script:
-               name: migrate
-               code: bundle exec rake db:migrate
+             name: migrate
+             code: bundle exec rake db:migrate
         # Add more steps here:
         - script:
-               name: rspec
-               code: bundle exec rspec
+             name: rspec
+             code: bundle exec rspec
 deploy:
     steps:
-        - heroku-deploy
-          install-toolbelt: true
+        - heroku-deploy:
+              install-toolbelt: true
         - script:
-            name: Update database
-            code: heroku run rake db:migrate -a $HEROKU_APP_NAME
+              name: Update database
+              code: heroku run rake db:migrate -a $HEROKU_APP_NAME
