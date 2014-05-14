@@ -13,6 +13,7 @@ Cuicui::Application.routes.draw do
   resources :pages do
     member do
       get :preview
+      get :next
     end
     resources :images, only: [:show, :create] do
       collection do

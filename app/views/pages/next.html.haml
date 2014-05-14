@@ -1,0 +1,6 @@
+- content_for :nav do
+  = render 'layouts/nav', site: @site
+.image.next-page.col-md-12{id: "next-page-#{@page.id}", 'data-url'=> next_page_path(id: @page), 'data-title' => 'asdadasd'}
+  %ul.nav.nav-pills.nav-stacked
+    - @page.site.pages.each do |page|
+      %li= link_to page.name, s_page_path(id: page)

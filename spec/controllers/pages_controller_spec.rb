@@ -60,6 +60,19 @@ describe PagesController do
     end
 
   end
+
+  describe '#next' do
+    render_views
+    context 'default' do
+      before :each do
+        get :next, id: page
+      end
+      it_responds_200
+      it('assigns @site') { assigns(:site).should == page.site }
+      it('assigns @page') { assigns(:page).should == page }
+    end
+  end
+
   describe '#show' do
     render_views
     context 'default' do

@@ -1,3 +1,4 @@
+# PagesController
 class PagesController < ApplicationController
   load_and_authorize_resource only: [
     :edit,
@@ -5,12 +6,13 @@ class PagesController < ApplicationController
     :destroy,
     :update,
     :preview,
+    :next,
     :index
   ]
   load_and_authorize_resource :site,
                               through: :page,
                               singleton: true,
-                              only: [:edit, :show, :destroy, :update]
+                              only: [:edit, :show, :destroy, :update, :next]
   load_and_authorize_resource :site, only: [:new, :create]
 
   def index
@@ -38,6 +40,9 @@ class PagesController < ApplicationController
     render layout: 'admin'
   end
 
+  def next
+  end
+
   def edit
     render layout: 'admin'
   end
@@ -49,7 +54,8 @@ class PagesController < ApplicationController
 
   def create
     @page = @site.pages.build page_params
-    @page.description = I18n.t('pages.create.initial_description', page_name: page_params[:name])
+    @page.description = I18n.t('pages.create.initial_description',
+                               page_name: page_params[:name])
     if @page.save
       return redirect_to edit_page_path(id: @page)
     else
@@ -75,6 +81,9 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:name, :description, :description_html, :theme)
+    params.require(:page).permit(:name,
+                                 :description,
+                                 :description_html,
+                                 :theme)
   end
 end

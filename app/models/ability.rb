@@ -1,3 +1,4 @@
+# Ability
 class Ability
   include CanCan::Ability
 
@@ -8,6 +9,7 @@ class Ability
       can :manage, Image
     else
       can :read, Page
+      can :next, Page
       can :read, Site
       can :read, Image
     end

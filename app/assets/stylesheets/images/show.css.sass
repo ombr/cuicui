@@ -103,41 +103,21 @@
       bottom: 0
 
     .previous,
-    .next,
-    .restart
+    .next
       position: absolute
-      top: $menu-height
-      bottom: 0
-      width: 20%
-      z-index: 1
-      font-size: 0
-      p
-        position: absolute
-        top: 43%
-        padding: 0 10px
-        &:after
-          color: $text-color
-          font-size: 40px
-          font-family: entypo
-          content: '\0E766'
-    .previous
-      p
-        &:after
-          content: '\0E765'
       top: 0
+      bottom: 0
+      width: 40%
+      font-size: 0
+    .previous
+      cursor: inline-image("arrows/left.png"), pointer
+      cursor: image-url("arrows/left.png"), pointer\9
       left: 0
-    .restart
-      right: 0
-      p
-        right: 0
-        &:after
-          content: '\027F2'
     .next
       right: 0
-      p
-        right: 0
-    //.viewer
-      //position: relative
+      top: $menu-height
+      cursor: inline-image("arrows/right.png"), pointer
+      cursor: image-url("arrows/right.png"), pointer\9
 
 // End page nav :
 .last-image-menu
