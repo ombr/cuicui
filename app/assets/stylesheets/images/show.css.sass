@@ -16,6 +16,7 @@
   .image-content:empty
     display: none
   .image-content
+    word-break: break-word
     z-index: 100
     padding: 10px
   .image
@@ -130,6 +131,9 @@
       color: $menu-color
       text-transform: uppercase
 
+@media (max-width: $screen-md-min)
+  .image-content
+    max-width: 100% !important
 @media (min-width: $screen-md-min)
   .last-image-menu
     position: absolute

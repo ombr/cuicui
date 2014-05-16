@@ -65,12 +65,20 @@ $ ->
       $drag.show()
     position_to_css = (pos, size, total, top, bottom)->
       if pos > total - size - pos
-        "#{bottom}: #{((total-pos-size)/total*100)+'%'};#{top}: auto;"
-        #$e.css(top, 'auto')
+        change_css(bottom, ((total-pos-size)/total*100)+'%')
+        change_css(top, 'auto')
       else
-        "#{top}: #{(pos/total*100)+'%'};#{bottom}: auto;"
-        #$e.css(bottom, 'auto')
+        change_css(top, (pos/total*100)+'%')
+        change_css(bottom, 'auto')
 
+    change_css = (key, value)->
+      regexp = new RegExp("(.*#{key}:)[^;]*(;.*)")
+      style = $('#image_content_css').val()
+      if regexp.test(style)
+        style = style.replace regexp, "$1#{value}$2"
+      else
+        style += "#{key}:#{value};"
+      $('#image_content_css').val(style)
     $iframe.zoomer(
       width: width
       height: height
@@ -88,24 +96,34 @@ $ ->
         $drag.show()
         $iframe.on 'refresh', ()->
           update_drag_size()
-        $drag.draggable(
+        $drag.resizable(
+          handles: 'e, w',
+          minWidth: 200 * zoom
+          maxWidth: 800 * zoom
+          resize: (event, ui)->
+            style = $('#image_content_css').val()
+            width = ui.size.width / zoom
+            change_css('max-width', "#{width}px")
+            $('#image_content_css').trigger('change')
+            $('.iframe-preview').each (i,e)=>
+              $('iframe', e).trigger('refresh')
+        ).draggable(
           containment: $e
           stop: ()->
             $('.iframe-preview').each (i,e)=>
               $('iframe', e).trigger('refresh')
           drag: (event, ui)->
-            style = position_to_css(ui.position.top,
-                                    drag_height,
-                                    $e.height(),
-                                    'top',
-                                    'bottom')
-            style += position_to_css(ui.position.left,
-                                     drag_width,
-                                     $e.width(),
-                                     'left',
-                                     'right')
+            position_to_css(ui.position.top,
+                            drag_height,
+                            $e.height(),
+                            'top',
+                            'bottom')
+            position_to_css(ui.position.left,
+                            drag_width,
+                            $e.width(),
+                            'left',
+                            'right')
             $('#image_content_css').trigger('change')
-            $('#image_content_css').val(style)
         )
     )
 
