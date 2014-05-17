@@ -26,10 +26,21 @@
 
   .control.previous
     display: block
+  .restart
+    display: none
+    margin: 10px
+    margin-right: 60px
   &.js
     .control
       display: none
 
+@media (max-width: $screen-md-min)
+  .pages-show,
+  .pages-first,
+  .images-show
+    .image:first-child
+      .restart
+        display: block
 
 // Center image with arrows on big screens
 @media (min-width: $screen-md-min)

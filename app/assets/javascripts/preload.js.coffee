@@ -1,5 +1,6 @@
 live_update = (data)->
   $data = $(data)
+  $('a.preload',$data).removeClass('preload')
   $destination = $('#' + $data.attr('id'))
   if $destination.length > 0
     $destination.replaceWith($data)
@@ -40,7 +41,7 @@ $ ->
   preload = ->
     preloaded = $body.prop('scrollHeight') - $window.scrollTop() - $window.height()
     if preloaded < threshold
-      $('.next.preload').each (i,e)->
+      $('a.next.preload').each (i,e)->
         $link = $ e
         $image = $($link.parents('.image')[0])
         $link.removeClass('preload')
@@ -49,7 +50,6 @@ $ ->
           # $('.preload.previous', $new_image).removeClass('preload')
           $image.after(new_image)
           preload()
-
     # This is a bad idea...
     # if $window.scrollTop() < threshold and $body.prop('scrollHeight') > 2*$window.height()
     #   $('.previous.preload').each (i,e)->
@@ -64,20 +64,6 @@ $ ->
     #       $new_image.css('height: 200px')
     #       $document.scrollTop(old_scroll + $document.height() - old_height)
     #       preload()
-    # $('.previous.preload').each (i,e)->
-    #   $link = $ e
-    #   target = '#'+$link.data('target-id')
-    #   if $(target).length > 0
-    #     $link.removeClass('preload')
-    #     $link.attr 'href', target
 
   preload()
-
-  didScroll = false
-  $(window).scroll ->
-    didScroll = true
-  setInterval(->
-    if didScroll
-      didScroll = false
-      preload()
-  ,250)
+  setInterval(preload,250)
