@@ -45,6 +45,5 @@ $ ->
       if delta > 0
         go '.previous'
       else
-        unless go '.next'
-          go '.restart'
+        go '.next'
       delta = 0
