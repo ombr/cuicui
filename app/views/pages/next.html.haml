@@ -7,6 +7,7 @@
   %ul.next-page-nav
     - @page.site.pages.each do |page|
       %li{ class: (:active if page == @page) }
-        = link_to s_page_path(id: page) do
-          = image_tag page.images.first.image.url(:thumbnail), alt: page.name, title: page.name, class: 'img-responsive'
-          .page-name= page.name
+        - if page.images.count > 0
+          = link_to s_page_path(id: page) do
+            = image_tag page.images.first.image.url(:thumbnail), alt: page.name, title: page.name, class: 'img-responsive'
+            .page-name= page.name
