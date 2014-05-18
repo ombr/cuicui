@@ -1,5 +1,63 @@
+.next-page
+  h1
+    text-align: left
+  .previous
+    display: none
+  ul.next-page-nav
+    padding: 0
+    list-style-type: none
+    img
+      display: none
+    li.active a
+      background: $gray-darker
+    a
+      &:hover
+        color: $gray-lighter
+      text-transform: uppercase
+      padding-left: 15px
+      padding-top: 15px
+      height: $menu-height
+      display: block
+      text-decoration: none
+      color: $menu-color
+      background: $menu-background
 @media (min-width: $screen-md-min)
   .next-page
+    .previous
+      display: block
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      font-size: 0
+      width: 40%
+      cursor: inline-image("arrows/left.svg"), pointer
+      cursor: image-url("arrows/left.svg"), pointer\9
     text-align: center
+    ul.next-page-nav
+      padding-top: 50px
+      a
+        background: none
+        padding: 0
+        float: left
+        position: relative
+        height: auto
+      .page-name
+        padding: 10px
+        left: 0
+        right: 0
+        background: rgba($menu-background,0.5)
+
+        bottom: 0
+        position: absolute
+        // @include background-image(linear-gradient(to bottom, transparent 0%, $menu-background 100%))
+        @include transition(all 0.3s $ease-in-quad)
+      a:hover
+        .page-name
+          background: rgba($menu-background,0.9)
+          // @include background-image(linear-gradient(to bottom, transparent 0%, $menu-background 100%))
+      img
+        display: block
+      margin: 0 auto
+      width: 900px
     height: 100%
-    padding: 20%
