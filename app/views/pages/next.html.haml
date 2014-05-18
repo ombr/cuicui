@@ -1,13 +1,15 @@
 - content_for :nav do
   = render 'layouts/nav', site: @site
 .image.next-page.col-md-12.col-fullscreen{id: "next-page-#{@page.id}", 'data-url'=> next_page_path(id: @page), 'data-title' => 'asdadasd'}
-  = link_to_image(@page.images.last, class: 'previous') do
-    back
-  %h1= @page.site.title
-  %ul.next-page-nav
-    - @page.site.pages.each do |page|
-      %li{ class: (:active if page == @page) }
-        - if page.images.count > 0
-          = link_to s_page_path(id: page) do
-            = image_tag page.images.first.image.url(:thumbnail), alt: page.name, title: page.name, class: 'img-responsive'
-            .page-name= page.name
+  - if @page.images.last
+    = link_to_image(@page.images.last, class: 'previous') do
+      back
+  .content
+    %h1= @page.site.title
+    %ul.next-page-nav
+      - @page.site.pages.each do |page|
+        %li{ class: (:active if page == @page) }
+          - if page.images.count > 0
+            = link_to s_page_path(id: page) do
+              = image_tag page.images.first.image.url(:thumbnail), alt: page.name, title: page.name, class: 'img-responsive'
+              .page-name= page.name
