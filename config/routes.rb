@@ -1,9 +1,18 @@
+require 'resque_web'
+
 Cuicui::Application.routes.draw do
+
   devise_for :users, controllers: {
     sessions: :sessions,
     registrations: :registrations,
     passwords: :passwords
   }
+
+  # authenticated :user, lambda {|u| u.role == "admin"} do
+  authenticated :user do
+    mount ResqueWeb::Engine => '/resque'
+  end
+
   root 'pages#first'
 
   resources :sites, only: [:show, :edit, :update] do

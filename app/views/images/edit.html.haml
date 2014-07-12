@@ -7,7 +7,7 @@
       - @image.page.images.each do |image|
         %li{:'data-id' => image.id}
           = link_to edit_image_path(image) do
-            =image_tag image.image.url(:icon), title: image.legend
+            =image_tag image.url(:icon), title: image.legend, size: '80x40'
   .row
     .col-md-4
       = simple_form_for @image, html: { class: 'warn-on-exit' } do |f|

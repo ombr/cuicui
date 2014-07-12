@@ -11,5 +11,5 @@
         %li{ class: (:active if page == @page) }
           - if page.images.count > 0
             = link_to s_page_path(id: page) do
-              = image_tag page.images.first.image.url(:thumbnail), alt: page.name, title: page.name, class: 'img-responsive'
+              = image_tag page.images.first.url(:thumbnail), alt: page.name, title: page.name, class: 'img-responsive'
               .page-name= page.name

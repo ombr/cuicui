@@ -5,13 +5,25 @@ class Image < ActiveRecord::Base
   has_one :site, through: :page
 
   acts_as_list scope: :page
-  mount_uploader :image, ImageUploader
+  mount_uploader :cloudinary, CloudinaryUploader
 
   mount_uploader :original, FileUploader
-  #validates :original, is_uploaded: true
+  mount_uploader :image, ImageUploader
+  # validates :original, is_uploaded: true
+
+  def url(version)
+    if image.url
+      return image.url version
+    end
+    if cloudinary.url
+      return cloudinary.url version
+    else
+      original.url
+    end
+  end
 
   def process
-    image = original
+    self.image = open(original.url)
     save!
   end
 

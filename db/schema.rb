@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712084320) do
+ActiveRecord::Schema.define(version: 20140712120406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "images", force: true do |t|
     t.integer  "page_id"
-    t.string   "image"
+    t.string   "cloudinary"
     t.text     "exifs"
     t.integer  "position"
     t.text     "legend"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140712084320) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "original"
+    t.text     "image"
   end
 
   create_table "pages", force: true do |t|

@@ -9,7 +9,7 @@
         - if image.title.present?
           %h1=image.title
         = image.content_rendered.html_safe
-      = image_tag image.image.url(:full), alt: image.legend, title: image.legend, class: 'main-image', itemprop: 'url', style: "background-image: url(#{image.image.url(:full)}); #{image.image_css}"
+      = image_tag image.url(:full), alt: image.legend, title: image.legend, class: 'main-image', itemprop: 'url', style: "background-image: url(#{image.url(:full)}); #{image.image_css}"
       .image-description{ style: ('display: none;' unless image.legend.present?) }
         %span{itemprop: 'description'}= image.legend
       - unless defined? no_controls
@@ -43,7 +43,7 @@
 -content_for :page_title, image.seo_title
 -content_for :head do
   - description = image.seo_description
-  - image_url = image.image.url(:social)
+  - image_url = image.url(:social)
   %meta{property: 'og:title', content: title}
   %meta{property: 'og:image', content: image_url}
   %meta{property: 'og:description', content: description}
