@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe 'Main features', :feature do
-  it 'First user can register and create a page.' do
+  include CarrierWaveDirect::Test::CapybaraHelpers
+
+  it 'First user can register and create a page and upload a picture.' do
     user = create :user
     visit '/'
     fill_in 'Email', with: user.email
@@ -12,7 +14,9 @@ describe 'Main features', :feature do
     fill_in :page_name, with: 'First Page'
     click_on 'Create Page'
 
-    Page.first.name.should == 'First Page'
+    #Page.first.name.should == 'First Page'
+    attach_file_for_direct_upload Rails.root.join('spec', 'fixtures', 'image.jpg')
+    upload_directly(FileUploader.new, 'Upload')
   end
 
   it 'User can reset his password.' do

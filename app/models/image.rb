@@ -7,6 +7,14 @@ class Image < ActiveRecord::Base
   acts_as_list scope: :page
   mount_uploader :image, ImageUploader
 
+  mount_uploader :original, FileUploader
+  #validates :original, is_uploaded: true
+
+  def process
+    image = original
+    save!
+  end
+
   def legend
     return self[:legend] if self[:legend]
     return exifs['ImageDescription'] if exifs && exifs['ImageDescription']

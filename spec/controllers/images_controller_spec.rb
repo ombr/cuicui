@@ -1,10 +1,40 @@
 require 'spec_helper'
 
 describe ImagesController do
-  let(:image) { FactoryGirl.create :image }
+  let(:image) { create :image }
   let(:page) { image.page }
   let(:site) { page.site }
-  let(:user) { FactoryGirl.create :user }
+  let(:user) { create :user }
+
+
+  describe '#new' do
+    render_views
+    before :each do
+      get :new, page_id: page
+    end
+    it_responds_200
+  end
+
+  describe '#add' do
+    let(:page) { create :page }
+
+    include CarrierWaveDirect::Test::Helpers
+    it 'redirect_to edit_page_path' do
+      get :add, {
+        page_id: page,
+        key: sample_key(FileUploader.new)
+      }
+      response.should redirect_to edit_page_path(id: page)
+    end
+
+    it 'flash an error when key is invalid' do
+      get :add, {
+        page_id: page,
+      }
+      flash[:error].should_not be_nil
+    end
+
+  end
 
   describe '#show' do
     render_views

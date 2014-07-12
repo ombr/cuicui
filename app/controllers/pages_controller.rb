@@ -44,6 +44,8 @@ class PagesController < ApplicationController
   end
 
   def edit
+    @image = Image.new page: @page
+    @image.original.success_action_redirect = add_page_images_url(page_id: @page)
     render layout: 'admin'
   end
 

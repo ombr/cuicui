@@ -17,7 +17,32 @@ class ImagesController < ApplicationController
                               singleton: true,
                               only: [:show, :edit]
 
-  load_and_authorize_resource :page, only: [:create]
+  load_and_authorize_resource :page, only: [:create, :new, :add]
+
+  def new
+    @image = Image.new page: @page
+    respond_to do |format|
+      format.html do
+        @image.original.success_action_redirect = add_page_images_url(page_id: @page)
+        render layout: 'admin'
+      end
+      format.json do
+        @image.original.use_action_status = true
+        @image.original.success_action_status = '201'
+        render json: @image.original.params
+      end
+    end
+  end
+
+  def add
+    @image = Image.new(page: @page)
+    @uploader = @image.original
+    @uploader.key = params[:key]
+    @image.save
+    flash[:error] = @image.errors.full_messages.to_sentence unless @image.save
+    Resque.enqueue ImageConversion, @image.id
+    redirect_to edit_page_path(id: @page)
+  end
 
   def create
     return redirect_to edit_page_path(id: @page),

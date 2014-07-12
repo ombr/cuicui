@@ -15,8 +15,9 @@ Cuicui::Application.routes.draw do
       get :preview
       get :next
     end
-    resources :images, only: [:show, :create] do
+    resources :images, only: [:show, :create, :new] do
       collection do
+        get :add # Amazon S3 hack.
         get :create # Hack for cloudinary !!
       end
     end

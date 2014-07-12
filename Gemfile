@@ -28,6 +28,8 @@ gem 'jquery-cookie-rails'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'carrierwave'
+gem 'carrierwave_direct'
+gem 'resque'
 gem 'cloudinary', github: 'cloudinary/cloudinary_gem', branch: 'master'
 
 gem 'devise'
