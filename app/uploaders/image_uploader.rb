@@ -7,16 +7,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   process convert: :jpg
 
   def filename
-    if model
-      "#{File.basename(model.original.filename).parameterize}.jpg"
-    else
-      super
+    if original_filename.present?
+      if model
+        return "#{File.basename(model.original.filename).parameterize}.jpg"
+      end
     end
+    super
   end
 
   def store_dir
     if model
-      "#{CarrierWave::Uploader::Base.store_dir}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+      "#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     else
       super
     end
