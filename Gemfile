@@ -30,6 +30,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'carrierwave'
 gem 'carrierwave_direct'
 gem 'resque'
+gem 'heroku-api'
 gem 'resque-web', require: 'resque_web'
 gem 'mini_magick'
 gem 'cloudinary', github: 'cloudinary/cloudinary_gem', branch: 'master'
