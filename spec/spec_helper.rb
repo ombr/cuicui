@@ -49,4 +49,17 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   FactoryGirl.reload
+  Fog.mock!
+
+  def fog_directory
+    ENV['AWS_BUCKET']
+  end
+
+  connection = ::Fog::Storage.new(
+    aws_access_key_id: ENV['AWS_KEY'],
+    aws_secret_access_key: ENV['AWS_SECRET'],
+    provider: 'AWS'
+  )
+
+  connection.directories.create(key: fog_directory)
 end

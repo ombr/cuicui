@@ -1,6 +1,7 @@
 require 'resque_web'
 
 Cuicui::Application.routes.draw do
+  default_url_options host: ENV['DOMAIN']
 
   devise_for :users, controllers: {
     sessions: :sessions,

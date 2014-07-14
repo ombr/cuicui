@@ -186,6 +186,7 @@ GEM
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    phantomjs (1.9.2.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -363,6 +364,7 @@ DEPENDENCIES
   mini_magick
   newrelic_rpm
   pg
+  phantomjs
   pry-rails
   rack-cache
   rack-offline

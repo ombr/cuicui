@@ -9,17 +9,12 @@ class Image < ActiveRecord::Base
 
   mount_uploader :original, FileUploader
   mount_uploader :image, ImageUploader
-  # validates :original, is_uploaded: true
+  validates :original, is_uploaded: true
 
   def url(version)
-    if image.url
-      return image.url version
-    end
-    if cloudinary.url
-      return cloudinary.url version
-    else
-      original.url
-    end
+    return image.url version if image?
+    return cloudinary.url version if cloudinary?
+    original.url
   end
 
   def process

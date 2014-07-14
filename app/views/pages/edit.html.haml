@@ -17,7 +17,7 @@
         %small= t('.images_description')
       - url = page_images_url(site_id: @site, page_id: @page)
       = render 'images/form', image: @image
-      = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true, class: 'cloudinaryfileupload') do
+      -# = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true, class: 'cloudinaryfileupload') do
         .uploading{style: 'display: none'}
           .upload_in_progress
             %h1=t('.upload_in_progress')

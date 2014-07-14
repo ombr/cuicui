@@ -15,6 +15,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     super
   end
 
+  def default_url
+    ActionController::Base.helpers.asset_path("/#{version_name}_default.png")
+  end
+
   def store_dir
     if model
       "#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -38,7 +42,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :icon do
-    resize_to_fit(80, 40)
+    resize_to_fill(60, 60)
   end
 
   def optimize
