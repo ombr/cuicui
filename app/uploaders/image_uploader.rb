@@ -4,7 +4,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   storage :fog
 
-  process convert: :jpg
 
   def filename
     if original_filename.present?
@@ -48,6 +47,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   def optimize
     manipulate! do |img|
       return img unless img.mime_type.match(/image\/jpeg/)
+      img.auto_orient
       img.strip
       img.combine_options do |c|
         c.quality '80'

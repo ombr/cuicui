@@ -6,7 +6,7 @@ class ImageConversion
   @queue = :convert
   def self.perform(image_id)
     puts "PROCESS: #{image_id}"
-    image = Image.find(image_id)
-    image.process
+    image = Image.find_by_id(image_id)
+    image.process if image
   end
 end
