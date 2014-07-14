@@ -1,11 +1,27 @@
 # SitesController
 class SitesController < ApplicationController
-  load_and_authorize_resource only: [:show, :edit, :update]
+  load_and_authorize_resource only: [:show, :edit, :update, :new, :create]
+
+  def index
+    @sites = current_user.sites
+    render layout: 'admin'
+  end
+
+  def new
+    render layout: 'admin'
+  end
+
+  def create
+    @site.user = current_user
+    if @site.save
+      redirect_to new_site_page_path(site_id: @site)
+    else
+      render :new, layout: 'admin'
+    end
+  end
 
   def show
     @site = Site.find(params[:id])
-    first_page = @site.pages.first
-    redirect_to page_path(id: first_page) if first_page
   end
 
   def edit
@@ -46,6 +62,7 @@ class SitesController < ApplicationController
 
   def site_params
     params.require(:site).permit(:title,
+                                 :slug,
                                  :description,
                                  :css,
                                  :metas,

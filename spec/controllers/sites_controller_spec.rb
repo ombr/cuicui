@@ -137,6 +137,45 @@ describe SitesController do
 
   end
 
+  describe '#new' do
+    before :each do
+      sign_in user
+      get :new
+    end
+
+    it { response.code.should == '200' }
+    it('assigns @site') { assigns(:site).class.should eq Site }
+    it('render layout admin') { response.should render_template(:admin) }
+  end
+
+  describe '#create' do
+    it 'create a new site for the user' do
+      sign_in user
+      expect do
+        post :create, {
+          site: {
+            title: 'My Amazing site'
+          }
+        }
+      end.to change{Site.count}.by(1)
+      Site.last.user.should == user
+    end
+  end
+
+  describe '#index' do
+    let(:site) { create :site, user: user }
+    before :each do
+      sign_in user
+      create :site, user: nil
+      site
+      get :index
+    end
+
+    it { response.code.should == '200' }
+    it('assigns @sites') { assigns(:sites).should == [site] }
+    it('render layout admin') { response.should render_template(:admin) }
+  end
+
   describe '#show' do
 
     context 'without page' do

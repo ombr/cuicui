@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe ImagesController do
-  let(:image) { create :image }
-  let(:page) { image.page }
-  let(:site) { page.site }
+  let(:image) { create :image, page: page }
+  let(:page) { create :page, site: site }
+  let(:site) { create :site, user: user }
   let(:user) { create :user }
-
 
   describe '#new' do
     render_views
     before :each do
+      sign_in user
       get :new, page_id: page
     end
     it_responds_200

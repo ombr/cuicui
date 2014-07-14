@@ -1,4 +1,4 @@
-- if site
+- if site and not site.new_record?
   .col-md-12.col-fullscreen
 
     %nav#nav.navbar.navbar-inverse{:role => "navigation"}
@@ -9,12 +9,12 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to edit_site_path(id: site), class: 'navbar-brand' do
-            = ENV['DOMAIN']
+          = link_to sites_path, class: 'navbar-brand' do
+            SoSlide
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             = tab_link edit_site_path(id: site) do
-              .glyphicon.glyphicon-wrench
+              = site.title
             - site.pages.each do |page|
               - unless page.new_record?
                 - if @page and @page == page

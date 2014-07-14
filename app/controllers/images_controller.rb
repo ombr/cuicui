@@ -1,6 +1,6 @@
 # ImageController
 class ImagesController < ApplicationController
-  load_and_authorize_resource only: [:show, :destroy, :edit, :update]
+  load_and_authorize_resource only: [:show, :destroy, :edit, :update, :create]
   load_and_authorize_resource :page,
                               through: :image,
                               singleton: true,
@@ -10,7 +10,8 @@ class ImagesController < ApplicationController
                                 :move_lower,
                                 :destroy,
                                 :edit,
-                                :update
+                                :update,
+                                :create
                               ]
   load_and_authorize_resource :site,
                               through: :page,

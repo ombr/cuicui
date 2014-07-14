@@ -1,11 +1,12 @@
-.page
-  .content
-    .message
-      #description
-        = @description
-    .images.rotation
-      - %w[_CUI0430.jpg _DSF2952.jpg _IMG2537-Modifier.jpg _IMG6142.jpg _IMG6812.jpg _IMG7906.jpg _NK20653.jpg _NKA5531.jpg 110124_113608.jpg 120623_110242-2.jpg 120803_144131.jpg 121001_113238-2.jpg].each_with_index do |image, i|
-        .image{id: "test#{i}"}
-          .viewer
-            .content
-              = image_tag "http://looksnice.ch/cuicui/images/sllideshow%20index/#{image}", title: 'test'
+.col-md-12
+  %h1= @site.title
+  .row
+    - @site.pages.each do |page|
+      .col-md-12
+        %h3= page.name
+      .col-md-12
+        .row
+          - page.images.each do |image|
+            .col-md-3.col-lg-2.col-xs-4
+              = link_to s_image_path(page_id: page, id: image) do
+                = image_tag image.image.url(:thumbnail), alt: image.legend, title: image.legend, class: 'img-responsive'

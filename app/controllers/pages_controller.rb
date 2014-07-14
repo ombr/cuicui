@@ -7,7 +7,9 @@ class PagesController < ApplicationController
     :update,
     :preview,
     :next,
-    :index
+    :index,
+    :new,
+    :create
   ]
   load_and_authorize_resource :site,
                               through: :page,
@@ -16,11 +18,11 @@ class PagesController < ApplicationController
   load_and_authorize_resource :site, only: [:new, :create]
 
   def index
-    @site = Site.first
+    @site = load_site_from_host
   end
 
   def first
-    @site = Site.first
+    @site = load_site_from_host
     return redirect_to new_user_session_path if @site.nil?
     @page = @site.pages.first
     return redirect_to new_user_session_path if @page.nil?
@@ -56,8 +58,6 @@ class PagesController < ApplicationController
 
   def create
     @page = @site.pages.build page_params
-    @page.description = I18n.t('pages.create.initial_description',
-                               page_name: page_params[:name])
     if @page.save
       return redirect_to edit_page_path(id: @page)
     else

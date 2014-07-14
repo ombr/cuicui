@@ -1,8 +1,9 @@
 # Image
 class Image < ActiveRecord::Base
   serialize :exifs
-  belongs_to :page, touch: true
   has_one :site, through: :page
+  belongs_to :page, touch: true
+  has_one :user, through: :site
 
   acts_as_list scope: :page
   mount_uploader :cloudinary, CloudinaryUploader

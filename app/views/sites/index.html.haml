@@ -1,0 +1,22 @@
+.col-md-8.col-md-offset-2
+  %h1
+    = t('.sites')
+    %small
+      = current_user.email
+      = link_to t('.logout'), destroy_user_session_path, class: 'btn btn-link'
+  %table.table.table-striped
+    %thead
+      %tr
+        %td=t '.name'
+        %td=t '.pages'
+        %td=t '.images'
+    %tbody
+      - @sites.each do |site|
+        %tr
+          %td
+            = link_to edit_site_path(id: site) do
+              = site.title
+          %td= site.pages.count
+          %td= site.images.count
+  = link_to new_site_path, class: 'btn btn-primary' do
+    = t('.add')

@@ -36,6 +36,7 @@ gem 'mini_magick'
 gem 'cloudinary', github: 'cloudinary/cloudinary_gem', branch: 'master'
 gem 'phantomjs'
 
+gem 'friendly_id'
 gem 'devise'
 gem 'cancan'
 
