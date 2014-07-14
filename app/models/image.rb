@@ -9,9 +9,12 @@ class Image < ActiveRecord::Base
 
   mount_uploader :original, FileUploader
   mount_uploader :image, ImageUploader
+  mount_uploader :snapshot, ImageUploader
+
   validates :original, is_uploaded: true
 
   def url(version)
+    return snapshot.url(version) if snapshot? && [:thumbnail, :icon].include?(version)
     return image.url version if image?
     return cloudinary.url version if cloudinary?
     original.url
@@ -20,6 +23,20 @@ class Image < ActiveRecord::Base
   def process
     self.image = open(original.url)
     save!
+  end
+
+  def snapshot!
+    Tempfile.open(['snapshot', '.png'], Rails.root.join('tmp'), encoding: 'ascii-8bit') do |file|
+      Phantomjs.run(
+        Rails.root.join('lib', 'rasterize.js').to_s,
+        Rails.application.routes.url_helpers.page_image_url(page_id: page, id: id),
+        file.path,
+        '1920px*1080px',
+        '1'
+      )
+      self.snapshot = file
+      self.save!
+    end
   end
 
   def legend
