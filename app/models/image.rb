@@ -17,7 +17,7 @@ class Image < ActiveRecord::Base
   def url(version)
     return image.url version if image?
     return cloudinary.url version if cloudinary?
-    Rails.cache.fetch([image, 'original-url'], expires_in: 1.hour) do
+    Rails.cache.fetch([self, 'original-url'], expires_in: 1.hour) do
       original.url
     end
   end
