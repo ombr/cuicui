@@ -5,7 +5,7 @@ class Page < ActiveRecord::Base
   belongs_to :site, touch: true
   has_one :user, through: :site
 
-  has_many :images, -> { order('position') }
+  has_many :images, -> { order('position') }, dependent: :destroy
   acts_as_list scope: :site
 
   extend FriendlyId

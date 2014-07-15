@@ -1,8 +1,7 @@
 # Site
 class Site < ActiveRecord::Base
-
   belongs_to :user
-  has_many :pages, -> { order('position') }
+  has_many :pages, -> { order('position') }, dependent: :destroy
   has_many :images, through: :pages
   LANGUAGES = LanguageList::COMMON_LANGUAGES.map { |l| l.iso_639_1 }
   validates_inclusion_of :language,

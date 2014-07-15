@@ -4,7 +4,11 @@ class SitesController < ApplicationController
 
   def index
     @sites = current_user.sites
-    render layout: 'admin'
+    if @sites.count > 0
+      render layout: 'admin'
+    else
+      redirect_to new_site_path
+    end
   end
 
   def new

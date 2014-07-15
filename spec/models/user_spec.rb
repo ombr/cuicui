@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'cancan/matchers'
 
 describe User do
-  it { should have_many(:sites) }
+  it { should have_many(:sites).dependent(:destroy) }
 
   describe 'Abilities' do
     let(:user) { create :user }

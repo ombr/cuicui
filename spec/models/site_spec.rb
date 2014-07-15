@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Site do
 
-  it { should have_many(:pages) }
+  it { should have_many(:pages).dependent(:destroy) }
   it { should belong_to(:user) }
   it do
     should ensure_inclusion_of(:language)

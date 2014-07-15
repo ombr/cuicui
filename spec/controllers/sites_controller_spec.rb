@@ -157,23 +157,33 @@ describe SitesController do
             title: 'My Amazing site'
           }
         }
-      end.to change{Site.count}.by(1)
+      end.to change { Site.count }.by(1)
       Site.last.user.should == user
     end
   end
 
   describe '#index' do
-    let(:site) { create :site, user: user }
-    before :each do
-      sign_in user
-      create :site, user: nil
-      site
-      get :index
+    context 'with a site' do
+      let(:site) { create :site, user: user }
+      before :each do
+        sign_in user
+        create :site, user: nil
+        site
+        get :index
+      end
+
+      it { response.code.should == '200' }
+      it('assigns @sites') { assigns(:sites).should == [site] }
+      it('render layout admin') { response.should render_template(:admin) }
     end
 
-    it { response.code.should == '200' }
-    it('assigns @sites') { assigns(:sites).should == [site] }
-    it('render layout admin') { response.should render_template(:admin) }
+    context 'without a site' do
+      it 'redirect to site#new' do
+        sign_in user
+        get :index
+        response.should redirect_to new_site_path
+      end
+    end
   end
 
   describe '#show' do
