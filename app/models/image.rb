@@ -15,10 +15,11 @@ class Image < ActiveRecord::Base
   validates :original, is_uploaded: true
 
   def url(version)
-    return snapshot.url(version) if snapshot? && [:thumbnail, :icon].include?(version)
     return image.url version if image?
     return cloudinary.url version if cloudinary?
-    original.url
+    Rails.cache.fetch([image, 'original-url'], expires_in: 1.hour) do
+      original.url
+    end
   end
 
   def process
@@ -27,6 +28,7 @@ class Image < ActiveRecord::Base
   end
 
   def snapshot!
+    # return snapshot.url(version) if snapshot? && [:thumbnail, :icon].include?(version)
     Tempfile.open(['snapshot', '.png'], Rails.root.join('tmp'), encoding: 'ascii-8bit') do |file|
       Phantomjs.run(
         Rails.root.join('lib', 'rasterize.js').to_s,

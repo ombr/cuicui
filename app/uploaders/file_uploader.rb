@@ -7,7 +7,7 @@ class FileUploader < CarrierWave::Uploader::Base
   end
 
   def fog_authenticated_url_expiration
-    5.minutes
+    2.hour
   end
 
   def max_file_size
