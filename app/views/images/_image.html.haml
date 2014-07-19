@@ -1,9 +1,9 @@
-.image.col-md-12.col-fullscreen{itemscope: '', itemtype: 'http://schema.org/Photograph', id: "image-#{image.id}", class: ('full' if image.full), 'data-url'=> s_image_path(page_id: image.page, id: image), 'data-title'=>image.seo_title}
+.image.col-md-12.col-fullscreen{itemscope: '', itemtype: 'http://schema.org/Photograph', id: "image-#{image.id}", class: ('full' if image.full), 'data-url'=> image_url(image), 'data-title'=>image.seo_title}
   .viewer
     .content
       - unless defined? no_controls
         - unless image.first?
-          = link_to s_page_path(id: image.page) , class: 'restart btn btn-default' do
+          = link_to page_path(image.page) , class: 'restart btn btn-default' do
             &#8593;
       .image-content{style: "#{'display: none;' unless image.content.present? || image.title.present?} #{image.content_css}"}
         - if image.title.present?
@@ -14,13 +14,13 @@
         %span{itemprop: 'description'}= image.legend
       - unless defined? no_controls
         - if image.lower_item
-          =link_to s_image_path(page_id: image.page, id: image.lower_item) , class: 'scroll control next preload', 'data-scroll'=> "#image-#{image.lower_item.id}" do
+          =link_to image_url(image.lower_item) , class: 'scroll control next preload', 'data-scroll'=> "#image-#{image.lower_item.id}" do
             %p next
         - if image.last?
           =link_to next_page_path(image.page) , class: 'scroll control next preload', 'data-scroll'=> "#next-page-#{image.page.id}" do
             %p next
         - if image.higher_item
-          =link_to s_image_path(page_id: image.page, id: image.higher_item) , class: 'scroll control previous', 'data-scroll'=> "#image-#{image.higher_item.id}" do
+          =link_to image_url(image.higher_item) , class: 'scroll control previous', 'data-scroll'=> "#image-#{image.higher_item.id}" do
             %p previous
         -# if image.last? and image.page.images.count > 1
           =link_to s_image_path(page_id: image.page, id: image.page.images.first) , class: 'control restart', 'data-scroll'=> "#image-#{image.page.images.first}" do

@@ -4,7 +4,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   storage :fog
 
-
   def filename
     if original_filename.present?
       if model
