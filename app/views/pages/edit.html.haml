@@ -2,7 +2,7 @@
   .row
     .col-sm-12
       = simple_form_for @page, html: {class: 'edit_page warn-on-exit'} do |f|
-        =link_to page_path(site_id: @site, id: @page), class: 'btn btn-danger btn-lg', method: :delete, data: { confirm: t('.delete_confirm', default: 'Are you sure ?')}, title: t('.delete_page', default: 'Delete page') do
+        =link_to page_path(@page), class: 'btn btn-danger btn-lg', method: :delete, data: { confirm: t('.delete_confirm', default: 'Are you sure ?')}, title: t('.delete_page', default: 'Delete page') do
           .fa.fa-trash-o
         = f.input :name, input_html: { class: 'input-lg' }
         = f.input :theme, collection: %w[light dark], prompt: false, input_html: {class: 'input-lg'}
@@ -15,13 +15,13 @@
       %h3
         =t '.Images'
         %small= t('.images_description')
-      - url = page_images_url(site_id: @site, page_id: @page)
       = render 'images/form', image: @image
+      -# url = page_images_url(site_id: @site, page_id: @page)
       -# = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true, class: 'cloudinaryfileupload') do
         .uploading{style: 'display: none'}
           .upload_in_progress
             %h1=t('.upload_in_progress')
-            = t('.upload_in_progress_link_html', link: edit_page_path(id: @page), default: '<a href="%{link}" class="btn btn-success" target="_blank">Continue to edit the site</a>')
+            = t('.upload_in_progress_link_html', link: edit_page_path(@page), default: '<a href="%{link}" class="btn btn-success" target="_blank">Continue to edit the site</a>')
           .progress
             .progress-bar
         - params =  Cloudinary::Uploader.build_upload_params(callback: url, type: :private)

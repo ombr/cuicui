@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SitesController do
-  let(:site) { create :site }
+  let(:site) { create :site, user: user }
   let(:user) { create :user }
 
   describe '#robots' do
@@ -125,7 +125,7 @@ describe SitesController do
 
     it 'redirect to edit' do
       sign_in user
-      put :update, id: site, site: { title: 'test' }
+      put :update, id: site, site: { description: 'test' }
       response.should redirect_to edit_site_path(id: site)
     end
 
@@ -152,11 +152,7 @@ describe SitesController do
     it 'create a new site for the user' do
       sign_in user
       expect do
-        post :create, {
-          site: {
-            title: 'My Amazing site'
-          }
-        }
+        post :create, site: { title: 'My Amazing site' }
       end.to change { Site.count }.by(1)
       Site.last.user.should == user
     end
@@ -197,14 +193,6 @@ describe SitesController do
 
       it 'assigns @site' do
         assigns(:site).should == site
-      end
-    end
-
-    context 'with one page' do
-      it 'redirect to first_page if defined' do
-        page = FactoryGirl.create :page, site: site
-        get :show, id: site
-        response.should redirect_to page_path(id: page)
       end
     end
 

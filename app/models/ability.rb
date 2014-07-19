@@ -6,13 +6,20 @@ class Ability
     if user
       can :create, Site
       can :update, Site, user: user
-      can [:update, :create, :destroy], Page, user: user
-      can [:update, :destroy], Image, user: user
-      can :create, Image, user: user
+      can [:update, :create, :destroy, :preview], Page, user: user
+      can [:update, :destroy, :add], Image, user: user
+      can :create, Image do |image|
+        image.page.user == user
+      end
     end
-    can :read, Page
-    can :next, Page
-    can :read, Site
+    global_right(user)
+  end
+
+  private
+
+  def global_right(_user)
+    can [:read, :next, :first], Page
+    can [:read, :robots, :sitemap], Site
     can :read, Image
   end
 end

@@ -2,8 +2,8 @@
   .uploading{style: 'display: none'}
     .upload_in_progress
       %h1=t('.upload_in_progress')
-      -# = t('.upload_in_progress_link_html', link: edit_page_path(id: @page), default: '<a href="%{link}" class="btn btn-success" target="_blank">Continue to edit the site</a>')
+      -# = t('.upload_in_progress_link_html', link: edit_page_path(@page), default: '<a href="%{link}" class="btn btn-success" target="_blank">Continue to edit the site</a>')
     .progress
       .progress-bar.active.progress-bar-success.progress-bar-striped
-  = f.file_field :original, data: { new_url: new_page_image_path(page_id: image.page), add_url: add_page_images_path(page_id: image.page) }
+  = f.file_field :original, data: { new_url: new_site_page_image_path(site_id: image.page.site, page_id: image.page), add_url: add_site_page_images_path(site_id: image.page.site, page_id: image.page) }
   = f.submit 'Upload'

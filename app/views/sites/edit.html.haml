@@ -17,7 +17,7 @@
         = t '.warning', default: 'It can take some time before the favicon gets updated...'
       = f.input :css, input_html: { rows: 30}
     = f.submit class: 'btn btn-primary'
-.col-md-4
+-#.col-md-4
   %h1 Usage
   %h3 Storage
   =progress(Cloudinary::Api.usage["storage"]["used_percent"])

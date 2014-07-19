@@ -11,6 +11,13 @@ class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders, :history, :scoped], scope: :site
 
+  after_validation :move_friendly_id_error_to_name
+  def move_friendly_id_error_to_name
+    errors.add(:name,
+               *errors.delete(:friendly_id)
+              ) if errors[:friendly_id].present?
+  end
+
   def should_generate_new_friendly_id?
     name_changed?
   end

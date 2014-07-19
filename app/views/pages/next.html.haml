@@ -1,6 +1,6 @@
 - content_for :nav do
   = render 'layouts/nav', site: @site
-.image.next-page.col-md-12.col-fullscreen{id: "next-page-#{@page.id}", 'data-url'=> next_page_path(id: @page), 'data-title' => 'asdadasd'}
+.image.next-page.col-md-12.col-fullscreen{id: "next-page-#{@page.id}", 'data-url'=> next_page_path(@page), 'data-title' => 'asdadasd'}
   - if @page.images.last
     = link_to_image(@page.images.last, class: 'previous') do
       back
@@ -10,6 +10,6 @@
       - @page.site.pages.each do |page|
         %li{ class: (:active if page == @page) }
           - if page.images.count > 0
-            = link_to s_page_path(id: page) do
+            = link_to page_path(page) do
               = image_tag page.images.first.url(:thumbnail), alt: page.name, title: page.name, class: 'img-responsive'
               .page-name= page.name

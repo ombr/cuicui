@@ -14,10 +14,9 @@ module ApplicationHelper
   end
 
   def preview_link
-    if @image && @image.id
-      return s_image_url(page_id: @image.page, id: @image, subdomain: @image.site.friendly_id)
-    end
-    return s_page_url(id: @page, subdomain: @page.site.friendly_id) if @page && @page.id
+    return image_path(@image) if @image && @image.id
+    return page_path(@page) if @page && @page.id
+    return see_site_path(@site) if @site && @site.id
     root_path
   end
 

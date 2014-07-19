@@ -28,7 +28,7 @@
                         = f.input :position, as: :hidden, input_html: { value: page.position-1 }
                         = f.submit '<', class: 'btn btn-link'
                   %li.active
-                    = link_to page.name, edit_page_path(id: page)
+                    = link_to page.name, edit_page_path(page)
                   %li.active
                     - unless page.last?
                       = simple_form_for page, method: :put do |f|
@@ -39,7 +39,7 @@
                       -link_to move_lower_page_path(page), method: :put do
                         %span.glyphicon.glyphicon-chevron-right
                 - else
-                  = tab_link(edit_page_path(id: page)) do
+                  = tab_link(edit_page_path(page)) do
                     = page.name
             = tab_link(new_site_page_path(site_id: site), html_options: { title: t('pages.add')}) do
               .glyphicon.glyphicon-plus
@@ -52,7 +52,7 @@
             %li
               = link_to preview_link, target: '_blank', title: t('.see'), class: 'preview' do
                 .btn.btn-success
-                  .fa.fa-eye
+                  .fa.fa-external-link
                   = t '.see'
             %li
               = link_to destroy_user_session_path, class: '', title: 'log out' do

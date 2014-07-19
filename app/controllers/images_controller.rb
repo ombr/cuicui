@@ -1,32 +1,13 @@
 # ImageController
 class ImagesController < ApplicationController
-  load_and_authorize_resource only: [:show, :destroy, :edit, :update, :create]
-  load_and_authorize_resource :page,
-                              through: :image,
-                              singleton: true,
-                              only: [
-                                :show,
-                                :move_higher,
-                                :move_lower,
-                                :destroy,
-                                :edit,
-                                :update,
-                                :create
-                              ]
-  load_and_authorize_resource :site,
-                              through: :page,
-                              singleton: true,
-                              only: [:show, :edit]
+  before_filter :load_site_id_from_host, only: [:show]
 
-  load_and_authorize_resource :page, only: [:create, :new, :add]
+  load_and_authorize_resource :site
+  load_and_authorize_resource :page, through: :site
+  load_and_authorize_resource through: :page
 
   def new
-    @image = Image.new page: @page
     respond_to do |format|
-      format.html do
-        @image.original.success_action_redirect = add_page_images_url(page_id: @page)
-        render layout: 'admin'
-      end
       format.json do
         @image.original.use_action_status = true
         @image.original.success_action_status = '201'
@@ -42,11 +23,11 @@ class ImagesController < ApplicationController
     @image.save
     flash[:error] = @image.errors.full_messages.to_sentence unless @image.save
     Resque.enqueue ImageConversion, @image.id
-    redirect_to edit_page_path(id: @page)
+    redirect_to edit_page_path(@page)
   end
 
   def create
-    return redirect_to edit_page_path(id: @page),
+    return redirect_to edit_page_path(@page),
                        flash: { error: params[:error] } if params[:error]
     @image = @page.images.build
     @image.image = cloudinary_path
@@ -55,7 +36,7 @@ class ImagesController < ApplicationController
     @images = @page.images
     # with cloudinary we need to force the format ;-(
     return render 'create.js' if request.xhr?
-    redirect_to edit_page_path(id: @page)
+    redirect_to edit_page_path(@page)
   end
 
   def show
@@ -73,9 +54,9 @@ class ImagesController < ApplicationController
     if params[:image] && params[:image][:position]
       @image.insert_at(params[:image][:position].to_i)
       @image.save!
-      return redirect_to edit_page_path(id: @image.page)
+      return redirect_to edit_page_path(@image.page)
     end
-    redirect_to edit_image_path(id: @image)
+    redirect_to edit_image_path(@image)
   end
 
   def destroy

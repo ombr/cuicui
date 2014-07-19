@@ -8,5 +8,5 @@
         .row
           - page.images.each do |image|
             .col-md-3.col-lg-2.col-xs-4
-              = link_to s_image_path(page_id: page, id: image) do
+              = link_to image_path(image) do
                 = image_tag image.image.url(:thumbnail), alt: image.legend, title: image.legend, class: 'img-responsive'

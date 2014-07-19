@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ImagesController do
+  include RouteHelper
   let(:image) { create :image, page: page }
   let(:page) { create :page, site: site }
   let(:site) { create :site, user: user }
@@ -10,27 +11,25 @@ describe ImagesController do
     render_views
     before :each do
       sign_in user
-      get :new, page_id: page
+      get :new, site_id: site, page_id: page, format: :json
     end
     it_responds_200
   end
 
   describe '#add' do
-    let(:page) { create :page }
-
     include CarrierWaveDirect::Test::Helpers
     it 'redirect_to edit_page_path' do
-      get :add, {
-        page_id: page,
-        key: sample_key(FileUploader.new)
-      }
-      response.should redirect_to edit_page_path(id: page)
+      sign_in user
+      get :add, site_id: site,
+                page_id: page,
+                key: sample_key(FileUploader.new)
+      response.should redirect_to edit_page_path(page)
     end
 
     it 'flash an error when key is invalid' do
-      get :add, {
-        page_id: page,
-      }
+      sign_in user
+      get :add, site_id: site,
+                page_id: page
       flash[:error].should_not be_nil
     end
 
@@ -41,7 +40,7 @@ describe ImagesController do
 
     context 'render_view' do
       before :each do
-        get :show, id: image
+        get :show, site_id: site, page_id: page, id: image
       end
       it_responds_200
       it('assigns site') { assigns(:site).should == site }
@@ -53,11 +52,11 @@ describe ImagesController do
       end
 
       it 'invalidate caching on update' do
-        get :show, id: image
+        get :show, site_id: site, page_id: page, id: image
         etag = response.headers['ETag']
         image.touch
         assigns(:image).reload
-        get :show, id: image
+        get :show, site_id: site, page_id: page, id: image
         response.headers['ETag'].should_not eq etag
       end
     end
@@ -65,7 +64,7 @@ describe ImagesController do
     context 'with site.twitter_id defined' do
       it 'render the meta' do
         site.update(twitter_id: '@ombr')
-        get :show, id: image
+        get :show, site_id: site, page_id: page, id: image
         expect(
           response.body
         ).to include "<meta content='@ombr' property='twitter:site'>"
@@ -78,7 +77,7 @@ describe ImagesController do
     context 'with site.facebook_id defined' do
       it 'render the meta' do
         site.update(facebook_id: 'ombr')
-        get :show, id: image
+        get :show, site_id: site, page_id: page, id: image
         expect(
           response.body
         ).to include "<meta content='ombr' property='fb:admins'>"
@@ -88,7 +87,7 @@ describe ImagesController do
     context 'with site.google_plus_id defined' do
       it 'render the meta' do
         site.update(google_plus_id: '1212')
-        get :show, id: image
+        get :show, site_id: site, page_id: page, id: image
         expect(
           response.body
         ).to include(
@@ -100,7 +99,7 @@ describe ImagesController do
     context 'with site.facebook_app_id defined' do
       it 'render the meta' do
         site.update(facebook_app_id: '1212')
-        get :show, id: image
+        get :show, site_id: site, page_id: page, id: image
         expect(
           response.body
         ).to include "<meta content='1212' property='og:app_id'>"
@@ -115,7 +114,7 @@ describe ImagesController do
     end
 
     before :each do
-      get :edit, id: image
+      get :edit, site_id: site, page_id: page, id: image
     end
 
     it_responds_200
@@ -132,42 +131,60 @@ describe ImagesController do
 
     it 'redirect to edit' do
       sign_in user
-      put :update, id: image, image: { legend: 'test' }
-      response.should redirect_to edit_image_path(id: image.reload)
+      put :update, site_id: site,
+                   page_id: page,
+                   id: image,
+                   image: { legend: 'test' }
+      response.should redirect_to edit_image_path(image.reload)
     end
 
     it 'update the content_css' do
       expect do
         sign_in user
-        put :update, id: image, image: { content_css: 'top: 20%;' }
+        put :update, site_id: site,
+                     page_id: page,
+                     id: image,
+                     image: { content_css: 'top: 20%;' }
       end.to change { image.reload.content_css }.to 'top: 20%;'
     end
 
     it 'update the image_css' do
       expect do
         sign_in user
-        put :update, id: image, image: { image_css: 'top: 20%;' }
+        put :update, site_id: site,
+                     page_id: page,
+                     id: image,
+                     image: { image_css: 'top: 20%;' }
       end.to change { image.reload.image_css }.to 'top: 20%;'
     end
 
     it 'update the content' do
       expect do
         sign_in user
-        put :update, id: image, image: { content: 'test' }
+        put :update, site_id: site,
+                     page_id: page,
+                     id: image,
+                     image: { content: 'test' }
       end.to change { image.reload.content }.to 'test'
     end
 
     it 'update the legend' do
       expect do
         sign_in user
-        put :update, id: image, image: { legend: 'test' }
+        put :update, site_id: site,
+                     page_id: page,
+                     id: image,
+                     image: { legend: 'test' }
       end.to change { image.reload.legend }.to 'test'
     end
 
     it 'update the title' do
       expect do
         sign_in user
-        put :update, id: image, image: { title: 'test' }
+        put :update, site_id: site,
+                     page_id: page,
+                     id: image,
+                     image: { title: 'test' }
       end.to change { image.reload.title }.to 'test'
     end
 
@@ -175,13 +192,19 @@ describe ImagesController do
       it 'update the position using insert_at' do
         Image.any_instance.should_receive(:insert_at).with(2)
         sign_in user
-        put :update, id: image, image: { position: 2 }
+        put :update, site_id: site,
+                     page_id: page,
+                     id: image,
+                     image: { position: 2 }
       end
 
       it 'redirect to edit page' do
         sign_in user
-        put :update, id: image, image: { position: 2 }
-        response.should redirect_to edit_page_path(id: image.page)
+        put :update, site_id: site,
+                     page_id: page,
+                     id: image,
+                     image: { position: 2 }
+        response.should redirect_to edit_page_path(image.page)
       end
 
     end
@@ -189,7 +212,11 @@ describe ImagesController do
     it 'update full' do
       expect do
         sign_in user
-        put :update, id: image, image: { full: true }
+
+        put :update, site_id: site,
+                     page_id: page,
+                     id: image,
+                     image: { full: true }
       end.to change { image.reload.full }.to true
     end
   end
@@ -200,12 +227,12 @@ describe ImagesController do
     end
 
     it 'delete the image' do
-      delete :destroy, id: image
+      delete :destroy, site_id: site, page_id: page, id: image
       Image.find_by_id(image.id).should be_nil
     end
 
     it 'redirect to edit_page' do
-      delete :destroy, id: image
+      delete :destroy, site_id: site, page_id: page, id: image
       response.should redirect_to edit_page_path page
     end
   end

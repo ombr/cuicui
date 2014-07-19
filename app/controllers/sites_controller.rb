@@ -1,6 +1,7 @@
 # SitesController
 class SitesController < ApplicationController
-  load_and_authorize_resource only: [:show, :edit, :update, :new, :create]
+  before_filter :load_site_id_from_host, only: [:show, :sitemap, :robots]
+  load_and_authorize_resource
 
   def index
     @sites = current_user.sites
@@ -65,16 +66,9 @@ class SitesController < ApplicationController
   end
 
   def site_params
-    params.require(:site).permit(:title,
-                                 :slug,
-                                 :description,
-                                 :css,
-                                 :metas,
-                                 :language,
-                                 :twitter_id,
-                                 :facebook_id,
-                                 :facebook_app_id,
-                                 :google_plus_id,
+    params.require(:site).permit(:title, :slug, :description, :css, :metas,
+                                 :language, :twitter_id, :facebook_id,
+                                 :facebook_app_id, :google_plus_id,
                                  :google_analytics_id)
   end
 end
