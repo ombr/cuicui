@@ -1,7 +1,15 @@
 # RouteHelper
 module RouteHelper
+  def site_url(site, *__args)
+    root_url(subdomain: site)
+  end
+
   def see_site_path(site, *_args)
     root_url(subdomain: site)
+  end
+
+  def page_url(page, *_args)
+    s_page_url(subdomain: page.site, id: page)
   end
 
   def page_path(page, *_args)
@@ -20,8 +28,14 @@ module RouteHelper
     edit_image_url(site_id: image.site, id: image, page_id: image.page)
   end
 
-  def image_path(image, *_args)
+  def image_url(image, *_args)
     s_image_url(subdomain: image.site, id: image, page_id: image.page)
+  end
+
+  def image_path(image, *_args)
+    site_page_image_path(id: image,
+                         page_id: image.page,
+                         site_id: image.site)
   end
 
   def preview_image_path(image, *_args)
