@@ -9,7 +9,7 @@ class Page < ActiveRecord::Base
   acts_as_list scope: :site
 
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders, :history, :scoped], scope: :site
+  friendly_id :slug_candidates, use: [:slugged, :finders, :history, :scoped], scope: :site
 
   after_validation :move_friendly_id_error_to_name
   def move_friendly_id_error_to_name
@@ -39,5 +39,15 @@ class Page < ActiveRecord::Base
         i += 1
       end
     end
+  end
+
+  private
+
+  def slug_candidates
+    [
+      :name,
+      [:name, I18n.l(Date.today)],
+      [:name, I18n.l(Time.zone.now)]
+    ]
   end
 end
