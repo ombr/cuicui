@@ -221,7 +221,7 @@ describe ImagesController do
     end
   end
 
-  describe '#delete' do
+  describe '#destroy' do
     before :each do
       sign_in user
     end

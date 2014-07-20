@@ -47,7 +47,8 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page.destroy!
+    @page.update site: nil
+    Resque.enqueue ObjectDeletion, 'Page', @page.id
     redirect_to new_site_page_path(site_id: @site)
   end
 

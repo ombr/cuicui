@@ -5,7 +5,7 @@ class Ability
   def initialize(user)
     if user
       can :create, Site
-      can :update, Site, user: user
+      can [:update, :destroy], Site, user: user
       can [:update, :create, :destroy, :preview], Page, user: user
       can [:update, :destroy, :add], Image, user: user
       can :create, Image do |image|

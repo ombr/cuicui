@@ -60,7 +60,8 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    @image.destroy
+    @image.update page: nil
+    Resque.enqueue ObjectDeletion, 'Image', @image.id
     redirect_to edit_page_path @page
   end
 

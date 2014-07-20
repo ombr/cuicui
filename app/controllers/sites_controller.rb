@@ -65,6 +65,12 @@ class SitesController < ApplicationController
     render layout: false, formats: [:xml]
   end
 
+  def destroy
+    @site.update user: nil
+    Resque.enqueue ObjectDeletion, 'Site', @site.id
+    redirect_to sites_path
+  end
+
   def site_params
     params.require(:site).permit(:title, :slug, :description, :css, :metas,
                                  :language, :twitter_id, :facebook_id,

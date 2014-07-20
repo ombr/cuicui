@@ -27,3 +27,4 @@ en:
       success: 'The page has been updated !'
     edit:
       images_description: '(jpg, png, gif, pdf, ai, psd...)'
+  confirm: 'Are you sure ?'

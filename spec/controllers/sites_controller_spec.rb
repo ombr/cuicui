@@ -195,6 +195,22 @@ describe SitesController do
         assigns(:site).should == site
       end
     end
+  end
 
+  describe '#destroy' do
+
+    it 'delete the site' do
+      site
+      expect do
+        sign_in user
+        delete :destroy, id: site
+      end.to change { Site.count }.by(-1)
+    end
+
+    it 'redirect to site index' do
+      sign_in user
+      delete :destroy, id: site
+      response.should redirect_to sites_path
+    end
   end
 end

@@ -16,7 +16,7 @@ Cuicui::Application.routes.draw do
 
   root 'pages#first'
 
-  resources :sites, only: [:show, :edit, :update, :index, :new, :create] do
+  resources :sites do
     resources :pages do
       member do
         get :preview

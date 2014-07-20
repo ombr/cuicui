@@ -150,8 +150,7 @@ describe PagesController do
   end
 
   describe '#destroy' do
-
-    it('delete the page') do
+    it 'delete the page' do
       page
       expect do
         sign_in user
@@ -164,7 +163,6 @@ describe PagesController do
       delete :destroy, site_id: site, id: page
       response.should redirect_to new_site_page_path(site_id: page.site)
     end
-
   end
 
   describe '#update' do
