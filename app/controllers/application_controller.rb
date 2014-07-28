@@ -16,6 +16,18 @@ class ApplicationController < ActionController::Base
     params[:site_id] = request.subdomain if request.subdomain.present?
   end
 
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
+  def record_not_found e
+    return redirect_to new_site_url(
+      site: {
+        title: params[:site_id]
+      },
+      subdomain: ''
+    ) if params[:site_id]
+    raise e
+  end
+
   private
 
   def after_sign_out_path_for(_resource_or_scope)

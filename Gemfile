@@ -39,13 +39,14 @@ gem 'phantomjs'
 gem 'friendly_id'
 gem 'devise'
 gem 'cancan'
+gem 'high_voltage'
 
 gem 'turbolinks'
 gem 'sentry-raven'
 
 gem 'jbuilder'
 
-gem 'haml'
+gem 'haml-rails'
 
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'font-awesome-rails'
@@ -74,9 +75,7 @@ gem 'unicorn'
 gem 'rack-timeout'
 gem 'newrelic_rpm'
 
-group :production do
-  gem 'rails_12factor'
-end
+gem 'rails_12factor'
 
 group :test do
   gem 'sqlite3'

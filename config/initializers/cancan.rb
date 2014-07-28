@@ -4,7 +4,7 @@ module CanCan
     alias_method :original_resource_params_by_namespaced, :resource_params_by_namespaced_name
 
     def resource_params_by_namespaced_name
-      if (@controller && @params && @params[:action] == "create")
+      if (@controller && @params && (@params[:action] == 'create' || (@params[namespaced_name.name.downcase] && @params[:action] == 'new')))
         strong_params =  @controller.method("#{namespaced_name.name.downcase}_params".to_sym)
         params = strong_params.call if defined? strong_params
       end

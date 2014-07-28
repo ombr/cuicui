@@ -1,17 +1,19 @@
 # PagesController
 class PagesController < ApplicationController
   before_filter :load_site_id_from_host, only: [:show, :first, :index]
+
   load_and_authorize_resource :site
   load_and_authorize_resource through: :site
+
 
   def index
   end
 
   def first
-    return redirect_to new_user_session_path if @site.nil?
     @page = @site.pages.first
-    return redirect_to new_user_session_path if @page.nil?
+    authorize! @page, :show
     @image = @page.images.first if @page.images.first
+    authorize! @image, :show
     render :show
   end
 

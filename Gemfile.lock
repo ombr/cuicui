@@ -136,10 +136,16 @@ GEM
     fssm (0.2.10)
     haml (4.0.5)
       tilt
+    haml-rails (0.5.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 3.1, < 5.0)
+      railties (>= 4.0.1)
     hashie (2.1.1)
     heroku-api (0.3.18)
       excon (~> 0.27)
       multi_json (~> 1.8)
+    high_voltage (2.1.0)
     hike (1.2.3)
     i18n (0.6.9)
     inflecto (0.0.2)
@@ -353,8 +359,9 @@ DEPENDENCIES
   font-awesome-rails
   foreman
   friendly_id
-  haml
+  haml-rails
   heroku-api
+  high_voltage
   intercom-rails
   jbuilder
   jquery-cookie-rails

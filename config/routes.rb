@@ -3,10 +3,14 @@ require 'resque_web'
 Cuicui::Application.routes.draw do
   default_url_options host: ENV['DOMAIN']
 
+  as :user do
+      patch '/user/confirmation' => 'confirmations#update', via: :patch, as: :update_user_confirmation
+  end
   devise_for :users, controllers: {
     sessions: :sessions,
     registrations: :registrations,
-    passwords: :passwords
+    passwords: :passwords,
+    confirmations: :confirmations
   }
 
   # authenticated :user, lambda {|u| u.role == "admin"} do
@@ -14,6 +18,8 @@ Cuicui::Application.routes.draw do
     mount ResqueWeb::Engine => '/resque'
   end
 
+  get '/', to: 'home#show', as: 'home_root', constraints: { subdomain: 'www' }
+  #get '/:id', to: 'home#show', as: 'home', constraints: { subdomain: 'www' }
   root 'pages#first'
 
   resources :sites do

@@ -1,16 +1,16 @@
-- if site and not site.new_record?
-  .col-md-12.col-fullscreen
+.col-md-12.col-fullscreen
 
-    %nav#nav.navbar.navbar-inverse{:role => "navigation"}
-      .container-fluid
-        .navbar-header
-          %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = link_to sites_path, class: 'navbar-brand' do
-            SoSlide
+  %nav#nav.navbar.navbar-inverse{:role => "navigation"}
+    .container-fluid
+      .navbar-header
+        %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to sites_path, class: 'navbar-brand' do
+          SoSlide
+      - if site and not site.new_record?
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             = tab_link edit_site_path(id: site) do
@@ -48,16 +48,18 @@
               %input.form-control{:placeholder => "Search", :type => "text"}/
             %button.btn.btn-default{:type => "submit"} Submit
 
-          %ul.nav.navbar-nav.navbar-right
-            %li
-              = link_to preview_link, target: '_blank', title: t('.see'), class: 'preview' do
-                .btn.btn-success
-                  .fa.fa-external-link
-                  = t '.see'
-            %li
-              = link_to destroy_user_session_path, class: '', title: 'log out' do
-                .fa.fa-sign-out
-                = t '.log_out'
+      %ul.nav.navbar-nav.navbar-right
+        - if site and not site.new_record?
+          %li
+            = link_to preview_link, target: '_blank', title: t('.see'), class: 'preview' do
+              .btn.btn-success
+                .fa.fa-external-link
+                = t '.see'
+        - if user_signed_in?
+          %li
+            = link_to destroy_user_session_path, class: '', title: 'log out' do
+              .fa.fa-sign-out
+              = t '.log_out'
 
     -#%nav.navbar.navbar-inverse{role: 'navigation'}
       %ul.nav.navbar-nav
