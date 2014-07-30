@@ -3,7 +3,6 @@
     = f.error_notification
     .form-inputs
       = f.input :email, :required => true, :autofocus => true
-    .form-actions
-      = f.button :submit, "Sign up"
+    = f.submit
 - else
   = link_to t('.my_sites'), sites_path, class: 'btn btn-primary'

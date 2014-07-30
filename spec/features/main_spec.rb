@@ -7,16 +7,15 @@ describe 'Main features', :feature do
     user = build :user
     visit root_url(subdomain: 'www')
     fill_in 'Email', with: user.email
-    save_and_open_page
-    click_on 'Sign Up'
+    click_on 'Create User'
 
     site = build :site
-    fill_in 'Title', with: site.title
-    click_on 'Create'
+    fill_in :site_title, with: site.title
+    click_on 'Create Site'
 
-    #find('#new_page').click
-    #fill_in :page_name, with: 'First Page'
-    #click_on 'Create Page'
+    fill_in :page_name, with: 'First Page'
+    click_on 'Create Page'
+    save_and_open_page
 
     # Page.first.name.should == 'First Page'
     # attach_file_for_direct_upload Rails.root.join('spec', 'fixtures', 'image.jpg')

@@ -1,9 +1,6 @@
 .col-md-8.col-md-offset-2
   %h1
     = t('.sites')
-    %small
-      = current_user.email
-      = link_to t('.logout'), destroy_user_session_path, class: 'btn btn-link'
   %table.table.table-striped
     %thead
       %tr
