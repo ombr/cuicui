@@ -14,13 +14,14 @@ Cuicui::Application.routes.draw do
   }
 
   # authenticated :user, lambda {|u| u.role == "admin"} do
+  ResqueWeb::Engine.eager_load! if Rails.env.development?
   authenticated :user do
     mount ResqueWeb::Engine => '/resque'
   end
 
   get '/', to: 'home#show', as: 'home_root', constraints: { subdomain: 'www' }
   #get '/:id', to: 'home#show', as: 'home', constraints: { subdomain: 'www' }
-  root 'pages#first'
+  root 'pages#show'
 
   resources :sites do
     resources :pages do

@@ -13,19 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_site_id_from_host
-    params[:site_id] = request.subdomain if request.subdomain.present?
-  end
-
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
-  def record_not_found e
-    return redirect_to new_site_url(
-      site: {
-        title: params[:site_id]
-      },
-      subdomain: ''
-    ) if params[:site_id]
-    raise e
+    params[:site_id] = request.subdomain if request.subdomain.present? and not(current_user)
   end
 
   private

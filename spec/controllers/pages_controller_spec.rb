@@ -16,51 +16,6 @@ describe PagesController do
     it('assigns pages') { assigns(:pages).should == site.pages.to_a }
   end
 
-  describe '#first' do
-    render_views
-
-    it 'redirect to login if there is no site' do
-      get :first, site_id: site
-      response.should redirect_to new_user_session_path
-    end
-
-    it 'redirect to login if there is no page for the site' do
-      get :first, site_id: site
-      response.should redirect_to new_user_session_path
-    end
-
-    context 'without description and image' do
-      let(:image) { create :image, page: page }
-      let(:page) { create :page, description: '', site: site }
-      render_views
-      before :each do
-        image
-        get :first, site_id: site
-      end
-
-      it_responds_200
-    end
-
-    it 'assigns page' do
-      page
-      get :first, site_id: site
-      assigns(:page).should == page
-    end
-
-    it 'assigns site' do
-      site
-      get :first, site_id: site
-      assigns(:site).should == site
-    end
-
-    it 'respond 200 when there is a page' do
-      page
-      get :first, site_id: site
-      response.code.should == '200'
-    end
-
-  end
-
   describe '#next' do
     render_views
     context 'default' do
@@ -82,6 +37,15 @@ describe PagesController do
       it_responds_200
       it('assigns @site') { assigns(:site).should == page.site }
       it('assigns @page') { assigns(:page).should == page }
+    end
+
+    context 'without ids' do
+      it 'respond 200' do
+        page
+        get :show, site_id: site
+        response.code.should == '200'
+      end
+
     end
 
     context 'without description and image' do

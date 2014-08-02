@@ -5,16 +5,13 @@ class PagesController < ApplicationController
   load_and_authorize_resource :site
   load_and_authorize_resource through: :site
 
+  before_action :autoload_if_no_ids, only: [:show]
 
-  def index
+  def autoload_if_no_ids
+    @page = @site.pages.first if params[:id].blank?
   end
 
-  def first
-    @page = @site.pages.first
-    authorize! @page, :show
-    @image = @page.images.first if @page.images.first
-    authorize! @image, :show
-    render :show
+  def index
   end
 
   def show

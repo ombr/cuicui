@@ -1,7 +1,7 @@
 .col-sm-12
   .row
     .col-sm-12
-      = simple_form_for @page, html: {class: 'edit_page warn-on-exit'} do |f|
+      = simple_form_for @page, html: {class: 'edit_page form-inline warn-on-exit'} do |f|
         =link_to page_path(@page), class: 'btn btn-danger btn-lg', method: :delete, data: { confirm: t('confirm') }, title: t('.delete_page', default: 'Delete page') do
           .fa.fa-trash-o
         = f.input :name, input_html: { class: 'input-lg' }

@@ -23,6 +23,7 @@ class ImagesController < ApplicationController
     @image.save
     flash[:error] = @image.errors.full_messages.to_sentence unless @image.save
     Resque.enqueue ImageConversion, @image.id
+    Resque.enqueue ImageExifs, @image.id
     redirect_to edit_page_path(@page)
   end
 

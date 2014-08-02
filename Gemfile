@@ -29,6 +29,9 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'carrierwave'
 gem 'carrierwave_direct'
+gem 'fakeweb', group: :test
+gem 'exifr'
+gem 'xmp', github: 'jkraemer/xmp'
 gem 'resque'
 gem 'heroku-api'
 gem 'resque-web', require: 'resque_web'
@@ -54,10 +57,9 @@ gem 'entypo-rails'
 gem 'bourbon'
 gem 'compass-rails'
 gem 'jquery-fileupload-rails'
-# gem 'pagedown-rails'
 gem 'intercom-rails'
 
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
 gem 'language_list'
 
 gem 'flutie'

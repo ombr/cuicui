@@ -1,5 +1,8 @@
 FactoryGirl.define do
+  sequence :title do |n|
+    "Site #{n}"
+  end
   factory :site do
-    title 'Studio Cuicui'
+    title
   end
 end

@@ -1,6 +1,5 @@
 # Image
 class Image < ActiveRecord::Base
-  serialize :exifs
   has_one :site, through: :page
   belongs_to :page, touch: true
   has_one :user, through: :site
@@ -23,7 +22,26 @@ class Image < ActiveRecord::Base
   end
 
   def process
-    self.image = open(original.url)
+    file = open(original.url)
+    self.image = file
+    save!
+  end
+
+  def extract_exifs
+    infos = EXIFR::JPEG.new(open(original.url))
+    self.exifs = {}
+    self.exifs = infos.to_hash
+    xmp = XMP.parse(infos)
+    if xmp
+      xmp.namespaces.each do |namespace_name|
+        name = namespace_name
+        self.exifs[name] = {}
+        namespace = xmp.send(namespace_name)
+        namespace.attributes.each do |attr|
+          self.exifs[name][attr] = namespace.send(attr)
+        end
+      end
+    end
     save!
   end
 
@@ -42,19 +60,10 @@ class Image < ActiveRecord::Base
     end
   end
 
-  def legend
-    return self[:legend] if self[:legend]
-    return exifs['ImageDescription'] if exifs && exifs['ImageDescription']
-    nil
-  end
-
-  def extract_exifs
-    self[:exifs] = Cloudinary::Api.resource(
-      image.file.public_id,
-      type: :private,
-      exif: true
-      )['exif']
-    save!
+  before_save do
+    if legend.nil? and defined?(exifs['image_description'])
+      self.legend = exifs['image_description']
+    end
   end
 
   def content_rendered

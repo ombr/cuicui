@@ -10,6 +10,10 @@
     = csrf_meta_tags
   %body{class: body_class}
     = render 'layouts/navbar_edit', site: @site
+    - if current_user and not(current_user.confirmed?)
+      .col-md-12
+        .alert.alert-danger
+          =t 'not_confirmed'
     = render 'layouts/flashs'
     = yield
     - if current_user

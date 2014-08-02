@@ -62,4 +62,6 @@ RSpec.configure do |config|
   )
 
   connection.directories.create(key: fog_directory)
+
+  FakeWeb.allow_net_connect = false
 end

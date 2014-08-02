@@ -70,7 +70,6 @@ CREATE TABLE images (
     id integer NOT NULL,
     page_id integer,
     cloudinary character varying(255),
-    exifs text,
     "position" integer,
     legend text,
     "full" boolean DEFAULT false,
@@ -82,7 +81,8 @@ CREATE TABLE images (
     updated_at timestamp without time zone,
     original text,
     image text,
-    snapshot text
+    snapshot text,
+    exifs json
 );
 
 
@@ -459,3 +459,4 @@ INSERT INTO schema_migrations (version) VALUES ('20140715191601');
 
 INSERT INTO schema_migrations (version) VALUES ('20140728184611');
 
+INSERT INTO schema_migrations (version) VALUES ('20140802105102');

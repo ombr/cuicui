@@ -3,6 +3,7 @@ class SitesController < ApplicationController
   before_filter :load_site_id_from_host, only: [:show, :sitemap, :robots]
   load_and_authorize_resource
 
+  before_action :authenticate_user!, only: [:index]
   def index
     @sites = current_user.sites
     if @sites.count > 0

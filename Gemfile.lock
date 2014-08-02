@@ -7,6 +7,22 @@ GIT
       aws_cf_signer
       rest-client
 
+GIT
+  remote: git://github.com/jkraemer/xmp.git
+  revision: 3e2153f27aafb0b41ba245fa642c0a71a692bde8
+  specs:
+    xmp (0.2.0)
+      nokogiri (~> 1.6.0)
+
+GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: ed3de1c2b566a962697529e824953f6b280e2867
+  branch: master
+  specs:
+    simple_form (3.1.0.rc2)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -101,8 +117,10 @@ GEM
     erubis (2.7.0)
     excon (0.38.0)
     execjs (2.0.2)
+    exifr (1.1.3)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
+    fakeweb (1.3.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     flutie (2.0.0)
@@ -282,9 +300,6 @@ GEM
       uuidtools
     shoulda-matchers (2.6.1)
       activesupport (>= 3.0.0)
-    simple_form (3.0.2)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -354,7 +369,9 @@ DEPENDENCIES
   devise
   dotenv-rails
   entypo-rails
+  exifr
   factory_girl
+  fakeweb
   flutie
   font-awesome-rails
   foreman
@@ -390,7 +407,7 @@ DEPENDENCIES
   sdoc
   sentry-raven
   shoulda-matchers
-  simple_form
+  simple_form (~> 3.1.0.rc1)!
   spring
   spring-commands-rspec
   sqlite3
@@ -398,3 +415,4 @@ DEPENDENCIES
   turbolinks
   uglifier
   unicorn
+  xmp!

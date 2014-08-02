@@ -15,18 +15,57 @@ describe 'Main features', :feature do
 
     fill_in :page_name, with: 'First Page'
     click_on 'Create Page'
-    save_and_open_page
 
-    # Page.first.name.should == 'First Page'
-    # attach_file_for_direct_upload Rails.root.join('spec', 'fixtures', 'image.jpg')
-    # save_and_open_page
-    # upload_directly(FileUploader.new, 'Upload')
+    Page.first.name.should eq 'First Page'
+    uploader = FileUploader.new
+    upload_path = Rails.root.join('spec', 'fixtures', 'image.jpg')
+    redirect_key = sample_key(
+      uploader,
+      base: find_key,
+      filename: File.basename(upload_path)
+    )
+    uploader.key = redirect_key
+    s3_url = uploader.direct_fog_url(with_path: true)
+
+    redirect_url = URI.parse(
+      page.find("input[name='success_action_redirect']", visible: false).value
+    )
+    redirect_url.query = Rack::Utils.build_nested_query(
+      bucket: uploader.fog_directory,
+      key: redirect_key,
+      etag: '"d41d8cd98f00b204e9800998ecf8427"'
+    )
+
+    FakeWeb.register_uri(
+      :get,
+      Regexp.new("#{s3_url}.*"),
+      body: File.open(upload_path)
+    )
+    visit redirect_url.to_s
+
+    Image.first.exifs['dc']['subject'][0].should_not be_blank
+  end
+
+  it 'confirm an user when recovering password' do
+    user = build :user
+    visit root_url(subdomain: 'www')
+    fill_in 'Email', with: user.email
+    click_on 'Create User'
+    click_on 'Log Out'
+    click_on 'Trouble Signing In'
+    fill_in 'Email', with: user.email
+    click_on 'Send me reset password instructions'
+    open_email user.email
+    current_email.click_link 'Change my password'
+    fill_in 'New password', with: 'NewPassword'
+    click_on 'Change my password'
+    User.first.confirmed?.should eq true
   end
 
   it 'User can reset his password.' do
     user = create :user
     visit '/admin'
-    click_on 'Forgot your password?'
+    click_on 'Trouble Signing In'
 
     fill_in 'Email', with: user.email
     click_on 'Send me reset password instructions'
@@ -34,7 +73,6 @@ describe 'Main features', :feature do
     open_email(user.email)
     current_email.click_link 'Change my password'
     page.fill_in 'user_password', with: 'SuperSecret'
-    page.fill_in 'user_password_confirmation', with: 'SuperSecret'
     expect do
       click_on 'Change my password'
     end.to change { user.reload.encrypted_password }
