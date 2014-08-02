@@ -29,16 +29,16 @@ class Image < ActiveRecord::Base
 
   def extract_exifs
     infos = EXIFR::JPEG.new(open(original.url))
-    self.exifs = {}
-    self.exifs = infos.to_hash
+    exifs = {}
+    exifs = infos.to_hash
     xmp = XMP.parse(infos)
     if xmp
       xmp.namespaces.each do |namespace_name|
         name = namespace_name
-        self.exifs[name] = {}
+        exifs[name] = {}
         namespace = xmp.send(namespace_name)
         namespace.attributes.each do |attr|
-          self.exifs[name][attr] = namespace.send(attr)
+          exifs[name][attr] = namespace.send(attr)
         end
       end
     end

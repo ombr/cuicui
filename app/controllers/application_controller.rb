@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_site_id_from_host
-    params[:site_id] = request.subdomain if request.subdomain.present? and not(current_user)
+    params[:site_id] = request.subdomain if request.subdomain.present? && !user_signed_in?
   end
 
   private
