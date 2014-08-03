@@ -1,3 +1,119 @@
-.col-md-4.col-md-offset-4
-  %h1 SoSlide !
-  = render 'devise/registrations/form', resource: User.new, resource_name: :user
+.col-xs-12
+  %section#register.row
+    - unless user_signed_in?
+      = simple_form_for User.new, url: registration_path(User), html: { class: 'form-inline' } do |f|
+        .col-xs-md-12
+          = f.input :email, :required => true, :autofocus => true, input_html: { class: 'col-xs-3' }
+          = f.submit class: 'btn btn-success'
+    - else
+      .col-xs-12
+        = link_to t('.my_sites'), sites_path, class: 'btn btn-primary'
+  %section#header
+    .background
+      -# %iframe.video{src: 'http://api.dmcloud.net/player/embed/53525f9806361d4eae4ef524/53525fb994a6f6482e01c737?auth=1713267714-0-9fk75olu-0bd0127155b8c25d200dd95927bc73ad&preset=5352609294a6f649e5312cb0&autoplay=1', frameborder: '0', width: '100%', height: '100%'}
+
+    -# %script{type: 'text/javascript', src:'//cdn.sublimevideo.net/js/9ckbmzmy.js'}
+    -#.video
+      :erb
+        <video id="a240e92d" class="sublime" poster="<%= asset_path('home.png')%>" width="100%" height="100%" title="Midnight Sun" data-uid="a240e92d" data-autoresize="fit" data-autoplay='true' preload="none">
+          <source src="https://cdn.sublimevideo.net/vpa/ms_720p.mp4" data-quality="hd" />
+          <source src="https://cdn.sublimevideo.net/vpa/ms_360p.mp4" />
+          <source src="https://cdn.sublimevideo.net/vpa/ms_720p.webm" data-quality="hd" />
+          <source src="https://cdn.sublimevideo.net/vpa/ms_360p.webm" />
+        </video>
+    - if params['preview']
+      %video#header-video{poster: asset_path('home.png'), preload: 'auto', autoplay: 'true', loop: 'loop', muted: 'muted', volume: '0'}
+        %source{src: 'https://s3-eu-west-1.amazonaws.com/static.soslide.com/video/home.mp4', type:'video/mp4'}
+        %source{src: 'https://s3-eu-west-1.amazonaws.com/static.soslide.com/video/home.webm', type:'video/webm'}
+    .message
+      %h1
+        = t '.welcome.title'
+      %h1
+        %small= t '.welcome.subtitle'
+      = link_to  t('.welcome.examples'), '#examples'
+    .scroll
+      .fa.fa-angle-double-down.fa-5x
+  -#%section#register.row
+    .col-md-5.col-md-offset-1
+      %h1
+        =t '.register.title'
+      %h1
+        %small= t '.register.subtitle'
+    .col-md-4
+      = simple_form_for @site do |f|
+        = f.input :email, placeholder: 'your@email.com', input_html: { class: 'input-lg' }
+        .site-name
+          %span.url= ".#{ENV['SITES_DOMAINS']}"
+          = f.input :name, label: '', input_html: { class: 'input-lg'}
+        = f.submit t('.try'), class: 'btn btn-lg btn-success'
+        = link_to t('.log_in'), login_sites_path
+  %section#features.row
+    .col-sm-10.col-sm-offset-1
+      %h1
+        = t '.features.title'
+        %small= t '.features.subtitle'
+      .col-sm-4
+        .feature
+          %h1
+            .fa.fa-flash.fa-5x
+            =t('.speed.title')
+          .description=t('.speed.description')
+      .col-sm-4
+        .feature
+          %h1
+            .devices
+              .fa.fa-mobile
+              .fa.fa-desktop
+              .fa.fa-tablet
+            =t('.devices.title')
+          .description= t('.devices.description')
+      .col-sm-4
+        .feature
+          %h1
+            .fa.fa-heart.fa-5x
+            = t('.love.title')
+          .description=t('.love.description')
+  %section#examples.row
+    .col-sm-10.col-sm-offset-1
+      %h1
+        = t '.examples.title'
+        %small= t '.examples.subtitle'
+      - [ 'studiocuicui.fr', 'seb.portfoli.fr' , 'arnaudwink.com'].each do |site|
+        .col-md-4.example
+          =link_to "http://#{site}", alt: site, target: '_blank' do
+            = cl_image_tag("http://#{site}",type: 'url2png', transformation: { crop: :fill, width: 500, height: 350, gravity: :north, fetch_format: :png }, sign_url: true, class: 'img-responsive')
+  %section#pricing.row
+    .col-sm-10.col-sm-offset-1
+      %h1
+        = t '.pricing.title'
+        %small= t '.pricing.subtitle'
+      .col-sm-4
+        .pricing
+          %h1
+            .fa.fa-book.fa-5x
+          %h1
+            = t 'pricing.student.title'
+          %h4= t 'pricing.student.price'
+          %p= t 'pricing.student.description1'
+          %p= t 'pricing.student.description2'
+          = link_to t('.start'), '#register', class: 'btn btn-success btn-lg'
+      .col-sm-4
+        .pricing
+          %h1
+            .fa.fa-briefcase.fa-5x
+          %h1
+            = t 'pricing.pro.title'
+          %h4= t 'pricing.pro.price'
+          %p= t 'pricing.pro.description1'
+          %p= t 'pricing.pro.description2'
+          = link_to t('.start'), '#register', class: 'btn btn-success btn-lg'
+      .col-sm-4
+        .pricing
+          %h1
+            .fa.fa-magic.fa-5x
+          %h1
+            = t 'pricing.custom.title'
+          %h4= t 'pricing.custom.price'
+          %p= t 'pricing.custom.description1'
+          %p= t 'pricing.custom.description2'
+          = link_to t('contact_us'), 'mailto: contact@soslide.com', class: 'btn btn-success btn-lg'

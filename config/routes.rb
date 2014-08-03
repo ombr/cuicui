@@ -19,7 +19,7 @@ Cuicui::Application.routes.draw do
     mount ResqueWeb::Engine => '/resque'
   end
 
-  get '/', to: 'home#show', as: 'home_root', constraints: { subdomain: 'www' }
+  get '/', to: 'home#show', as: 'home_root', constraints: { subdomain: ['www', ''] }
   #get '/:id', to: 'home#show', as: 'home', constraints: { subdomain: 'www' }
   root 'pages#show'
 

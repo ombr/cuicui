@@ -58,9 +58,14 @@
             %li
               =link_to current_user.email, edit_user_registration_path(id: current_user)
             %li
-              = link_to destroy_user_session_path, class: '', title: 'log out' do
+              = link_to destroy_user_session_path do
                 .fa.fa-sign-out
                 = t '.log_out'
+          - else
+            = tab_link new_user_registration_path do
+              = t '.register'
+            = tab_link new_user_session_path do
+              = t '.log_in'
 
     -#%nav.navbar.navbar-inverse{role: 'navigation'}
       %ul.nav.navbar-nav

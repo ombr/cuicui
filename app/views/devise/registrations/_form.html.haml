@@ -3,6 +3,6 @@
     = f.error_notification
     .form-inputs
       = f.input :email, :required => true, :autofocus => true
-    = f.submit class: 'btn btn-primary'
+    = f.submit class: 'btn btn-default'
 - else
   = link_to t('.my_sites'), sites_path, class: 'btn btn-primary'
