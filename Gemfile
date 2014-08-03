@@ -41,6 +41,7 @@ gem 'phantomjs'
 
 gem 'friendly_id'
 gem 'devise'
+gem 'devise-async'
 gem 'cancan'
 gem 'high_voltage'
 

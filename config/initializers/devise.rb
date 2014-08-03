@@ -1,11 +1,9 @@
-# Use this hook to configure devise mailer, warden hooks and so forth.
-# Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  config.secret_key = '22cf40a974d15a157c6f0cfd6172965dfed37b99b1b4fdb0767fd222a2
-  1f694e9fc2202c98d5d6bab6033f4cf593ad8a5d460ccdee5bc0b62d9affb335c3c180'
+  #config.secret_key = '22cf40a974d15a157c6f0cfd6172965dfed37b99b1b4fdb0767fd222a2
+  #1f694e9fc2202c98d5d6bab6033f4cf593ad8a5d460ccdee5bc0b62d9affb335c3c180'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -254,3 +252,5 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 end
+Devise::Async.backend = :resque
+Devise::Async.queue = :devise_mail

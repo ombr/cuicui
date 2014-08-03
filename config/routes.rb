@@ -20,7 +20,6 @@ Cuicui::Application.routes.draw do
   end
 
   get '/', to: 'home#show', as: 'home_root', constraints: { subdomain: ['www', ''] }
-  #get '/:id', to: 'home#show', as: 'home', constraints: { subdomain: 'www' }
   root 'pages#show'
 
   resources :sites do
