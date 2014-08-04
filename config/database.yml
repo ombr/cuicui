@@ -1,5 +1,6 @@
 development:
   adapter: postgresql
+  host: localhost
   username: ombr
   password: root
   database: cuicui

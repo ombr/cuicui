@@ -7,13 +7,30 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        = link_to root_url(subdomain: 'www'), class: 'navbar-brand' do
-          SoSlide
+        - if user_signed_in?
+          = link_to sites_path(subdomain: 'www'), class: 'navbar-brand' do
+            SoSlide
+        - else
+          = link_to root_url(subdomain: 'www'), class: 'navbar-brand' do
+            SoSlide
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
-        - if site and not site.new_record?
-          %ul.nav.navbar-nav
-            = tab_link edit_site_path(id: site) do
-              = site.title
+        %ul.nav.navbar-nav
+          - if user_signed_in? and current_user.sites.count > 0
+            %li.dropdown
+              %a.dropdown-toggle{data: { toggle: 'dropdown' }}
+                - if @site and not @site.new_record?
+                  = @site.title
+                - else
+                  = t('my_sites')
+                %span.caret
+              %ul.dropdown-menu{role: :menu}
+                - current_user.sites.each do |site|
+                  = tab_link edit_site_path(id: site) do
+                    = site.title
+                %li.divider
+                = tab_link new_site_path do
+                  = t('.new')
+          - if site and not site.new_record?
             - site.pages.each do |page|
               - unless page.new_record?
                 - if @page and @page == page
@@ -55,8 +72,8 @@
                   .fa.fa-external-link
                   = t '.see'
           - if user_signed_in?
-            %li
-              =link_to current_user.email, edit_user_registration_path(id: current_user)
+            = tab_link edit_user_registration_path(id: current_user) do
+              = current_user.email
             %li
               = link_to destroy_user_session_path do
                 .fa.fa-sign-out
