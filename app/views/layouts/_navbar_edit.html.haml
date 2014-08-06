@@ -7,29 +7,30 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        - if user_signed_in?
-          = link_to sites_path(subdomain: 'www'), class: 'navbar-brand' do
-            SoSlide
-        - else
-          = link_to root_url(subdomain: 'www'), class: 'navbar-brand' do
-            SoSlide
-      #bs-example-navbar-collapse-1.collapse.navbar-collapse
         %ul.nav.navbar-nav
+          %li
+            - if site and not site.new_record?
+              = tab_link edit_site_path(site), html_options: { class: 'navbar-brand' } do
+                = site.title
+            - else
+              - if current_page?(root_path)
+                = link_to root_path, class: 'navbar-brand' do
+                  = t('brand')
           - if user_signed_in? and current_user.sites.count > 0
             %li.dropdown
-              %a.dropdown-toggle{data: { toggle: 'dropdown' }}
-                - if @site and not @site.new_record?
-                  = @site.title
-                - else
-                  = t('my_sites')
+              %a.navbar-brand.dropdown-toggle{data: { toggle: 'dropdown' }}
                 %span.caret
-              %ul.dropdown-menu{role: :menu}
+              %ul.dropdown-menu{role: :menu, style: 'position: fixed; top: 50px;'}
                 - current_user.sites.each do |site|
                   = tab_link edit_site_path(id: site) do
                     = site.title
-                %li.divider
                 = tab_link new_site_path do
-                  = t('.new')
+                  .fa.fa-plus
+                %li.divider
+                  = tab_link root_path do
+                    = t('brand')
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        %ul.nav.navbar-nav
           - if site and not site.new_record?
             - site.pages.each do |page|
               - unless page.new_record?
