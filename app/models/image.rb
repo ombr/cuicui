@@ -21,6 +21,10 @@ class Image < ActiveRecord::Base
     end
   end
 
+  def processed?
+    image?
+  end
+
   def process
     file = open(original.url)
     self.image = file
