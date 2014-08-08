@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery.zoomer
 //= require jquery_ujs
 //= require jquery.ui.sortable
@@ -6,6 +7,8 @@
 //= require jquery.ui.resizable
 //= require jquery.ui.touch-punch
 //= require bootstrap
+//= require nprogress
+//= require nprogress-turbolinks
 //= require jquery-fileupload/basic
 //= require fileupload
 //= require pagedown/Markdown.Converter
@@ -14,5 +17,9 @@
 //= require preview
 //= require images/sort
 //= require editwarning
+//= require turbolinks
+Turbolinks.enableTransitionCache()
+NProgress.configure
+  showSpinner: false
 $ ->
   $('body').addClass('js')

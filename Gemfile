@@ -46,6 +46,8 @@ gem 'cancan'
 gem 'high_voltage'
 
 gem 'turbolinks'
+gem 'jquery-turbolinks'
+gem 'nprogress-rails'
 gem 'sentry-raven'
 
 gem 'jbuilder'
