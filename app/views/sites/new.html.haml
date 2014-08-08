@@ -1,6 +1,6 @@
 .col-md-6.col-md-offset-2
+  %h1=t('.new_site')
   = simple_form_for @site,  html: { class: 'warn-on-exit' } do |f|
     = f.input :title, input_html: { class: 'input-lg', autofocus: true }
-    = f.input :language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]}, prompt: false
     = f.submit class: 'btn btn-primary'
 
