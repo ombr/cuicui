@@ -8,7 +8,7 @@
           %span.icon-bar
           %span.icon-bar
         - if site and not site.new_record?
-          = link_to edit_site_path(site), class: "navbar-brand" do
+          = link_to edit_site_path(site), class: 'navbar-brand' do
             = site.title
         - else
           = link_to root_path, class: 'navbar-brand' do
@@ -31,6 +31,9 @@
                   = tab_link root_path do
                     = t('brand')
           - if site and not site.new_record?
+            = tab_link edit_site_path(site) do
+              .fa.fa-gears
+              %span.visible-xs-inline= t '.edit_site'
             - site.pages.each do |page|
               - unless page.new_record?
                 - if @page and @page == page
@@ -59,7 +62,7 @@
                     = page.name
             = tab_link(new_site_page_path(site_id: site), html_options: { title: t('pages.add')}) do
               .fa.fa-plus
-              .visible-xs-inline= t '.add_page'
+              .visible-xs-inline= t '.new_page'
           -#%form.navbar-form.navbar-left{:role => "search"}
             .form-group
               %input.form-control{:placeholder => "Search", :type => "text"}/
