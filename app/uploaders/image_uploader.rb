@@ -25,13 +25,16 @@ class ImageUploader < CarrierWave::Uploader::Base
     end
   end
 
+  process store_geometry: :original
   version :full do
     process :optimize
     resize_to_fit(1920, 1400)
+    process store_geometry: :full
   end
 
   version :social do
     resize_to_fit(1200, 630)
+    process store_geometry: :social
   end
 
   version :thumbnail do
@@ -53,6 +56,15 @@ class ImageUploader < CarrierWave::Uploader::Base
         c.depth '8'
         c.interlace 'plane'
       end
+      img
+    end
+  end
+
+  def store_geometry(version)
+    manipulate! do |img|
+      geometries = model.geometries || {}
+      geometries.merge!("#{version}"=> "#{img['width']}x#{img['height']}")
+      model.geometries = geometries
       img
     end
   end

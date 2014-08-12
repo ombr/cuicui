@@ -1,1 +1,32 @@
 .pages-index
+  .page
+    a
+      background: pink
+    h2
+      @include transition(all 0.3s $ease-in-quad)
+      color: white
+      background: rgba(0,0,0,.5)
+@media (min-width: $screen-md-min)
+  .pages-index
+    .page
+      position: relative
+      &:hover
+        h2
+          background: rgba(0,0,0,.8)
+      img
+        height: 300px
+        // Hide the previous image
+        display: block
+        @include box-sizing(border-box)
+        padding-left: 100%
+        // Full background
+        @include background-size(cover)
+        background-repeat: no-repeat
+        background-position: center center
+      h2
+        margin: 0
+        padding: 10px
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0

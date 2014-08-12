@@ -82,7 +82,8 @@ CREATE TABLE images (
     original text,
     image text,
     snapshot text,
-    exifs json
+    exifs json,
+    geometries json
 );
 
 
