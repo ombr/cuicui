@@ -52,7 +52,8 @@ describe 'Main features', :feature do
     fill_in 'Email', with: user.email
     click_on 'Create User'
     click_on 'Log Out'
-    click_on 'Trouble Signing In'
+    click_on 'Log In'
+    click_on 'Trouble signing in ?'
     fill_in 'Email', with: user.email
     click_on 'Send me reset password instructions'
     open_email user.email
@@ -64,8 +65,9 @@ describe 'Main features', :feature do
 
   it 'User can reset his password.' do
     user = create :user
-    visit '/admin'
-    click_on 'Trouble Signing In'
+    visit '/'
+    click_on 'Log In'
+    click_on 'Trouble signing in ?'
 
     fill_in 'Email', with: user.email
     click_on 'Send me reset password instructions'

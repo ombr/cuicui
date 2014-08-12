@@ -33,8 +33,8 @@ class Image < ActiveRecord::Base
 
   def extract_exifs
     infos = EXIFR::JPEG.new(open(original.url))
-    exifs = {}
-    exifs = infos.to_hash
+    self.exifs = {}
+    self.exifs = infos.to_hash
     xmp = XMP.parse(infos)
     if xmp
       xmp.namespaces.each do |namespace_name|
@@ -65,7 +65,7 @@ class Image < ActiveRecord::Base
   end
 
   before_save do
-    if legend.nil? and defined?(exifs['image_description'])
+    if legend.nil? && defined?(exifs['image_description'])
       self.legend = exifs['image_description']
     end
   end

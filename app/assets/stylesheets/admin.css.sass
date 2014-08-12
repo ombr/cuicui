@@ -20,3 +20,10 @@ $brand-info: #16EAAE
 @import 'pagedown'
 @import 'pages/preview'
 @import 'home'
+
+.translation_missing
+  &:before
+    content: '{'
+  &:after
+    content: '}'
+  color: red !important

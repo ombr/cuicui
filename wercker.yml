@@ -3,8 +3,8 @@ box: wercker/rvm
 # See the Rails section on the wercker devcenter:
 # http://devcenter.wercker.com/articles/languages/ruby/settingup-rails4.html
 # You will want to define your database as follows:
-services:
-  - wercker/postgresql
+# services:
+#  - wercker/postgresql
 # See more about services on our devcenter:
 # http://devcenter.wercker.com/articles/services/
 build:
@@ -17,11 +17,14 @@ build:
         - bundle-install
 
         # A step that prepares the database.yml using the database in services
-        - rails-database-yml
+        #- rails-database-yml
 
         - script:
+             name: DATABASE_URL
+             code: export DATABASE_URL=`curl 'http://api.postgression.com'`
+        - script:
              name: ENV
-             code: export SECRET_KEY_BASE=test
+             code: export SECRET_KEY_BASE=test AWS_ACCESS_KEY_ID=key AWS_SECRET_ACCESS_KEY=secret
         - script:
              name: Domain
              code: export DOMAIN=test.com

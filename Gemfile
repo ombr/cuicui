@@ -80,7 +80,7 @@ gem 'unicorn'
 gem 'rack-timeout'
 gem 'newrelic_rpm'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: [:development, :production]
 
 group :test do
   gem 'sqlite3'

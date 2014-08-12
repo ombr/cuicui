@@ -1,4 +1,8 @@
 en:
+  devise:
+    shared:
+      links:
+        trouble_signing_in: Trouble signing in ?
   brand: SoSlide
   simple_form:
     placeholders:
