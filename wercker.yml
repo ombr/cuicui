@@ -23,8 +23,17 @@ build:
              name: DATABASE_URL
              code: export DATABASE_URL=`curl 'http://api.postgression.com'`
         - script:
-             name: ENV
-             code: export SECRET_KEY_BASE=test AWS_ACCESS_KEY_ID=key AWS_SECRET_ACCESS_KEY=secret
+             name: SECRET_KEY_BASE
+             code: export SECRET_KEY_BASE=test
+        - script:
+             name: AWS_KEY
+             code: export AWS_KEY=key
+        - script:
+             name: AWS_SECRET
+             code: export AWS_SECRET=secret
+        - script:
+             name: AWS_BUCKET
+             code: export AWS_BUCKET=bucket
         - script:
              name: Domain
              code: export DOMAIN=test.com
@@ -34,6 +43,9 @@ build:
         - script:
              name: migrate
              code: bundle exec rake db:migrate
+        - script:
+             name: DUMP ENV
+             code: export
         # Add more steps here:
         - script:
              name: rspec
