@@ -16,12 +16,16 @@
         - if image.lower_item
           =link_to image_url(image.lower_item) , class: 'scroll control next preload', 'data-scroll'=> "#image-#{image.lower_item.id}" do
             %p next
-        - if image.last?
-          =link_to next_page_path(image.page) , class: 'scroll control next preload', 'data-scroll'=> "#next-page-#{image.page.id}" do
+        - else
+          = link_to pages_path, class: 'scroll control next' do
             %p next
         - if image.higher_item
           =link_to image_url(image.higher_item) , class: 'scroll control previous', 'data-scroll'=> "#image-#{image.higher_item.id}" do
             %p previous
+        - else
+          =link_to pages_path, class: 'scroll control previous' do
+            %p previous
+
         -# if image.last? and image.page.images.count > 1
           =link_to s_image_path(page_id: image.page, id: image.page.images.first) , class: 'control restart', 'data-scroll'=> "#image-#{image.page.images.first}" do
             %p Back to first image

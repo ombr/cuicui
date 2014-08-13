@@ -1,5 +1,8 @@
-- if site && site.pages.count > 1
-  %nav#nav.nojs
+- if site
+  = link_to pages_path, id: 'home' do
+    .fa.fa-home
+    =t('.menu', default: 'Menu')
+  -#%nav#nav.nojs
     %a.menu{href: '#'}
       =t('.menu', default: 'Menu')
     %ul

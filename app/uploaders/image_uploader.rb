@@ -72,21 +72,25 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def extract_exifs
     manipulate! do |img|
-      infos = EXIFR::JPEG.new(open(img.path))
-      exifs = {}
-      exifs = infos.to_hash
-      xmp = XMP.parse(infos)
-      if xmp
-        xmp.namespaces.each do |namespace_name|
-          name = namespace_name
-          exifs[name] = {}
-          namespace = xmp.send(namespace_name)
-          namespace.attributes.each do |attr|
-            exifs[name][attr] = namespace.send(attr)
+      begin
+        infos = EXIFR::JPEG.new(open(img.path))
+        exifs = {}
+        exifs = infos.to_hash
+        xmp = XMP.parse(infos)
+        if xmp
+          xmp.namespaces.each do |namespace_name|
+            name = namespace_name
+            exifs[name] = {}
+            namespace = xmp.send(namespace_name)
+            namespace.attributes.each do |attr|
+              exifs[name][attr] = namespace.send(attr)
+            end
           end
         end
+        model.exifs = exifs
+      rescue Exception => e
+        Raven.capture_exception(e)
       end
-      model.exifs = exifs
       img
     end
   end

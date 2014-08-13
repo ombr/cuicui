@@ -1,32 +1,31 @@
 .pages-index
   .page
-    a
-      background: pink
+//@media (min-width: 400px)
+.pages-index
+  .page
+    height: 30%
+    position: relative
     h2
-      @include transition(all 0.3s $ease-in-quad)
+      word-break: break-all
       color: white
       background: rgba(0,0,0,.5)
-@media (min-width: $screen-md-min)
-  .pages-index
-    .page
-      position: relative
-      &:hover
-        h2
-          background: rgba(0,0,0,.8)
-      img
-        height: 300px
-        // Hide the previous image
-        display: block
-        @include box-sizing(border-box)
-        padding-left: 100%
-        // Full background
-        @include background-size(cover)
-        background-repeat: no-repeat
-        background-position: center center
+    &:hover
       h2
-        margin: 0
-        padding: 10px
-        position: absolute
-        bottom: 0
-        left: 0
-        right: 0
+        background: rgba(0,0,0,.8)
+    img
+      height: 50%
+      // Hide the previous image
+      display: block
+      @include box-sizing(border-box)
+      padding-left: 100%
+      // Full background
+      @include background-size(cover)
+      background-repeat: no-repeat
+      background-position: top center
+    h2
+      margin: 0
+      padding: 10px
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0

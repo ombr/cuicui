@@ -1,9 +1,8 @@
 .col-md-12
-  %h1= @site.title
   .row
     - @site.pages.each do |page|
       - if page.images.first
-        .page.col-xs-12.col-md-4
+        .page.col-xs-6.col-sm-6.col-md-4
           = link_to page_path(page) do
             %h2= page.name
             - image = page.images.first

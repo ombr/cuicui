@@ -2,116 +2,18 @@ $menu-height: 50px
 $menu-background: $gray-dark
 $menu-color: $gray-light
 
-@mixin show-menu
-  height: 100%
-  overflow: auto
-  ul
-    display: block
-
-#nav
-  width: 100%
-  z-index: 9999
+#home
   position: fixed
-  top: 0
+  background: $menu-background
+  color: $menu-color
+  z-index: 1
+  padding: 0 14px
   right: 0
-  &.nav-show
-    @include show-menu
-  &.nojs
-    &:hover
-      @include show-menu
-  ul
-    display: none
-    padding: 0
-    width: 100%
-    position: absolute
-    right: 0
-    max-height: 100%
-    //top: -$menu-height
-    list-style-type: none
-  li.active a
-    background: $gray-darker
-
-  a
-    &:hover
-      color: $gray-lighter
-    text-transform: uppercase
-    padding-left: 15px
-    padding-top: 15px
-    height: $menu-height
-    display: block
+  font-size: 0
+  &:hover
     text-decoration: none
-    color: $menu-color
-    background: $menu-background
+  &:after
+    font-size: 35px
+    font-family: 'entypo'
+    content: '\0268F'
 
-  .menu
-    //background: none
-    &:before
-      content: '\02630'
-      font-family: 'entypo'
-      font-size: 35px
-    font-size: 0
-    z-index: 999
-    position: absolute
-    right: 0
-    top: 0
-    height: $menu-height
-    width: $menu-height
-    padding: 1px 14px
-    display: block
-@media (min-width: 300px)
-  #nav
-    width: 300px
-
-
-
-
-//.navbar
-  //border: 0
-
-// Ack bootstrap for full with navbar
-//.navbar-nav
-  //@include transition (margin .1s ease-in)
-  //margin: 0
-
-//.navbar-inverse
-  //background: none
-//.navbar-toggle
-  //background: #101010
-//.navbar-collapse
-  //background: #101010
-  //padding: 0
-//.navbar-toggle
-  ////float: left
-  //z-index: 999
-  //margin: 0
-  //height: 40px
-  //margin-left: 10px
-  //margin-right: 10px
-
-//@include keyframes(fadeIn)
-  //0%
-    //opacity: 0
-  //80%
-    //opacity: 0
-  //to
-    //opacity: 1
-
-//@media (max-width: $grid-float-breakpoint)
-  //.navbar-no-js
-    //@include animation(fadeIn 3s ease-in)
-
-//Menu fullscreen
-//@media (max-width: $grid-float-breakpoint)
-  //.navbar-collapse
-    //position: relative
-    //top: -$navbar-height
-  //position: relative
-  //top: -$navbar-height
-  //.description
-    //padding-top: $navbar-height
-//@media (min-width: $grid-float-breakpoint)
-  // Image description en full screen
-  //.image-description
-    //top: -5%
-  //body
-    //padding-top: $navbar-height
