@@ -26,6 +26,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   process store_geometry: :original
+  process :extract_exifs
   version :full do
     process :optimize
     resize_to_fit(1920, 1400)
@@ -65,6 +66,27 @@ class ImageUploader < CarrierWave::Uploader::Base
       geometries = model.geometries || {}
       geometries.merge!("#{version}"=> "#{img['width']}x#{img['height']}")
       model.geometries = geometries
+      img
+    end
+  end
+
+  def extract_exifs
+    manipulate! do |img|
+      infos = EXIFR::JPEG.new(open(img.path))
+      exifs = {}
+      exifs = infos.to_hash
+      xmp = XMP.parse(infos)
+      if xmp
+        xmp.namespaces.each do |namespace_name|
+          name = namespace_name
+          exifs[name] = {}
+          namespace = xmp.send(namespace_name)
+          namespace.attributes.each do |attr|
+            exifs[name][attr] = namespace.send(attr)
+          end
+        end
+      end
+      model.exifs = exifs
       img
     end
   end
