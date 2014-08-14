@@ -3,15 +3,9 @@
     - @site.pages.each do |page|
       - if page.images.first
         .page.col-xs-6.col-sm-6.col-md-4
-          = link_to page_path(page) do
-            %h2= page.name
-            - image = page.images.first
-            = my_image_tag image, :full, alt: page.name, title: page.name, class: 'img-responsive'
-      -#.col-md-12
-        %h3= page.name
-      -#.col-md-12
-        .row
-          - page.images.each do |image|
-            .col-md-3.col-lg-2.col-xs-4
-              = link_to s_image_path(page_id: page, id: image) do
-                = image_tag image.image.url(:thumbnail), alt: image.legend, title: image.legend, class: 'img-responsive'
+          .embed-responsive.embed-responsive-4by3
+            .embed-responsive-item
+              = link_to page_path(page) do
+                %h2= page.name
+                - image = page.images.first
+                = my_image_tag image, :full, alt: page.name, title: page.name, class: 'img-responsive'

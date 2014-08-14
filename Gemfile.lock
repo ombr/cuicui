@@ -64,7 +64,7 @@ GEM
     arel (5.0.1.20140414130214)
     aws_cf_signer (0.1.2)
     bcrypt (3.1.7)
-    bootstrap-sass (3.1.1.1)
+    bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
     bourbon (3.2.1)
       sass (~> 3.2)
@@ -367,7 +367,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
-  bootstrap-sass (~> 3.1.1)
+  bootstrap-sass
   bourbon
   cancan
   capybara

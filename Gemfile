@@ -54,7 +54,7 @@ gem 'jbuilder'
 
 gem 'haml-rails'
 
-gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'entypo-rails'
 gem 'bourbon'

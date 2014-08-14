@@ -1,20 +1,8 @@
 .pages-index
   .page
-//@media (min-width: 400px)
-.pages-index
-  .page
-    height: 30%
     position: relative
-    h2
-      text-align: center
-      word-break: break-all
-      color: white
-      background: rgba(0,0,0,.5)
-    &:hover
-      h2
-        background: rgba(0,0,0,.8)
     img
-      height: 50%
+      height: 100%
       // Hide the previous image
       display: block
       @include box-sizing(border-box)
@@ -24,9 +12,26 @@
       background-repeat: no-repeat
       background-position: top center
     h2
-      margin: 0
-      padding: 10px
       position: absolute
       bottom: 0
       left: 0
       right: 0
+      padding: 10px
+      margin: 0
+      text-align: center
+      word-break: break-all
+      color: white
+      background: rgba(0,0,0,.5)
+    &:hover
+      h2
+        background: rgba(0,0,0,.8)
+@media (max-width: $screen-xs-min)
+  .pages-index
+    .page
+      h2
+        font-size: 14px
+@media (max-width: $screen-md-min)
+  .pages-index
+    .page
+      h2
+        font-size: 16px
