@@ -76,7 +76,7 @@ class ImageUploader < CarrierWave::Uploader::Base
         infos = EXIFR::JPEG.new(open(img.path))
         exifs = {}
         exifs = infos.to_hash
-        exifs['gps'] = "#{infos.gps.latitude},#{infos.gps.longitude}"
+        exifs['gps'] = "#{infos.gps.latitude},#{infos.gps.longitude}" if infos.gps
         xmp = XMP.parse(infos)
         if xmp
           xmp.namespaces.each do |namespace_name|

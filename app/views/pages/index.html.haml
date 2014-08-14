@@ -7,7 +7,6 @@
             %h2= page.name
             - image = page.images.first
             = my_image_tag image, :full, alt: page.name, title: page.name, class: 'img-responsive'
-            -# = image_tag image.url(:full), alt: page.name, title: page.name, class: 'img-responsive', size: image.geometries['full'], style: "background-image: url('#{image.url(:full)}')"
       -#.col-md-12
         %h3= page.name
       -#.col-md-12
