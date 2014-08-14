@@ -30,7 +30,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'carrierwave'
 gem 'carrierwave_direct'
 gem 'fakeweb', group: :test
-gem 'exifr'
+gem 'exifr', github: 'remvee/exifr'
 gem 'xmp', github: 'jkraemer/xmp'
 gem 'resque'
 gem 'heroku-api'

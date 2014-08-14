@@ -76,6 +76,7 @@ class ImageUploader < CarrierWave::Uploader::Base
         infos = EXIFR::JPEG.new(open(img.path))
         exifs = {}
         exifs = infos.to_hash
+        exifs['gps'] = "#{infos.gps.latitude},#{infos.gps.longitude}"
         xmp = XMP.parse(infos)
         if xmp
           xmp.namespaces.each do |namespace_name|
@@ -89,6 +90,7 @@ class ImageUploader < CarrierWave::Uploader::Base
         end
         model.exifs = exifs
       rescue Exception => e
+        puts e.inspect
         Raven.capture_exception(e)
       end
       img
