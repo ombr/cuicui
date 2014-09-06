@@ -15,16 +15,6 @@ en:
   brand: SoSlide
   register: Register
   sign_in: Sign In
-  simple_form:
-    placeholders:
-      site:
-        title: 'Title of your site'
-        description: 'Description of your site for search engine.'
-    labels:
-      image:
-        full: Fullscreen
-      site:
-        title: 'Your portfoli title'
   layouts:
     navbar_edit:
       see: 'See my site'

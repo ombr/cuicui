@@ -4,25 +4,21 @@ en:
     "no": 'No'
     required:
       text: 'required'
-      mark: '*'
+      mark: ''
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
-    # Labels and hints examples
     labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
+      image:
+        full: Fullscreen
+      site:
+        title: 'Your portfoli title'
     placeholders:
-      user:
-        email: 'your@email.com'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
+      defaults:
+        email: your@email.com
+        password: Mot de passe
+      site:
+        title: 'Title of your site'
+        description: 'Description of your site for search engine.'

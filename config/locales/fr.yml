@@ -1,0 +1,81 @@
+fr:
+  devise:
+    sessions:
+      new:
+        sign_in: Bonjour !
+        submit: Se connecter
+    registrations:
+      form:
+        submit: 'S''inscrire'
+      new:
+        register: Commencons avec votre adresse E-mail
+    shared:
+      links:
+        trouble_signing_in: Je n'arrive pas a me connecter
+  brand: SoSlide
+  register: S'inscrire
+  sign_in: Se connecter
+  layouts:
+    navbar_edit:
+      see: Voir mon site
+  pages:
+    add: 'Create a new page.'
+    create:
+      initial_description: "# %{page_name}\n\nThis is my amazing description."
+    update:
+      success: 'The page has been updated !'
+    edit:
+      images_description: '(jpg, png, gif, pdf, ai, psd...)'
+  confirm: 'Are you sure ?'
+
+  home:
+    login:
+      submit: Go
+    show:
+      log_in: I already have a site
+      register:
+        title: Create your site
+        subtitle: 15 days trial
+      welcome:
+        title: Faites simples
+        subtitle: Montrez votre travail, partout, sans attendre.
+        examples: Voir des exemples.
+      log_in: J'ai déjà un site
+      register:
+        title: Créez votre site
+        subtitle: 15 jours d'essais.
+      try: Créer mon site
+      speed:
+        title: Rapide
+        description: N'attendez plus pour montrer vos photos.
+      devices:
+        title: Multi-plateformes
+        description: Un site unique et automatiquement adapté à chacuns de vos appareils.
+      love:
+        title: A partager sans modération
+        description: Nous testons notre service de manière intensive afin de vous garantir une experience optimale.
+      pricing:
+        title: Prix
+        subtitle: Commencez immédiatement avec 15 jours d'essais
+      features:
+        title: Fonctionnalités
+        subtitle: ''
+      examples:
+        title: Exemples
+        subtitle: ''
+  pricing:
+    pro:
+      title: Pro
+      price: $25 / month
+      description1: Your domain
+      description2: 250 images
+    student:
+      title: Student
+      price: $15 / month
+      description1: Your domain
+      description2: 250 images
+    custom:
+      title: Custom
+      price: on demand
+      description1: Your domain
+      description2: unlimited images
