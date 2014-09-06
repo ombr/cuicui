@@ -7,7 +7,7 @@ describe 'Main features', :feature do
     user = build :user
     visit root_url(subdomain: 'www')
     fill_in 'Email', with: user.email
-    click_on 'Create User'
+    find('#btn-register').click
 
     site = build :site
     fill_in :site_title, with: site.title
@@ -50,11 +50,11 @@ describe 'Main features', :feature do
     user = build :user
     visit root_url(subdomain: 'www')
     fill_in 'Email', with: user.email
-    click_on 'Create User'
+    find('#btn-register').click
     click_on 'Log Out'
-    click_on 'Log In'
+    click_on 'Sign In'
     click_on 'Trouble signing in ?'
-    fill_in 'Email', with: user.email
+    fill_in 'user_email', with: user.email
     find('.btn').click
     open_email user.email
     current_email.click_link 'Confirm my account'
@@ -66,10 +66,10 @@ describe 'Main features', :feature do
   it 'User can reset his password.' do
     user = create :user
     visit '/'
-    click_on 'Log In'
+    click_on 'Sign In'
     click_on 'Trouble signing in ?'
 
-    fill_in 'Email', with: user.email
+    fill_in 'user_email', with: user.email
     find('.btn').click
 
     open_email(user.email)
