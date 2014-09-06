@@ -26,8 +26,7 @@ class Image < ActiveRecord::Base
   end
 
   def process
-    file = open(original.url)
-    self.image = file
+    self.image = open(original.url)
     save!
   end
 
@@ -36,7 +35,7 @@ class Image < ActiveRecord::Base
     Tempfile.open(['snapshot', '.png'], Rails.root.join('tmp'), encoding: 'ascii-8bit') do |file|
       Phantomjs.run(
         Rails.root.join('lib', 'rasterize.js').to_s,
-        Rails.application.routes.url_helpers.page_image_url(page_id: page, id: id),
+        Rails.application.routes.url_helpers.site_page_image_url(site_id: site, page_id: page, id: id),
         file.path,
         '1920px*1080px',
         '1'

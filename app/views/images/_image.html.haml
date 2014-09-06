@@ -9,7 +9,8 @@
         - if image.title.present?
           %h1=image.title
         = image.content_rendered.html_safe
-      = image_tag image.url(:full), alt: image.legend, title: image.legend, class: 'main-image', itemprop: 'url', style: "background-image: url(#{image.url(:full)}); #{image.image_css}"
+      = my_image_tag image, :full, class: "main-image #{'custom' if image.image_css.present? }", itemprop: 'url', style: image.image_css
+      -# = image_tag image.url(:full), alt: image.legend, title: image.legend, class: 'main-image', itemprop: 'url', style: "background-image: url(#{image.url(:full)}); #{image.image_css}"
       .image-description{ style: ('display: none;' unless image.legend.present?) }
         %span{itemprop: 'description'}= image.legend
       - unless defined? no_controls
