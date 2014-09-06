@@ -1,9 +1,20 @@
 en:
   devise:
+    sessions:
+      new:
+        sign_in: Welcome back
+        submit: Sign in
+    registrations:
+      form:
+        submit: 'Register and create my site'
+      new:
+        register: Let's start with your email
     shared:
       links:
         trouble_signing_in: Trouble signing in ?
   brand: SoSlide
+  register: Register
+  sign_in: Sign In
   simple_form:
     placeholders:
       site:

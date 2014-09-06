@@ -45,6 +45,10 @@ gem 'devise-async'
 gem 'cancan'
 gem 'high_voltage'
 
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'http_accept_language'
+
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'nprogress-rails'
@@ -63,7 +67,9 @@ gem 'compass-rails'
 gem 'jquery-fileupload-rails'
 gem 'intercom-rails'
 
-gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
+gem 'simple_form', '~> 3.1.0.rc1',
+    github: 'plataformatec/simple_form',
+    branch: 'master'
 gem 'language_list'
 
 gem 'flutie'
@@ -94,6 +100,7 @@ group :test do
 end
 
 group :development do
+  gem 'rails-i18n-debug'
   gem 'foreman'
   gem 'spring'
   gem 'spring-commands-rspec'
