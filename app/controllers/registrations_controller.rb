@@ -2,6 +2,44 @@
 class RegistrationsController < Devise::RegistrationsController
   layout 'admin'
 
+  # Code coming from devise. with hack to send reset password or resend confirmation.
+  def create
+    build_resource(sign_up_params)
+    if resource.save
+      # default devise code
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_flashing_format?
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      resource = User.find_by_email(params['user']['email'])
+      if resource
+        if resource.confirmed?
+          resource.send_reset_password_instructions
+          set_flash_message :notice, :"signed_up_but_password_reset_sent" if is_flashing_format?
+          respond_with resource, location: new_user_session_path
+        else
+          resource.send_confirmation_instructions
+          set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+          respond_with resource, location: new_user_session_path
+        end
+      else
+        # Default devise code
+        clean_up_passwords resource
+        @validatable = devise_mapping.validatable?
+        if @validatable
+          @minimum_password_length = resource_class.password_length.min
+        end
+        respond_with resource
+      end
+    end
+  end
+
   def destroy
     resource.update password: SecureRandom.hex
     Resque.enqueue ObjectDeletion, 'User', resource.id

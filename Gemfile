@@ -53,6 +53,7 @@ gem 'sentry-raven'
 gem 'jbuilder'
 
 gem 'haml-rails'
+gem 'slim-rails'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
