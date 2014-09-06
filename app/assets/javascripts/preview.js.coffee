@@ -45,6 +45,7 @@ $ ->
     $iframe = $('iframe', e)
     $iframe.show()
     $drag = $('.content-drag',e)
+    $background_drag = $('.background-drag',e)
     sizes = $iframe.data('size').split('x')
     ref_width = sizes[0]
     ref_height = sizes[1]
@@ -63,22 +64,25 @@ $ ->
       $drag.width(drag_width)
       $drag.height(drag_height)
       $drag.show()
-    position_to_css = (pos, size, total, top, bottom)->
-      if pos > total - size - pos
-        change_css(bottom, ((total-pos-size)/total*100)+'%')
-        change_css(top, 'auto')
+    position_to_css = (element, pos, size, total, top, bottom)->
+      percent_bottom = (total-pos-size)/total*100
+      percent_top = pos/total*100
+      #if pos > total - size - pos
+      if Math.abs(percent_bottom) < Math.abs(percent_top)
+        change_css(element, bottom, percent_bottom+'%')
+        change_css(element, top, 'auto')
       else
-        change_css(top, (pos/total*100)+'%')
-        change_css(bottom, 'auto')
+        change_css(element, top, percent_top+'%')
+        change_css(element, bottom, 'auto')
 
-    change_css = (key, value)->
+    change_css = (element, key, value)->
       regexp = new RegExp("(.*#{key}:)[^;]*(;.*)")
-      style = $('#image_content_css').val()
+      style = $(element).val()
       if regexp.test(style)
         style = style.replace regexp, "$1#{value}$2"
       else
         style += "#{key}:#{value};"
-      $('#image_content_css').val(style)
+      $(element).val(style)
     $iframe.zoomer(
       width: width
       height: height
@@ -89,10 +93,59 @@ $ ->
       onComplete: ()->
         # Firefox body height
         $iframe.contents().find('body').height("#{ref_height}px")
-        $iframe.contents().find('.control').remove()
-        $iframe.contents().find('nav').remove()
+        # $iframe.contents().find('.control').remove()
+        # $iframe.contents().find('nav').remove()
+
+        $main_image = $iframe.contents().find('.main-image')
+        offset = $main_image.offset()
+        $background_drag.css('left', "#{offset.left}px")
+        $background_drag.css('top', "#{offset.top}px")
+        $background_drag.width($main_image.width()*zoom)
+        $background_drag.height($main_image.height()*zoom)
+
+        style = $main_image.attr('style')
+        $main_image.attr('style', '')
+        background_width = $main_image.width()*zoom
+        background_height = $main_image.height()*zoom
+        $main_image.attr('style', style)
+
+        $background_drag.width()
+        $background_drag.resizable(
+          aspectRatio: true,
+          handles: 'n, s, e, w',
+          stop: ()->
+            offset = $main_image.offset()
+            $background_drag.css('left', "#{offset.left}px")
+            $background_drag.css('top', "#{offset.top}px")
+            $background_drag.width($main_image.width()*zoom)
+            $background_drag.height($main_image.height()*zoom)
+            # TODO DETECT IMAGE OUTSIDE !
+          resize: (event, ui)->
+            $main_image.addClass('custom')
+            change_css('#image_image_css',
+              'width',
+              "#{ui.size.width / background_width*100}%")
+            $('#image_image_css').trigger('change')
+        ).draggable(
+          drag: (event, ui)->
+            position_to_css('#image_image_css',
+                            ui.position.top,
+                            $background_drag.height(),
+                            $e.height(),
+                            'top',
+                            'bottom')
+            position_to_css('#image_image_css',
+                            ui.position.left,
+                            $background_drag.width(),
+                            $e.width(),
+                            'left',
+                            'right')
+            $('#image_image_css').trigger('change')
+        )
+
         $content = $($iframe.contents().find('.image-content'))
         update_drag_size()
+        $background_drag.show()
         $drag.show()
         $iframe.on 'refresh', ()->
           update_drag_size()
@@ -103,7 +156,7 @@ $ ->
           resize: (event, ui)->
             style = $('#image_content_css').val()
             width = ui.size.width / zoom
-            change_css('max-width', "#{width}px")
+            change_css('#image_content_css', 'max-width', "#{width}px")
             $('#image_content_css').trigger('change')
             $('.iframe-preview').each (i,e)=>
               $('iframe', e).trigger('refresh')
@@ -113,12 +166,14 @@ $ ->
             $('.iframe-preview').each (i,e)=>
               $('iframe', e).trigger('refresh')
           drag: (event, ui)->
-            position_to_css(ui.position.top,
+            position_to_css('#image_content_css',
+                            ui.position.top,
                             drag_height,
                             $e.height(),
                             'top',
                             'bottom')
-            position_to_css(ui.position.left,
+            position_to_css('#image_content_css',
+                            ui.position.left,
                             drag_width,
                             $e.width(),
                             'left',

@@ -45,7 +45,8 @@
 //   background-position: top
 //   background-size: 100% auto
 //   background-repeat: no-repeat
-.content-drag
+.content-drag,
+.background-drag
   position: absolute
   // background: blue
 
@@ -60,6 +61,12 @@
     position: relative
   .preview-disabled
     display: none
+  .background-drag
+    display: none
+    cursor: move
+    padding: 0
+    margin: 0
+    z-index: 1
   .content-drag
     display: none
     width: 100px
@@ -67,13 +74,14 @@
     cursor: move
     padding: 0
     margin: 0
-    z-index: 1
+    z-index: 2
     position: absolute
     top: 0%
     left: 0%
     font-size: 0
 
 .iframe-preview
+  overflow: hidden
   position: relative
   iframe
     border: none
