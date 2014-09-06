@@ -55,11 +55,11 @@ describe 'Main features', :feature do
     click_on 'Log In'
     click_on 'Trouble signing in ?'
     fill_in 'Email', with: user.email
-    click_on 'Send me reset password instructions'
+    find('.btn').click
     open_email user.email
-    current_email.click_link 'Change my password'
-    fill_in 'New password', with: 'NewPassword'
-    click_on 'Change my password'
+    current_email.click_link 'Confirm my account'
+    fill_in 'Password', with: 'NewPassword'
+    find('.btn').click
     User.first.confirmed?.should eq true
   end
 
@@ -70,7 +70,7 @@ describe 'Main features', :feature do
     click_on 'Trouble signing in ?'
 
     fill_in 'Email', with: user.email
-    click_on 'Send me reset password instructions'
+    find('.btn').click
 
     open_email(user.email)
     current_email.click_link 'Change my password'

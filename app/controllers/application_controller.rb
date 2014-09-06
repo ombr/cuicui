@@ -13,13 +13,15 @@ class ApplicationController < ActionController::Base
   end
 
   def load_site_id_from_host
-    params[:site_id] = request.subdomain if request.subdomain.present? && !user_signed_in?
+    if request.subdomain.present? && !user_signed_in?
+      params[:site_id] = request.subdomain
+    end
   end
 
   private
 
   def after_sign_out_path_for(_resource_or_scope)
-    root_path
+    new_user_session_path
   end
 
   def after_sign_in_path_for(_resource_or_scope)
