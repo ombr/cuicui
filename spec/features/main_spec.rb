@@ -51,7 +51,7 @@ describe 'Main features', :feature do
     visit root_url(subdomain: 'www')
     fill_in 'Email', with: user.email
     find('#btn-register').click
-    click_on 'Log Out'
+    click_on 'Sign out'
     click_on 'Sign In'
     click_on 'Trouble signing in ?'
     fill_in 'user_email', with: user.email

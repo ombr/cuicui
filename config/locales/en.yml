@@ -15,7 +15,7 @@ en:
   brand: SoSlide
   register: Register
   sign_in: Sign In
-  sign_out: sign out
+  sign_out: Sign out
   layouts:
     navbar_edit:
       see: 'See my site'
