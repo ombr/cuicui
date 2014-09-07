@@ -18,6 +18,7 @@
 //= require images/sort
 //= require editwarning
 //= require turbolinks
+//= require focuspoint
 Turbolinks.enableTransitionCache()
 NProgress.configure
   showSpinner: false

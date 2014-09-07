@@ -137,6 +137,18 @@ $ ->
     iframe_preview(e)
 
 
+  $('body').on 'click', '.focuspoint img', (e)->
+    $img = $(this)
+    width = $img.width()
+    height = $img.height()
+    x = e.pageX - $(this).offset().left
+    y = e.pageY - $(this).offset().top
+    px = (x/width)*100
+    py = (y/height)*100
+    $('#image_image_css').val(
+      "background-position: #{px}% #{py}%;"
+    ).trigger('change')
+
   $('body').on 'change', '#image_image_css', ()->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
@@ -152,9 +164,11 @@ $ ->
   $('body').on 'change', '#image_full', ()->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
-      if $(this).val() == 'true'
+      if $(this).is(':checked')
+        $('.focuspoint').show()
         $($iframe.contents().find('.image')).addClass('full')
       else
+        $('.focuspoint').hide()
         $($iframe.contents().find('.image')).removeClass('full')
 
   $('body').on 'change', 'input.image-css-position', (e)->

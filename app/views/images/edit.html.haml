@@ -20,16 +20,18 @@
               %textarea.text.optional.form-control#wmd-input{name: 'image[content]', rows: '5'}= f.object.content
               #wmd-preview.wmd-panel.wmd-preview= f.object.content_rendered.html_safe
         = f.input :legend, input_html: {value: f.object.legend }
-        = f.input :full, as: :select, prompt: false
-        %label= t '.image_position'
-        .position-selector
-          - selected = @image.image_css.present? ? @image.image_css.gsub(/.*background-position: (\w+) (\w+);.*/,'\1 \2') : 'center center'
-          - %w(top center bottom).each do |vd|
-            - %w(left center right).each do |hd|
-              - value = "#{hd} #{vd}"
-              = label_tag "image_position_#{value}",nil, class: 'position' do
-                = radio_button :image, :css_position, value, :'data-style' => background_position_to_absolute(value), class: 'image-css-position', checked: (value == selected)
+        = f.input :full, wrapper: :vertical_boolean
+        .focuspoint{style: ('display: none;' unless @image.full)}
+          .btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
+            %span.fa.fa-crosshairs
+            Focus
+          .selector
+            .alert.alert-info
+              %h4= t '.focuspoint.title'
+              = t '.focuspoint.content'
+            = my_image_tag @image, :full
         = f.input :content_css
+
         = f.input :image_css
         = f.submit class: 'btn btn-primary pull-right'
         =link_to image_path( @image), class: 'btn btn-danger', method: :delete, data: { confirm: t('.delete_confirm', default: 'Are you sure ?') } do

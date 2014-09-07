@@ -15,6 +15,7 @@ en:
   brand: SoSlide
   register: Register
   sign_in: Sign In
+  sign_out: sign out
   layouts:
     navbar_edit:
       see: 'See my site'
@@ -23,6 +24,10 @@ en:
       success: 'The site has been updated !'
 
   images:
+    edit:
+      focuspoint:
+        title: Focus
+        content: The image will be cropped, in order to get the best result, please click on the most important part of the picture.
     update:
       success: 'The image has been updated !'
   pages:
