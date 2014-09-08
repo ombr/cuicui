@@ -4,7 +4,8 @@
   =link_to edit_image_path(image) do
     =image_tag image.url(:thumbnail), title: image.legend, size: '250x200', style: "background-image: url(#{image.url(:thumbnail)})", class: ('processing' unless image.processed?)
   =link_to edit_image_path(image), class: 'control edit' do
-    .fa.fa-gears
+    %span.fa.fa-gears
+    = t('.edit')
   = simple_form_for image, method: :delete, html: { class: 'control delete' } do |f|
     = f.submit 'x', class: 'btn btn-danger btn-link'
   - unless image.first?

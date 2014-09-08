@@ -20,23 +20,20 @@
               %textarea.text.optional.form-control#wmd-input{name: 'image[content]', rows: '5'}= f.object.content
               #wmd-preview.wmd-panel.wmd-preview= f.object.content_rendered.html_safe
         = f.input :legend, input_html: {value: f.object.legend }
-        = f.input :full, wrapper: :vertical_boolean
-        .focuspoint{style: ('display: none;' unless @image.full)}
+        .focuspoint
           .btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
             %span.fa.fa-crosshairs
-            Focus
+            = t '.focuspoint.btn'
           .selector
             .alert.alert-info
               %h4= t '.focuspoint.title'
               = t '.focuspoint.content'
             = my_image_tag @image, :full
+        = f.input :full, wrapper: :vertical_boolean
         = f.input :content_css
 
         = f.input :image_css
         = f.submit class: 'btn btn-primary pull-right'
-        =link_to image_path( @image), class: 'btn btn-danger', method: :delete, data: { confirm: t('.delete_confirm', default: 'Are you sure ?') } do
-          .fa.fa-trash-o
-          = t('.delete_image')
     .col-md-8#previews
       .col-md-12
         .col-md-7

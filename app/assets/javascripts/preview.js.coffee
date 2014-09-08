@@ -165,10 +165,8 @@ $ ->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
       if $(this).is(':checked')
-        $('.focuspoint').show()
         $($iframe.contents().find('.image')).addClass('full')
       else
-        $('.focuspoint').hide()
         $($iframe.contents().find('.image')).removeClass('full')
 
   $('body').on 'change', 'input.image-css-position', (e)->

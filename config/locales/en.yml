@@ -24,8 +24,11 @@ en:
       success: 'The site has been updated !'
 
   images:
+    image_edit:
+      edit: Edit
     edit:
       focuspoint:
+        btn: Set the focus
         title: Focus
         content: The image will be cropped, in order to get the best result, please click on the most important part of the picture.
     update:

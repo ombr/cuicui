@@ -22,3 +22,8 @@ en:
       site:
         title: 'Title of your site'
         description: 'Description of your site for search engine.'
+    hints:
+      image:
+        content: you can drag and drop the text on the preview
+      defaults:
+        full: Crop the image to create an immersive feeling
