@@ -1,6 +1,6 @@
 module ImagesHelper
   def my_image_tag(image, version, options = {})
-    options[:size] ||= image.geometries[version.to_s] if image.geometries && image.geometries[version.to_s]
+    #options[:size] ||= image.geometries[version.to_s] if image.geometries && image.geometries[version.to_s]
     options[:title] ||= image.title
     options[:alt] ||= image.title
     options[:style] = "background-image: url('#{image.url(:full)}');#{options[:style]}"
