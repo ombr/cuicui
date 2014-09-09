@@ -1,11 +1,9 @@
-.col-md-12
-  .row
-    - @site.pages.each do |page|
+- @site.pages.each_slice(3) do |pages|
+  .pages
+    - pages.each do |page|
       - if page.images.first
-        .page.col-xs-6.col-sm-6.col-md-4
-          .embed-responsive.embed-responsive-4by3
-            .embed-responsive-item
-              = link_to page_path(page) do
-                %h2= page.name
-                - image = page.images.first
-                = my_image_tag image, :full, alt: page.name, title: page.name, class: 'img-responsive'
+        .page
+          .wrapper
+            = link_to page_path(page) do
+              %h2= page.name
+            = my_image_tag page.images.first, :full, alt: page.name, title: page.name
