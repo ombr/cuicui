@@ -159,6 +159,17 @@ describe ImagesController do
       end.to change { image.reload.image_css }.to 'top: 20%;'
     end
 
+    it 'update the focus' do
+      expect do
+        sign_in user
+        put :update, site_id: site,
+                     page_id: page,
+                     id: image,
+                     image: { focusx: '20.2', focusy: '12.5' }
+      end.to change { image.reload.focusx }.to 20.2
+      image.focusy.should eq 12.5
+    end
+
     it 'update the content' do
       expect do
         sign_in user

@@ -184,9 +184,17 @@ $ ->
     y = e.pageY - $(this).offset().top
     px = (x/width)*100
     py = (y/height)*100
-    $('#image_image_css').val(
-      "background-position: #{px}% #{py}%;"
-    ).trigger('change')
+    $('#image_focusx').val(px).trigger('change')
+    $('#image_focusy').val(py).trigger('change')
+
+  focus_change = ->
+    $('.iframe-preview').each (i,e)=>
+      $iframe = $('iframe', e)
+      $image = $($iframe.contents().find('.main-image'))
+      $image.css('background-position', "#{$('#image_focusx').val()}% #{$('#image_focusy').val()}%")
+
+  $('body').on 'change', '#image_focusx', focus_change
+  $('body').on 'change', '#image_focusy', focus_change
 
   $('body').on 'change', '#image_image_css', ()->
     $('.iframe-preview').each (i,e)=>

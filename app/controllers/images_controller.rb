@@ -71,7 +71,9 @@ class ImagesController < ApplicationController
                                   :full,
                                   :content,
                                   :content_css,
-                                  :image_css)
+                                  :image_css,
+                                  :focusx,
+                                  :focusy)
   end
 
   private

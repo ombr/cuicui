@@ -4,6 +4,9 @@ module ImagesHelper
     options[:title] ||= image.title
     options[:alt] ||= image.title
     options[:style] = "background-image: url('#{image.url(:full)}');#{options[:style]}"
+    if image.focusx && image.focusy
+      options[:style] += "background-position: #{image.focusx}% #{image.focusy}%"
+    end
     image_tag image.url(:full), options
   end
 
