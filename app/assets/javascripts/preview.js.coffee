@@ -99,6 +99,7 @@ $ ->
         # $iframe.contents().find('nav').remove()
 
         $background_drag.draggable(
+          containment: $e,
           stop: ()->
             $('.iframe-preview').each (i,e)=>
               $('iframe', e).trigger('refresh')
