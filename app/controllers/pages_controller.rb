@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   end
 
   def index
-    @pages = @site.pages.joins(:images)
+    @pages = @site.pages.joins(:images).distinct
   end
 
   def show
