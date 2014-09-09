@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   end
 
   def index
+    @pages = @site.pages.joins(:images)
   end
 
   def show
