@@ -37,13 +37,13 @@ $ ->
       #else
         # console. log event.which
 
-  delta = 0
-  $('body').on 'mousewheel', (event)->
-    return if $('body').css('overflow') != 'hidden'
-    delta += event.deltaY * event.deltaFactor
-    if Math.abs(delta) > 250
-      if delta > 0
-        go '.previous'
-      else
-        go '.next'
-      delta = 0
+  # delta = 0
+  # $('body').on 'mousewheel', (event)->
+  #   return if $('body').css('overflow') != 'hidden'
+  #   delta += event.deltaY * event.deltaFactor
+  #   if Math.abs(delta) > 250
+  #     if delta > 0
+  #       go '.previous'
+  #     else
+  #       go '.next'
+  #     delta = 0
