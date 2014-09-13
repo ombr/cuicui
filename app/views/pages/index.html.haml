@@ -1,12 +1,16 @@
-- pages_count = @pages.count
-- x = Math.sqrt(pages_count).ceil
-- y = (pages_count.to_f / x.to_f).ceil
-- x,y = [y,x]
-- @pages.each_slice(x) do |pages|
-  .pages{style: ("height: #{(1/y.to_f*100)}%")}
-    - pages.each do |page|
-      .page
-        .wrapper
-          = link_to page_path(page) do
-            %h2= page.name
-          = my_image_tag page.images.first, :full, alt: page.name, title: page.name
+.col-xs-12
+  - pages_count = @pages.count
+  - x = Math.sqrt(pages_count).ceil
+  - y = (pages_count.to_f / x.to_f).ceil
+  - x,y = [y,x]
+  - @pages.each_slice(x).with_index do |pages, index|
+    - percent = (1/y.to_f*100).round
+    - if index+1 == y
+      - percent = 100 - index * percent
+    .pages{style: ("height: #{percent}%")}
+      - pages.each do |page|
+        .page
+          .wrapper
+            = link_to page_path(page) do
+              %h2= page.name
+            = my_image_tag page.images.first, :full, alt: page.name, title: page.name

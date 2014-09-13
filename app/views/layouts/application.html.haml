@@ -1,3 +1,3 @@
 = render layout: 'layouts/application_without_nav' do
-  .row{ style: 'height: 100%' }
+  .row{ class: "#{body_class} #{("page-#{@page.name.parameterize} #{@page.theme}" unless @page.nil?)}" }
     = yield
