@@ -49,7 +49,7 @@ class PagesController < ApplicationController
   def destroy
     @page.update site: nil
     Resque.enqueue ObjectDeletion, 'Page', @page.id
-    redirect_to new_site_page_path(site_id: @site)
+    redirect_to edit_site_path(id: @site)
   end
 
   def update
@@ -57,7 +57,7 @@ class PagesController < ApplicationController
     if params[:page] && params[:page][:position]
       @page.insert_at(params[:page][:position].to_i)
       @page.save!
-      return redirect_to edit_page_path(@page)
+      return redirect_to edit_site_path(id: @page.site)
     end
     flash[:success] = t('.success')
     redirect_to edit_page_path(@page)

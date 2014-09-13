@@ -1,52 +1,54 @@
 .col-xs-12
   .row
-    .col-md-5
-      %h1= t('.edit')
-      = simple_form_for @site,  html: { class: 'warn-on-exit form-horizontal' }, wrapper: :horizontal_form do |f|
-        = f.input :title, input_html: {class: 'input-lg'}
-        = f.input :description, as: :text, input_html: { rows: 10 }
-        = f.input :language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]}, prompt: false
-        = f.input :twitter_id
-        = f.input :facebook_id
-        = f.input :facebook_app_id
-        = f.input :google_plus_id
-        = f.input :google_analytics_id
-        .admin-advanced
-          = f.input :metas, as: :text, input_html: { rows: 4 }
-          = f.input :favicon, as: :file
-          .alert.alert-warning
-            = t '.warning', default: 'It can take some time before the favicon gets updated...'
-          = f.input :css, input_html: { rows: 30}
-        = f.submit class: 'btn btn-primary'
-    .col-md-7
-      %h1= t('.pages')
-      %ul
-        - @site.pages.each do |page|
-          %li
-            = link_to page.name, edit_page_path(page)
-  .row
-    .col-md-12
-      %h1= t('.delete')
-      .alert.alert-danger
-        = t('.danger_zone')
-        %br
-        = link_to site_path(@site), method: :delete,  class: 'btn btn-danger', data: { confirm: t('confirm') } do
-          .fa.fa-trash-o
-          = t('.delete')
--#.col-md-4
-  %h1 Usage
-  %h3 Storage
-  =progress(Cloudinary::Api.usage["storage"]["used_percent"])
-  /
-    %h3 Bandwith
-    =progress(Cloudinary::Api.usage["bandwidth"]["used_percent"])
--#.col-md-4
-  %h1 Account
-  = simple_form_for(@current_user, url: user_registration_path, html: { :method => :put }) do |f|
-    = f.error_notification
-    .form-inputs
-      = f.input :password, autocomplete: 'off', required: false
-      = f.input :password_confirmation, required: false
-      = f.input :current_password, hint: 'we need your current password to confirm your changes', required: true
-    .form-actions
-      = f.button :submit, 'Update', class: 'btn btn-primary'
+    .col-md-4
+      .row
+        .col-md-12
+          %h1= t('.edit')
+          = simple_form_for @site,  html: { class: 'warn-on-exit form-horizontal' }, wrapper: :horizontal_form do |f|
+            = f.input :title, input_html: {class: 'input-lg'}
+            = f.input :description, as: :text, input_html: { rows: 10 }
+            = f.input :language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]}, prompt: false
+            - if params[:advanced]
+              %p
+                %span.caret
+                = link_to t('.advanced'), url_for(advanced: nil)
+              = f.input :twitter_id
+              = f.input :facebook_id
+              = f.input :facebook_app_id
+              = f.input :google_plus_id
+              = f.input :google_analytics_id
+            - else
+              %p
+                %span.caret
+                = link_to t('.advanced'), url_for(advanced: true)
+            .admin-advanced
+              = f.input :metas, as: :text, input_html: { rows: 4 }
+              = f.input :favicon, as: :file
+              .alert.alert-warning
+                = t '.warning', default: 'It can take some time before the favicon gets updated...'
+              = f.input :css, input_html: { rows: 30}
+            = f.submit class: 'btn btn-primary'
+      .row
+        .col-md-12
+          %h1= t('.delete')
+          .alert.alert-danger
+            = t('.danger_zone')
+            %br
+            = link_to site_path(@site), method: :delete,  class: 'btn btn-danger', data: { confirm: t('confirm') } do
+              .fa.fa-trash-o
+              = t('.delete')
+    .col-md-8
+      .row
+        .col-md-12
+          %h1= t('.pages')
+      .row
+        - if @site.pages.count == 0
+          .col-xs-12
+            .alert.alert-info
+              = t '.no_pages'
+        %ul.sortable
+          = render partial: 'page', collection: @site.pages, as: :page, locals: { site: @site }
+          %li.not-sortable
+            .page.new
+              = link_to new_site_page_path(site_id: @site) do
+                .fa.fa-plus

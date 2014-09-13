@@ -125,7 +125,7 @@ describe PagesController do
     it 'redirect to edit site' do
       sign_in user
       delete :destroy, site_id: site, id: page
-      response.should redirect_to new_site_page_path(site_id: page.site)
+      response.should redirect_to edit_site_path(id: page.site)
     end
   end
 
@@ -136,12 +136,6 @@ describe PagesController do
         Page.any_instance.should_receive(:insert_at).with(2)
         sign_in user
         put :update, site_id: site, id: page, page: { position: 2 }
-      end
-
-      it 'redirect to edit page' do
-        sign_in user
-        put :update, site_id: site, id: page, page: { position: 2 }
-        response.should redirect_to edit_page_path(page)
       end
     end
 

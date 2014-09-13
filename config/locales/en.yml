@@ -20,6 +20,8 @@ en:
     navbar_edit:
       see: 'See my site'
   sites:
+    edit:
+      new_page: New page
     update:
       success: 'The site has been updated !'
 

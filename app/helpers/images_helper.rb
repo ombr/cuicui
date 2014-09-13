@@ -1,13 +1,17 @@
 module ImagesHelper
-  def my_image_tag(image, version, options = {})
+  def my_image_tag(image, version = :full, options = {})
     #options[:size] ||= image.geometries[version.to_s] if image.geometries && image.geometries[version.to_s]
-    options[:title] ||= image.title
-    options[:alt] ||= image.title
-    options[:style] = "background-image: url('#{image.url(:full)}');#{options[:style]}"
-    if image.focusx && image.focusy
-      options[:style] += "background-position: #{image.focusx}% #{image.focusy}%"
+    if image
+      options[:title] ||= image.title
+      options[:alt] ||= image.title
+      options[:style] = "background-image: url('#{image.url(:full)}');#{options[:style]}"
+      if image.focusx && image.focusy
+        options[:style] += "background-position: #{image.focusx}% #{image.focusy}%"
+      end
+      image_tag image.url(version), options
+    else
+      image_tag Image.new.url(version), options
     end
-    image_tag image.url(:full), options
   end
 
   def link_to_image(image, options = {})

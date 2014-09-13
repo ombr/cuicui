@@ -1,14 +1,15 @@
 $ ()->
-  $('.image-list').each (i,list)->
+  $('.sortable').each (i,list)->
     $('.control.previous',list).hide()
     $('.control.next',list).hide()
     $(list).sortable(
       forcePlaceholderSize: true
-      placeholder: "ui-state-highlight"
+      items: 'li:not(.not-sortable)'
+      placeholder: 'ui-state-highlight'
       handle: '.handle'
       update: (e, ui) ->
         $form = $('.next,.previous', ui.item)
-        $input = $('input[name="image[position]"]', $form)
+        $input = $('input.position', $form)
         $input.val($('li', list).index($(ui.item)) + 1)
         $form.submit()
     )

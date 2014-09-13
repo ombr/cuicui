@@ -10,9 +10,9 @@
     = f.submit 'x', class: 'btn btn-danger btn-link'
   - unless image.first?
     = simple_form_for image, method: :put, html: { class: 'control previous' } do |f|
-      = f.input :position, as: :hidden, input_html: { value: image.position-1 }
+      = f.input :position, as: :hidden, input_html: { value: image.position-1, class: 'position'}
       = f.submit '<', class: 'btn btn-link btn-primary'
   - unless image.last?
     = simple_form_for image, method: :put, html: { class: 'control next' } do |f|
-      = f.input :position, as: :hidden, input_html: { value: image.position+1 }
+      = f.input :position, as: :hidden, input_html: { value: image.position+1, class: 'position' }
       = f.submit '>', class: 'btn btn-link btn-primary'

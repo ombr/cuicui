@@ -20,7 +20,7 @@ class SitesController < ApplicationController
   def create
     @site.user = current_user
     if @site.save
-      redirect_to new_site_page_path(site_id: @site)
+      redirect_to edit_site_path(id: @site)
     else
       render :new, layout: 'admin'
     end

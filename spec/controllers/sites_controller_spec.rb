@@ -156,6 +156,12 @@ describe SitesController do
       end.to change { Site.count }.by(1)
       Site.last.user.should == user
     end
+
+    it 'redirects to the site created' do
+      sign_in user
+      post :create, site: { title: 'My Amazing site' }
+      response.should redirect_to edit_site_path(Site.last)
+    end
   end
 
   describe '#index' do

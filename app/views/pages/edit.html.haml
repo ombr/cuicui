@@ -9,28 +9,11 @@
         = f.submit class: 'btn btn-primary btn-lg'
         .admin-advanced
           = f.input :description_html, class: 'advanced-admin', input_html: { rows: 8 }
-        -#= f.submit t('.update_and_preview', default: 'Update and preview'), name: 'preview', class: 'btn btn-success'
   .row
     #image-edit.col-sm-12
       %h3
         =t '.Images'
         %small= t('.images_description')
       = render 'images/form', image: @image
-      -# url = page_images_url(site_id: @site, page_id: @page)
-      -# = form_tag(Cloudinary::Utils.cloudinary_api_url, method: :post, multipart: true, class: 'cloudinaryfileupload') do
-        .uploading{style: 'display: none'}
-          .upload_in_progress
-            %h1=t('.upload_in_progress')
-            = t('.upload_in_progress_link_html', link: edit_page_path(@page), default: '<a href="%{link}" class="btn btn-success" target="_blank">Continue to edit the site</a>')
-          .progress
-            .progress-bar
-        - params =  Cloudinary::Uploader.build_upload_params(callback: url, type: :private)
-        - params[:signature] = Cloudinary::Utils.api_sign_request(params, Cloudinary.config.api_secret)
-        - params[:api_key] = Cloudinary.config.api_key
-        - params.each do |name, value|
-          = hidden_field_tag(name, value, id: nil) if value.present?
-        %input{type: :file, name: :file, multiple: true}
-        %input{name: :commit, type: :submit, value: 'Upload'}
-      %ul.image-list
-        -@page.images.each do |image|
-          = render 'images/image_edit', image: image
+      %ul.image-list.sortable
+        = render partial: 'images/image_edit', collection: @page.images, as: :image
