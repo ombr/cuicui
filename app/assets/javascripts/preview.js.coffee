@@ -170,7 +170,10 @@ $ ->
   width = $(window).width()
   $(window).resize ()->
     if reload and width != $(window).width()
-      window.location = window.location
+      $('.preview-disabled')
+        .show()
+        .text('Please reload the page.')
+      $('.iframe-preview').hide()
   $('.iframe-preview').each (i,e)->
     reload = true
     iframe_preview(e)
@@ -191,6 +194,8 @@ $ ->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
       $image = $($iframe.contents().find('.main-image'))
+      $('.focuspoint .previews img').each ->
+        $(this).css('background-position', "#{$('#image_focusx').val()}% #{$('#image_focusy').val()}%")
       $image.css('background-position', "#{$('#image_focusx').val()}% #{$('#image_focusy').val()}%")
 
   $('body').on 'change', '#image_focusx', focus_change
@@ -202,7 +207,6 @@ $ ->
       $image = $($iframe.contents().find('.main-image'))
       style = "background-image: url('#{$image.attr('src')}');" + $(this).val()
       $image.attr('style', style)
-
   $('body').on 'change', '#image_content_css', ()->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
@@ -215,7 +219,6 @@ $ ->
         $($iframe.contents().find('.image')).addClass('full')
       else
         $($iframe.contents().find('.image')).removeClass('full')
-      $('#image_image_css').val('').trigger('change')
       $('.iframe-preview').each (i,e)=>
         $('iframe', e).trigger('refresh')
 

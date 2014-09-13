@@ -21,12 +21,10 @@
               - current_user.sites.each do |site|
                 = tab_link edit_site_path(id: site) do
                   = site.title
+              %li.divider
               = tab_link new_site_path do
                 .fa.fa-plus
                 = t '.new_site'
-              %li.divider
-                = tab_link root_path do
-                  = t('brand')
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
         %ul.nav.navbar-nav
           - if site and not site.new_record?

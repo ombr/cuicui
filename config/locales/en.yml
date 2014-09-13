@@ -27,6 +27,8 @@ en:
     image_edit:
       edit: Edit
     edit:
+      text: Content
+      image: Image
       focuspoint:
         btn: Set the focus
         title: Focus

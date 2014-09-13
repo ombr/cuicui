@@ -11,6 +11,31 @@
   .row
     .col-md-4#previews
       = simple_form_for @image, html: { class: 'warn-on-exit' } do |f|
+        %h2= t '.image'
+        .focuspoint
+          .previews
+            .preview1
+              = my_image_tag @image, :full
+            .preview2
+              = my_image_tag @image, :full
+            .preview3
+              = my_image_tag @image, :full
+          .btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
+            %span.fa.fa-crosshairs
+            = t '.focuspoint.btn'
+          .selector
+            .alert.alert-info
+              %h4= t '.focuspoint.title'
+              = t '.focuspoint.content'
+            .image
+              = my_image_tag @image, :full, class: 'focuspoint-image'
+        = f.input :full, wrapper: :vertical_boolean
+        = f.input :content_css
+        = f.input :focusx
+        = f.input :focusy
+
+        = f.input :image_css
+        %h2= t '.text'
         = f.input :title, input_html: { class: 'input-lg'}
         .control-group.text.optional.page_description
           %label.text.optional.control-label{for: 'image_content'} Content
@@ -20,22 +45,7 @@
               %textarea.text.optional.form-control#wmd-input{name: 'image[content]', rows: '5'}= f.object.content
               #wmd-preview.wmd-panel.wmd-preview= f.object.content_rendered.html_safe
         = f.input :legend, input_html: {value: f.object.legend }
-        .focuspoint
-          .btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
-            %span.fa.fa-crosshairs
-            = t '.focuspoint.btn'
-          .selector
-            .alert.alert-info
-              %h4= t '.focuspoint.title'
-              = t '.focuspoint.content'
-            = my_image_tag @image, :full
-        = f.input :full, wrapper: :vertical_boolean
-        = f.input :content_css
-        = f.input :focusx
-        = f.input :focusy
-
-        = f.input :image_css
-        = f.submit class: 'btn btn-primary pull-right'
+        = f.submit class: 'btn btn-primary'
     .col-md-8#previews
       .col-md-12
         .col-md-7
