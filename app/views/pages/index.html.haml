@@ -1,6 +1,9 @@
 - pages_count = @pages.count
-- @pages.each_slice(3) do |pages|
-  .pages{style: ('height: 100%' if pages_count < 4)}
+- x = Math.sqrt(pages_count).ceil
+- y = (pages_count.to_f / x.to_f).ceil
+- x,y = [y,x]
+- @pages.each_slice(x) do |pages|
+  .pages{style: ("height: #{(1/y.to_f*100)}%")}
     - pages.each do |page|
       .page
         .wrapper
