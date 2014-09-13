@@ -32,7 +32,10 @@
     display: none
     margin: 10px
     margin-right: 60px
-  &.js
+.js
+  .pages-show,
+  .pages-first,
+  .images-show
     .control
       display: none
 
@@ -46,10 +49,18 @@
 
 // Center image with arrows on big screens
 @media (min-width: $screen-md-min)
+  .js
+    .pages-show,
+    .pages-first,
+    .images-show
+      .control
+        z-index: 150
+        display: block
   .pages-show,
   .pages-first,
   .images-show
 
+    // We show the arrows
     .image-content
       position: absolute
       top: 50%
@@ -87,11 +98,6 @@
         //bottom: 0
         //min-width: 100%
         //min-height: 100%
-    // We show the arrows
-    &.js
-      .control
-        z-index: 150
-        display: block
     // No scrollbar
     overflow: hidden
     // Image centered + max size
