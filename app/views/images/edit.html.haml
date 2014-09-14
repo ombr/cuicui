@@ -47,11 +47,10 @@
         = f.input :legend, input_html: {value: f.object.legend }
         = f.submit class: 'btn btn-primary'
     .col-md-8#previews
-      .col-md-12
+      .row
         .col-md-12
           %h3= t('.desktop')
           =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1920x1080', style: 'desktop'
-      .col-md-12
         .col-md-5
           %h3= t('laptop')
           =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1366x768', style: 'laptop'

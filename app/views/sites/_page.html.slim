@@ -1,6 +1,6 @@
 li
   .page
-    = my_image_tag page.images.first, :full
+    = my_image_tag page, :full
     = link_to edit_site_page_path(site_id: site, id: page) do
       p= page.name
     = simple_form_for page, method: :delete, html: { class: 'control delete' } do |f|

@@ -1,71 +1,88 @@
-.wmd-preview
-  border: 2px dashed gray
-  border-radius: 5px
-  padding: 10px
-  margin-top: 5px
-  margin-bottom: 10px
-
-
 .js
-  .pages-edit
+  .sortable
     .handle
       display: block !important
-.pages-edit
-  .page_theme
-    display: none
-  .edit_page
-    label
-      display: none
-  .ui-sortable-helper
-    box-shadow: 5px 5px 20px black
-    @include transition-property(box-shadow)
-    @include transition-duration(0.2s)
-  .image-list .image .handle.control
-    display: none
+.sortable
   .handle
     cursor: move
     padding: 10px
     top: 0
     left: 0
-    //display: none
+.pages-edit
 
-  ul
+  .images
     list-style: none
-  .image-list
-    .ui-state-highlight
-      margin: 5px
-      float: left
-      display: block
-      background: $gray-lighter
+    padding: 0
+    line-height: 0
+    font-size: 0
+    li
+      font-size: 14px
+      width: 33%
+      display: inline-block
+    .control
+      position: absolute
+      background: rgba(255,255,255, 0.8)
+    .delete
+      input
+        color: $brand-danger
+      right: 0
+      top: 0
+    .edit
+      color: white
+      background: $brand-primary
+      padding: 10px
+      right: 0
+      bottom: 0
+    .next
+      top: 40%
+      right: 0
+    .previous
+      left: 0
+      top: 40%
+  .image
+    position: relative
+    padding-bottom: 75%
     img
-      margin: 0 auto
-    .image
-      height: 200px
-      float: left
-      position: relative
-      width: 250px
-      margin: 5px
-      white-space: nowrap
-      .control
-        z-index: 1
-        text-align: center
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+      width: 100%
+      height: 100%
+      // Hide the previous image
+      display: block
+      @include box-sizing(border-box)
+      padding-left: 100%
+
+      // Full background.
+      @include background-size(cover)
+      background-repeat: no-repeat
+      background-position: center center
+      max-width: 100%
+    a
+      position: absolute
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      p
         position: absolute
-        background: rgba(255,255,255, 0.8)
-        display: block
-      .delete
-        input
-          color: $brand-danger
-        right: 0
-        top: 0
-      .edit
-        color: white
-        background: $brand-primary
-        padding: 10px
-        right: 0
         bottom: 0
-      .next
-        top: 40%
         right: 0
-      .previous
-        left: 0
-        top: 40%
+    &.new
+      form
+        position: absolute
+        text-align: center
+        bottom: 20%
+        left: 20%
+        input[type=submit]
+          display: none
+      p
+        position: absolute
+        display: block
+        width: 100%
+        color: $brand-success
+        text-align: center
+        top: 20%
+        font-size: 50px

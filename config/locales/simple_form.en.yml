@@ -13,8 +13,6 @@ en:
     labels:
       image:
         full: Fullscreen
-      site:
-        title: 'Your portfoli title'
     placeholders:
       defaults:
         email: your@email.com

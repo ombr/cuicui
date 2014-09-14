@@ -50,4 +50,10 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to after_sign_out_path_for(resource_name)
     end
   end
+
+  private
+
+  def after_update_path_for(_resource)
+    edit_user_registration_path
+  end
 end

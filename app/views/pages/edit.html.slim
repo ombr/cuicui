@@ -1,0 +1,14 @@
+.col-md-9.col-md-push-3
+  h1
+    = t '.Images'
+    small= t('.images_description')
+  .alert.alert-success
+    p= t '.add_image'
+    = render 'images/form', image: @image
+  ul.images.sortable
+    = render partial: 'image', collection: @page.images, as: :image
+.col-md-3.col-md-pull-9
+  h1= t('.title')
+  = simple_form_for @page, html: {class: 'edit_page warn-on-exit'} do |f|
+    = f.input :name
+    = f.submit class: 'btn btn-primary'

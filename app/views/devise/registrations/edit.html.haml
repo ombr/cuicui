@@ -1,4 +1,4 @@
-.col-md-8.col-md-push-4
+.col-md-9.col-md-push-3
   %ul.sites
     - current_user.sites.each do |site|
       %li
@@ -10,7 +10,7 @@
       .site.new
         = link_to new_site_path, id: 'new_site' do
           .fa.fa-plus
-.col-md-4.col-md-pull-8
+.col-md-3.col-md-pull-9
   .row
     .col-md-12
       %h1= t '.my_account'
@@ -21,8 +21,9 @@
           .form-inputs
             = f.input :email, required: true
             - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-              %p Currently waiting confirmation for:
-              = resource.unconfirmed_email
+              .alert.alert-warning
+                = resource.unconfirmed_email
+                need to be confirmed
             = f.input :current_password, hint: 'we need your current password to confirm your changes', required: true
           .form-actions
             = f.button :submit, 'Update'
