@@ -16,7 +16,7 @@ fr:
   register: S'inscrire
   sign_in: Se connecter
   layouts:
-    navbar_edit:
+    user_navbar:
       see: Voir mon site
   pages:
     add: 'Create a new page.'

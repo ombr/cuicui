@@ -17,7 +17,7 @@ en:
   sign_in: Sign In
   sign_out: Sign out
   layouts:
-    navbar_edit:
+    user_navbar:
       see: 'See my site'
   sites:
     edit:
