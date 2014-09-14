@@ -100,7 +100,7 @@ group :test do
 end
 
 group :development do
-  gem 'rails-i18n-debug'
+  # gem 'rails-i18n-debug'
   gem 'foreman'
   gem 'spring'
   gem 'spring-commands-rspec'

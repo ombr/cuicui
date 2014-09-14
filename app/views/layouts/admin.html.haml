@@ -9,7 +9,7 @@
     = javascript_include_tag 'admin'
     = csrf_meta_tags
   %body
-    = render 'layouts/navbar_edit', site: @site
+    = render 'layouts/user_navbar', site: @site, page: @page, image: @image
     = render 'layouts/flashs'
     %div{class: body_class}
       = yield

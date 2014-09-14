@@ -13,6 +13,7 @@ describe 'Main features', :feature do
     fill_in :site_title, with: site.title
     click_on 'Create Site'
 
+    find('#new_page').click
     fill_in :page_name, with: 'First Page'
     click_on 'Create Page'
 

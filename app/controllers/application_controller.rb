@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def set_locale
     I18n.locale =
       params[:locale] || request.env['rack.locale'] || I18n.default_locale
@@ -37,6 +36,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource_or_scope)
-    sites_path
+    edit_user_registration_path
   end
 end

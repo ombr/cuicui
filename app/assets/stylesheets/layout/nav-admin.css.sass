@@ -1,7 +1,22 @@
 // For admin position
-.col-fullscreen
-  padding: 0
 #nav
+  .navbar-image
+    img
+      height: 40px
+      width: 100px
+      // Hide the previous image
+      display: block
+      @include box-sizing(border-box)
+      padding-left: 100%
+
+      // Full background.
+      @include background-size(cover)
+      background-repeat: no-repeat
+      background-position: center center
+      max-width: 100%
+    a
+      padding: 5px 20px 5px
+
   input
     font-size: 14px
     top: 0
@@ -11,9 +26,3 @@
   .preview
     padding-top: 10px
     padding-bottom: 0px
-body
-  position: absolute
-  left: 0
-  top: 0
-  bottom: 0
-  right: 0

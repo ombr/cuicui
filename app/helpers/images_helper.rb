@@ -1,6 +1,9 @@
+# ImagesHelper
 module ImagesHelper
   def my_image_tag(image, version = :full, options = {})
-    #options[:size] ||= image.geometries[version.to_s] if image.geometries && image.geometries[version.to_s]
+    return my_image_tag(image.pages.first, version, options) if image.instance_of? Site
+    return my_image_tag(image.images.first, version, options) if image.instance_of? Page
+    # options[:size] ||= image.geometries[version.to_s] if image.geometries && image.geometries[version.to_s]
     if image
       options[:title] ||= image.title
       options[:alt] ||= image.title

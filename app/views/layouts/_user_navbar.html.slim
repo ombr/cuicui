@@ -1,0 +1,38 @@
+nav#nav.navbar.navbar-inverse role="navigation"
+  .container-fluid
+    .navbar-header
+      = link_to user_signed_in? ? edit_user_registration_path(id: current_user) : root_path, class: 'navbar-brand' do
+        = t('brand')
+      - if user_signed_in?
+      button.navbar-toggle data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        - if user_signed_in?
+          = tab_link edit_user_registration_path(id: current_user) do
+            = current_user.email
+        - if site and not site.new_record?
+          = tab_link edit_site_path(id: site) do
+            = site.title
+        - if page and not page.new_record?
+          = tab_link edit_site_page_path(id: page, site_id: site) do
+            = page.name
+        - if image and not image.new_record?
+          li.active.navbar-image
+            = link_to edit_site_page_image_path(id: image, page_id: page, site_id: site) do
+              = my_image_tag image, :full, class: 'navbar-image'
+      ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          li
+            = link_to destroy_user_session_path do
+              .fa.fa-sign-out
+              = t 'sign_out'
+        - else
+          = tab_link new_user_session_path do
+            = t 'sign_in'
+      - unless user_signed_in?
+        = link_to new_user_registration_path, class: 'pull-right btn btn-success navbar-btn' do
+          = t 'register'

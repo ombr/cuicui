@@ -1,5 +1,5 @@
 .col-md-12
-  %h3.well
+  -# %h3.well
     =link_to edit_page_path(@image.page) do
       .fa.fa-arrow-left
       = @image.page.name
@@ -48,7 +48,7 @@
         = f.submit class: 'btn btn-primary'
     .col-md-8#previews
       .col-md-12
-        .col-md-7
+        .col-md-12
           %h3= t('.desktop')
           =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1920x1080', style: 'desktop'
       .col-md-12
