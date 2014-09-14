@@ -104,18 +104,18 @@ module HerokuAutoScaler
         { :workers => 1, # This many workers
           :job_count => 1 # For this many jobs or more, until the next level
       },
-        { :workers => 2,
-          :job_count => 15
-      },
-        { :workers => 3,
-          :job_count => 25
-      },
-        { :workers => 4,
-          :job_count => 40
-      },
-        { :workers => 5,
-          :job_count => 60
-      }
+      #   { :workers => 2,
+      #     :job_count => 15
+      # },
+      #   { :workers => 3,
+      #     :job_count => 25
+      # },
+      #   { :workers => 4,
+      #     :job_count => 40
+      # },
+      #   { :workers => 5,
+      #     :job_count => 60
+      # }
       ].reverse_each do |scale_info|
         # Run backwards so it gets set to the highest value first
         # Otherwise if there were 70 jobs, it would get set to 1, then 2, then 3, etc
