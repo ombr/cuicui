@@ -15,12 +15,21 @@ en:
         full: Fullscreen
     placeholders:
       defaults:
+        title: Title
+        name: Name
+        legend: Legend
         email: your@email.com
-        password: Mot de passe
+        password: Password
+        current_password: Current Password
+      user:
+        edit:
+          password: New Password
       site:
         title: 'Title of your site'
         description: 'Description of your site for search engine.'
     hints:
+      user:
+        current_password: we need your current password to confirm your changes
       image:
         content: you can drag and drop the text on the preview
       defaults:

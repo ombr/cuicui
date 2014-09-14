@@ -5,6 +5,16 @@ fr:
         sign_in: Bonjour !
         submit: Se connecter
     registrations:
+      edit:
+        sites: Mes sites
+        my_account: Mon Compte
+        change_email: Adresse Email
+        change_password: Password
+        waiting_confirmation: '%{email} doit être confirmé. Merci de verifier vos emails.'
+        unhappy: Pas content ?
+        cancel_warning: Toutes vos donnees seront supprimées si vous supprimer votre compte.
+        cancel_last_warning: "Êtes-vous vraiment sur ??\nTOUTES VOS DONNEE VONT ETRE SUPPRIMEES."
+        cancel: Supprimer mon compte et son contenu
       form:
         submit: 'S''inscrire'
       new:
@@ -15,17 +25,45 @@ fr:
   brand: SoSlide
   register: S'inscrire
   sign_in: Se connecter
+  sign_out: Se déconnecter
   layouts:
     user_navbar:
       see: Voir mon site
+  sites:
+    edit:
+      pages: Pages
+      edit_site: Site
+      advanced: Option avancées
+      new_page: Nouvelle page
+      delete_warning: Toutes les pages vont être supprimées
+      delete: Supprimer le site
+    update:
+      success: 'The site has been updated !'
   pages:
+    image:
+      edit: " Editer"
     add: 'Create a new page.'
     create:
       initial_description: "# %{page_name}\n\nThis is my amazing description."
     update:
       success: 'The page has been updated !'
     edit:
+      edit_page: Page
+      images: Images
+      add_image: Ajouter des images
       images_description: '(jpg, png, gif, pdf, ai, psd...)'
+  images:
+    image_edit:
+      edit: Editer
+    edit:
+      text: Contenu
+      image: Image
+      focuspoint:
+        btn: Définition du focus
+        title: Focus
+        content: L'image peut etre coupée dans les menus, merci de cliquer sur le sujet principal de la photo afin que d'optimiser la découpe.
+    update:
+      success: 'The image has been updated !'
   confirm: 'Are you sure ?'
 
   home:

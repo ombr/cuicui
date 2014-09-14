@@ -12,6 +12,7 @@
     .col-md-4#previews
       = simple_form_for @image, html: { class: 'warn-on-exit' } do |f|
         %h2= t '.image'
+        = f.input :full, wrapper: :vertical_boolean
         .focuspoint
           .previews
             .preview1
@@ -29,7 +30,6 @@
               = t '.focuspoint.content'
             .image
               = my_image_tag @image, :full, class: 'focuspoint-image'
-        = f.input :full, wrapper: :vertical_boolean
         = f.input :content_css
         = f.input :focusx
         = f.input :focusy

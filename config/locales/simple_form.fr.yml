@@ -12,9 +12,13 @@ fr:
       default_message: "Merci de corriger les erreurs suivantes :"
     labels:
       defaults:
+        full: Plein écran
         email: Adresse email
         password: Mot de passe
     placeholders:
       defaults:
         email: adresse@email.fr
         password: Mot de passe
+    hints:
+      defaults:
+        full: Découpé l'image pour immerger l'utilisateur

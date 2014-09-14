@@ -5,6 +5,16 @@ en:
         sign_in: Welcome back
         submit: Sign in
     registrations:
+      edit:
+        sites: Sites
+        my_account: My Account
+        change_email: Email
+        change_password: Password
+        waiting_confirmation: '%{email} must be confirmed. Please check your emails'
+        unhappy: Really angry ?
+        cancel_warning: Everything will be lost if delete your account.
+        cancel_last_warning: "Are you REALLY sure ?\nAll YOUR CONTENT WILL BE LOST."
+        cancel: Delete my account and all content
       form:
         submit: 'Register and create my site'
       new:
@@ -21,7 +31,12 @@ en:
       see: 'See my site'
   sites:
     edit:
+      pages: Pages
+      edit_site: Site
+      advanced: Advanced options
       new_page: New page
+      delete_warning: All the pages will be deleted
+      delete: Delete the site
     update:
       success: 'The site has been updated !'
 
@@ -44,7 +59,12 @@ en:
     update:
       success: 'The page has been updated !'
     edit:
+      edit_page: Page
+      images: Images
+      add_image: Add Images
       images_description: '(jpg, png, gif, pdf, ai, psd...)'
+    image:
+      edit: " Edit"
   confirm: 'Are you sure ?'
 
   home:

@@ -1,6 +1,6 @@
 .col-md-9.col-md-push-3
   h1
-    = t '.Images'
+    = t '.images'
     small= t('.images_description')
   .alert.alert-success
     p= t '.add_image'
@@ -8,7 +8,7 @@
   ul.images.sortable
     = render partial: 'image', collection: @page.images, as: :image
 .col-md-3.col-md-pull-9
-  h1= t('.title')
+  h1= t('.edit_page')
   = simple_form_for @page, html: {class: 'edit_page warn-on-exit'} do |f|
-    = f.input :name
+    = f.input :name, label: false
     = f.submit class: 'btn btn-primary'

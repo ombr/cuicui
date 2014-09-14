@@ -1,4 +1,5 @@
 .col-md-9.col-md-push-3
+  %h1= t '.pages'
   - if @site.pages.count == 0
     .alert.alert-info
       = t '.no_pages'
@@ -11,9 +12,9 @@
 .col-md-3.col-md-pull-9
   .row
     .col-md-12
-      %h1= t('edit')
+      %h1= t('.edit_site')
       = simple_form_for @site,  html: { class: 'warn-on-exit' } do |f|
-        = f.input :title, input_html: {class: 'input-lg'}
+        = f.input :title, input_html: {class: 'input-lg'}, label: false
         = f.input :description, as: :text, input_html: { rows: 10 }
         = f.input :language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]}, prompt: false
         - if params[:advanced]
@@ -40,8 +41,7 @@
     .col-md-12
       %h1= t('.delete')
       .alert.alert-danger
-        = t('.danger_zone')
-        %br
+        %p= t('.delete_warning')
         = link_to site_path(@site), method: :delete,  class: 'btn btn-danger', data: { confirm: t('confirm') } do
           .fa.fa-trash-o
           = t('.delete')
