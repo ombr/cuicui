@@ -33,7 +33,6 @@ gem 'fakeweb', group: :test
 gem 'exifr', github: 'remvee/exifr'
 gem 'xmp', github: 'jkraemer/xmp'
 gem 'resque'
-gem 'sidekiq'
 gem 'heroku-api'
 gem 'resque-web', require: 'resque_web'
 gem 'mini_magick'
