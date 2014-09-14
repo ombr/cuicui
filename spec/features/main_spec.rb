@@ -10,6 +10,8 @@ describe 'Main features', :feature do
     find('#btn-register').click
 
     site = build :site
+    save_and_open_page
+    find('#new_site').click
     fill_in :site_title, with: site.title
     click_on 'Create Site'
 
@@ -56,11 +58,11 @@ describe 'Main features', :feature do
     click_on 'Sign In'
     click_on 'Trouble signing in ?'
     fill_in 'user_email', with: user.email
-    find('.btn').click
+    find('.btn-lg').click
     open_email user.email
     current_email.click_link 'Confirm my account'
     fill_in 'Password', with: 'NewPassword'
-    find('.btn').click
+    find('.btn-lg').click
     User.first.confirmed?.should eq true
   end
 
@@ -71,7 +73,7 @@ describe 'Main features', :feature do
     click_on 'Trouble signing in ?'
 
     fill_in 'user_email', with: user.email
-    find('.btn').click
+    find('.btn-lg').click
 
     open_email(user.email)
     current_email.click_link 'Change my password'
