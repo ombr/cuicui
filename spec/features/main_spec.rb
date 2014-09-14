@@ -10,7 +10,6 @@ describe 'Main features', :feature do
     find('#btn-register').click
 
     site = build :site
-    save_and_open_page
     find('#new_site').click
     fill_in :site_title, with: site.title
     click_on 'Create Site'
