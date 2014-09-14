@@ -253,3 +253,4 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 end
 Devise::Async.backend = :sidekiq
+Devise::Async.enabled = !Rails.env.test?
