@@ -3,7 +3,7 @@
   - if @site.pages.count == 0
     .alert.alert-info
       = t '.no_pages'
-  %ul.sortable
+  %ul.pages.sortable
     = render partial: 'page', collection: @site.pages, as: :page, locals: { site: @site }
     %li.not-sortable
       .page.new

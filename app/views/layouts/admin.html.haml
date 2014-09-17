@@ -8,13 +8,12 @@
     = stylesheet_link_tag 'admin', media: "all"
     = javascript_include_tag 'admin'
     = csrf_meta_tags
-  %body
+  %body{ class: body_class }
     = render 'layouts/user_navbar', site: @site, page: @page, image: @image
     = render 'layouts/flashs'
-    %div{class: body_class}
-      = yield
-    - if current_user
-      = intercom_script_tag({ user_id: Digest::SHA1.hexdigest("#{ENV['DOMAIN']}-#{current_user.email}"),
-                              email: current_user.email,
-                              created_at: current_user.created_at,
-                              custom_data: {pages: Page.count, images: Image.count, site: ENV['DOMAIN']}})
+    = yield
+  - if current_user
+    = intercom_script_tag({ user_id: Digest::SHA1.hexdigest("#{ENV['DOMAIN']}-#{current_user.email}"),
+                            email: current_user.email,
+                            created_at: current_user.created_at,
+                            custom_data: {pages: Page.count, images: Image.count, site: ENV['DOMAIN']}})
