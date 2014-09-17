@@ -51,6 +51,14 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def update_resource(resource, params)
+    if resource.password?
+      resource.update_with_password(params)
+    else
+      resource.update(params)
+    end
+  end
+
   private
 
   def after_update_path_for(_resource)

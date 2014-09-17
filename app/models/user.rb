@@ -9,11 +9,7 @@ class User < ActiveRecord::Base
   has_many :sites, dependent: :destroy
 
   def only_if_unconfirmed
-    pending_any_confirmation {yield}
-  end
-
-  def has_no_password?
-    self.encrypted_password.blank?
+    pending_any_confirmation { yield }
   end
 
   def attempt_set_password(params)
@@ -21,6 +17,10 @@ class User < ActiveRecord::Base
     p[:password] = params[:password]
     p[:password_confirmation] = params[:password]
     update_attributes(p)
+  end
+
+  def password?
+    encrypted_password_was.present?
   end
 
   def password_required?

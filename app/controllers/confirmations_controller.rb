@@ -7,7 +7,7 @@ class ConfirmationsController < Devise::ConfirmationsController
 
   def update
     with_unconfirmed_confirmable do
-      if @confirmable.has_no_password?
+      unless @confirmable.password?
         @confirmable.attempt_set_password(params[:user])
         if @confirmable.valid?
           do_confirm
@@ -28,7 +28,7 @@ class ConfirmationsController < Devise::ConfirmationsController
 
   def show
     with_unconfirmed_confirmable do
-      if @confirmable.has_no_password?
+      unless @confirmable.password?
         do_show
       else
         do_confirm
