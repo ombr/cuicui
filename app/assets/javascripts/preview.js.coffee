@@ -179,7 +179,7 @@ $ ->
     iframe_preview(e)
 
 
-  $('body').on 'click', '.focuspoint img', (e)->
+  $('body').on 'click', '.focuspoint .image img', (e)->
     $img = $(this)
     width = $img.width()
     height = $img.height()
