@@ -4,7 +4,8 @@ Cuicui::Application.routes.draw do
   default_url_options host: ENV['DOMAIN']
 
   as :user do
-      patch '/user/confirmation' => 'confirmations#update', via: :patch, as: :update_user_confirmation
+    patch '/user/confirmation' => 'confirmations#update',
+          via: :patch, as: :update_user_confirmation
   end
   devise_for :users, controllers: {
     sessions: :sessions,
@@ -19,7 +20,9 @@ Cuicui::Application.routes.draw do
     mount ResqueWeb::Engine => '/resque'
   end
 
-  get '/', to: 'home#show', as: 'home_root', constraints: { subdomain: ['www', ''] }
+  get '/', to: 'home#show',
+           as: 'home_root',
+           constraints: { subdomain: ['www', ''] }
   root 'pages#show'
 
   resources :sites do
