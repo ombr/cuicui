@@ -1,0 +1,19 @@
+.col-md-8.col-md-push-4
+  h1= t '.sites'
+  ul.sites
+    - current_user.sites.each do |site|
+      li
+        .site
+          = my_image_tag site
+          = link_to edit_site_path(id: site) do
+            p= site.title
+    li
+      .site.new
+        = link_to new_site_path, id: 'new_site' do
+          .fa.fa-plus
+.col-md-4.col-md-pull-8
+  h1= current_user.email
+  p= t('image_count', count: current_user.images.count)
+  p= t('page_count', count: current_user.pages.count)
+  = link_to edit_user_registration_path do
+    = t '.manage_my_account'

@@ -12,7 +12,7 @@ nav#nav.navbar.navbar-inverse role="navigation"
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
         - if user_signed_in?
-          = tab_link edit_user_registration_path(id: current_user) do
+          = tab_link user_path(id: current_user) do
             = current_user.email
         - if site and not site.new_record?
           = tab_link edit_site_path(id: site) do

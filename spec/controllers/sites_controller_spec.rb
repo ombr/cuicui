@@ -213,10 +213,10 @@ describe SitesController do
       end.to change { Site.count }.by(-1)
     end
 
-    it 'redirect to edit_user_registration' do
+    it 'redirect to user_path' do
       sign_in user
       delete :destroy, id: site
-      response.should redirect_to edit_user_registration_path
+      response.should redirect_to user_path(id: user)
     end
   end
 end

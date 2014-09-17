@@ -13,6 +13,7 @@ Cuicui::Application.routes.draw do
     passwords: :passwords,
     confirmations: :confirmations
   }
+  resources :users, only: [:show]
 
   # authenticated :user, lambda {|u| u.role == "admin"} do
   ResqueWeb::Engine.eager_load! if Rails.env.development?

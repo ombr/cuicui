@@ -29,6 +29,18 @@ en:
   layouts:
     user_navbar:
       see: 'See my site'
+  users:
+    show:
+      manage_my_account: Manage my account
+      sites: My sites
+  image_count:
+    zero: No images
+    one: One image
+    other: '%{count} Images'
+  page_count:
+    zero: No pges
+    one: One page
+    other: '%{count} pages'
   sites:
     edit:
       pages: Pages

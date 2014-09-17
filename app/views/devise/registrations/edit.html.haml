@@ -1,17 +1,4 @@
-.col-md-9.col-md-push-3
-  %h1= t '.sites'
-  %ul.sites
-    - current_user.sites.each do |site|
-      %li
-        .site
-          = my_image_tag site
-          = link_to edit_site_path(id: site) do
-            %p= site.title
-    %li
-      .site.new
-        = link_to new_site_path, id: 'new_site' do
-          .fa.fa-plus
-.col-md-3.col-md-pull-9
+.col-md-6.col-md-offset-2
   .row
     .col-md-12
       %h1= t '.my_account'
