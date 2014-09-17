@@ -42,6 +42,32 @@
          stdDeviation="1.5640144"
          id="feGaussianBlur4019-4" />
     </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always"
+       id="filter4017-0-9"
+       x="-0.32737327"
+       width="1.6547465"
+       y="-0.11728033"
+       height="1.2345607">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.5640144"
+         id="feGaussianBlur4019-4-9" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always"
+       id="filter4017-2"
+       x="-0.32737327"
+       width="1.6547465"
+       y="-0.11728033"
+       height="1.2345607">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.5640144"
+         id="feGaussianBlur4019-5" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -51,8 +77,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="11.197802"
-     inkscape:cx="-0.56575103"
-     inkscape:cy="12.074676"
+     inkscape:cx="8.1569432"
+     inkscape:cy="13.783727"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:grid-bbox="true"
@@ -91,15 +117,17 @@
          y="4.9411182" /></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter4017)"
-       d="M 10.161055,1.2621333 21.626972,16.451262 10.193628,33.267797"
+       d="M 21.110253,3.0277077 8.3591204,16.804377 22.044525,32.561567"
        id="path3122"
        inkscape:connector-curvature="0"
-       transform="matrix(-0.69327228,0,0,-0.75870415,27.157276,29.161482)" />
+       transform="matrix(0.69327228,0,0,0.75870415,5.1195176,2.96348)"
+       sodipodi:nodetypes="ccc" />
     <path
        style="fill:none;stroke:#ffffff;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter4017-0)"
-       d="M 9.7165026,0.54770782 21.182418,15.736837 9.7490756,32.553372"
+       d="M 22.340284,1.4893475 7.7857523,15.736837 21.728786,32.671077"
        id="path3122-7"
        inkscape:connector-curvature="0"
-       transform="matrix(-0.69327228,0,0,-0.75870415,26.540883,28.077407)" />
+       transform="matrix(0.69327228,0,0,0.75870415,5.1195176,2.96348)"
+       sodipodi:nodetypes="ccc" />
   </g>
 </svg>
