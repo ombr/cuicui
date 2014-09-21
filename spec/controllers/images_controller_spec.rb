@@ -27,13 +27,6 @@ describe ImagesController do
       response.should redirect_to edit_page_path(page)
     end
 
-    it 'flash an error when key is invalid' do
-      sign_in user
-      get :add, site_id: site,
-                page_id: page
-      flash[:error].should_not be_nil
-    end
-
   end
 
   describe '#show' do
