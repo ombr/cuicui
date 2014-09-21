@@ -16,4 +16,35 @@ class Site < ActiveRecord::Base
   def should_generate_new_friendly_id?
     title_changed?
   end
+
+  def self.import(user, url)
+    site = json_import(JSON.parse(HTTParty.get(url).body))
+    site.user = user
+    site.save
+  end
+
+  def self.json_import(json)
+    site = Site.new
+    site.json_import(json)
+    site.save!
+    json['pages'].each do |json_page|
+      page = site.pages.new
+      page.json_import(json_page)
+      page.save!
+      json_page['images'].each do |json_image|
+        image = page.images.new
+        image.json_import(json_image)
+        image.save!
+      end
+    end
+    site
+  end
+
+  def json_import(json)
+    %w( title description css metas language twitter_id facebook_id
+        facebook_app_id google_plus_id google_analytics_id).each do |field|
+      value = json[field.to_s]
+      self[field] = value if value
+    end
+  end
 end

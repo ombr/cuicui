@@ -28,6 +28,18 @@ class SitesController < ApplicationController
 
   def show
     @site = Site.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json do
+        return render json: @site, include: {
+          pages: {
+            include: {
+              images: { methods: [:original_url] }
+            }
+          }
+        }
+      end
+    end
   end
 
   def edit

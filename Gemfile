@@ -89,6 +89,8 @@ gem 'newrelic_rpm'
 
 gem 'rails_12factor', group: [:development, :production]
 
+gem 'httparty'
+
 group :test do
   gem 'sqlite3'
   gem 'rspec-rails'

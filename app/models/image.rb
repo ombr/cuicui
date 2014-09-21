@@ -98,4 +98,31 @@ class Image < ActiveRecord::Base
       id.to_s
     end
   end
+
+  def import_from_url(url)
+    file = Tempfile.new(['import', '.jpg'],
+                        Rails.root.join('tmp'),
+                        encoding: 'ascii-8bit')
+    begin
+      file.write(URI.parse(url).read)
+      self.image = file
+      self.save!
+    ensure
+      file.close
+      file.unlink
+    end
+  end
+
+  def json_import(json)
+    %w( position legend full content content_css title image_css
+        focusx focusy ).each do |field|
+      value = json[field.to_s]
+      self[field] = value if value
+    end
+    import_from_url(json['original_url']) if json['original_url']
+  end
+
+  def original_url
+    Cloudinary::Utils.private_download_url(image.file.public_id, :jpg).inspect
+  end
 end

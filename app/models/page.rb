@@ -41,6 +41,13 @@ class Page < ActiveRecord::Base
     end
   end
 
+  def json_import(json)
+    %w( name description position description_html theme ).each do |field|
+      value = json[field.to_s]
+      self[field] = value if value
+    end
+  end
+
   private
 
   def slug_candidates
