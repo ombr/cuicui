@@ -1,0 +1,15 @@
+.image-viewer itemscope= '' itemtype='http://schema.org/Photograph' id="image-#{image.id}" data-url=image_url(image) data-title=image.seo_title
+  .content
+    - if image.content? || image.title?
+      .image-content style=image.content_css
+        - if image.title?
+          h1= image.title
+        = image.content_rendered.html_safe
+    - else
+      .image-content style='display: none;'
+    = my_image_tag image, :full, class: "image #{'custom' if image.image_css.present? } #{'full' if image.full }", itemprop: 'url', style: image.image_css
+    - if image.legend?
+      .image-description
+        span itemprop='description' = image.legend
+    - else
+      .image-description style='display: none;'

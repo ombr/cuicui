@@ -1,7 +1,5 @@
-.pages-show,
-.pages-first,
-.images-show
-  .main-image
+.image-viewer
+  .image
     max-width: 100%
     max-height: 98%
     min-width: 10%
@@ -9,58 +7,59 @@
     height: auto
     display: block
     margin: 0 auto
+
+.image-viewer
   .image-description
     text-align: center
     background: $background-color
     background: rgba($background-color, 0.7)
     padding: 2px 0
     z-index: 50
-  .image-content:empty
-    display: none
   .image-content
     word-break: break-word
     z-index: 100
     padding: 10px
-  .image
-    &:last-child
-      margin-bottom: 0
-    margin-bottom: 50px
 
-  .control.previous
-    display: block
-  .restart
-    display: none
-    margin: 10px
-    margin-right: 60px
-.js
-  .pages-show,
-  .pages-first,
-  .images-show
-    .control
-      display: none
-
-@media (max-width: $screen-md-min)
-  .pages-show,
-  .pages-first,
-  .images-show
-    .image:first-child
-      .restart
-        display: block
-
-// Center image with arrows on big screens
+.viewer-controls
+  margin-bottom: 50px
+  &:last-child
+    margin-bottom: 0
 @media (min-width: $screen-md-min)
-  .js
-    .pages-show,
-    .pages-first,
-    .images-show
-      .control
-        z-index: 150
-        display: block
-  .pages-show,
-  .pages-first,
-  .images-show
+  .image-viewer,
+  .viewer-controls,
+  .content
+    height: 100%
 
-    // We show the arrows
+  .image-viewer
+    position: relative
+    .image
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      margin: auto
+      max-height: 100%
+      max-width: 100%
+      &.full
+        //Full size !
+        width: 100%
+        height: 100%
+        // Hide the previous image
+        display: block
+        @include box-sizing(border-box)
+        padding-left: 100%
+        // Full background.
+        @include background-size(cover)
+        background-repeat: no-repeat
+        background-position: center center
+    .image-description
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+
+    // Image content
     .image-content
       position: absolute
       top: 50%
@@ -70,245 +69,30 @@
       border-radius: 20px
       background: $background-color
       background: rgba($background-color, 0.7)
-    .image.full
-      .main-image
-        //Full size !
-        width: 100%
-        height: 100%
-
-        // Hide the previous image
-        display: block
-        @include box-sizing(border-box)
-        padding-left: 100%
-
-        // Full background.
-        @include background-size(cover)
-        background-repeat: no-repeat
-        background-position: center center
-      //.content
-        //position: relative
-        //top: -50%
-        //bottom: -50%
-        //width: 200%
-        //height: 200%
-        //position: absolute
-        //top: 0
-        //left: 0
-        //right: 0
-        //bottom: 0
-        //min-width: 100%
-        //min-height: 100%
-    // No scrollbar
-    overflow: hidden
-    // Image centered + max size
-    .image,
-    .viewer,
-    .content
-      height: 100%
-    .main-image
-      position: absolute
-      top: 0
-      left: 0
-      right: 0
-      bottom: 0
-      margin: auto
-      max-height: 100%
-      max-width: 100%
-    .viewer
-      overflow: hidden
-      position: relative
-    .image-description
-      position: absolute
-      left: 0
-      right: 0
-      bottom: 0
-
-    .previous,
-    .next
+  // Arrows :
+  .viewer-controls
+    position: relative
+    &>a
+      border: none
+      background: none
+      &:hover
+        background: none
       position: absolute
       top: 0
       bottom: 0
-      width: 40%
+      width: 33.333%
+      left: 0
       font-size: 0
-    .previous
       cursor: inline-image("arrows/left.svg"), pointer
       cursor: image-url("arrows/left.svg"), pointer\9
-      left: 0
-    .next
-      right: 0
-      top: $menu-height
-      cursor: inline-image("arrows/right.svg"), pointer
-      cursor: image-url("arrows/right.svg"), pointer\9
-
-// End page nav :
-.last-image-menu
-  ul.nav
-    background: $gray-lighter
-    a
-      &:hover
-        color: $gray-dark
-      text-decoration: none
-      color: $menu-color
-      text-transform: uppercase
+      z-index: 1
+      &.next
+        top: 50px
+        left: auto
+        right: 0
+        cursor: inline-image("arrows/right.svg"), pointer
+        cursor: image-url("arrows/right.svg"), pointer\9
 
 @media (max-width: $screen-md-min)
   .image-content
     max-width: 100% !important
-@media (min-width: $screen-md-min)
-  .last-image-menu
-    position: absolute
-    top: 0
-    bottom: 0
-    right: 0
-    left: 0
-    &.enabled
-      .index
-        display: none
-      .nav
-        max-width: 300px
-        margin: 0 auto
-        display: block
-      background: rgba($gray-darker, 0.8)
-    .nav
-      display: none
-    .index
-      position: absolute
-      top: $menu-height
-      left: 20%
-      right: 0
-      bottom: 0
-
-//#image
-  //height: 100%
-
-//.images
-  //height: 100%
-  //padding: 0
-//.image
-  //width: 100%
-  //height: 100%
-
-//@include keyframes(fadeOut)
-  //0%
-    //opacity: 1
-  //80%
-    //opacity: 1
-  //to
-    //opacity: 0
-
-//.js
-  //.image
-    //margin-bottom: 50px
-//.images.rotation
-  //.viewer
-    //.control,
-    //.image-progress
-      //opacity: 0
-
-//.image-description
-  //span
-    //max-width: 600px
-    //display: block
-    //margin: 0 auto
-    //text-align: center
-
-  //min-height: 40px
-
-//@media (min-width: $screen-md-min)
-  //.viewer
-    //padding-top: 4%
-    //padding-bottom: 4%
-// CSS 3 auto hide
-//.viewer
-  //.control,
-  //.image-description,
-  //.image-progress
-    //@include animation(fadeOut 3s ease-in)
-    //@include animation-fill-mode(forwards)
-
-//.viewer
-  //height: 100%
-  //text-align: center
-  //.content
-    //position: relative
-    //height: 100%
-    //img
-       Center the image
-      //position: absolute
-      //top: 0
-      //left: 0
-      //right: 0
-      //bottom: 0
-      //margin: auto
-       resize the picture
-      //max-height: 100%
-      //max-width: 100%
-  //.control
-    //opacity: 1
-    //p
-      //display: inline
-    //text-decoration: none
-    //position: absolute
-    //font-size: 60px
-    //color: black
-  //.menu
-    //left: 0
-    //right: 0
-    //text-align: center
-    //bottom: 0
-    //opacity: 1
-  //.image-progress
-    //position: absolute
-    //bottom: 0
-    //right: 0
-    //height: 40px
-    //padding-top: 5px
-    //z-index: 10
-    //background: white
-    //background-color: rgba(255, 255, 255, 0.7)
-    //opacity: 1
-  //.next-previous
-    //top: 0
-    //padding-top: $menu-height
-    //width: 20%
-    //height: 100%
-    //font-size: 0
-    //p
-      //display: inline-block
-      //position: relative
-      //top: 43%
-      //&:after,
-      //&:before
-        //color: white
-        //font-size: 40px
-        //font-family: 'entypo'
-        //position: relative
-      //&:before
-        //color: black
-  //.first
-    //display: none
-  //.next
-    //@extend .next-previous
-    //right: 20px
-    //text-align: right
-    //p
-      //&:before,
-      //&:after
-        //content: '\0E766'
-      //&:before
-        //right: -0.45em
-  //.previous
-    //@extend .next-previous
-    //text-align: left
-    //left: 20px
-    //p
-      //&:before,
-      //&:after
-        //content: '\0E765'
-      //&:before
-        //color: white
-        //z-index: 1
-      //&:after
-        //color: black
-      //&:after
-        //left: -0.45em

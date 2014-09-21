@@ -124,13 +124,13 @@ $ ->
         $drag.show()
 
         unless $("#image_full").is(':checked')
-          update_drag_position('.main-image', $background_drag)
+          update_drag_position('.image', $background_drag)
           $background_drag.show()
         $iframe.on 'refresh', ()->
           if $("#image_full").is(':checked')
             $background_drag.hide()
           else
-            update_drag_position('.main-image', $background_drag)
+            update_drag_position('.image', $background_drag)
             $background_drag.show()
           update_drag_position('.image-content', $drag)
         $drag.resizable(
@@ -193,7 +193,7 @@ $ ->
   focus_change = ->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
-      $image = $($iframe.contents().find('.main-image'))
+      $image = $($iframe.contents().find('.image'))
       $('.focuspoint .previews img').each ->
         $(this).css('background-position', "#{$('#image_focusx').val()}% #{$('#image_focusy').val()}%")
       $image.css('background-position', "#{$('#image_focusx').val()}% #{$('#image_focusy').val()}%")
@@ -204,7 +204,7 @@ $ ->
   $('body').on 'change', '#image_image_css', ()->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
-      $image = $($iframe.contents().find('.main-image'))
+      $image = $($iframe.contents().find('.image'))
       style = "background-image: url('#{$image.attr('src')}');" + $(this).val()
       $image.attr('style', style)
   $('body').on 'change', '#image_content_css', ()->

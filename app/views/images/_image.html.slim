@@ -1,0 +1,12 @@
+.viewer-controls
+  - if image.higher_item
+    = link_to image_url(image.higher_item), class: 'btn btn-default previous' do
+      span previous
+  - else
+    = link_to pages_path, class: 'btn btn-default previous home' do
+      span previous
+
+  = render 'images/viewer', image: image
+
+  = link_to image.lower_item ? image_url(image.lower_item) : pages_path , class: 'btn btn-default next preload' do
+      span next
