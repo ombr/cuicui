@@ -6,7 +6,7 @@
   - @pages.each_slice(x).with_index do |pages, index|
     - percent = (1/y.to_f*100).round
     - if index+1 == y
-      - percent = 100 - index * percent
+      - percent = 101 - index * percent
     .pages-row{style: ("height: #{percent}%")}
       - pages.each do |page|
         .page
