@@ -1,4 +1,4 @@
-.viewer-controls
+.viewer-controls.preloadable id="viewer-image-#{image.id}"
   - if image.higher_item
     = link_to image_url(image.higher_item), class: 'btn btn-default previous' do
       span previous

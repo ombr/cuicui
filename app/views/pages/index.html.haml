@@ -1,4 +1,4 @@
-.col-xs-12
+.col-xs-12.preloadable{ id: "main-nav" }
   - pages_count = @pages.count
   - x = Math.sqrt(pages_count).ceil
   - y = (pages_count.to_f / x.to_f).ceil
@@ -7,7 +7,7 @@
     - percent = (1/y.to_f*100).round
     - if index+1 == y
       - percent = 100 - index * percent
-    .pages{style: ("height: #{percent}%")}
+    .pages-row{style: ("height: #{percent}%")}
       - pages.each do |page|
         .page
           .wrapper

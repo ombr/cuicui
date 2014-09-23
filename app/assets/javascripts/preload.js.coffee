@@ -18,12 +18,11 @@ cache = (key, callback, process)->
         window.localStorage.setItem(key, data)
         live_update(data)
 
-get_image = (href, callback)->
-  cache href, callback, (href, process_callback)->
-    $.get(href, (data)->
-      image = $(data).find('.image').parent().html()
-      process_callback(image)
-    , 'html')
+get_content = (href, selector, callback)->
+  $.get(href, (data)->
+    content = $(data).find(selector).parent().html()
+    callback(content)
+  , 'html')
 
 $ ->
   $window = $(window)
@@ -37,18 +36,21 @@ $ ->
   $document = $(document)
   threshold = $window.height() * 6
   $body = $('body')
-  $('body').addClass('js')
+  $body.addClass('js')
   preload = ->
     preloaded = $body.prop('scrollHeight') - $window.scrollTop() - $window.height()
     if preloaded < threshold
       $('a.next.preload').each (i,e)->
         $link = $ e
+        $link.removeClass('preload').addClass('loading')
         $image = $($link.parents('.image')[0])
         $link.removeClass('preload')
         href = $link.attr('href')
-        get_image href, (new_image)->
-          # $('.preload.previous', $new_image).removeClass('preload')
-          $image.after(new_image)
+        get_content href, '.preloadable', (new_image)->
+          $new_image = $(new_image)
+          $link.attr('href', "##{$new_image.attr('id')}")
+          $link.parent().after($new_image)
+          $new_image.addClass('preloaded')
           preload()
     # This is a bad idea...
     # if $window.scrollTop() < threshold and $body.prop('scrollHeight') > 2*$window.height()
