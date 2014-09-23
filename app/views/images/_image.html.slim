@@ -12,3 +12,36 @@
       span.fa.fa-angle-right
   .help-scroll-icon
     span.fa.fa-angle-double-down
+
+- content_for :page_title, image.seo_title
+- content_for :head do
+  - description = image.seo_description
+  - image_url = image.url(:social)
+  meta property='og:title' content=title
+  meta property='og:image' content=image_url
+  meta property='og:description' content=description
+  meta property='og:url' content=s_image_url(page_id: image.page, id: image)
+  meta property='og:site_name' content=image.page.site.title
+  meta property='og:see_also' content=root_url
+  meta property='og:type' content='article'
+  - facebook_app = ''
+  - facebook_admin = ''
+  - if image.site.facebook_app_id?
+    meta property='og:app_id' content=image.site.facebook_app_id
+  - if image.site.facebook_id?
+    meta property='fb:admins' content=image.site.facebook_id
+  meta property='twitter:card' content='photo'
+  meta property='twitter:title' content=title
+  meta property='twitter:image:src' content=image_url
+  - twitter_id = image.site.twitter_id
+  - if twitter_id.present?
+    meta property='twitter:site' content=twitter_id
+    meta property='twitter:creator' content=twitter_id
+  - google_id= image.site.google_plus_id
+  - unless google_id.blank?
+    link rel='author' href="https://plus.google.com/#{google_id}/posts"
+    link rel='publisher' href="https://plus.google.com/#{google_id}"
+  -# <html itemscope itemtype="http://schema.org/Article">
+  meta property='description' content=description
+  meta property='name' content=title
+  meta property='image' content=image_url

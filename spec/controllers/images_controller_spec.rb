@@ -61,10 +61,10 @@ describe ImagesController do
         get :show, site_id: site, page_id: page, id: image
         expect(
           response.body
-        ).to include "<meta content='@ombr' property='twitter:site'>"
+        ).to include "<meta content=\"@ombr\" property=\"twitter:site\" />"
         expect(
           response.body
-        ).to include "<meta content='@ombr' property='twitter:creator'>"
+        ).to include "<meta content=\"@ombr\" property=\"twitter:creator\" />"
       end
     end
 
@@ -74,7 +74,7 @@ describe ImagesController do
         get :show, site_id: site, page_id: page, id: image
         expect(
           response.body
-        ).to include "<meta content='ombr' property='fb:admins'>"
+        ).to include "<meta content=\"ombr\" property=\"fb:admins\" />"
       end
     end
 
@@ -85,7 +85,7 @@ describe ImagesController do
         expect(
           response.body
         ).to include(
-          "<link href='https://plus.google.com/1212/posts' rel='author'>"
+          "<link href=\"https://plus.google.com/1212/posts\" rel=\"author\" />"
         )
       end
     end
@@ -96,7 +96,7 @@ describe ImagesController do
         get :show, site_id: site, page_id: page, id: image
         expect(
           response.body
-        ).to include "<meta content='1212' property='og:app_id'>"
+        ).to include "<meta content=\"1212\" property=\"og:app_id\" />"
       end
     end
 
