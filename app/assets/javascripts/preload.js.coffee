@@ -50,6 +50,7 @@ $ ->
           $new_image = $(new_image)
           $link.attr('href', "##{$new_image.attr('id')}")
           $link.parent().after($new_image)
+          $link.removeClass('loading').addClass('loaded')
           $new_image.addClass('preloaded')
           preload()
     # This is a bad idea...
