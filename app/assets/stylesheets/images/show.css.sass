@@ -33,8 +33,39 @@
 
 .viewer-controls
   margin-bottom: 50px
+  &:last-child
+    margin-bottom: 0
 
+  position: relative
+  a
+    z-index: 1
+    position: absolute
+    &.next
+      bottom: 0
+      right: 0
+
+.help-scroll-icon
+  display: none
+.js
+  .help-scroll-icon
+    display: block
+    position: absolute
+    opacity: 0
+    font-size: 4em
+    bottom: -100px
+    padding-bottom: 50px
+    left: 0
+    right: 0
+    text-align: center
+    cursor: pointer
+    @include transition (all 1s ease-in-out)
+    @include transition-delay(2s)
 @media (min-width: $screen-md-min)
+  .js.help-scroll .help-scroll-icon
+    opacity: 0.8
+    bottom: 0
+  .js.help-scroll.scrolled .help-scroll-icon
+    display: none
   .image-viewer,
   .viewer-controls,
   .content
@@ -81,15 +112,10 @@
       background: $background-color
       background: rgba($background-color, 0.7)
   // Arrows :
-  .viewer-controls
-    position: relative
-    a
       // border: none
       // background: none
       // &:hover
       //   background: none
-      z-index: 1
-      position: absolute
       // top: 0
       // bottom: 0
       // width: 33.333%
@@ -100,9 +126,6 @@
       // z-index: 1
       // &.previous
       //   display: none
-      &.next
-        bottom: 0
-        right: 0
       //   top: 50px
       //   left: auto
       //   right: 0

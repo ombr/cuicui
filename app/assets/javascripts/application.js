@@ -8,3 +8,4 @@
 //= require navbar
 //= require history
 //= require image_active
+//= require scroll
