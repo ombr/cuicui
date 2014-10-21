@@ -10,6 +10,18 @@ describe Site do
   end
 
   describe 'domain resolution' do
+    it 'returns nil when site not found' do
+      expect(
+        Site.find_by_host("super-test.#{ENV['DOMAIN']}")
+      ).to be_nil
+    end
+
+    it 'returns nil when site not found' do
+      expect(
+        Site.find_by_host('luc.boissaye.fr')
+      ).to be_nil
+    end
+
     it 'resolve with custom domain' do
       site = create :site, title: 'lala', domain: 'luc.boissaye.fr'
       expect(

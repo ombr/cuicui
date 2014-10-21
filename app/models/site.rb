@@ -45,6 +45,8 @@ class Site < ActiveRecord::Base
     return custom_site if custom_site
     match = Regexp.new("^(.*)\.#{ENV['DOMAIN']}$").match(host)
     return find(match[1]) if match
+  rescue ActiveRecord::RecordNotFound
+    nil
   end
 
   def json_import(json)
