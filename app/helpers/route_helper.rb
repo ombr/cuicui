@@ -1,15 +1,27 @@
 # RouteHelper
 module RouteHelper
   def site_url(site, *__args)
-    root_url(subdomain: site)
+    if site.domain?
+      root_url(host: site.domain)
+    else
+      root_url(subdomain: site)
+    end
   end
 
   def see_site_path(site, *_args)
-    root_url(subdomain: site)
+    if site.domain?
+      root_url(host: site.domain)
+    else
+      root_url(subdomain: site)
+    end
   end
 
   def page_url(page, *_args)
-    s_page_url(subdomain: page.site, id: page)
+    if page.site.domain?
+      s_page_url(host: page.site.domain, id: page)
+    else
+      s_page_url(subdomain: page.site, id: page)
+    end
   end
 
   def page_path(page, *_args)
@@ -29,7 +41,11 @@ module RouteHelper
   end
 
   def image_url(image, *_args)
-    s_image_url(subdomain: image.site, id: image, page_id: image.page)
+    if image.site.domain?
+      s_image_url(host: image.site.domain, id: image, page_id: image.page)
+    else
+      s_image_url(subdomain: image.site, id: image, page_id: image.page)
+    end
   end
 
   def image_path(image, *_args)

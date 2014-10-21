@@ -60,6 +60,14 @@ describe SitesController do
       end.to change { site.reload.language }.to('fr')
     end
 
+    it 'update the domain' do
+      sign_in user
+      expect do
+        sign_in user
+        put :update, id: site, site: { domain: 'luc.boissaye.fr' }
+      end.to change { site.reload.domain }.to('luc.boissaye.fr')
+    end
+
     it 'change the css' do
       expect do
         sign_in user

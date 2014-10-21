@@ -14,9 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_site_id_from_host
-    if request.subdomain.present? && !user_signed_in?
-      params[:site_id] = request.subdomain
-    end
+    @site = Site.find_by_host(request.host)
   end
 
   def set_locale

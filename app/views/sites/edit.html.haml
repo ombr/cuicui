@@ -21,6 +21,7 @@
           %p
             %span.caret
             = link_to t('.advanced'), url_for(advanced: nil)
+          = f.input :domain
           = f.input :twitter_id
           = f.input :facebook_id
           = f.input :facebook_app_id

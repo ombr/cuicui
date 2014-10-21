@@ -40,6 +40,13 @@ class Site < ActiveRecord::Base
     site
   end
 
+  def self.find_by_host(host)
+    custom_site = find_by_domain(host)
+    return custom_site if custom_site
+    match = Regexp.new("^(.*)\.#{ENV['DOMAIN']}$").match(host)
+    return find(match[1]) if match
+  end
+
   def json_import(json)
     %w( title description css metas language twitter_id facebook_id
         facebook_app_id google_plus_id google_analytics_id).each do |field|
