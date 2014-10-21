@@ -23,7 +23,7 @@ Cuicui::Application.routes.draw do
 
   get '/', to: 'home#show',
            as: 'home_root',
-           constraints: { subdomain: ['www', ''] }
+           constraints: { host: "www.#{ENV['DOMAIN']}" }
   root 'pages#show'
 
   resources :sites do
