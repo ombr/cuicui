@@ -179,7 +179,7 @@ $ ->
     iframe_preview(e)
 
 
-  $('body').on 'click', '.focuspoint .image img', (e)->
+  $('body').on 'click', '.focuspoint.active .image img', (e)->
     $img = $(this)
     width = $img.width()
     height = $img.height()
@@ -187,8 +187,9 @@ $ ->
     y = e.pageY - $(this).offset().top
     px = (x/width)*100
     py = (y/height)*100
-    $('#image_focusx').val(px).trigger('change')
-    $('#image_focusy').val(py).trigger('change')
+    $('#image_focusx').val(px)
+    $('#image_focusy').val(py)
+    $img.parents('form').submit()
 
   focus_change = ->
     $('.iframe-preview').each (i,e)=>

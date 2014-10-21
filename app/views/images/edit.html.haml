@@ -11,9 +11,17 @@
   .row
     .col-md-4#previews
       = simple_form_for @image, html: { class: 'warn-on-exit' } do |f|
-        %h2= t '.image'
+        %h2= t '.full'
         = f.input :full, wrapper: :vertical_boolean
+        %h2= t '.focus'
         .focuspoint
+          .selector
+            .alert.alert-info.help
+              %h4= t '.focuspoint.title'
+              = t '.focuspoint.content'
+            .image
+              %span.fa.fa-crosshairs.target{style: "top: #{@image.focusy || 50}%; left: #{@image.focusx || 50}%"}
+              = my_image_tag @image, :full, class: 'focuspoint-image'
           .previews
             .preview1
               = my_image_tag @image, :full
@@ -24,12 +32,6 @@
           .btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
             %span.fa.fa-crosshairs
             = t '.focuspoint.btn'
-          .selector
-            .alert.alert-info
-              %h4= t '.focuspoint.title'
-              = t '.focuspoint.content'
-            .image
-              = my_image_tag @image, :full, class: 'focuspoint-image'
         = f.input :content_css
         = f.input :focusx
         = f.input :focusy
