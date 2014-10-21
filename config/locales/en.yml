@@ -1,4 +1,5 @@
 en:
+  loading: Processing...
   devise:
     sessions:
       new:

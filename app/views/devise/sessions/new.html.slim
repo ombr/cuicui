@@ -4,5 +4,5 @@
     = f.input :email, required: true, autofocus: true, label: false
     = f.input :password, required: true, label: false
     = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-    = f.submit t('.submit'),  class: 'btn btn-success btn-lg'
+    = f.submit t('.submit'),  class: 'btn btn-success btn-lg', data: { 'disable-with' => t('loading')}
     = render "devise/shared/links"
