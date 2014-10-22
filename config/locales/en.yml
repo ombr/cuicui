@@ -58,7 +58,8 @@ en:
       edit: Edit
     edit:
       text: Content
-      image: Image
+      full: Fullscreen
+      focus: Focus
       focuspoint:
         btn: Set the focus
         title: Focus
