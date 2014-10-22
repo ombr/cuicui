@@ -95,8 +95,9 @@ $ ->
       onComplete: ()->
         # Firefox body height
         $iframe.contents().find('body').height("#{ref_height}px")
-        # $iframe.contents().find('.control').remove()
-        # $iframe.contents().find('nav').remove()
+        $iframe.contents().find('.next').remove()
+        $iframe.contents().find('.previous').remove()
+        #$iframe.contents().find('#home').remove()
 
         $background_drag.draggable(
           containment: $e,
