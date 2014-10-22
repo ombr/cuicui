@@ -10,15 +10,16 @@ describe PagesController do
 
   describe '#index' do
 
-    context 'with a page and image' do
+    context 'with 2 pages with images' do
       before :each do
         image
+        create :image, page: create(:page, site: site)
         get :index, site_id: site
       end
       it_responds_200
 
       it('assigns site') { assigns(:site).should == site }
-      it('assigns pages') { assigns(:pages).should == [page] }
+      it('assigns pages') { assigns(:pages).to_a.should == site.pages.to_a }
     end
 
     context 'with one empty page' do
