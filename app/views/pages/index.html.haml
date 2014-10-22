@@ -1,7 +1,6 @@
 .col-xs-12.preloadable{ id: "main-nav" }
-  - pages_count = @pages.count
-  - x = Math.sqrt(pages_count).ceil
-  - y = (pages_count.to_f / x.to_f).ceil
+  - x = Math.sqrt(@pages_count).ceil
+  - y = (@pages_count.to_f / x.to_f).ceil
   - x,y = [y,x]
   - @pages.each_slice(x).with_index do |pages, index|
     - percent = (1/y.to_f*100).round

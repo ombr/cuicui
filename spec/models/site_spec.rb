@@ -9,6 +9,15 @@ describe Site do
        .in_array(LanguageList::COMMON_LANGUAGES.map { |l| l.iso_639_1 })
   end
 
+  describe '#non_empty_pages' do
+    it 'returns non empty pages' do
+      site = create :site
+      create :page
+      page = create :page, site: site
+      create :image, page: page
+      expect(site.pages.not_empty).to eq [page]
+    end
+  end
   describe 'domain resolution' do
     it 'returns nil when site not found' do
       expect(

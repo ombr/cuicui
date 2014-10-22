@@ -1,5 +1,7 @@
 # Page
 class Page < ActiveRecord::Base
+  scope :not_empty, -> { joins(:images).distinct }
+
   validates :name, presence: true
   validates :theme, inclusion: { in: %w(light dark) }
   belongs_to :site, touch: true
@@ -9,7 +11,9 @@ class Page < ActiveRecord::Base
   acts_as_list scope: :site
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :finders, :history, :scoped], scope: :site
+  friendly_id :slug_candidates,
+              use: [:slugged, :finders, :history, :scoped],
+              scope: :site
 
   after_validation :move_friendly_id_error_to_name
   def move_friendly_id_error_to_name

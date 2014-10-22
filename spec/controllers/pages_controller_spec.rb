@@ -3,17 +3,38 @@ require 'spec_helper'
 describe PagesController do
   include RouteHelper
 
-  let(:page) { create :page, site: site }
-  let(:site) { create :site, user: user }
   let(:user) { create :user }
+  let(:site) { create :site, user: user }
+  let(:page) { create :page, site: site }
+  let(:image) { create :image, page: page }
 
   describe '#index' do
-    before :each do
-      get :index, site_id: site
+
+    context 'with a page and image' do
+      before :each do
+        image
+        get :index, site_id: site
+      end
+      it_responds_200
+
+      it('assigns site') { assigns(:site).should == site }
+      it('assigns pages') { assigns(:pages).should == [page] }
     end
 
-    it('assigns site') { assigns(:site).should == site }
-    it('assigns pages') { assigns(:pages).should == site.pages.to_a }
+    context 'with one empty page' do
+      it 'redirects to root_path' do
+        page
+        get :index, site_id: site
+        expect(response).to redirect_to root_path
+      end
+    end
+
+    context 'without page' do
+      it 'redirects to root_path' do
+        get :index, site_id: site
+        expect(response).to redirect_to root_path
+      end
+    end
   end
 
   describe '#next' do

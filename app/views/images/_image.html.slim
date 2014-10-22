@@ -3,13 +3,19 @@
     = link_to image_url(image.higher_item), class: 'btn btn-default previous' do
       span.fa.fa-angle-left
   - else
-    = link_to pages_path, class: 'btn btn-default previous home' do
-      span.fa.fa-angle-left
+    - if @site.pages.not_empty.count > 1
+      = link_to pages_path, class: 'btn btn-default previous home' do
+        span.fa.fa-angle-left
 
   = render 'images/viewer', image: image
 
-  = link_to image.lower_item ? image_url(image.lower_item) : pages_path , class: 'btn btn-default next preload' do
+  - if image.lower_item
+    = link_to image_url(image.lower_item), class: 'btn btn-default next preload' do
       span.fa.fa-angle-right
+  - else
+    - if @site.pages.not_empty.count > 1
+      = link_to pages_path , class: 'btn btn-default next preload' do
+        span.fa.fa-angle-right
   .help-scroll-icon
     span.fa.fa-angle-double-down
 
