@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   def index
     @pages = @site.pages.not_empty
     @pages_count = @pages.count
-    return redirect_to root_path if @pages_count.zero?
+    return redirect_to root_path if @pages_count < 2
   end
 
   def show
