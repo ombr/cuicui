@@ -22,14 +22,13 @@
             .image
               %span.fa.fa-crosshairs.target{style: "top: #{@image.focusy || 50}%; left: #{@image.focusx || 50}%"}
               = my_image_tag @image, :full, class: 'focuspoint-image'
-          .previews
-            .preview1
-              = my_image_tag @image, :full
-            .preview2
-              = my_image_tag @image, :full
-            .preview3
-              = my_image_tag @image, :full
-          .btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
+          .preview.preview1
+            = my_image_tag @image, :full
+          .preview.preview2
+            = my_image_tag @image, :full
+          .preview.preview3
+            = my_image_tag @image, :full
+          -#.btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
             %span.fa.fa-crosshairs
             = t '.focuspoint.btn'
         = f.input :content_css
