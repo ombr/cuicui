@@ -123,9 +123,6 @@ $ ->
         update_drag_position('.image-content', $drag)
         $drag.show()
 
-        unless $("#image_full").is(':checked')
-          update_drag_position('.image', $background_drag)
-          $background_drag.show()
         $iframe.on 'refresh', ()->
           if $("#image_full").is(':checked')
             $background_drag.hide()
@@ -133,6 +130,7 @@ $ ->
             update_drag_position('.image', $background_drag)
             $background_drag.show()
           update_drag_position('.image-content', $drag)
+        $iframe.trigger 'refresh'
         $drag.resizable(
           handles: 'e, w',
           minWidth: 200 * zoom
