@@ -11,7 +11,7 @@ class FaviconUploader < CarrierWave::Uploader::Base
   def filename
     if original_filename.present?
       if model && model.title?
-        return "#{model.title.parameterize}.jpg"
+        return "#{model.title.parameterize}.png"
       end
     end
     "#{super}.jpg"
@@ -26,7 +26,6 @@ class FaviconUploader < CarrierWave::Uploader::Base
   end
 
   process :center_and_square
-  format 'png'
   resize_to_fill(260, 260)
 
   [192, 160, 96, 16, 32, 57, 114, 72, 144, 60, 120, 76, 152, 180].each do |size|
@@ -37,6 +36,7 @@ class FaviconUploader < CarrierWave::Uploader::Base
 
   def center_and_square
     manipulate! do |img|
+      img.format('png', 1)
       cols, rows = img[:dimensions]
       size = img[:dimensions].min
       image = model.pages.first.images.first

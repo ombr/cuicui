@@ -27,7 +27,7 @@ class Site < ActiveRecord::Base
 
   def favicon_process
     return unless pages.first && pages.first.images.first
-    self.favicon = open(pages.first.images.first.original.url)
+    self.favicon = open(pages.first.images.first.url(:full))
     save!
   end
 
