@@ -66,6 +66,8 @@ Cuicui::Application.routes.draw do
     get '/application.manifest' => Rails::Offline
   end
 
+  get 'favicon*all', to: 'favicons#show'
+  get 'apple-touch-icon*all', to: 'favicons#show'
   get '/pages', to: 'pages#index'
   get '/:id', to: 'pages#show', as: :s_page
   get '/:page_id/:id', to: 'images#show', as: :s_image

@@ -2,6 +2,10 @@
 class FaviconUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
+  def self.sizes
+    [192, 160, 96, 16, 32, 57, 114, 72, 144, 60, 120, 76, 152, 180]
+  end
+
   storage :fog
 
   def default_url
@@ -10,11 +14,9 @@ class FaviconUploader < CarrierWave::Uploader::Base
 
   def filename
     if original_filename.present?
-      if model && model.title?
-        return "#{model.title.parameterize}.png"
-      end
+      return "#{model.title.parameterize}.png" if model && model.title?
     end
-    "#{super}.jpg"
+    "#{super}.png"
   end
 
   def store_dir
@@ -28,10 +30,18 @@ class FaviconUploader < CarrierWave::Uploader::Base
   process :center_and_square
   resize_to_fill(260, 260)
 
-  [192, 160, 96, 16, 32, 57, 114, 72, 144, 60, 120, 76, 152, 180].each do |size|
+  sizes.each do |size|
     version :"thumb#{size}" do
       resize_to_fill(size, size)
     end
+  end
+
+  version :ico do
+    def full_filename(_for_file = model.logo.file)
+      'favicon.ico'
+    end
+    process convert: 'ico'
+    resize_to_fill(16, 16)
   end
 
   def center_and_square

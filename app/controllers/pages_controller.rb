@@ -1,6 +1,6 @@
 # PagesController
 class PagesController < ApplicationController
-  before_filter :load_site_id_from_host, only: [:show, :first, :index]
+  before_filter :load_site_from_host, only: [:show, :first, :index]
 
   load_and_authorize_resource :site
   load_and_authorize_resource through: :site

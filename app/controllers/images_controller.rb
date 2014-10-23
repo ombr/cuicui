@@ -1,6 +1,6 @@
 # ImageController
 class ImagesController < ApplicationController
-  before_filter :load_site_id_from_host, only: [:show]
+  before_filter :load_site_from_host, only: [:show]
 
   load_and_authorize_resource :site
   load_and_authorize_resource :page, through: :site

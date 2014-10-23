@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path
   end
 
-  def load_site_id_from_host
+  def load_site_from_host
     @site = Site.find_by_host(request.host)
   end
 
