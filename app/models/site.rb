@@ -13,6 +13,8 @@ class Site < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders, :history]
 
+  mount_uploader :favicon, FaviconUploader
+
   def should_generate_new_friendly_id?
     title_changed?
   end
@@ -21,6 +23,12 @@ class Site < ActiveRecord::Base
     site = json_import(JSON.parse(HTTParty.get(url).body))
     site.user = user
     site.save
+  end
+
+  def favicon_process
+    return unless pages.first && pages.first.images.first
+    self.favicon = open(pages.first.images.first.original.url)
+    save!
   end
 
   def self.json_import(json)

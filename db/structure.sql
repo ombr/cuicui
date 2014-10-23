@@ -174,7 +174,8 @@ CREATE TABLE sites (
     google_analytics_id character varying(255),
     user_id integer,
     slug character varying(255),
-    domain character varying(255)
+    domain character varying(255),
+    favicon character varying(255)
 );
 
 
@@ -470,3 +471,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140812114044');
 INSERT INTO schema_migrations (version) VALUES ('20140909185755');
 
 INSERT INTO schema_migrations (version) VALUES ('20141021081149');
+
+INSERT INTO schema_migrations (version) VALUES ('20141022143740');

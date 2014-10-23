@@ -8,6 +8,7 @@ class Page < ActiveRecord::Base
   has_one :user, through: :site
 
   has_many :images, -> { order('position') }, dependent: :destroy
+  after_save :favicon_changed?, on: :update
   acts_as_list scope: :site
 
   extend FriendlyId
@@ -50,6 +51,10 @@ class Page < ActiveRecord::Base
       value = json[field.to_s]
       self[field] = value if value
     end
+  end
+
+  def favicon_changed?
+    Resque.enqueue(FaviconGeneration, site.id) if first? && position_changed?
   end
 
   private

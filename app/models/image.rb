@@ -11,6 +11,8 @@ class Image < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   mount_uploader :snapshot, ImageUploader
 
+  after_save :favicon_changed?, on: [:create, :update]
+
   def url(version)
     return image.url version if image?
     return cloudinary.url version if cloudinary?
@@ -122,5 +124,12 @@ class Image < ActiveRecord::Base
 
   def original_url
     Cloudinary::Utils.private_download_url(image.file.public_id, :jpg).inspect
+  end
+
+  def favicon_changed?
+    return unless first? && page && page.first?
+    Resque.enqueue FaviconGeneration, site.id if focusx_changed? ||
+                                                 focusy_changed? ||
+                                                 position_changed?
   end
 end
