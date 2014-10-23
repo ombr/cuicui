@@ -37,11 +37,11 @@ class FaviconUploader < CarrierWave::Uploader::Base
   end
 
   version :ico do
+    resize_to_fill(16, 16)
+    process convert: 'ico'
     def full_filename(_for_file = model.logo.file)
       'favicon.ico'
     end
-    process convert: 'ico'
-    resize_to_fill(16, 16)
   end
 
   def center_and_square
