@@ -33,6 +33,7 @@ en:
   users:
     show:
       manage_my_account: Manage my account
+      manage_sites: Manage
       sites: My sites
   image_count:
     zero: No images

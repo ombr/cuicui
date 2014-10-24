@@ -8,7 +8,6 @@
         %td=t '.pages'
         %td=t '.images'
         %td=t '.open'
-        %td=t '.destroy'
     %tbody
       - @sites.each do |site|
         %tr
@@ -19,9 +18,7 @@
           %td= site.images.count
           %td
             = link_to site_url(site), class: 'btn btn-link', target: '_blank' do
+              = site_url(site)
               .fa.fa-external-link
-          %td
-            = link_to site_path(site), method: :delete,  class: 'btn btn-danger', data: { confirm: t('confirm') } do
-              .fa.fa-trash-o
   = link_to new_site_path, class: 'btn btn-success' do
     .fa.fa-plus
