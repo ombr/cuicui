@@ -27,20 +27,22 @@ class FaviconUploader < CarrierWave::Uploader::Base
     end
   end
 
-  process :center_and_square
-  resize_to_fill(260, 260)
+  version :thumb do
+    process :center_and_square
+    resize_to_fill(260, 260)
 
-  sizes.each do |size|
-    version :"thumb#{size}" do
-      resize_to_fill(size, size)
+    sizes.each do |size|
+      version :"thumb#{size}" do
+        resize_to_fill(size, size)
+      end
     end
-  end
 
-  version :ico do
-    resize_to_fill(16, 16)
-    process convert: 'ico'
-    def full_filename(_for_file = model.logo.file)
-      'favicon.ico'
+    version :ico do
+      resize_to_fill(16, 16)
+      process convert: 'bmp'
+      def full_filename(_for_file = model.logo.file)
+        'favicon.ico'
+      end
     end
   end
 

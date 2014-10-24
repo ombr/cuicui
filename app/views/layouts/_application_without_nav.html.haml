@@ -4,10 +4,10 @@
     %title= title.html_safe
     - if @site.favicon?
       - [57, 114, 72, 144, 60, 120, 76, 152, 180].each do |size|
-        %link{ rel: 'apple-touch-icon', sizes: "#{size}x#{size}", href: @site.favicon.url("thumb#{size}") }
+        %link{ rel: 'apple-touch-icon', sizes: "#{size}x#{size}", href: @site.favicon.url(:thumb, "thumb#{size}") }
       - [192, 160, 96, 16, 32].each do |size|
-        %link{ rel: 'icon', type: 'image/png', href: @site.favicon.url("thumb#{size}"), sizes: "#{size}x#{size}" }
-      %meta{ name: 'msapplication-TileImage', content: @site.favicon.url("thumb144") }
+        %link{ rel: 'icon', type: 'image/png', href: @site.favicon.url(:thumb, "thumb#{size}"), sizes: "#{size}x#{size}" }
+      %meta{ name: 'msapplication-TileImage', content: @site.favicon.url(:thumb, "thumb144") }
       %meta{ name: 'sapplication-TileColor', content:"#2b5797" }
 
     %meta{ name: 'google', content: 'notranslate' }

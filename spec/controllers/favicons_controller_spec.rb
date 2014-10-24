@@ -6,14 +6,14 @@ describe FaviconsController do
       site = create :site
       @request.host = "#{site.slug}.#{ENV['DOMAIN']}"
       get :show, all: '.ico'
-      response.should redirect_to site.favicon.url('ico')
+      response.should redirect_to site.favicon.url(:thumb, :ico)
     end
 
     it 'redirect_to favicon 16' do
       site = create :site
       @request.host = "#{site.slug}.#{ENV['DOMAIN']}"
       get :show, all: '-16x16.png'
-      response.should redirect_to site.favicon.url('thumb16')
+      response.should redirect_to site.favicon.url(:thumb, :thumb16)
     end
   end
 end

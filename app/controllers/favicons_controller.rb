@@ -7,11 +7,11 @@ class FaviconsController < ApplicationController
     filename = File.basename(URI(request.original_url).path)
     size = filename[/\d+(?:\.\d+)?/].to_i
     if FaviconUploader.sizes.include? size
-      favicon = @site.favicon.url("thumb#{size}")
+      favicon = @site.favicon.url(:thumb, "thumb#{size}")
     else
-      favicon = @site.favicon.url('thumb16')
+      favicon = @site.favicon.url(:thumb, 'thumb16')
     end
-    favicon = @site.favicon.url('ico') if File.extname(filename) == '.ico'
+    favicon = @site.favicon.url(:thumb, :ico) if File.extname(filename) == '.ico'
     redirect_to favicon, status: :moved_permanently
   end
 end

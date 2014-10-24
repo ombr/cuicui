@@ -1,2 +1,2 @@
 port: 5000
-concurrency: web=1,worker=1,worker_convert=1
+concurrency: web=1,worker=1
