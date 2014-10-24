@@ -3,6 +3,7 @@ class FaviconsController < ApplicationController
   before_filter :load_site_from_host, only: [:show]
 
   def show
+    @site ||= Site.new
     filename = File.basename(URI(request.original_url).path)
     size = filename[/\d+(?:\.\d+)?/].to_i
     if FaviconUploader.sizes.include? size
