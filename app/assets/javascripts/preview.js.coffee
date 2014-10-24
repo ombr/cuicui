@@ -207,8 +207,8 @@ $ ->
     $img.parents('form').submit()
 
   focus_change = ->
-    px = $('#image_focusx').val()
-    py = $('#image_focusy').val()
+    px = $('#image_focusx').val() || 50
+    py = $('#image_focusy').val() || 50
     $('.focuspoint .preview img').each (i, e)->
       $(e).css('background-position', "#{px}% #{py}%")
     $crosshairs = $('.focuspoint .fa-crosshairs')
