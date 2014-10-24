@@ -194,6 +194,10 @@ $ ->
     [px, py] = focuspoint_position($img, e)
     $('.focuspoint .preview img').each (i, e)->
       $(e).css('background-position', "#{px}% #{py}%")
+    $('.iframe-preview').each (i,e)=>
+      $iframe = $('iframe', e)
+      $image = $($iframe.contents().find('.image'))
+      $image.css('background-position', "#{px}% #{py}%")
   $('body').on 'click', 'img.focuspoint-image', (e)->
     $img = $ this
     [px, py] = focuspoint_position($img, e)
@@ -213,9 +217,9 @@ $ ->
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
       $image = $($iframe.contents().find('.image'))
-      $('.focuspoint .previews img').each ->
-        $(this).css('background-position', "#{px}% #{py}%")
-      $image.css('background-position', "#{$('#image_focusx').val()}% #{$('#image_focusy').val()}%")
+      $image.css('background-position', "#{px}% #{py}%")
+    $('.focuspoint .previews img').each ->
+      $(this).css('background-position', "#{px}% #{py}%")
 
   $('body').on 'change', '#image_focusx', focus_change
   $('body').on 'change', '#image_focusy', focus_change
