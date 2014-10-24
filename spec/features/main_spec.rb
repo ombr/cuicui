@@ -5,7 +5,7 @@ describe 'Main features', :feature do
 
   it 'User can register and create a page and upload a picture.' do
     user = build :user
-    visit root_url(subdomain: 'www')
+    visit "http://www.#{ENV['DOMAIN']}"
     fill_in 'Email', with: user.email
     find('#btn-register').click
 
@@ -43,14 +43,14 @@ describe 'Main features', :feature do
       Regexp.new("#{s3_url}.*"),
       body: File.open(upload_path)
     )
-    visit redirect_url.to_s
+    visit "http://www.#{ENV['DOMAIN']}#{redirect_url}"
 
     Image.first.exifs['dc']['subject'][0].should_not be_blank
   end
 
   it 'confirm an user when recovering password' do
     user = build :user
-    visit root_url(subdomain: 'www')
+    visit "http://www.#{ENV['DOMAIN']}"
     fill_in 'Email', with: user.email
     find('#btn-register').click
     click_on 'Sign out'
@@ -67,7 +67,7 @@ describe 'Main features', :feature do
 
   it 'User can reset his password.' do
     user = create :user
-    visit '/'
+    visit "http://www.#{ENV['DOMAIN']}"
     click_on 'Sign In'
     click_on 'Trouble signing in ?'
 
