@@ -178,24 +178,43 @@ $ ->
     iframe_preview(e)
 
 
-  $('body').on 'click', '.focuspoint.active .image img', (e)->
-    $img = $(this)
+  focuspoint_position = ($img, e)->
     width = $img.width()
     height = $img.height()
-    x = e.pageX - $(this).offset().left
-    y = e.pageY - $(this).offset().top
+    x = e.pageX - $img.offset().left
+    y = e.pageY - $img.offset().top
     px = (x/width)*100
     py = (y/height)*100
+    [px, py]
+
+  $('body').on 'mouseleave', 'img.focuspoint-image', (e)->
+    $('#image_focusy').trigger('change')
+  $('body').on 'mousemove', 'img.focuspoint-image', (e)->
+    $img = $ this
+    [px, py] = focuspoint_position($img, e)
+    $('.focuspoint .preview img').each (i, e)->
+      $(e).css('background-position', "#{px}% #{py}%")
+  $('body').on 'click', 'img.focuspoint-image', (e)->
+    $img = $ this
+    [px, py] = focuspoint_position($img, e)
     $('#image_focusx').val(px)
     $('#image_focusy').val(py)
+    $('#image_focusy').trigger('change')
     $img.parents('form').submit()
 
   focus_change = ->
+    px = $('#image_focusx').val()
+    py = $('#image_focusy').val()
+    $('.focuspoint .preview img').each (i, e)->
+      $(e).css('background-position', "#{px}% #{py}%")
+    $crosshairs = $('.focuspoint .fa-crosshairs')
+    $crosshairs.css('left', "#{px}%")
+    $crosshairs.css('top', "#{py}%")
     $('.iframe-preview').each (i,e)=>
       $iframe = $('iframe', e)
       $image = $($iframe.contents().find('.image'))
       $('.focuspoint .previews img').each ->
-        $(this).css('background-position', "#{$('#image_focusx').val()}% #{$('#image_focusy').val()}%")
+        $(this).css('background-position', "#{px}% #{py}%")
       $image.css('background-position', "#{$('#image_focusx').val()}% #{$('#image_focusy').val()}%")
 
   $('body').on 'change', '#image_focusx', focus_change

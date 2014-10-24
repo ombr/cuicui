@@ -1,4 +1,5 @@
 $ ->
+  return
   edit = false
   $('body').on 'input', '.warn-on-exit', ()->
     edit = true
