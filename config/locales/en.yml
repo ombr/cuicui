@@ -28,6 +28,13 @@ en:
   sign_in: Sign In
   sign_out: Sign out
   layouts:
+    breadcrumbs:
+      home: Home
+      my_sites: My sites
+      image: Image
+      my_account: My Account
+      new_site: Create site
+      new_page: Create page
     user_navbar:
       see: 'See my site'
   users:

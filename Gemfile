@@ -60,6 +60,7 @@ gem 'haml-rails'
 gem 'slim-rails'
 
 gem 'bootstrap-sass'
+gem 'gretel'
 gem 'font-awesome-rails'
 gem 'entypo-rails'
 gem 'bourbon'

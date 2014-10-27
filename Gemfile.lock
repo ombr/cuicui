@@ -160,6 +160,8 @@ GEM
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     fssm (0.2.10)
+    gretel (3.0.8)
+      rails (>= 3.2.0)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -407,6 +409,7 @@ DEPENDENCIES
   font-awesome-rails
   foreman
   friendly_id
+  gretel
   haml-rails
   heroku-api
   high_voltage

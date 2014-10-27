@@ -10,6 +10,7 @@
     = csrf_meta_tags
   %body{ class: body_class }
     = render 'layouts/user_navbar', site: @site, page: @page, image: @image
+    = render 'layouts/breadcrumbs'
     = render 'layouts/flashs'
     = yield
   - if current_user

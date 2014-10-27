@@ -28,8 +28,20 @@ fr:
   sign_in: Se connecter
   sign_out: Se déconnecter
   layouts:
+    breadcrumbs:
+      home: Accueil
+      my_sites: Mes sites
+      image: Image
+      my_account: Mon compte
+      new_site: Créer site
+      new_page: Créer page
     user_navbar:
       see: Voir mon site
+  users:
+    show:
+      manage_my_account: Gérer mon compte
+      manage_sites: Gérer mes sites
+      sites: Mes sites
   sites:
     edit:
       pages: Pages
