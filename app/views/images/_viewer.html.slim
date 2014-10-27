@@ -1,4 +1,4 @@
-.image-viewer itemscope= '' itemtype='http://schema.org/Photograph' id="image-#{image.id}" data-url=image_url(image) data-title=image.seo_title
+.image-viewer.scrollhistory itemscope= '' itemtype='http://schema.org/Photograph' id="image-#{image.id}" data-url=image_url(image) data-title=image.seo_title
   .content
     - if image.content? || image.title?
       .image-content style=image.content_css

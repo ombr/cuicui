@@ -1,4 +1,4 @@
-.col-xs-12.preloadable{ id: "main-nav" }
+.col-xs-12.preloadable.scrollhistory{ id: "main-nav", data: { url: pages_path, title: title } }
   - x = Math.sqrt(@pages_count).ceil
   - y = (@pages_count.to_f / x.to_f).ceil
   - x,y = [y,x]
