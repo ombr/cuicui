@@ -165,10 +165,10 @@ describe SitesController do
       Site.last.user.should == user
     end
 
-    it 'redirects to the site created' do
+    it 'redirects to the page creation' do
       sign_in user
       post :create, site: { title: 'My Amazing site' }
-      response.should redirect_to edit_site_path(Site.last)
+      response.should redirect_to new_site_page_path(site_id: Site.last)
     end
   end
 
