@@ -12,15 +12,12 @@ nav#nav.navbar.navbar-inverse role="navigation"
       ul.nav.navbar-nav
         - if user_signed_in?
         - if site and not site.new_record?
-          = tab_link edit_site_path(id: site) do
-            = site.title
-        - if page and not page.new_record?
-          = tab_link edit_site_page_path(id: page, site_id: site) do
-            = page.name
-        - if image and not image.new_record?
-          li.active.navbar-image
-            = link_to edit_site_page_image_path(id: image, page_id: page, site_id: site) do
-              = my_image_tag image, :full, class: 'navbar-image'
+          - site.pages.each do |page|
+            - unless page.new_record?
+              = tab_link edit_site_page_path(id: page, site_id: site) do
+                = page.name
+          = tab_link new_site_page_path(site_id: site) do
+            .fa.fa-plus
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           = tab_link edit_user_registration_path(id: current_user) do
