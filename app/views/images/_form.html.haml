@@ -6,4 +6,4 @@
     .progress
       .progress-bar.active.progress-bar-success.progress-bar-striped
   = f.file_field :original, data: { new_url: new_site_page_image_path(site_id: image.page.site, page_id: image.page), add_url: add_site_page_images_path(site_id: image.page.site, page_id: image.page) }
-  = f.submit 'Upload'
+  = f.submit t('.upload'), data: { 'disable-with'=> t('loading') }

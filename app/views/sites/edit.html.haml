@@ -38,7 +38,7 @@
           .alert.alert-warning
             = t '.warning', default: 'It can take some time before the favicon gets updated...'
           = f.input :css, input_html: { rows: 30}
-        = f.submit class: 'btn btn-primary'
+        = f.submit class: 'btn btn-primary', data: { 'disable-with'=> t('loading') }
   .row
     .col-md-12
       %h1= t('.delete')
