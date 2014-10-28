@@ -54,6 +54,14 @@ describe SitesController do
 
     it 'update the font_header' do
       sign_in user
+      FakeWeb.register_uri(
+        :get,
+        "https://www.googleapis.com/webfonts/v1/webfonts?key=#{ENV['GOOGLE_FONT_KEY']}",
+        body: File.read(
+          Rails.root.join('spec', 'fixtures', 'google_webfonts.json')
+        ),
+        content_type: 'application/json'
+      )
       expect do
         sign_in user
         put :update, id: site, site: { font_header: 'Open Sans' }
