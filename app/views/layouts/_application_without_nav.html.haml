@@ -29,6 +29,11 @@
       = stylesheet_link_tag "application-#{@page.theme}", media: 'all'
     - else
       = stylesheet_link_tag 'application', media: 'all'
+    - if @site.font_header
+      = stylesheet_link_tag "//fonts.googleapis.com/css?family=#{@site.font_header.sub(' ', '+')}", media: 'all'
+      :sass
+        h1, h2, h3, h4, h5, h6
+          font-family: '#{@site.font_header}' sans-serif
     -# if cookies[:css_loaded].present?
       - else
         %style{:'data-css' => asset_path('application.css')}
