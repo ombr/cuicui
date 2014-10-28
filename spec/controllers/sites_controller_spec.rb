@@ -52,6 +52,14 @@ describe SitesController do
       put :update, id: site, site: { favicon: 'FAVICON_FILE' }
     end
 
+    it 'update the font_header' do
+      sign_in user
+      expect do
+        sign_in user
+        put :update, id: site, site: { font_header: 'Open Sans' }
+      end.to change { site.reload.font_header }.to('Open Sans')
+    end
+
     it 'update the language' do
       sign_in user
       expect do

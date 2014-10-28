@@ -12,5 +12,4 @@
   h1= t('.edit_page')
   = simple_form_for @page, html: {class: 'edit_page warn-on-exit'} do |f|
     = f.input :name
-    = f.input :background_color, input_html: { type: :color }
     = f.submit class: 'btn btn-primary', data: { 'disable-with'=> t('loading') }

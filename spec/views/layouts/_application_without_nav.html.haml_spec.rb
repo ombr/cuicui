@@ -1,8 +1,14 @@
 require 'spec_helper'
 
 describe 'layouts/_application_without_nav.html.haml' do
-  let(:site) { create :site, google_analytics_id: 'lalalal' }
-  it 'render' do
+  it 'render font_header' do
+    assign(:site, create(:site, font_header: 'Open Sans'))
+    render
+    Capybara.string(rendered).should have_content('Open Sans')
+  end
+
+  it 'render google analytics' do
+    site = create(:site, google_analytics_id: 'lalalal')
     assign(:site, site)
     render
     Capybara.string(rendered).should have_content(site.google_analytics_id)
