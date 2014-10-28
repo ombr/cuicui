@@ -153,12 +153,13 @@ describe PagesController do
 
   describe '#update' do
 
-    context 'when update the position' do
-      it 'update the position using insert_at' do
-        Page.any_instance.should_receive(:insert_at).with(2)
-        sign_in user
-        put :update, site_id: site, id: page, page: { position: 2 }
-      end
+    it('update the position') do
+      sign_in user
+      page
+      create :page, site: site
+      expect do
+        put :update, site_id: site, id: page, page: { position: '2' }
+      end.to change { page.reload.position }.to 2
     end
 
     it('update the name') do

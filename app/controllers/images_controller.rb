@@ -50,13 +50,13 @@ class ImagesController < ApplicationController
   end
 
   def update
+    previous_position = @image.position
     @image.update!(image_params)
-    if params[:image] && params[:image][:position]
-      @image.insert_at(params[:image][:position].to_i)
-      @image.save!
-      return redirect_to edit_page_path(@image.page)
+    if @image.position != previous_position
+      redirect_to edit_page_path(@page)
+    else
+      redirect_to edit_image_path(@image)
     end
-    redirect_to edit_image_path(@image)
   end
 
   def destroy
@@ -72,6 +72,7 @@ class ImagesController < ApplicationController
                                   :content,
                                   :content_css,
                                   :image_css,
+                                  :position,
                                   :focusx,
                                   :focusy)
   end

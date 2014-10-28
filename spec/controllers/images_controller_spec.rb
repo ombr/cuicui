@@ -194,13 +194,16 @@ describe ImagesController do
     end
 
     context 'when update the position' do
-      it 'update the position using insert_at' do
-        Image.any_instance.should_receive(:insert_at).with(2)
+      it 'update the position' do
         sign_in user
-        put :update, site_id: site,
-                     page_id: page,
-                     id: image,
-                     image: { position: 2 }
+        image
+        create :image, page: page
+        expect do
+          put :update, site_id: site,
+                       page_id: page,
+                       id: image,
+                       image: { position: 2 }
+        end.to change { image.reload.position }.to(2)
       end
 
       it 'redirect to edit page' do

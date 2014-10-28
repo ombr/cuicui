@@ -56,17 +56,13 @@ class PagesController < ApplicationController
 
   def update
     @page.update(page_params)
-    if params[:page] && params[:page][:position]
-      @page.insert_at(params[:page][:position].to_i)
-      @page.save!
-      return redirect_to edit_site_path(id: @page.site)
-    end
     flash[:success] = t('.success')
     redirect_to edit_page_path(@page)
   end
 
   def page_params
     params.require(:page).permit(:name,
+                                 :position,
                                  :description,
                                  :description_html,
                                  :theme)
