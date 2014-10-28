@@ -11,7 +11,7 @@
         = f.error_notification
         = f.input :email, required: true, label: false
         = f.input :current_password, label: false, required: true  if resource.password?
-        = f.button :submit, t('.update'), data: { 'disable-with'=> t('loading') }
+        = f.button :submit, t('.update_email'), class: 'btn-primary', data: { 'disable-with'=> t('loading') }
   .row
     .col-md-12
       %h2=t '.change_password'
@@ -19,7 +19,7 @@
         = f.error_notification
         = f.input :password, label: false, required: true
         = f.input :current_password, required: true, label: false if resource.password?
-        = f.button :submit, '.update', data: { 'disable-with'=> t('loading') }
+        = f.button :submit, t('.update_password'), class: 'btn-primary', data: { 'disable-with'=> t('loading') }
   .row
     .col-md-12
       %h2= t('.unhappy')

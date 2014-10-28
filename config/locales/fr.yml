@@ -7,6 +7,8 @@ fr:
         submit: Se connecter
     registrations:
       edit:
+        update_email: Changer mon addresse email
+        update_password: Changer mon addresse mot de passe
         sites: Mes sites
         my_account: Mon Compte
         change_email: Adresse Email

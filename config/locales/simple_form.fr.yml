@@ -19,6 +19,12 @@ fr:
       defaults:
         email: adresse@email.fr
         password: Mot de passe
+        current_password: Mot de passe actuel
+        title: Titre
+        name: Nom
+        legend: Légende
     hints:
+      image:
+        content: you can drag and drop the text on the preview
       defaults:
-        full: Découpé l'image pour immerger l'utilisateur
+        current_password: Confirmer avec votre mot de passe actuel
