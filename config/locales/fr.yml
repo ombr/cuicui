@@ -68,6 +68,9 @@ fr:
       add_image: Ajouter des images
       images_description: '(jpg, png, gif, pdf, ai, psd...)'
   images:
+    form:
+      upload: Envoyer
+      upload_in_progress: Transfert en cours...
     image_edit:
       edit: Editer
     edit:

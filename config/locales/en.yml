@@ -64,6 +64,9 @@ en:
       success: 'The site has been updated !'
 
   images:
+    form:
+      upload: Upload
+      upload_in_progress: Uploading...
     image_edit:
       edit: Edit
     edit:
