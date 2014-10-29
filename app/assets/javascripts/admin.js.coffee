@@ -22,5 +22,3 @@
 Turbolinks.enableTransitionCache()
 NProgress.configure
   showSpinner: false
-$ ->
-  $('body').addClass('js')

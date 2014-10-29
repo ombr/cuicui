@@ -1,9 +1,10 @@
 $ ->
   $window = $ window
   $body = $ 'body'
-  $window.on 'scroll.watcher', ->
-    $window.unbind('scroll.watcher')
+  callback = ->
+    $window.unbind('scroll.watcher', callback)
     $body.addClass('scrolled')
+  $window.on 'scroll.watcher', callback
   $body.on 'click', '.help-scroll-icon', ->
     $('html, body').animate({
       scrollTop: $window.height()+51

@@ -36,7 +36,6 @@ $ ->
   $document = $(document)
   threshold = $window.height() * 6
   $body = $('body')
-  $body.addClass('js')
   preload = ->
     preloaded = $body.prop('scrollHeight') - $window.scrollTop() - $window.height()
     if preloaded < threshold

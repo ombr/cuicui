@@ -9,3 +9,5 @@
 //= require history
 //= require image_active
 //= require scroll
+//= require ios_links
+window.soslide = true;
