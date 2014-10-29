@@ -12,6 +12,8 @@ fr:
       default_message: "Merci de corriger les erreurs suivantes :"
     labels:
       defaults:
+        font_header: Police des titres
+        font_body: Police du contenu
         full: Plein écran
         email: Adresse email
         password: Mot de passe
@@ -28,3 +30,5 @@ fr:
         content: you can drag and drop the text on the preview
       defaults:
         current_password: Confirmer avec votre mot de passe actuel
+        font_header_html: Visualiser sur <a href="https://www.google.com/fonts" target="_blank">Google font</a>
+        font_body_html: Visualiser sur <a href="https://www.google.com/fonts" target="_blank">Google font</a>

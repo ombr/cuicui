@@ -11,6 +11,9 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     labels:
+      defaults:
+        font_header: Titles font
+        font_body: Content font
       image:
         full: Fullscreen
     placeholders:
@@ -31,4 +34,6 @@ en:
       image:
         content: you can drag and drop the text on the preview
       defaults:
+        font_header_html: Preview and select on <a href="https://www.google.com/fonts" target="_blank">Google font</a>
+        font_body_html: Preview and select on <a href="https://www.google.com/fonts" target="_blank">Google font</a>
         current_password: Your current password is required to confirm your changes
