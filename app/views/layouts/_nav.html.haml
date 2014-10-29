@@ -2,10 +2,3 @@
   = link_to pages_path, id: 'home' do
     .fa.fa-home
     =t('.menu', default: 'Menu')
-  -#%nav#nav.nojs
-    %a.menu{href: '#'}
-      =t('.menu', default: 'Menu')
-    %ul
-      - site.pages.each do |page|
-        %li{ class: (:active if page == @page) }
-          = link_to page.name, s_page_path(id: page)
