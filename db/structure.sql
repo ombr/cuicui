@@ -176,7 +176,8 @@ CREATE TABLE sites (
     slug character varying(255),
     domain character varying(255),
     favicon character varying(255),
-    font_header character varying(255)
+    font_header character varying(255),
+    font_body character varying(255)
 );
 
 
@@ -476,3 +477,5 @@ INSERT INTO schema_migrations (version) VALUES ('20141021081149');
 INSERT INTO schema_migrations (version) VALUES ('20141022143740');
 
 INSERT INTO schema_migrations (version) VALUES ('20141028151422');
+
+INSERT INTO schema_migrations (version) VALUES ('20141029084637');

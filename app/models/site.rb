@@ -6,7 +6,9 @@ class Site < ActiveRecord::Base
 
   LANGUAGES = LanguageList::COMMON_LANGUAGES.map { |l| l.iso_639_1 }
   validates_inclusion_of :language, in: LANGUAGES
-  validates_with FontFamilyValidator, fields: [:font_header], allow_nil: true
+  validates_with FontFamilyValidator,
+                 fields: [:font_header, :font_body],
+                 allow_nil: true
   validates :title, presence: true,
                     length: { in: 3..30 },
                     uniqueness: { case_sensitive: false }

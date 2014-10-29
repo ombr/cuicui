@@ -88,6 +88,7 @@ class SitesController < ApplicationController
     params.require(:site).permit(:title, :slug, :description, :css, :metas,
                                  :language, :twitter_id, :facebook_id,
                                  :facebook_app_id, :google_plus_id,
-                                 :google_analytics_id, :domain, :font_header)
+                                 :google_analytics_id, :domain, :font_header,
+                                 :font_body)
   end
 end

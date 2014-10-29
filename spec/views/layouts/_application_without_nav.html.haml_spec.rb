@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe 'layouts/_application_without_nav.html.haml' do
+
+  it 'render font_body' do
+    assign(:site, create(:site, font_body: 'Lobster'))
+    render
+    Capybara.string(rendered).should have_content('Lobster')
+  end
+
   it 'render font_header' do
     assign(:site, create(:site, font_header: 'Open Sans'))
     render

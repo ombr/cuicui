@@ -19,6 +19,7 @@
         = f.input :description, as: :text, input_html: { rows: 10 }
         = f.input :language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]}, prompt: false
         = f.input :font_header, as: :select, collection: Font.families
+        = f.input :font_body, as: :select, collection: Font.families
         - if params[:advanced]
           %p
             %span.caret
