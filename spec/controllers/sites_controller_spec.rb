@@ -64,7 +64,7 @@ describe SitesController do
       )
       expect do
         sign_in user
-        put :update, id: site, site: { font_body: 'Open Sans' }
+        put :update, id: site, site: { font_header: '', font_body: 'Open Sans' }
       end.to change { site.reload.font_body }.to('Open Sans')
     end
 

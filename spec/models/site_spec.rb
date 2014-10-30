@@ -18,6 +18,7 @@ describe Site do
       expect(site.pages.not_empty).to eq [page]
     end
   end
+
   describe 'domain resolution' do
     it 'returns nil when site not found' do
       expect(
