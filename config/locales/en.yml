@@ -53,6 +53,8 @@ en:
     one: One page
     other: '%{count} pages'
   sites:
+    new:
+      title: New site
     edit:
       pages: Pages
       edit_site: Site
@@ -80,6 +82,8 @@ en:
     update:
       success: 'The image has been updated !'
   pages:
+    new:
+      title: 'Create page'
     add: 'Create a new page.'
     create:
       initial_description: "# %{page_name}\n\nThis is my amazing description."

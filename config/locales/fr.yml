@@ -35,8 +35,8 @@ fr:
       my_sites: Mes sites
       image: Image
       my_account: Mon compte
-      new_site: Créer site
-      new_page: Créer page
+      new_site: Créer un site
+      new_page: Créer une page
     user_navbar:
       see: Voir mon site
   users:
@@ -45,6 +45,8 @@ fr:
       manage_sites: Gérer mes sites
       sites: Mes sites
   sites:
+    new:
+      title: Créer un site
     edit:
       pages: Pages
       edit_site: Site
@@ -55,9 +57,10 @@ fr:
     update:
       success: 'The site has been updated !'
   pages:
+    new:
+      title: 'Créez une page'
     image:
       edit: " Editer"
-    add: 'Create a new page.'
     create:
       initial_description: "# %{page_name}\n\nThis is my amazing description."
     update:

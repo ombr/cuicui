@@ -1,6 +1,6 @@
 - breadcrumb @site
 .col-md-6.col-md-offset-2
-  %h1=t('.new_site')
+  %h1=t('.title')
   = simple_form_for @site,  html: { class: 'warn-on-exit' } do |f|
     = f.input :title, input_html: { class: 'input-lg', autofocus: true }
     = f.submit class: 'btn btn-primary', data: { 'disable-with'=> t('loading') }
