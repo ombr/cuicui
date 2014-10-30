@@ -153,13 +153,23 @@ describe PagesController do
 
   describe '#update' do
 
-    it('update the position') do
-      sign_in user
-      page
-      create :page, site: site
-      expect do
+    context 'position' do
+      it('update the position') do
+        sign_in user
+        page
+        create :page, site: site
+        expect do
+          put :update, site_id: site, id: page, page: { position: '2' }
+        end.to change { page.reload.position }.to 2
+      end
+
+      it('redirect_to edit_site_path') do
+        sign_in user
+        page
+        create :page, site: site
         put :update, site_id: site, id: page, page: { position: '2' }
-      end.to change { page.reload.position }.to 2
+        response.should redirect_to edit_site_path(id: site)
+      end
     end
 
     it('update the name') do

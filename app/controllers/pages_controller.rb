@@ -55,9 +55,14 @@ class PagesController < ApplicationController
   end
 
   def update
+    previous_position = @page.position
     @page.update(page_params)
     flash[:success] = t('.success')
-    redirect_to edit_page_path(@page)
+    if @page.position != previous_position
+      redirect_to edit_site_path(@site)
+    else
+      redirect_to edit_page_path(@page)
+    end
   end
 
   def page_params
