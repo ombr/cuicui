@@ -4,7 +4,7 @@ li
     = link_to edit_site_page_path(site_id: site, id: page) do
       p= page.name
     = simple_form_for page, method: :delete, html: { class: 'control delete' } do |f|
-      = f.submit 'x', class: 'btn btn-danger btn-link'
+      = f.submit 'x', class: 'btn btn-danger btn-link', data: { confirm: t('.delete_confirm') }
     - unless page.first?
       = simple_form_for page, method: :put, html: { class: 'control previous' } do |f|
         = f.input :position, as: :hidden, input_html: { value: page.position-1, class: 'position' }

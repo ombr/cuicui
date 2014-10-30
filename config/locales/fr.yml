@@ -45,6 +45,8 @@ fr:
       manage_sites: Gérer mes sites
       sites: Mes sites
   sites:
+    page:
+      delete_confirm: Êtes-vous sûr de vouloir supprimer définitivement la page ?
     new:
       title: Créer un site
     edit:

@@ -55,6 +55,8 @@ en:
   sites:
     new:
       title: New site
+    page:
+      delete_confirm: Are you sure you want to delete the page ?
     edit:
       pages: Pages
       edit_site: Site
