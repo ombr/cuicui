@@ -27,6 +27,14 @@ describe ImagesController do
       response.should redirect_to edit_page_path(page)
     end
 
+    it 'fix positions when they are failling' do
+      image
+      image1 = create :image, page: page
+      Image.where(id: image1.id).update_all(position: 1)
+      expect do
+        page.images.race_fix
+      end.to change { image1.reload.position }.to(2)
+    end
   end
 
   describe '#show' do

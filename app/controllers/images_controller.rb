@@ -24,6 +24,7 @@ class ImagesController < ApplicationController
     flash[:error] = @image.errors.full_messages.to_sentence unless @image.save
     Resque.enqueue ImageConversion, @image.id
     redirect_to edit_page_path(@page)
+    @page.images.race_fix if @page.images.race_test
   end
 
   def create

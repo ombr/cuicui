@@ -132,4 +132,27 @@ class Image < ActiveRecord::Base
                                                  focusy_changed? ||
                                                  position_changed?
   end
+
+  class << self
+    def race_fix
+      connection.update(
+        "UPDATE images SET position = ranked.rank FROM (#{ranked_sql}) AS ranked WHERE images.id = ranked.id",
+        'Image Update'
+      )
+    end
+
+    def race_test
+      select('position').group('position').having('COUNT(position) > 1').any?
+    end
+
+    def ranked_sql
+      connection.unprepared_statement do
+        ranked.to_sql
+      end
+    end
+
+    def ranked
+      select('id, rank() OVER (ORDER BY position, created_at) AS rank')
+    end
+  end
 end
