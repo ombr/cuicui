@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.1.2'
 
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.7'
 gem 'pg'
 
 # Use SCSS for stylesheets
@@ -28,7 +28,7 @@ gem 'jquery-cookie-rails'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'carrierwave'
-gem 'carrierwave_direct'
+gem 'carrierwave_direct', github: 'ombr/carrierwave_direct'
 gem 'fakeweb', group: :test
 gem 'exifr', github: 'remvee/exifr'
 gem 'xmp', github: 'jkraemer/xmp'
