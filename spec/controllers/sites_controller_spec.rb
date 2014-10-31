@@ -25,11 +25,12 @@ describe SitesController do
     it 'assigns @urls' do
       get :sitemap
       assigns(:urls).class.should eq Array
-      assigns(:urls).count.should eq site.images.count
+      assigns(:urls).length.should eq site.images.count
     end
 
     it '@urls include images url' do
-      create :image
+      page = create :page, site: site
+      create :image, page: page
       get :sitemap
       urls = Image.all.map { |i| s_image_url(page_id: i.page, id: i) }
       (urls - assigns(:urls).map { |u| u[:loc] }).length.should == 0
