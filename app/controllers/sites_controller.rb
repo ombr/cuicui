@@ -61,8 +61,7 @@ class SitesController < ApplicationController
   end
 
   def robots
-    @allow = false
-    @allow = true if URI.parse("http://#{ENV['DOMAIN']}").host == request.host
+    @allow = true
     render layout: false
   end
 
