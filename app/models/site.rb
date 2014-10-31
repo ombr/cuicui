@@ -30,8 +30,10 @@ class Site < ActiveRecord::Base
 
   def favicon_process
     return unless pages.first && pages.first.images.first
-    self.favicon = open(pages.first.images.first.url(:full))
-    save!
+    LocalFile.process(pages.first.images.first.url) do |file|
+      self.favicon = file
+      save!
+    end
   end
 
   def self.json_import(json)

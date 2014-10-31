@@ -7,7 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   def filename
     if original_filename.present?
       if model && model.original.filename
-        return "#{File.basename(model.original.filename).parameterize}.jpg"
+        return "#{File.basename(model.original.filename).parameterize}#{File.extname(model.original.filename)}"
       end
     end
     super

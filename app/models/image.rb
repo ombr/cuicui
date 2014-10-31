@@ -13,12 +13,17 @@ class Image < ActiveRecord::Base
 
   after_save :favicon_changed?, on: [:create, :update]
 
-  def url(version)
+  def url(version = :original)
+    return download_url if version == :original
     return image.url version if image?
-    return cloudinary.url version if cloudinary?
-    Rails.cache.fetch([self, 'original-url'], expires_in: 1.hour) do
+    download_url
+  end
+
+  def download_url
+    return Rails.cache.fetch([self, 'original-url'], expires_in: 1.hour) do
       original.url
-    end
+    end if original?
+    image.url
   end
 
   def processed?
@@ -26,8 +31,10 @@ class Image < ActiveRecord::Base
   end
 
   def process
-    self.image = open(original.url)
-    save!
+    LocalFile.process(download_url) do |file|
+      self.image = file
+      save!
+    end
   end
 
   def snapshot!
@@ -120,10 +127,6 @@ class Image < ActiveRecord::Base
       self[field] = value if value
     end
     import_from_url(json['original_url']) if json['original_url']
-  end
-
-  def original_url
-    Cloudinary::Utils.private_download_url(image.file.public_id, :jpg).inspect
   end
 
   def favicon_changed?
