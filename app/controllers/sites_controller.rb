@@ -68,12 +68,14 @@ class SitesController < ApplicationController
 
   def sitemap
     @urls = []
-    Image.order(:position).each do |i|
-      @urls << {
-        loc: s_image_url(page_id: i.page, id: i),
-        changefreq: :weekly,
-        priority: i.priority
-      }
+    @site.pages.each do |page|
+      page.images.each do |image|
+        @urls << {
+          loc: s_image_url(page_id: page, id: image),
+          changefreq: :weekly,
+          priority: image.priority
+        }
+      end
     end
     render layout: false, formats: [:xml]
   end

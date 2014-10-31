@@ -12,6 +12,9 @@ describe SitesController do
   end
 
   describe '#sitemap' do
+    before :each do
+      @request.host = "#{site.slug}.#{ENV['DOMAIN']}"
+    end
     render_views
 
     it 'respond 200' do
@@ -21,7 +24,8 @@ describe SitesController do
 
     it 'assigns @urls' do
       get :sitemap
-      assigns(:urls).class.should == Array
+      assigns(:urls).class.should eq Array
+      assigns(:urls).count.should eq site.images.count
     end
 
     it '@urls include images url' do
