@@ -8,12 +8,11 @@ describe ImagesController do
   let(:user) { create :user }
 
   describe '#new' do
-    render_views
-    before :each do
+    it 'responds 200' do
       sign_in user
       get :new, site_id: site, page_id: page, format: :json
+      expect(response.code).to eq '200'
     end
-    it_responds_200
   end
 
   describe '#add' do
