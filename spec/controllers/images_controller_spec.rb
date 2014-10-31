@@ -18,7 +18,7 @@ describe ImagesController do
   describe '#add' do
     include CarrierWaveDirect::Test::Helpers
     it 'redirect_to edit_page_path' do
-      pending 'Already tested as a feature ?'
+      skip 'Already tested as a feature ?'
       sign_in user
       get :add, site_id: site,
                 page_id: page,

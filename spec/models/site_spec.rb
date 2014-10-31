@@ -57,7 +57,7 @@ describe Site do
   describe '#import_json' do
     let(:user) { create :user }
     it 'can import a json' do
-      pending
+      skip
       # WebMock.should have_requested(:get, 'www.superjson.com')
       #   .with(body: File.new(
       #   Rails.root.join('spec', 'fixtures', 'site.json'))
