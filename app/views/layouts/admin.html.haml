@@ -9,6 +9,7 @@
     = stylesheet_link_tag 'admin', media: "all"
     = javascript_include_tag 'admin'
     = csrf_meta_tags
+    = render 'layouts/segment_io'
   %body{ class: body_class }
     = render 'layouts/user_navbar', site: @site, page: @page, image: @image
     = render 'layouts/breadcrumbs'

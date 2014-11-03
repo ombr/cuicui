@@ -1,6 +1,6 @@
 # PagesController
 class PagesController < ApplicationController
-  before_filter :load_site_from_host, only: [:show, :first, :index]
+  before_action :load_site_from_host, only: [:show, :first, :index]
 
   load_and_authorize_resource :site
   load_and_authorize_resource through: :site
@@ -42,6 +42,10 @@ class PagesController < ApplicationController
   def create
     @page = @site.pages.build page_params
     if @page.save
+      analytics_track('Created Page',
+                      id: @page.id,
+                      name: @page.name,
+                      site: @site.id)
       return redirect_to edit_page_path(@page)
     else
       return render :new, layout: 'admin'

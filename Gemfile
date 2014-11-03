@@ -45,6 +45,8 @@ gem 'devise-async'
 gem 'cancancan'
 gem 'high_voltage'
 
+gem 'analytics-ruby', require: 'segment/analytics'
+
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'http_accept_language'

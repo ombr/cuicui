@@ -1,6 +1,6 @@
 # ImageController
 class ImagesController < ApplicationController
-  before_filter :load_site_from_host, only: [:show]
+  before_action :load_site_from_host, only: [:show]
 
   load_and_authorize_resource :site
   load_and_authorize_resource :page, through: :site
@@ -18,11 +18,12 @@ class ImagesController < ApplicationController
 
   def add
     @image = Image.new(page: @page)
-    @uploader = @image.original
-    @uploader.key = params[:key]
+    @uploader = @image.original.key = params[:key]
     @image.save
     flash[:error] = @image.errors.full_messages.to_sentence unless @image.save
     Resque.enqueue ImageConversion, @image.id
+    analytics_track('Created Image', id: @image.id, position: @image.position,
+                                     page: @page.id, site: @site.id)
     redirect_to edit_page_path(@page)
     @page.images.race_fix if @page.images.race_test
   end

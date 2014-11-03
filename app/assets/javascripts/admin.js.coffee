@@ -17,5 +17,6 @@
 //= require editwarning
 //= require turbolinks
 //= require focuspoint
+//= require analytics
 Turbolinks.enableTransitionCache()
 Turbolinks.enableProgressBar()

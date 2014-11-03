@@ -1,6 +1,6 @@
 # SitesController
 class SitesController < ApplicationController
-  before_filter :load_site_from_host, only: [:show, :sitemap, :robots]
+  before_action :load_site_from_host, only: [:show, :sitemap, :robots]
   load_and_authorize_resource
 
   before_action :authenticate_user!, only: [:index]
@@ -20,6 +20,7 @@ class SitesController < ApplicationController
   def create
     @site.user = current_user
     if @site.save
+      analytics_track('Created Site', id: @site.id, name: @site.title)
       redirect_to new_site_page_path(site_id: @site)
     else
       render :new, layout: 'admin'
