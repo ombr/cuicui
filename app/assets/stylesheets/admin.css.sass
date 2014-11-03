@@ -10,8 +10,6 @@ $brand-info: #16EAAE
 @import 'jquery-ui/resizable'
 @import 'bootstrap'
 @import 'bourbon'
-@import 'nprogress'
-@import 'nprogress-bootstrap'
 @import 'images/edit'
 @import 'images/upload'
 @import 'sites/edit'
@@ -22,6 +20,9 @@ $brand-info: #16EAAE
 @import 'home'
 @import 'registrations/edit'
 @import 'focuspoint'
+
+html.turbolinks-progress-bar::before
+  z-index: 9999
 
 .translation_missing
   &:before

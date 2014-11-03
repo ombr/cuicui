@@ -7,8 +7,6 @@
 //= require jquery-ui/resizable
 //= require jquery.ui.touch-punch
 //= require bootstrap
-//= require nprogress
-//= require nprogress-turbolinks
 //= require jquery-fileupload/basic
 //= require fileupload
 //= require pagedown/Markdown.Converter
@@ -20,5 +18,4 @@
 //= require turbolinks
 //= require focuspoint
 Turbolinks.enableTransitionCache()
-NProgress.configure
-  showSpinner: false
+Turbolinks.enableProgressBar()

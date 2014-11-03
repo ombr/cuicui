@@ -246,7 +246,6 @@ GEM
     newrelic_rpm (3.9.6.257)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
-    nprogress-rails (0.1.6.3)
     orm_adapter (0.5.0)
     pg (0.17.1)
     phantomjs (1.9.7.1)
@@ -447,7 +446,6 @@ DEPENDENCIES
   meta_request
   mini_magick
   newrelic_rpm
-  nprogress-rails
   pg
   phantomjs
   pry-rails

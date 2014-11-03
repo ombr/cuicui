@@ -51,7 +51,6 @@ gem 'http_accept_language'
 
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'nprogress-rails'
 gem 'sentry-raven'
 
 gem 'jbuilder'
