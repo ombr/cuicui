@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Image do
-  it { should belong_to(:page).touch(true) }
-  it { should have_one(:site).through(:page) }
+  it { expect(subject).to belong_to(:page).touch(true) }
+  it { expect(subject).to have_one(:site).through(:page) }
 
   let(:image) { FactoryGirl.create :image }
   let(:image2) { FactoryGirl.create :image, page: image.page }

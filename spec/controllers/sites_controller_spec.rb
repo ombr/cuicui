@@ -50,13 +50,6 @@ describe SitesController do
 
   describe '#update' do
 
-    it 'update the favicon' do
-      Cloudinary::Uploader.should_receive(:upload)
-        .with('FAVICON_FILE', public_id: 'favicon', format: :ico)
-      sign_in user
-      put :update, id: site, site: { favicon: 'FAVICON_FILE' }
-    end
-
     it 'update the font_body' do
       sign_in user
       FakeWeb.register_uri(

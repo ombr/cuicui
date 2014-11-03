@@ -3,16 +3,16 @@ require 'cancan/matchers'
 
 describe User do
   let(:user) { create :user }
-  it { should have_many(:sites).dependent(:destroy) }
+  it { expect(subject).to have_many(:sites).dependent(:destroy) }
 
   describe 'Abilities' do
     subject { Ability.new(user) }
 
-    it { should be_able_to(:create, Site) }
+    it { expect(subject).to be_able_to(:create, Site) }
 
     describe 'when it own a site' do
       let(:site) { create :site, user: user }
-      it { should be_able_to(:update, site) }
+      it { expect(subject).to be_able_to(:update, site) }
     end
 
     describe 'another site' do

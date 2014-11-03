@@ -80,7 +80,7 @@ GEM
       thor
     builder (3.2.2)
     callsite (0.0.11)
-    cancan (1.6.10)
+    cancancan (1.9.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -409,7 +409,7 @@ DEPENDENCIES
   acts_as_list
   bootstrap-sass
   bourbon
-  cancan
+  cancancan
   capybara
   capybara-email
   carrierwave

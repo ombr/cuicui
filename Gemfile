@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.1.2'
+ruby '2.1.4'
 
 gem 'rails', '4.1.7'
 gem 'pg'
@@ -42,7 +42,7 @@ gem 'phantomjs'
 gem 'friendly_id'
 gem 'devise'
 gem 'devise-async'
-gem 'cancan'
+gem 'cancancan'
 gem 'high_voltage'
 
 gem 'rails-i18n'
