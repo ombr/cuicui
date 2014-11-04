@@ -7,7 +7,6 @@ crumb :sites do
 end
 
 crumb :site do |site|
-  parent :sites
   if site.new_record?
     link t('.new_site'), new_site_path
   else
