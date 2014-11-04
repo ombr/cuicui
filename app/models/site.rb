@@ -4,8 +4,8 @@ class Site < ActiveRecord::Base
   has_many :pages, -> { order('position') }, dependent: :destroy
   has_many :images, through: :pages
 
-  LANGUAGES = LanguageList::COMMON_LANGUAGES.map { |l| l.iso_639_1 }
-  validates_inclusion_of :language, in: LANGUAGES
+  LANGUAGES = LanguageList::COMMON_LANGUAGES.map(&:iso_639_1)
+  validates :language, inclusion: LANGUAGES
   validates_with FontFamilyValidator,
                  fields: [:font_header, :font_body],
                  allow_nil: true
@@ -30,7 +30,7 @@ class Site < ActiveRecord::Base
 
   def favicon_process
     return unless pages.first && pages.first.images.first
-    LocalFile.process(pages.first.images.first.url) do |file|
+    LocalFile.process(pages.first.images.first.url(:full)) do |file|
       self.favicon = file
       save!
     end
