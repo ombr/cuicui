@@ -46,26 +46,27 @@ Cuicui::Application.routes.draw do
   end
 
   get '/robots.txt', to: 'sites#robots', defaults: { format: :txt }
+  get ':type.appcache', to: 'manifest#show', defaults: { format: :text }
   get '/sitemap.xml', to: 'sites#sitemap',
                       as: :sitemap,
                       defaults: { format: :xml }
 
-  if Rails.env.production?
-    offline = Rack::Offline.configure do
-      cache ActionController::Base.helpers.asset_path('application.css')
-      cache ActionController::Base.helpers.asset_path('application-dark.css')
-      cache ActionController::Base.helpers.asset_path('application-light.css')
-      %w(eot ttf svg woff).each do |ext|
-        cache ActionController::Base.helpers.asset_path("entypo.#{ext}")
-      end
-      cache ActionController::Base.helpers.asset_path('application.js')
-      network '*'
-    end
-    get '/application.manifest' => offline
-  else
-    get '/application.manifest' => Rails::Offline
-  end
-
+  # if Rails.env.production?
+  #   offline = Rack::Offline.configure do
+  #     cache ActionController::Base.helpers.asset_path('application.css')
+  #     cache ActionController::Base.helpers.asset_path('application-dark.css')
+  #     cache ActionController::Base.helpers.asset_path('application-light.css')
+  #     %w(eot ttf svg woff).each do |ext|
+  #       cache ActionController::Base.helpers.asset_path("entypo.#{ext}")
+  #     end
+  #     cache ActionController::Base.helpers.asset_path('application.js')
+  #     network '*'
+  #   end
+  #   get '/application.manifest' => offline
+  # else
+  #   get '/application.manifest' => Rails::Offline
+  # end
+  #
   get 'favicon*all', to: 'favicons#show'
   get 'apple-touch-icon*all', to: 'favicons#show'
   get '/pages', to: 'pages#index'

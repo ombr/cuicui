@@ -26,10 +26,6 @@ get_content = (href, selector, callback)->
 
 $ ->
   $window = $(window)
-  if window.applicationCache
-    $(window.applicationCache).bind 'updateready', ->
-      if (window.applicationCache.status == window.applicationCache.UPDATEREADY)
-        window.location.reload()
   $window.bind 'storage',(e)->
     live_update e.originalEvent.newValue
   return if window!=window.top
