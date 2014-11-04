@@ -1,5 +1,5 @@
 !!!5
-%html{lang: (@site.language if @site) || 'en'}
+%html{lang: (@site.language if @site) || 'en', manifest: ( Rails.env.production? ? 'basic.appcache' : nil ) }
   %head
     %title= title.html_safe
     - if @site.favicon?
@@ -47,6 +47,7 @@
           =Rails.application.assets.find_asset('application.css').to_s.html_safe
     = csrf_meta_tags
   %body{ class: "#{body_class} #{("page-#{@page.name.parameterize} #{@page.theme}" unless @page.nil?)}" }
+    = render 'layouts/cache_update'
     = yield :nav
     = yield
     - if @site && @site.google_analytics_id

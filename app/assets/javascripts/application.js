@@ -10,4 +10,5 @@
 //= require image_active
 //= require scroll
 //= require ios_links
+//= require cache
 window.soslide = true;
