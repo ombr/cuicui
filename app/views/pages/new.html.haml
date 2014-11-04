@@ -3,4 +3,4 @@
   %h1= t('.title')
   = simple_form_for [@site,@page] do |f|
     = f.input :name, input_html: { autofocus: :autofocus, class: 'input-lg' }
-    = f.submit class: 'btn btn-primary input-lg', data: { 'disable-with'=> t('loading') }
+    = f.submit class: 'btn', data: { 'disable-with'=> t('loading') }

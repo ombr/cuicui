@@ -47,7 +47,7 @@
               %textarea.text.optional.form-control#wmd-input{name: 'image[content]', rows: '5'}= f.object.content
               #wmd-preview.wmd-panel.wmd-preview= f.object.content_rendered.html_safe
         = f.input :legend, input_html: {value: f.object.legend }
-        = f.submit class: 'btn btn-primary', data: { 'disable-with'=> t('loading') }
+        = f.submit class: 'btn', data: { 'disable-with'=> t('loading') }
     .col-md-8#previews
       .row
         .col-md-12

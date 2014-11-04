@@ -3,5 +3,5 @@
   %h1=t('.title')
   = simple_form_for @site,  html: { class: 'warn-on-exit' } do |f|
     = f.input :title, input_html: { class: 'input-lg', autofocus: true }
-    = f.submit class: 'btn btn-primary', data: { 'disable-with'=> t('loading') }
+    = f.submit class: 'btn', data: { 'disable-with'=> t('loading') }
 

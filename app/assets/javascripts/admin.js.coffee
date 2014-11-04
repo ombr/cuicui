@@ -18,5 +18,6 @@
 //= require turbolinks
 //= require focuspoint
 //= require analytics
+//= require form
 Turbolinks.enableTransitionCache()
 Turbolinks.enableProgressBar()

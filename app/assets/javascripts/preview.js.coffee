@@ -85,6 +85,7 @@ $ ->
       else
         style += "#{key}:#{value};"
       $(element).val(style)
+      $(element).trigger('change')
     $iframe.zoomer(
       width: width
       height: height

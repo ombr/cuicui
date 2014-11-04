@@ -12,4 +12,4 @@
   h1= t('.edit_page')
   = simple_form_for @page, html: {class: 'edit_page warn-on-exit'} do |f|
     = f.input :name
-    = f.submit class: 'btn btn-primary', data: { 'disable-with'=> t('loading') }
+    = f.submit class: 'btn', data: { 'disable-with'=> t('loading') }
