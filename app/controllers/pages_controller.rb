@@ -1,14 +1,23 @@
 # PagesController
 class PagesController < ApplicationController
   before_action :load_site_from_host, only: [:show, :first, :index]
-
   load_and_authorize_resource :site
-  load_and_authorize_resource through: :site
 
   before_action :autoload_if_no_ids, only: [:show]
+  before_action :load_page, only: [:show, :edit]
+  before_action :redirect_if_page_slug_changed, only: [:show, :edit]
+  load_and_authorize_resource through: :site
 
   def autoload_if_no_ids
     @page = @site.pages.first if params[:id].blank?
+  end
+
+  def load_page
+    @page = @site.pages.friendly.find(params[:id]) if params[:id]
+  end
+
+  def redirect_if_page_slug_changed
+    redirect_to id: @page if params[:id] && @page.slug != params[:id]
   end
 
   def index

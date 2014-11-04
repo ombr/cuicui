@@ -39,6 +39,14 @@ describe ImagesController do
   describe '#show' do
     render_views
 
+    it 'redirects when page slug changed' do
+      @request.host = "#{page.site.slug}.#{ENV['DOMAIN']}"
+      previous_slug = page.slug
+      page.update name: 'hey hey hey'
+      get :show, page_id: previous_slug, id: image
+      expect(response).to redirect_to page_id: page
+    end
+
     context 'render_view' do
       before :each do
         get :show, site_id: site, page_id: page, id: image

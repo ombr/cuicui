@@ -63,8 +63,9 @@ describe PagesController do
 
     context 'without ids' do
       it 'respond 200' do
+        @request.host = "#{page.site.slug}.#{ENV['DOMAIN']}"
         page
-        get :show, site_id: site
+        get :show
         response.code.should == '200'
       end
 
@@ -74,6 +75,14 @@ describe PagesController do
       let(:image) { create :image, page: page }
       let(:page) { create :page, description: '', site: site }
       it_responds_200
+    end
+
+    it 'redirect when the page name changed' do
+      @request.host = "#{page.site.slug}.#{ENV['DOMAIN']}"
+      previous_slug = page.slug
+      page.update(name: 'Super new name')
+      get :show, id: previous_slug
+      expect(response).to redirect_to id: 'super-new-name'
     end
   end
 

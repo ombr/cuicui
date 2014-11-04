@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
     redirect_to host: @site.host if @site && @site.host != request.host
   end
 
+  def load_page
+    @page = @site.pages.friendly.find(params[:page_id])
+  end
+
+  def redirect_if_page_slug_changed
+    redirect_to page_id: @page if @page.slug != params[:page_id]
+  end
+
   def set_locale
     I18n.locale =
       params[:locale] || request.env['rack.locale'] || I18n.default_locale

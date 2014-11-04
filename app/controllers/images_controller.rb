@@ -3,7 +3,11 @@ class ImagesController < ApplicationController
   before_action :load_site_from_host, only: [:show]
 
   load_and_authorize_resource :site
+
+  before_action :load_page, only: [:show]
   load_and_authorize_resource :page, through: :site
+  before_action :redirect_if_page_slug_changed, only: [:show]
+
   load_and_authorize_resource through: :page
 
   def new
