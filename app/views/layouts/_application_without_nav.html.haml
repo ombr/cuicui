@@ -1,5 +1,5 @@
 !!!5
-%html{lang: (@site.language if @site) || 'en', manifest: ( Rails.env.production? ? 'basic.appcache' : nil ) }
+%html{lang: (@site.language if @site) || 'en', manifest: ( Rails.env.production? ? '/basic.appcache' : nil ) }
   %head
     %title= title.html_safe
     - if @site.favicon?
