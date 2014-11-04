@@ -30,6 +30,8 @@ fr:
   sign_in: Se connecter
   sign_out: Se déconnecter
   layouts:
+    cache_update:
+      new_update: Une nouvelle version est disponible
     breadcrumbs:
       home: Accueil
       my_sites: Mes sites
