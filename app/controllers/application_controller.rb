@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
 
   def load_site_from_host
     @site = Site.find_by_host(request.host)
+    redirect_to host: @site.host if @site && @site.host != request.host
   end
 
   def set_locale

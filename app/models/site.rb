@@ -62,6 +62,14 @@ class Site < ActiveRecord::Base
     nil
   end
 
+  def host
+    if domain.present?
+      domain
+    else
+      "#{slug}.#{ENV['DOMAIN']}"
+    end
+  end
+
   def json_import(json)
     %w( title description css metas language twitter_id facebook_id
         facebook_app_id google_plus_id google_analytics_id).each do |field|

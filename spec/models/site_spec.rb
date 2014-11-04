@@ -54,6 +54,22 @@ describe Site do
     end
   end
 
+  describe '#host' do
+    context 'without custom domain' do
+      it 'returns the right host' do
+        site = create :site, title: 'super test'
+        expect(site.host).to eq "super-test.#{ENV['DOMAIN']}"
+      end
+    end
+
+    context 'with custom domain' do
+      it 'returns hello.test.com' do
+        site = create :site, domain: 'hello.test.com'
+        expect(site.host).to eq 'hello.test.com'
+      end
+    end
+  end
+
   describe '#import_json' do
     let(:user) { create :user }
     it 'can import a json' do

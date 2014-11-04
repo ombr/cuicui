@@ -239,6 +239,16 @@ describe SitesController do
         assigns(:site).should == site
       end
     end
+
+    context 'when site changed name' do
+      it 'redirect to new domain' do
+        site = create :site, title: 'hello world'
+        site.update title: 'super new world'
+        @request.host = "hello-world.#{ENV['DOMAIN']}"
+        get :show, id: site
+        expect(response).to redirect_to host: "super-new-world.#{ENV['DOMAIN']}"
+      end
+    end
   end
 
   describe '#destroy' do
