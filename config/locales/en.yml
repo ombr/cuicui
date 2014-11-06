@@ -82,7 +82,7 @@ en:
       focuspoint:
         btn: Set the focus
         title: Focus
-        content: The image will be cropped, in order to get the best result, please click on the most important part of the picture.
+        content: The image will be cropped, in order to get the best result, please define the most important part of the picture.
     update:
       success: 'The image has been updated !'
   pages:

@@ -86,7 +86,7 @@ fr:
       focuspoint:
         btn: Définition du focus
         title: Focus
-        content: L'image peut etre coupée dans les menus, merci de cliquer sur le sujet principal de la photo afin que d'optimiser la découpe.
+        content: L'image peut etre coupée dans les menus, merci définir sur le sujet principal de la photo afin que d'optimiser la découpe.
     update:
       success: 'The image has been updated !'
   confirm: 'Are you sure ?'

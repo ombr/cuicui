@@ -1,37 +1,22 @@
 - breadcrumb @image
 .col-md-12
-  -# %h3.well
-    =link_to edit_page_path(@image.page) do
-      .fa.fa-arrow-left
-      = @image.page.name
-    %ul.images-icons
-      - @image.page.images.each do |image|
-        %li{:'data-id' => image.id}
-          = link_to edit_image_path(image) do
-            =image_tag image.url(:icon), title: image.legend, size: '60x60', style: "background-image: url('#{image.url(:icon)}');", class: ('processing' unless image.processed?)
   .row
     .col-md-4#previews
       = simple_form_for @image, html: { class: 'warn-on-exit' } do |f|
         %h2= t '.full'
         = f.input :full, wrapper: :vertical_boolean
         %h2= t '.focus'
-        .focuspoint
+        .alert.alert-info.help
+          = t '.focuspoint.content'
+        #focuspoint
           .selector
-            .alert.alert-info.help
-              %h4= t '.focuspoint.title'
-              = t '.focuspoint.content'
-            .image
-              %span.fa.fa-crosshairs.target{style: "top: #{@image.focusy || 50}%; left: #{@image.focusx || 50}%"}
-              = my_image_tag @image, :full, class: 'focuspoint-image'
-          .preview.preview1
-            = my_image_tag @image, :full
-          .preview.preview2
-            = my_image_tag @image, :full
-          .preview.preview3
-            = my_image_tag @image, :full
-          -#.btn.btn-default.dropdown-toggle{ data: { toggle: 'dropdown' } }
-            %span.fa.fa-crosshairs
-            = t '.focuspoint.btn'
+            = my_image_tag @image, :full, class: 'image'
+            .pointer{style: "top: #{@image.focusy || 50}%; left: #{@image.focusx || 50}%"}
+              .handle
+          .previews
+            .wrapper
+              = my_image_tag @image, :full, class: 'preview one'
+              = my_image_tag @image, :full, class: 'preview two'
         = f.input :content_css
         = f.input :focusx
         = f.input :focusy
