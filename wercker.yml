@@ -24,6 +24,9 @@ build:
              name: DATABASE_URL
              code: export DATABASE_URL=$WERCKER_POSTGRESQL_URL
         - script:
+             name: REDIRECT_DOMAIN
+             code: export REDIRECT_DOMAIN=old.com
+        - script:
              name: SECRET_KEY_BASE
              code: export SECRET_KEY_BASE=test
         - script:
