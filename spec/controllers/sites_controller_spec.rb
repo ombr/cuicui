@@ -228,6 +228,13 @@ describe SitesController do
 
   describe '#show' do
 
+    it 'redirect to DOMAIN when REDIRECT_HOST' do
+      old_domain = ENV['REDIRECT_DOMAIN'].split(',').first
+      @request.host = "hello-world.#{old_domain}"
+      get :show, id: 'test'
+      expect(response).to redirect_to host: "hello-world.#{ENV['DOMAIN']}"
+    end
+
     context 'without page' do
       before :each do
         get :show, id: site

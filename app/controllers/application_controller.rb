@@ -7,12 +7,18 @@ class ApplicationController < ActionController::Base
   include Analytics
   protect_from_forgery with: :exception
 
+  before_action :redirect_domains
   before_action :set_locale
   skip_after_filter :intercom_rails_auto_include
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:danger] = exception.message
     redirect_to new_user_session_path
+  end
+  def redirect_domains
+    return unless ENV['REDIRECT_DOMAIN']
+    domains = ENV['REDIRECT_DOMAIN'].split(',')
+    redirect_to domain: ENV['DOMAIN'] if domains.include? request.domain
   end
 
   def load_site_from_host
