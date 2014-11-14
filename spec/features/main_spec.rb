@@ -12,11 +12,11 @@ describe 'Main features', :feature do
     site = build :site
     find('#new_site').click
     fill_in :site_title, with: site.title
-    click_on 'Create Site'
+    find('.new-site-submit').click
 
     find('#new_page').click
     fill_in :page_name, with: 'First Page'
-    click_on 'Create Page'
+    find('.new-page-submit').click
 
     Page.first.name.should eq 'First Page'
     uploader = FileUploader.new

@@ -119,7 +119,7 @@ fr:
       subtitle: ''
     header:
       title: Vos Visuels.
-      subtitle: Et que vos visuels rapidement sur tout vos écrans.
+      subtitle: Et que vos visuels rapidement sur tous vos écrans.
     pricing:
       price: 15 euros
       duration: "/mois"
@@ -144,17 +144,17 @@ fr:
         title: Partage
         description: Facebook, Twitter, Google Plus, Pinterest votre contenu est prêt à être partagé sur les reseaux sociaux.
       search:
-        title: Visible
-        description: Optimisé pour le référencement Google et les partages sur les réseaux sociaux.
+        title: Référencé
+        description: Optimisé pour les moteurs de recherches et les partages sur les réseaux sociaux.
       analytics:
-        title: Statistics
+        title: Statistiques
         description: Mesurez votre audience
       edit:
         title: Mise a jour.
         description: Simple à modifier à n'importe quel moment, même depuis votre téléphone.
       ads:
-        title: Pas de pub
-        description: Votre marque sera toujours au centre, Evlaa ne sera pas visible.
+        title: Votre marque
+        description: Pas de pubs, votre marque sera toujours au centre et Evlaa ne sera pas visible.
       font:
         title: De belles polices
         description: Choisisez parmis 600+ polices.

@@ -3,4 +3,4 @@
   %h1= t('.title')
   = simple_form_for @page, url: site_pages_path(site_id: @page.site) do |f|
     = f.input :name, input_html: { autofocus: :autofocus }, label: false
-    = f.submit class: 'btn', data: { 'disable-with'=> t('loading') }
+    = f.submit class: 'btn new-page-submit', data: { 'disable-with'=> t('loading') }
