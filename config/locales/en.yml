@@ -106,7 +106,6 @@ en:
     login:
       submit: Go
     show:
-      my_sites: Manage my sites
       log_in: I already have a site
       register:
         title: Create your site

@@ -1,4 +1,14 @@
 fr:
+  helpers:
+    submit:
+      user:
+        create: S'inscrire
+      site:
+        create: Créer mon site
+        update: Modifer le site
+      page:
+        create: Créer une page
+        update: Modifer la page
   simple_form:
     "yes": 'Oui'
     "no": 'Non'
