@@ -9,7 +9,7 @@ class ManifestController < ApplicationController
     end
     @pages = ['/']
     @site.pages.each do |page|
-      @pages << s_page_path(page)
+      @pages << page_path(page)
       if page.images.first
         @pages << image_path(page.images.first)
         @pages << page.images.first.url(:full)
