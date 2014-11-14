@@ -6,8 +6,8 @@ describe 'Main features', :feature do
   it 'User can register and create a page and upload a picture.' do
     user = build :user
     visit "http://www.#{ENV['DOMAIN']}"
-    fill_in 'Email', with: user.email
-    find('#btn-register').click
+    fill_in 'user[email]', with: user.email
+    find('input[type=submit]').click
 
     site = build :site
     find('#new_site').click
@@ -51,8 +51,8 @@ describe 'Main features', :feature do
   it 'confirm an user when recovering password' do
     user = build :user
     visit "http://www.#{ENV['DOMAIN']}"
-    fill_in 'Email', with: user.email
-    find('#btn-register').click
+    fill_in 'user[email]', with: user.email
+    find('input[type=submit]').click
     click_on 'Sign out'
     click_on 'Sign In'
     click_on 'Trouble signing in ?'
