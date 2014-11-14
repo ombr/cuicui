@@ -1,0 +1,9 @@
+%section#register.row
+  - unless user_signed_in?
+    = simple_form_for User.new, url: registration_path(User) do |f|
+      .col-sm-4.col-sm-offset-4
+        = f.input :email, :required => true, :autofocus => true, label: false
+        = f.submit class: 'btn btn-success', data: { :'disable-with' => t('loading') }
+  - else
+    .col-xs-12
+      = link_to t('.my_sites'), sites_path, class: 'btn btn-primary'

@@ -1,0 +1,10 @@
+%section.row.features{ class: html_class }
+  .col-sm-10.col-sm-offset-1
+    .row
+      - features.each do |translation, icon|
+        .col-sm-4.feature
+          %h1
+            .fa.fa-5x{ class: "fa-#{icon}"}
+          %h2
+            = t ".#{translation}.title"
+          .description=t ".#{translation}.description"

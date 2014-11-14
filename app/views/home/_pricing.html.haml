@@ -1,0 +1,11 @@
+%section#pricing.row
+  .col-sm-4.col-sm-offset-4
+    .well
+      %h1
+        = t '.price'
+        %small= t '.duration'
+      %p= t '.argument1'
+      %p= t '.argument2'
+      %p= t '.argument3'
+      %p= t '.argument4'
+      = link_to t('.go'), new_user_registration_path, class: 'btn btn-success btn-lg'

@@ -25,7 +25,7 @@ en:
     shared:
       links:
         trouble_signing_in: Trouble signing in ?
-  brand: SoSlide
+  brand: Evlaa
   register: Register
   sign_in: Sign In
   sign_out: Sign out
@@ -106,32 +106,78 @@ en:
     login:
       submit: Go
     show:
+      my_sites: Manage my sites
       log_in: I already have a site
       register:
         title: Create your site
         subtitle: 15 days trial
-      welcome:
-        title: Be Simple
-        subtitle: Show your work quickly on every devices.
-        examples: Check the result.
       try: Create my site
-      speed:
-        title: Fast
-        description: Do not wait any longer to show your pictures.
-      devices:
-        title: Every device
-        description: One responsive website for all devices any time any where.
-      love:
-        title: Made for sharing
-        description: We are testing our software hard to deliver the best experience.
+
       pricing:
          title: Pricing
          subtitle: Get started right away. 15 days trial.
       features:
         title: Features
         subtitle: and a lot more to come.
-      examples:
-        title: Examples
+      start: Start
+      quote:
+        quote:  Perfection is finally attained not when there is no longer anything to add, but when there is no longer anything to take away.
+        author: Antoine de Saint Exupéry
+      quote2:
+        quote: The ability to simplify means to eliminate the unnecessary so that the necessary may speak.
+        author: Hans Hofmann
+    header:
+      title: Be Simple
+      subtitle: Your visuals quickly on every devices.
+      examples: Check the result.
+    pricing:
+      price: €15
+      duration: "/month"
+      argument1: No Engagment
+      argument2: 1 domain name included
+      argument3: Unlimited pages and images
+      argument4: No hidden fees
+      go: 15 days trial
+    examples:
+      title: They are using Evlaa
+      subtitle: ''
+    features:
+      share:
+        title: Partage
+        description: Facebook, Twitter, Google Plus, Pinterest votre contenu est pret a etre partage sur les reseaux sociaux.
+      search:
+        title: Visible
+        description: Optimisé pour le referencement Google et les partages sur les reseaux sociaux.
+      speed:
+        title: Fast
+        description: Your visuals are optimized and served from the cloud by CDN (Content Delivery Network) so visitors will not give up.
+      devices:
+        title: Mobile First
+        description: Your content is adapted to best use every devices.
+      full:
+        title: Fullscreen
+        description: Your visuals are huge, there is no spare space.
+      edit:
+        title: Edit
+        description: Create and update your site yourself on desktop or mobile.
+      ads:
+        title: No Ads
+        description: Your brand is important, there will be no ads, ever.
+      font:
+        title: Beautifuls Fonts
+        description: Select the perfect font in the 600+ google fonts.
+      share:
+        title: Sharing
+        description: Facebook, Twitter, Google Plus, Pinterest your content is optimized to be shared on social networks.
+      analytics:
+        title: Analytics
+        description: Use Google Analytics to monitor visitors activities and statistics.
+      search:
+        title: Searchable
+        description: Your site is automaticaly submited to search engines with an optimized sitemap and nice SEO friendly urls.
+      love:
+        title: Made for sharing
+        description: We are testing our software hard to deliver the best experience.
   pricing:
     pro:
       title: Pro

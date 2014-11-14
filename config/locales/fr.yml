@@ -25,7 +25,7 @@ fr:
     shared:
       links:
         trouble_signing_in: Je n'arrive pas a me connecter
-  brand: SoSlide
+  brand: Evlaa
   register: S'inscrire
   sign_in: Se connecter
   sign_out: Se déconnecter
@@ -99,33 +99,68 @@ fr:
       register:
         title: Create your site
         subtitle: 15 days trial
-      welcome:
-        title: Faites simples
-        subtitle: Montrez votre travail, partout, sans attendre.
-        examples: Voir des exemples.
       log_in: J'ai déjà un site
       register:
         title: Créez votre site
         subtitle: 15 jours d'essais.
       try: Créer mon site
-      speed:
-        title: Rapide
-        description: N'attendez plus pour montrer vos photos.
-      devices:
-        title: Multi-plateformes
-        description: Un site unique et automatiquement adapté à chacuns de vos appareils.
-      love:
-        title: A partager sans modération
-        description: Nous testons notre service de manière intensive afin de vous garantir une experience optimale.
-      pricing:
-        title: Prix
-        subtitle: Commencez immédiatement avec 15 jours d'essais
+
+      quote:
+        quote: Il semble que la perfection soit atteinte non quand il n'y a plus rien à ajouter, mais quand il n'y a plus rien à retrancher.
+        author: Antoine de Saint Exupéry
+      quote2:
+        quote: La capacité de simplifier signifie éliminer le superflu pour que le nécessaire puisse parler.
+        author: Hans Hofmann
       features:
         title: Fonctionnalités
         subtitle: ''
-      examples:
-        title: Exemples
-        subtitle: ''
+    examples:
+      title: 'Ils nous font confiance :'
+      subtitle: ''
+    header:
+      title: Vos Visuels.
+      subtitle: Et que vos visuels rapidement sur tout vos écrans.
+    pricing:
+      price: 15 euros
+      duration: "/mois"
+      argument1: Pas d'engagement
+      argument2: Un domaine inclus
+      argument3: Nombre de pages et images illimité
+      argument4: Pas de frais cachés
+      go: 15 premiers jours gratuits
+      title: Prix
+      subtitle: Commencez immédiatement avec 15 jours d'essais
+    features:
+      speed:
+        title: Rapide
+        description: Vos visuels sont optimise, heberger dans le Cloud et servi par un CDN parce que chaques millisecondes compte.
+      devices:
+        title: Multi-plateformes
+        description: Un site unique et automatiquement adapté à chacuns de vos appareils.
+      full:
+        title: En Grand
+        description: Le plus important c'est vos visuels, ils prendrons toujours un maximum d'espace.
+      share:
+        title: Partage
+        description: Facebook, Twitter, Google Plus, Pinterest votre contenu est pret a etre partage sur les reseaux sociaux.
+      search:
+        title: Visible
+        description: Optimisé pour le referencement Google et les partages sur les reseaux sociaux.
+      analytics:
+        title: Statistics
+        description: Mesurer votre audience
+      edit:
+        title: Mise a jour.
+        description: Simple a modifier a n'importe quel moment, meme depuis votre telephone.
+      ads:
+        title: Pas de pub
+        description: Votre marque sera toujours au centre, Evlaa ne sera pas visible.
+      font:
+        title: De belles polices
+        description: Choisisez votre police parmis 600+ polices Google.
+      love:
+        title: A partager sans modération
+        description: Nous testons notre service de manière intensive afin de vous garantir une experience optimale.
   pricing:
     pro:
       title: Pro

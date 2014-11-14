@@ -29,10 +29,10 @@ nav#nav.navbar.navbar-inverse role="navigation"
         - else
           = tab_link new_user_session_path do
             = t 'sign_in'
+          = tab_link new_user_registration_path, class: 'register' do
+            = t 'register'
       - if user_signed_in?
         - if site and not site.new_record?
           = link_to preview_link, target: '_blank', title: t('.see'), class: 'pull-right btn btn-success navbar-btn' do
             = t '.see'
       - else
-        = link_to new_user_registration_path, class: 'pull-right btn btn-success navbar-btn' do
-          = t 'register'
