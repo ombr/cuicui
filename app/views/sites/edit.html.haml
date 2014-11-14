@@ -14,7 +14,7 @@
   .row
     .col-md-12
       %h1= t('.edit_site')
-      = simple_form_for @site,  html: { class: 'warn-on-exit' } do |f|
+      = simple_form_for @site, url: site_path(id: @site),  html: { class: 'warn-on-exit' } do |f|
         = f.input :title, input_html: {class: 'input-lg'}, label: false
         = f.input :description, as: :text, input_html: { rows: 10 }
         = f.input :language, collection: LanguageList::COMMON_LANGUAGES.map{|l| [l.name, l.iso_639_1]}, prompt: false
@@ -46,6 +46,6 @@
       %h1= t('.delete')
       .alert.alert-danger
         %p= t('.delete_warning')
-        = link_to site_path(@site), method: :delete,  class: 'btn btn-danger', data: { confirm: t('confirm') } do
+        = link_to site_path(id: @site), method: :delete,  class: 'btn btn-danger', data: { confirm: t('confirm') } do
           .fa.fa-trash-o
           = t('.delete')

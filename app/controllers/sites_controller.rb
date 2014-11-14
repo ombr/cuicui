@@ -77,7 +77,7 @@ class SitesController < ApplicationController
   def destroy
     @site.update user: nil
     Resque.enqueue ObjectDeletion, 'Site', @site.id
-    redirect_to user_path(current_user)
+    redirect_to user_path(id: current_user)
   end
 
   def site_params

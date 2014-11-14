@@ -36,6 +36,10 @@ module RouteHelper
     edit_site_page_path(id: page, site_id: page.site)
   end
 
+  def my_edit_site_path(site, *_args)
+    edit_site_path(id: site)
+  end
+
   def edit_image_path(image, *_args)
     edit_image_url(site_id: image.site, id: image, page_id: image.page)
   end

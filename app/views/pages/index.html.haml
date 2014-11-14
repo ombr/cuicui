@@ -10,6 +10,6 @@
       - pages.each do |page|
         .page
           .wrapper
-            = link_to s_page_path(page) do
+            = link_to s_page_path(id: page) do
               %h2= page.name
             = my_image_tag page.images.first, :full, alt: page.name, title: page.name

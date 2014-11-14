@@ -1,5 +1,5 @@
 crumb :root do
-  link t('.home'), user_path(current_user)
+  link t('.home'), user_path(id: current_user)
 end
 
 crumb :sites do
@@ -10,7 +10,7 @@ crumb :site do |site|
   if site.new_record?
     link t('.new_site'), new_site_path
   else
-    link site.title, edit_site_path(site)
+    link site.title, edit_site_path(id: site)
   end
 end
 

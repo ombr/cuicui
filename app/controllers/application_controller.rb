@@ -38,12 +38,12 @@ class ApplicationController < ActionController::Base
     I18n.locale = http_accept_language.compatible_language_from(
       I18n.available_locales
     )
+    I18n.locale = params[:locale] if I18n.available_locales.include?(params[:locale].try(:to_sym))
   end
 
   def default_url_options(options = {})
-    logger.debug "default_url_options is passed options: #{options.inspect}\n"
-    if I18n.locale != :en
-      { locale: I18n.locale }
+    if params[:locale].present?
+      options.merge(locale: params[:locale])
     else
       {}
     end
@@ -56,6 +56,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    user_path(resource_or_scope)
+    user_path(id: resource_or_scope)
   end
 end
