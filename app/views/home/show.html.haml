@@ -5,15 +5,15 @@
       %blockquote
         %p= t '.quote.quote'
         %footer= t '.quote.author'
-  = render 'features', features: { speed: :flash, devices: :mobile, full: :expand }, html_class: ''
+  = render 'features', features: { full: :expand, speed: :flash, devices: :mobile }, html_class: ''
   = render 'features', features: { font: :font, ads: :tag, edit: 'pencil' }, html_class: 'odd'
   = render 'features', features: { share: 'share-alt', search: :binoculars, analytics: 'line-chart' }, html_class: ''
+  = render 'examples'
   %section.row.quote
     .col-md-10.col-md-offset-1
       %blockquote
         %p= t '.quote2.quote'
         %footer= t '.quote2.author'
-  = render 'examples'
   = render 'pricing'
   = render 'register'
   -# .background

@@ -133,31 +133,31 @@ fr:
     features:
       speed:
         title: Rapide
-        description: Vos visuels sont optimise, heberger dans le Cloud et servi par un CDN parce que chaques millisecondes compte.
+        description: Vos visuels sont optimisés, hebergés dans le Cloud et servis par un CDN parce que chaques millisecondes compte.
       devices:
         title: Multi-plateformes
-        description: Un site unique et automatiquement adapté à chacuns de vos appareils.
+        description: Un site unique et automatiquement adapté à chacun de vos appareils.
       full:
         title: En Grand
         description: Le plus important c'est vos visuels, ils prendrons toujours un maximum d'espace.
       share:
         title: Partage
-        description: Facebook, Twitter, Google Plus, Pinterest votre contenu est pret a etre partage sur les reseaux sociaux.
+        description: Facebook, Twitter, Google Plus, Pinterest votre contenu est prêt à être partagé sur les reseaux sociaux.
       search:
         title: Visible
-        description: Optimisé pour le referencement Google et les partages sur les reseaux sociaux.
+        description: Optimisé pour le référencement Google et les partages sur les réseaux sociaux.
       analytics:
         title: Statistics
-        description: Mesurer votre audience
+        description: Mesurez votre audience
       edit:
         title: Mise a jour.
-        description: Simple a modifier a n'importe quel moment, meme depuis votre telephone.
+        description: Simple à modifier à n'importe quel moment, même depuis votre téléphone.
       ads:
         title: Pas de pub
         description: Votre marque sera toujours au centre, Evlaa ne sera pas visible.
       font:
         title: De belles polices
-        description: Choisisez votre police parmis 600+ polices Google.
+        description: Choisisez parmis 600+ polices.
       love:
         title: A partager sans modération
         description: Nous testons notre service de manière intensive afin de vous garantir une experience optimale.

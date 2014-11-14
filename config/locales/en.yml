@@ -153,7 +153,7 @@ en:
         description: Your visuals are optimized and served from the cloud by CDN (Content Delivery Network) so visitors will not give up.
       devices:
         title: Mobile First
-        description: Your content is adapted to best use every devices.
+        description: Your content adapt to all devices.
       full:
         title: Fullscreen
         description: Your visuals are huge, there is no spare space.
@@ -165,7 +165,7 @@ en:
         description: Your brand is important, there will be no ads, ever.
       font:
         title: Beautifuls Fonts
-        description: Select the perfect font in the 600+ google fonts.
+        description: Select your perfect font in the 600+.
       share:
         title: Sharing
         description: Facebook, Twitter, Google Plus, Pinterest your content is optimized to be shared on social networks.
