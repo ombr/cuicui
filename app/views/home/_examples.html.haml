@@ -3,7 +3,8 @@
     %h1
       = t '.title'
       %small= t '.subtitle'
-    - [ 'studiocuicui.fr', 'seb.portfoli.fr' , 'arnaudwink.com'].each do |site|
-      .col-md-4.example
-        =link_to "http://#{site}", alt: site, target: '_blank' do
-          = cl_image_tag("http://#{site}",type: 'url2png', transformation: { crop: :fill, width: 500, height: 350, gravity: :north, fetch_format: :png }, sign_url: true, class: 'img-responsive')
+  .col-sm-12
+    - {cuicui: 'http://www.studiocuicui.fr', arnaudwink: 'http://arnaudwink.com', rhin: 'http://rhin.studiocuicui.fr' }.each do |key, site|
+      .col-md-4
+        =link_to site, alt: site, target: '_blank' do
+          = image_tag "#{key}.png", class: 'img-responsive img-thumbnail', alt: t(".#{key}.name")

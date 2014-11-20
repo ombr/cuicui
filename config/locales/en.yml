@@ -126,8 +126,8 @@ en:
         quote: The ability to simplify means to eliminate the unnecessary so that the necessary may speak.
         author: Hans Hofmann
     header:
-      title: Be Simple
-      subtitle: Your visuals quickly on every devices.
+      title: It's simple
+      subtitle: Your work quickly on every devices.
     outside:
       title: Fast and offline
       subtitle: Your work available anytime, anywhere.
@@ -137,45 +137,45 @@ en:
     pricing:
       price: €15
       duration: "/month"
-      argument1: No Engagment
-      argument2: 1 domain name included
+      argument1: Cancel anytime
+      argument2: Domain name included
       argument3: Unlimited pages and images
       argument4: No hidden fees
       go: 15 days trial
     examples:
       title: They are using Evlaa
       subtitle: ''
+      arnaudwink:
+        name: Arnaud Wink
+      rhin:
+        name: Le Rhin des cerises
+      cuicui:
+        name: Studio Cuicui
     features:
-      share:
-        title: Partage
-        description: Facebook, Twitter, Google Plus, Pinterest votre contenu est pret a etre partage sur les reseaux sociaux.
-      search:
-        title: Visible
-        description: Optimisé pour le referencement Google et les partages sur les reseaux sociaux.
       speed:
         title: Fast
-        description: Your visuals are optimized and served from the cloud by CDN (Content Delivery Network) so visitors will not give up.
+        description: No Waiting.
       devices:
-        title: Mobile First
-        description: Your content adapt to all devices.
+        title: Mobile-first
+        description: Your content responds to all devices.
       full:
         title: Fullscreen
-        description: Your visuals are huge, there is no spare space.
+        description: Your images can be huge and to make great impact.
       edit:
         title: Edit
-        description: Create and update your site yourself on desktop or mobile.
+        description: Do it yourself - desktop and mobile
       ads:
-        title: No Ads
+        title: Ad Free
         description: Your brand is important, there will be no ads, ever.
       font:
-        title: Beautifuls Fonts
-        description: Select your perfect font in the 600+.
+        title: Beautiful Fonts
+        description: 600+ fonts available.
       share:
         title: Sharing
         description: Facebook, Twitter, Google Plus, Pinterest your content is optimized to be shared on social networks.
       analytics:
         title: Analytics
-        description: Use Google Analytics to monitor visitors activities and statistics.
+        description: Use Google Analytics to monitor visitor's activities and get statistics.
       search:
         title: Searchable
         description: Your site is automaticaly submited to search engines with an optimized sitemap and nice SEO friendly urls.

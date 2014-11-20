@@ -117,11 +117,17 @@ fr:
     examples:
       title: 'Ils nous font confiance :'
       subtitle: ''
+      arnaudwink:
+        name: Arnaud Wink
+      rhin:
+        name: Le Rhin des cerises
+      cuicui:
+        name: Studio Cuicui
     header:
-      title: Vos Visuels
-      subtitle: en grand sur tous les écrans.
+      title: Faites simple
+      subtitle: Présentez vos images sur tout les écrans.
     outside:
-      title: Rapide et hors-ligne
+      title: Hors-ligne
       subtitle: Votre travail disponible partout, tout le temps.
     studio:
       title: Simple
