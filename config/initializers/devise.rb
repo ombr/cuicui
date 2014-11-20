@@ -1,15 +1,7 @@
+# rubocop:disable all
 Devise.setup do |config|
-  # The secret key used by Devise. Devise uses this key to generate
-  # random tokens. Changing this key will render invalid all existing
-  # confirmation, reset password and unlock tokens in the database.
-  #config.secret_key = '22cf40a974d15a157c6f0cfd6172965dfed37b99b1b4fdb0767fd222a2
-  #1f694e9fc2202c98d5d6bab6033f4cf593ad8a5d460ccdee5bc0b62d9affb335c3c180'
 
-  # ==> Mailer Configuration
-  # Configure the e-mail address which will be shown in Devise::Mailer,
-  # note that it will be overwritten if you use your own mailer class
-  # with default "from" parameter.
-  config.mailer_sender = 'please-mail-us@soslide.com'
+  config.mailer_sender = 'no-reply@evlaa.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
