@@ -128,7 +128,12 @@ en:
     header:
       title: Be Simple
       subtitle: Your visuals quickly on every devices.
-      examples: Check the result.
+    outside:
+      title: Fast and offline
+      subtitle: Your work available anytime, anywhere.
+    studio:
+      title: Simple
+      subtitle: Get to the point so you can focus on your work.
     pricing:
       price: €15
       duration: "/month"
