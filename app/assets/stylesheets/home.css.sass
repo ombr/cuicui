@@ -15,6 +15,13 @@
   background-repeat: no-repeat
   background-position: center center
 
+.home-image
+  margin-bottom: 20px
+  .image
+    padding: 0
+    margin-right: -15px
+    img
+      margin: 0 auto
 .home-show
   section
     clear: both
@@ -27,8 +34,6 @@
   .feature
     padding: 10px 0
     text-align: center
-  #header
-    margin-bottom: 20px
   #pricing
     text-align: center
     margin-bottom: 200px
@@ -47,15 +52,15 @@
     .feature:nth-child(2)
       background: white
 @media (min-width: $screen-md-min)
-  #header
-    margin-top: -20px
-    .wrapper
-      position: relative
-      padding-bottom: 40%
-    img
-      @include image-cropped
+  #studio
     .message
-      margin-top: 100px
+      top: 20%
+  .home-image
+    margin-top: -20px
+    position: relative
+    .message
+      position: absolute
+      top: 10%
       background: rgba(255, 255, 255, 0.8)
       z-index: 1
 .home-show
@@ -66,7 +71,7 @@
     z-index: 10
     padding: 20px
     text-align: center
-    background: #ecf6ce
+    background: lighten($brand-success, 30%)
 /* .home-show
   #register
     position: fixed

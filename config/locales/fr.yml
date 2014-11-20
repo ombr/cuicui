@@ -118,8 +118,14 @@ fr:
       title: 'Ils nous font confiance :'
       subtitle: ''
     header:
-      title: Vos Visuels.
-      subtitle: Et que vos visuels rapidement sur tous vos écrans.
+      title: Vos Visuels
+      subtitle: en grand sur tous les écrans.
+    outside:
+      title: Rapide et hors-ligne
+      subtitle: Votre travail disponible partout, tout le temps.
+    studio:
+      title: Simple
+      subtitle: Allez a l'essentiel et concentrez vous sur votre travail.
     pricing:
       price: 15 euros
       duration: "/mois"

@@ -1,8 +1,9 @@
-%section#header.row
-  .col-md-4.col-md-offset-1.message
+%section#header.home-image.row
+  .col-md-4.col-md-offset-6.message
     %h1
       = t '.title'
     %h2
       = t '.subtitle'
-  .wrapper
-    = image_tag '/evlaa-background.jpg', style: 'background-image: url(/evlaa-background.jpg);', class: 'img-responsive'
+  .col-xs-12.image
+    = image_tag 'background-small.jpg', class: 'img-responsive visible-xs-block'
+    = image_tag 'background1.jpg', class: 'img-responsive hidden-xs'

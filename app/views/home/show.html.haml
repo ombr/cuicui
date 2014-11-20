@@ -1,19 +1,21 @@
 .container-fluid
   = render 'header'
-  %section.row.quote
-    .col-md-10.col-md-offset-1
-      %blockquote
-        %p= t '.quote.quote'
-        %footer= t '.quote.author'
   = render 'features', features: { full: :expand, speed: :flash, devices: :mobile }, html_class: ''
+  = render 'outside'
   = render 'features', features: { share: 'share-alt', search: :binoculars, analytics: 'line-chart' }, html_class: ''
+  = render 'studio'
   = render 'features', features: { font: :font, ads: :tag, edit: :refresh }, html_class: 'odd'
   = render 'examples'
-  %section.row.quote
+  -#%section.row.quote
     .col-md-10.col-md-offset-1
       %blockquote
         %p= t '.quote2.quote'
         %footer= t '.quote2.author'
+  -# %section.row.quote
+    .col-md-10.col-md-offset-1
+      %blockquote
+        %p= t '.quote.quote'
+        %footer= t '.quote.author'
   = render 'pricing'
   = render 'register'
   -# .background
