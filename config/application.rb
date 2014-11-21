@@ -25,5 +25,8 @@ module Cuicui
     config.i18n.available_locales = [:en, :fr]
     config.i18n.default_locale = :en
     config.action_mailer.default_url_options = { host: "www.#{ENV['DOMAIN']}" }
+
+    config.action_controller.asset_host =
+      "//#{ENV['ASSET_DOMAIN']}" if ENV['ASSET_DOMAIN']
   end
 end
