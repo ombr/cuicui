@@ -45,6 +45,11 @@ RSpec.configure do |config|
   connection.directories.create(key: fog_directory)
 
   FakeWeb.allow_net_connect = false
+
+  config.before :each, type: :controller do
+    request.env['HTTP_ACCEPT_LANGUAGE'] = ENV['TEST_LANG']
+    request.env['HTTP_ACCEPT_LANGUAGE'] ||= %w(fr en).sample
+  end
 end
 
 Capybara.javascript_driver = :webkit

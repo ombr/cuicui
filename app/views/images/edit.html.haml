@@ -39,11 +39,11 @@
           %h3= t('.desktop')
           =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1920x1080', style: 'desktop'
         .col-md-5
-          %h3= t('laptop')
+          %h3= t('.laptop')
           =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1366x768', style: 'laptop'
         .col-md-4
-          %h3= t('tablet')
+          %h3= t('.tablet')
           =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1010x660', style: 'tablet'
         .col-md-2
-          %h3= t('phone')
+          %h3= t('.phone')
           =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '640x1136', style: 'phone'

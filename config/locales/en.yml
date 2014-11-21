@@ -55,11 +55,18 @@ en:
     one: One page
     other: '%{count} pages'
   sites:
+    index:
+      sites: My sites
+      name: Title
+      pages: Pages
+      images: Images
+      open: Link
     new:
       title: New site
     page:
       delete_confirm: Are you sure you want to delete the page ?
     edit:
+      no_pages: Your site is empty, click on the big plus to create a page.
       pages: Pages
       edit_site: Site
       advanced: Advanced options
@@ -68,7 +75,6 @@ en:
       delete: Delete the site
     update:
       success: 'The site has been updated !'
-
   images:
     form:
       upload: Upload
@@ -76,6 +82,10 @@ en:
     image_edit:
       edit: Edit
     edit:
+      desktop: Desktop
+      laptop: Laptop
+      tablet: Tablet
+      phone: Phone
       text: Content
       full: Fullscreen
       focus: Focus
@@ -86,6 +96,8 @@ en:
     update:
       success: 'The image has been updated !'
   pages:
+    preview:
+      go_back_to_edit: Back to edit
     new:
       title: 'Create page'
     add: 'Create a new page.'

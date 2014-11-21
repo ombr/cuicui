@@ -47,11 +47,18 @@ fr:
       manage_sites: Gérer mes sites
       sites: Mes sites
   sites:
+    index:
+      sites: Mes sites
+      name: Titre
+      pages: Pages
+      images: Images
+      open: Lien
     page:
       delete_confirm: Êtes-vous sûr de vouloir supprimer définitivement la page ?
     new:
       title: Créer un site
     edit:
+      no_pages: Votre site est vide, cliquez sur le gros plus pour créer une page.
       pages: Pages
       edit_site: Site
       advanced: Option avancées
@@ -61,6 +68,8 @@ fr:
     update:
       success: 'The site has been updated !'
   pages:
+    preview:
+      go_back_to_edit: Retour à l'édition
     new:
       title: 'Créez une page'
     image:
@@ -81,6 +90,12 @@ fr:
     image_edit:
       edit: Editer
     edit:
+      desktop: Ordinateur de bureau
+      laptop: Ordinateur portable
+      tablet: Tablette
+      phone: Téléphone
+      full: En Grand
+      focus: Focus
       text: Contenu
       image: Image
       focuspoint:
