@@ -53,14 +53,14 @@ describe 'Main features', :feature do
     visit "http://www.#{ENV['DOMAIN']}"
     fill_in 'user[email]', with: user.email
     find('input[type=submit]').click
-    click_on 'Sign out'
-    click_on 'Sign In'
-    click_on 'Trouble signing in ?'
+    find('.sign-out').click
+    find('.sign-in').click
+    find('.trouble').click
     fill_in 'user_email', with: user.email
     find('.btn-lg').click
     open_email user.email
     current_email.click_link 'Confirm my account'
-    fill_in 'Password', with: 'NewPassword'
+    fill_in 'user_password', with: 'NewPassword'
     find('.btn-lg').click
     User.first.confirmed?.should eq true
   end
@@ -68,8 +68,8 @@ describe 'Main features', :feature do
   it 'User can reset his password.' do
     user = create :user
     visit "http://www.#{ENV['DOMAIN']}"
-    click_on 'Sign In'
-    click_on 'Trouble signing in ?'
+    find('.sign-in').click
+    find('.trouble').click
 
     fill_in 'user_email', with: user.email
     find('.btn-lg').click

@@ -23,11 +23,11 @@ nav#nav.navbar.navbar-inverse role="navigation"
           = tab_link edit_user_registration_path(id: current_user) do
             = current_user.email
           li
-            = link_to destroy_user_session_path do
+            = link_to destroy_user_session_path, class: 'sign-out' do
               .fa.fa-sign-out
               = t 'sign_out'
         - else
-          = tab_link new_user_session_path do
+          = tab_link new_user_session_path, class: 'sign-in' do
             = t 'sign_in'
           = tab_link new_user_registration_path, class: 'register' do
             = t 'register'
