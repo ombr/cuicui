@@ -4,7 +4,8 @@
       = t '.title'
       %small= t '.subtitle'
   .col-sm-12
-    - {cuicui: 'http://www.studiocuicui.fr', arnaudwink: 'http://arnaudwink.com', rhin: 'http://rhin.studiocuicui.fr' }.each do |key, site|
-      .col-md-4
-        =link_to site, alt: site, target: '_blank' do
-          = image_tag "#{key}.png", class: 'img-responsive img-thumbnail', alt: t(".#{key}.name")
+    .row
+      - {cuicui: 'http://www.studiocuicui.fr', arnaudwink: 'http://arnaudwink.com', rhin: 'http://rhin.studiocuicui.fr' }.each do |key, site|
+        .col-md-4
+          =link_to site, alt: site, target: '_blank' do
+            = image_tag "#{key}.png", class: 'img-responsive img-thumbnail', alt: t(".#{key}.name")

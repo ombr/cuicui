@@ -5,5 +5,4 @@
     %h2
       = t '.subtitle'
   .col-xs-12.image
-    = image_tag 'background-small.jpg', class: 'img-responsive visible-xs-block'
-    = image_tag 'background1.jpg', class: 'img-responsive hidden-xs'
+    = image_tag 'background1.jpg', class: 'img-responsive', srcset: "#{asset_path('background-small.jpg')} 850w, #{asset_path('background1.jpg')} 900w"
