@@ -1,1 +1,1 @@
-Rack::Timeout.timeout = ENV['RACK_TIMEOUT'] || 10
+Rack::Timeout.timeout = ENV['RACK_TIMEOUT'].to_i || 10
