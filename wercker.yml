@@ -48,6 +48,9 @@ build:
              name: migrate
              code: bundle exec rake db:migrate
         - script:
+             name: migrate
+             code: bundle exec rake assets:precompile
+        - script:
              name: DUMP ENV
              code: export
         # Add more steps here:
