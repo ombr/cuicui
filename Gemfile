@@ -83,6 +83,7 @@ gem 'redcarpet'
 # gem 'dalli'
 # gem 'kgio'
 gem 'rack-cache'
+gem 'rack-cors'
 
 gem 'unicorn'
 gem 'rack-timeout'
