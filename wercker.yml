@@ -39,6 +39,9 @@ build:
              name: AWS_BUCKET
              code: export AWS_BUCKET=bucket
         - script:
+             name: RACK_TIMEOUT
+             code: export RACK_TIMEOUT=120
+        - script:
              name: Domain
              code: export DOMAIN=test.com
         - script:
