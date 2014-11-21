@@ -6,7 +6,11 @@ if ENV['AWS_KEY']
       aws_secret_access_key: ENV['AWS_SECRET']
     }
     config.fog_directory  = ENV['AWS_BUCKET']
-    config.asset_host = "http://#{ENV['AWS_BUCKET']}.s3.amazonaws.com"
+    if ENV['FOG_DOMAIN']
+      config.asset_host = "//#{ENV['FOG_DOMAIN']}"
+    else
+      config.asset_host = "//#{ENV['AWS_BUCKET']}.s3.amazonaws.com"
+    end
     config.fog_attributes = {
       'Cache-Control' => 'max-age=315576000',
       Expires: 1.year.from_now.httpdate
