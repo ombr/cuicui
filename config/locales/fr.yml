@@ -1,4 +1,5 @@
 fr:
+  go: S'inscrire avec 15 jours gratuits
   loading: Chargement...
   devise:
     sessions:
@@ -154,7 +155,6 @@ fr:
       argument2: Domaine inclus
       argument3: Pages et images illimité
       argument4: Pas de frais cachés
-      go: S'inscrire avec 15 jours gratuits
       title: Prix
       subtitle: Commencez immédiatement avec 15 jours d'essais
     features:

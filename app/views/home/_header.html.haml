@@ -4,5 +4,6 @@
       = t '.title'
     %h2
       = t '.subtitle'
+    %p= link_to t('go'), new_user_registration_path, class: 'btn btn-success btn-lg'
   .col-xs-12.image
     = image_tag 'background1.jpg', class: 'img-responsive', srcset: "#{asset_path('background-small.jpg')} 850w, #{asset_path('background1.jpg')} 900w"

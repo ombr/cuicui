@@ -1,6 +1,6 @@
 - unless user_signed_in?
   %section#register.row
-    = simple_form_for User.new, url: registration_path(User) do |f|
-      .col-sm-4.col-sm-offset-4
+    = simple_form_for User.new, url: registration_path(User), wrapper: :inline_form, html: { class: 'form-inline' } do |f|
+      .col-xs-12
         = f.input :email, :required => true, :autofocus => true, label: false
         = f.submit class: 'btn btn-success', data: { :'disable-with' => t('loading') }
