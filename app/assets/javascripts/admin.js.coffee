@@ -6,6 +6,7 @@
 //= require jquery-ui/draggable
 //= require jquery-ui/resizable
 //= require jquery.ui.touch-punch
+//= require async
 //= require bootstrap
 //= require jquery-fileupload/basic
 //= require fileupload

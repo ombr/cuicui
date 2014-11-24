@@ -39,10 +39,10 @@ $ ->
     update_iframe_content()
 
 
-  iframe_preview=(e)->
+  iframe_preview=(e, callback)->
     $e = $(e)
     width = $e.width()
-    $iframe = $('iframe', e)
+    $iframe = $e.find('iframe')
     $iframe.show()
     $drag = $('.content-drag',e)
     $background_drag = $('.background-drag',e)
@@ -62,21 +62,18 @@ $ ->
       offset = $el.offset()
       $drag.css('left', "#{offset.left}px")
       $drag.css('top', "#{offset.top}px")
-      #$drag.css('border-radius', $el.css('border-radius'))
       $drag.width($el.outerWidth()*zoom)
       $drag.height($el.outerHeight()*zoom)
 
     position_to_css = (element, pos, size, total, top, bottom)->
       percent_bottom = (total-pos-size)/total*100
       percent_top = pos/total*100
-      #if pos > total - size - pos
       if Math.abs(percent_bottom) < Math.abs(percent_top)
         change_css(element, bottom, percent_bottom+'%')
         change_css(element, top, 'auto')
       else
         change_css(element, top, percent_top+'%')
         change_css(element, bottom, 'auto')
-
     change_css = (element, key, value)->
       regexp = new RegExp("(.*#{key}:)[^;]*(;.*)")
       style = $(element).val()
@@ -164,6 +161,7 @@ $ ->
                             'right')
             $('#image_content_css').trigger('change')
         )
+        callback()
     )
 
   reload = false
@@ -174,9 +172,8 @@ $ ->
         .show()
         .text('Please reload the page.')
       $('.iframe-preview').hide()
-  $('.iframe-preview').each (i,e)->
-    reload = true
-    iframe_preview(this)
+  reload = true
+  async.eachSeries($('.iframe-preview'),iframe_preview)
 
   focus_change = ->
     px = $('#image_focusx').val() || 50
@@ -200,7 +197,7 @@ $ ->
       $image.attr('style', style)
   $('body').on 'change', '#image_content_css', ()->
     $('.iframe-preview').each (i,e)=>
-      $iframe = $('iframe', e)
+      $iframe = $(e).find('iframe')
       $($iframe.contents().find('.image-content')).attr('style', $(this).val())
 
   $('body').on 'change', '#image_full', ()->

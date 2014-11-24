@@ -35,7 +35,7 @@
         = f.submit class: 'btn', data: { 'disable-with'=> t('loading') }
     .col-md-8#previews
       .row
-        .col-md-12
+        .col-md-11
           %h3= t('.desktop')
           =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1920x1080', style: 'desktop'
         .col-md-5
