@@ -25,8 +25,8 @@ $ ->
     )
 
   $('body').on 'input', '#image_legend', ()->
-    $('.iframe-preview').each (e)=>
-      $iframe = $('iframe', e)
+    $('.iframe-preview').each ->
+      $iframe = $(this).find('iframe')
       $legende = $($iframe.contents().find('.image-description'))
       return if $legende.length == 0
       legende = $(this).val()
@@ -176,7 +176,7 @@ $ ->
       $('.iframe-preview').hide()
   $('.iframe-preview').each (i,e)->
     reload = true
-    iframe_preview(e)
+    iframe_preview(this)
 
   focus_change = ->
     px = $('#image_focusx').val() || 50
