@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   if ENV['FOG_DOMAIN']
     def asset_host
-      "//#{ENV['FOG_DOMAIN']}"
+      "http://#{ENV['FOG_DOMAIN']}"
     end
   end
 
