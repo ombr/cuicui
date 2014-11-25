@@ -8,6 +8,12 @@ class FaviconUploader < CarrierWave::Uploader::Base
 
   storage :fog
 
+  if ENV['FOG_DOMAIN']
+    def asset_host
+      "//#{ENV['FOG_DOMAIN']}"
+    end
+  end
+
   def default_url
     ActionController::Base.helpers.asset_path("/#{version_name}_default.png")
   end

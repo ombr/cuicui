@@ -4,6 +4,12 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   storage :fog
 
+  if ENV['FOG_DOMAIN']
+    def asset_host
+      "//#{ENV['FOG_DOMAIN']}"
+    end
+  end
+
   def filename
     if original_filename.present?
       if model && model.original.filename
