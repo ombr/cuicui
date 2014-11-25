@@ -86,11 +86,21 @@ class Image < ActiveRecord::Base
     (total - position + 1).to_f / (total).to_f
   end
 
+  def content_text
+    return '' unless content?
+    Nokogiri::HTML(content_rendered).text
+  end
+
+  def content_string
+    content_text.gsub("\n", ' ')
+  end
+
   def seo_title
-    return title unless title.blank?
-    return content unless content.blank?
-    return legend unless legend.blank?
-    "#{site.title} : #{page.name}"
+    if title? or content? or legend?
+      "#{title} #{content_string} #{legend}"
+    else
+      page.name
+    end
   end
 
   def seo_description

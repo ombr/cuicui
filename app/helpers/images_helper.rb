@@ -5,8 +5,8 @@ module ImagesHelper
     return my_image_tag(image.images.first, version, options) if image.instance_of? Page
     # options[:size] ||= image.geometries[version.to_s] if image.geometries && image.geometries[version.to_s]
     if image
-      options[:title] ||= image.title
-      options[:alt] ||= image.title
+      options[:title] ||= image.seo_title
+      options[:alt] ||= image.seo_title
       options[:style] = "background-image: url('#{image.url(:full)}');#{options[:style]}"
       if image.focusx && image.focusy
         options[:style] += "background-position: #{image.focusx}% #{image.focusy}%"

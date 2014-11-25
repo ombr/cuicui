@@ -21,14 +21,15 @@
       .help-scroll-icon
         span.fa.fa-angle-double-down
 
-- content_for :page_title, image.seo_title
+- content_for :page_title, "#{@site.title} #{image.seo_title}"
 - content_for :head do
-  - description = image.seo_description
+  - description = image.seo_title
   - image_url = image.url(:social)
+  - url = s_image_url(page_id: image.page, id: image)
   meta property='og:title' content=title
   meta property='og:image' content=image_url
   meta property='og:description' content=description
-  meta property='og:url' content=s_image_url(page_id: image.page, id: image)
+  meta property='og:url' content=url
   meta property='og:site_name' content=image.page.site.title
   meta property='og:see_also' content=root_url
   meta property='og:type' content='article'
@@ -39,8 +40,10 @@
   - if image.site.facebook_id?
     meta property='fb:admins' content=image.site.facebook_id
   meta property='twitter:card' content='photo'
-  meta property='twitter:title' content=title
-  meta property='twitter:image:src' content=image_url
+  meta property='twitter:title' content=title.truncate(60)
+  meta property='twitter:description' content=title
+  meta property='twitter:image' content=image_url
+  meta property='twitter:url' content=url
   - twitter_id = image.site.twitter_id
   - if twitter_id.present?
     meta property='twitter:site' content=twitter_id

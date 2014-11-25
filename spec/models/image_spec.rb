@@ -24,22 +24,22 @@ describe Image do
   describe '#seo_title' do
     it 'returns a title' do
       image = build :image, title: 'Super Title'
-      expect(image.seo_title).to eq image.title
+      expect(image.seo_title).to include image.title
     end
 
-    it 'return the content if there is no title' do
+    it 'returns the content if there is no title' do
       image = build :image, content: 'Super content', title: ''
-      expect(image.seo_title).to eq image.content
+      expect(image.seo_title).to include image.content
     end
 
-    it 'return the legend it there is no title or content' do
+    it 'returns the legend it there is no title or content' do
       image = build :image, title: '', content: '', legend: 'Super legend'
-      expect(image.seo_title).to eq image.legend
+      expect(image.seo_title).to include image.legend
     end
 
-    it 'return site and page name if content, title and legend are empty' do
+    it 'returns page name if content, title and legend are empty' do
       image = build :image, title: '', content: '', legend: ''
-      expect(image.seo_title).to eq "#{image.site.title} : #{image.page.name}"
+      expect(image.seo_title).to eq image.page.name
     end
   end
 

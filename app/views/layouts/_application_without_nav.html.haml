@@ -8,9 +8,10 @@
       - [192, 160, 96, 16, 32].each do |size|
         %link{ rel: 'icon', type: 'image/png', href: @site.favicon.url(:thumb, "thumb#{size}"), sizes: "#{size}x#{size}" }
       %meta{ name: 'msapplication-TileImage', content: @site.favicon.url(:thumb, "thumb144") }
-      %meta{ name: 'sapplication-TileColor', content:"#2b5797" }
+      %meta{ name: 'msapplication-TileColor', content:"#2b5797" }
 
     %meta{ name: 'google', content: 'notranslate' }
+    %meta{ name: 'description', content: title}
     %meta{ name: 'apple-mobile-web-app-capable', content: 'yes' }
     %meta{ name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }

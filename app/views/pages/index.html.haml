@@ -1,3 +1,4 @@
+- content_for :page_title, "#{@site.title} #{@pages.map(&:name).join(' ')}"
 .col-xs-12.preloadable.scrollhistory{ id: "main-nav", data: { url: pages_path, title: title } }
   - x = Math.sqrt(@pages_count).ceil
   - y = (@pages_count.to_f / x.to_f).ceil
