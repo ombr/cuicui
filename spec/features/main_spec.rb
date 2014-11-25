@@ -14,11 +14,7 @@ describe 'Main features', :feature do
     fill_in :site_title, with: site.title
     find('.new-site-submit').click
 
-    find('#new_page').click
-    fill_in :page_name, with: 'First Page'
-    find('.new-page-submit').click
-
-    Page.first.name.should eq 'First Page'
+    Page.first.name.should eq I18n.t('sites.create.first_page')
     uploader = FileUploader.new
     upload_path = Rails.root.join('spec', 'fixtures', 'image.jpg')
     redirect_key = sample_key(
