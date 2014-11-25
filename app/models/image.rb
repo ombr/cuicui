@@ -96,7 +96,7 @@ class Image < ActiveRecord::Base
   end
 
   def seo_title
-    if title? or content? or legend?
+    if title? || content? || legend?
       "#{title} #{content_string} #{legend}"
     else
       page.name
