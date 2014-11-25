@@ -39,6 +39,12 @@ describe ImagesController do
   describe '#show' do
     render_views
 
+    it 'redirects to page when image not found' do
+      @request.host = "#{page.site.slug}.#{ENV['DOMAIN']}"
+      get :show, page_id: page.slug, id: 'asdasdasd'
+      expect(response).to redirect_to s_page_path(id: page)
+    end
+
     it 'redirects when page slug changed' do
       @request.host = "#{page.site.slug}.#{ENV['DOMAIN']}"
       previous_slug = page.slug

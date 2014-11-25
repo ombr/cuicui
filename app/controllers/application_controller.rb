@@ -11,10 +11,23 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   skip_after_filter :intercom_rails_auto_include
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    if @page
+      redirect_to page_url(@page) if @page
+    else
+      if @site
+        redirect_to site_url(@site) if @site
+      else
+        fail exception
+      end
+    end
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     flash[:danger] = exception.message
     redirect_to new_user_session_path
   end
+
   def redirect_domains
     return unless ENV['REDIRECT_DOMAIN']
     domains = ENV['REDIRECT_DOMAIN'].split(',')
@@ -38,7 +51,10 @@ class ApplicationController < ActionController::Base
     I18n.locale = http_accept_language.compatible_language_from(
       I18n.available_locales
     )
-    I18n.locale = params[:locale] if I18n.available_locales.include?(params[:locale].try(:to_sym))
+    I18n.locale =
+      params[:locale] if I18n.available_locales.include?(
+        params[:locale].try(:to_sym)
+    )
   end
 
   def default_url_options(options = {})

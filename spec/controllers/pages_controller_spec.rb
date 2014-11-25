@@ -68,7 +68,6 @@ describe PagesController do
         get :show
         response.code.should == '200'
       end
-
     end
 
     context 'without description and image' do
@@ -83,6 +82,13 @@ describe PagesController do
       page.update(name: 'Super new name')
       get :show, id: previous_slug
       expect(response).to redirect_to id: 'super-new-name'
+    end
+
+    it 'redirects to root_path when page not found' do
+      @request.host = "#{page.site.slug}.#{ENV['DOMAIN']}"
+      page
+      get :show, id: 'asdasdasd'
+      expect(response).to redirect_to root_path
     end
   end
 
