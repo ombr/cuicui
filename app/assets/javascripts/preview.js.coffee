@@ -25,8 +25,8 @@ $ ->
     )
 
   $('body').on 'input', '#image_legend', ()->
-    $('.iframe-preview').each ->
-      $iframe = $(this).find('iframe')
+    $('.iframe-preview').each (i,e)=>
+      $iframe = $(e).find('iframe')
       $legende = $($iframe.contents().find('.image-description'))
       return if $legende.length == 0
       legende = $(this).val()

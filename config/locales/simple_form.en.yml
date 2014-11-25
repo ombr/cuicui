@@ -9,6 +9,8 @@ en:
       page:
         create: Create my page
         update: Update page
+      image:
+        update: Update image
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -29,6 +31,7 @@ en:
     placeholders:
       defaults:
         title: Title
+        content: Description
         name: Name
         legend: Legend
         email: your@email.com

@@ -1,8 +1,8 @@
 - breadcrumb @image
-.col-md-12
-  .row
-    .col-md-4#previews
-      = simple_form_for @image, html: { class: 'warn-on-exit' } do |f|
+= simple_form_for @image, html: { class: 'warn-on-exit' } do |f|
+  .col-md-12
+    .row
+      .col-md-4#previews
         %h2= t '.full'
         = f.input :full, wrapper: :vertical_boolean
         %h2= t '.focus'
@@ -23,27 +23,30 @@
 
         = f.input :image_css
         %h2= t '.text'
-        = f.input :title, input_html: { class: 'input-lg'}
+        = f.input :title, label: false, input_html: { class: 'input-lg' }
         .control-group.text.optional.page_description
-          %label.text.optional.control-label{for: 'image_content'} Content
+          -# %label.text.optional.control-label{for: 'image_content'} Content
           .controls
             .wmd-panel
               #wmd-button-bar
-              %textarea.text.optional.form-control#wmd-input{name: 'image[content]', rows: '5'}= f.object.content
+              %textarea.text.optional.form-control#wmd-input{name: 'image[content]', rows: '5', placeholder: t('simple_form.placeholders.defaults.content')}= f.object.content
               #wmd-preview.wmd-panel.wmd-preview= f.object.content_rendered.html_safe
-        = f.input :legend, input_html: {value: f.object.legend }
-        = f.submit class: 'btn', data: { 'disable-with'=> t('loading') }
-    .col-md-8#previews
-      .row
-        .col-md-11
-          %h3= t('.desktop')
-          =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1920x1080', style: 'desktop'
-        .col-md-5
-          %h3= t('.laptop')
-          =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1366x768', style: 'laptop'
-        .col-md-4
-          %h3= t('.tablet')
-          =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1010x660', style: 'tablet'
-        .col-md-2
-          %h3= t('.phone')
-          =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '640x1136', style: 'phone'
+        = f.input :legend, label: false, input_html: {value: f.object.legend }
+        = f.submit class: 'btn hidden-md', data: { 'disable-with'=> t('loading') }
+      .col-md-8#previews
+        .row
+          .col-md-11
+            %h3= t('.desktop')
+            =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1920x1080', style: 'desktop'
+          .col-md-5
+            %h3= t('.laptop')
+            =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1366x768', style: 'laptop'
+          .col-md-4
+            %h3= t('.tablet')
+            =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '1010x660', style: 'tablet'
+          .col-md-2
+            %h3= t('.phone')
+            =render 'pages/preview', url: preview_image_path(@image), drag_style: @image.content_css, size: '640x1136', style: 'phone'
+    .row
+      .col-md-12
+        = f.submit class: 'btn hidden-lg', data: { 'disable-with'=> t('loading') }
