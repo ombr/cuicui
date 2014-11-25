@@ -21,7 +21,8 @@ class SitesController < ApplicationController
     @site.user = current_user
     if @site.save
       analytics_track('Created Site', id: @site.id, name: @site.title)
-      redirect_to new_site_page_path(site_id: @site)
+      @page = @site.pages.create name: I18n.t('sites.create.first_page')
+      redirect_to edit_site_page_path(site_id: @site, id: @page)
     else
       render :new, layout: 'admin'
     end

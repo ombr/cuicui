@@ -195,10 +195,21 @@ describe SitesController do
       Site.last.user.should == user
     end
 
+    it 'create a first page' do
+      sign_in user
+      post :create, site: { title: 'My Amazing site' }
+      expect(user.sites.last.pages.first.name).to eq(
+        I18n.t('sites.create.first_page')
+      )
+    end
+
     it 'redirects to the page creation' do
       sign_in user
       post :create, site: { title: 'My Amazing site' }
-      response.should redirect_to new_site_page_path(site_id: Site.last)
+      response.should redirect_to edit_site_page_path(
+        site_id: Site.last,
+        id: Page.last
+      )
     end
   end
 

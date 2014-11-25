@@ -58,6 +58,8 @@ fr:
       delete_confirm: Êtes-vous sûr de vouloir supprimer définitivement la page ?
     new:
       title: Créer un site
+    create:
+      first_page: Accueil
     edit:
       no_pages: Votre site est vide, cliquez sur le gros plus pour créer une page.
       pages: Pages

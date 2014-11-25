@@ -64,6 +64,8 @@ en:
       open: Link
     new:
       title: New site
+    create:
+      first_page: Home
     page:
       delete_confirm: Are you sure you want to delete the page ?
     edit:
