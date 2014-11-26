@@ -10,6 +10,7 @@
       %link{ rel: :alternate, href: url_for(locale: locale), hreflang: locale }
     %link{ rel: :alternate, href: url_for(locale: nil), hreflang: 'x-default' }
     = render 'layouts/javascript_class'
+    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Ubuntu", media: 'all'
     = stylesheet_link_tag 'admin', media: 'all'
     = javascript_include_tag 'admin'
     = csrf_meta_tags

@@ -32,12 +32,14 @@
     - else
       = stylesheet_link_tag 'application', media: 'all'
 
-    - if @site.font_body
+    - unless @site.font_body? and @site.font_header?
+      = stylesheet_link_tag "//fonts.googleapis.com/css?family=Ubuntu", media: 'all'
+    - if @site.font_body?
       = stylesheet_link_tag "//fonts.googleapis.com/css?family=#{@site.font_body.sub(' ', '+')}", media: 'all'
       :sass
         body
           font-family: '#{@site.font_body}' sans-serif
-    - if @site.font_header
+    - if @site.font_header?
       = stylesheet_link_tag "//fonts.googleapis.com/css?family=#{@site.font_header.sub(' ', '+')}", media: 'all'
       :sass
         h1, h2, h3, h4, h5, h6
