@@ -6,6 +6,9 @@
     %title= title.html_safe
     %meta{ name: 'description', content: title}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    - I18n.available_locales.each do |locale|
+      %link{ rel: :alternate, href: url_for(locale: locale), hreflang: locale }
+    %link{ rel: :alternate, href: url_for(locale: nil), hreflang: 'x-default' }
     = render 'layouts/javascript_class'
     = stylesheet_link_tag 'admin', media: 'all'
     = javascript_include_tag 'admin'
