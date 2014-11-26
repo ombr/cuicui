@@ -7,6 +7,8 @@ fr:
         sign_in: Bonjour !
         submit: Se connecter
     registrations:
+      signed_up_but_password_reset_sent: Il semble que vous ayez oublié votre mot de passe. Vous allez recevoir sous quelques minutes un courriel vous indiquant comment réinitialiser votre mot de passe.
+      signed_up_but_unconfirmed: Vous avez un compte et un message avec un lien de confirmation vous a été envoyé par mail. Veuillez suivre ce lien pour activer votre compte.
       edit:
         update_email: Changer mon addresse email
         update_password: Changer mon addresse mot de passe
@@ -25,7 +27,7 @@ fr:
         register: Commencons avec votre adresse E-mail
     shared:
       links:
-        trouble_signing_in: Je n'arrive pas a me connecter
+        trouble_signing_in: Je n'arrive pas à me connecter
   brand: Evlaa
   register: S'inscrire
   sign_in: Se connecter
