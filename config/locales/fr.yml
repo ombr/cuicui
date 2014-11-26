@@ -31,6 +31,8 @@ fr:
   sign_in: Se connecter
   sign_out: Se déconnecter
   layouts:
+    admin:
+      title: Evlaa
     cache_update:
       new_update: Une nouvelle version est disponible
     breadcrumbs:

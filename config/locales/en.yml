@@ -31,6 +31,8 @@ en:
   sign_in: Sign In
   sign_out: Sign out
   layouts:
+    admin:
+      title: Evlaa
     cache_update:
       new_update: Click here to access the latest version.
     breadcrumbs:
