@@ -23,7 +23,9 @@ en:
         cancel: Delete my account and all content
       form:
         submit: 'Register and create my site'
+        trouble: Help me
       new:
+        trouble: Having trouble ?
         register: Let's start with your email
     shared:
       links:

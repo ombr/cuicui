@@ -23,7 +23,9 @@ fr:
         cancel: Supprimer mon compte et son contenu
       form:
         submit: 'S''inscrire'
+        trouble: Résoudre
       new:
+        trouble: Des problème ?
         register: Commencons avec votre adresse E-mail
     shared:
       links:
