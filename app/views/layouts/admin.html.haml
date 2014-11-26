@@ -2,7 +2,9 @@
 %html{html_attrs(defined?(@site)? @site.language : :en)}
   %head
     %meta{:charset => "utf-8"}
-    %title="#{t('.title')} #{(@site.title if @site)} #{yield(:page_title)}"
+    - title = "#{(@site.title if @site)} #{yield(:page_title)} #{t('.title')}".strip
+    %title= title.html_safe
+    %meta{ name: 'description', content: title}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
     = render 'layouts/javascript_class'
     = stylesheet_link_tag 'admin', media: 'all'

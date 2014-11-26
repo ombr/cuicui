@@ -32,7 +32,7 @@ fr:
   sign_out: Se déconnecter
   layouts:
     admin:
-      title: Evlaa
+      title: 'Evlaa : le plus simple pour bien présenter vos images.'
     cache_update:
       new_update: Une nouvelle version est disponible
     breadcrumbs:
