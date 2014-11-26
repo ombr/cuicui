@@ -41,15 +41,15 @@ gem 'phantomjs'
 
 gem 'friendly_id'
 gem 'devise'
-gem 'devise-async'
+gem 'devise-async', github: 'ombr/devise-async'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'cancancan'
 gem 'high_voltage'
 
 gem 'analytics-ruby', require: 'segment/analytics'
 
 gem 'rails-i18n'
-gem 'devise-i18n'
-gem 'devise-i18n-views'
 gem 'http_accept_language'
 
 gem 'turbolinks'
