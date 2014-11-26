@@ -55,7 +55,7 @@ describe 'Main features', :feature do
     fill_in 'user_email', with: user.email
     find('.btn-lg').click
     open_email user.email
-    current_email.click_link 'Confirm my account'
+    current_email.click_link 'a'
     fill_in 'user_password', with: 'NewPassword'
     find('.btn-lg').click
     User.first.confirmed?.should eq true
@@ -71,7 +71,7 @@ describe 'Main features', :feature do
     find('.btn-lg').click
 
     open_email(user.email)
-    current_email.click_link 'Change my password'
+    current_email.click_link 'a'
     page.fill_in 'user_password', with: 'SuperSecret'
     expect do
       click_on 'Change my password'
