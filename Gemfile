@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.1.4'
+ruby '2.1.5'
 
-gem 'rails', '4.1.7'
+gem 'rails', '4.1.8'
 gem 'pg'
 
 # Use SCSS for stylesheets
@@ -105,6 +105,7 @@ end
 
 group :development do
   # gem 'rails-i18n-debug'
+  gem 'rubocop'
   gem 'foreman'
   gem 'spring'
   gem 'spring-commands-rspec'
