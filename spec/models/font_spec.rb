@@ -15,7 +15,7 @@ describe Font do
 
   describe '#all' do
     it 'return all fonts' do
-      expect(Font.all.count).to eq 674
+      expect(Font.all.count).to eq 676
     end
   end
 
