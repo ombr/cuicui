@@ -19,7 +19,7 @@ describe SitesController do
 
     it 'respond 200' do
       get :sitemap
-      response.code.should == '200'
+      expect(response.code).to eq '200'
     end
 
     it 'assigns @urls' do
@@ -34,6 +34,27 @@ describe SitesController do
       get :sitemap
       urls = Image.all.map { |i| s_image_url(page_id: i.page, id: i) }
       (urls - assigns(:urls).map { |u| u[:loc] }).length.should == 0
+    end
+
+    it 'render sitemap' do
+      get :sitemap
+      expect(response).to render_template 'sitemap'
+    end
+
+    context 'for registration website' do
+      before :each do
+        @request.host = "www.#{ENV['DOMAIN']}"
+      end
+
+      it 'respond 200' do
+        get :sitemap
+        expect(response.code).to eq '200'
+      end
+
+      it 'render sitemap_root' do
+        get :sitemap
+        expect(response).to render_template 'sitemap_root'
+      end
     end
   end
 

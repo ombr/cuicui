@@ -62,17 +62,27 @@ class SitesController < ApplicationController
   end
 
   def sitemap
-    @urls = []
-    @site.pages.each do |page|
+    return render 'sitemap_root',
+                  layout: false,
+                  formats: [:xml] if request_root?
+    @urls = sitemap_urls
+    render layout: false, formats: [:xml]
+  end
+
+  def request_root?
+    request.host == "www.#{ENV['DOMAIN']}"
+  end
+
+  def sitemap_urls
+    @site.pages.each_with_object([]) do |page, urls|
       page.images.each do |image|
-        @urls << {
+        urls << {
           loc: s_image_url(page_id: page, id: image),
           changefreq: :weekly,
           priority: image.priority
         }
       end
     end
-    render layout: false, formats: [:xml]
   end
 
   def destroy
