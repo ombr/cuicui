@@ -34,5 +34,29 @@ describe PagesController do
         end
       end
     end
+
+    describe 'legal' do
+      context 'not on a site' do
+        it 'render admin layout' do
+          get :show, id: 'legal'
+          expect(response).to render_template 'admin'
+        end
+      end
+
+      context 'on a site' do
+        let(:site) { create :site }
+        it 'render application layout' do
+          @request.host = "#{site.slug}.#{ENV['DOMAIN']}"
+          get :show, id: 'legal'
+          expect(response).to render_template 'application'
+        end
+
+        it 'render print site title' do
+          @request.host = "#{site.slug}.#{ENV['DOMAIN']}"
+          get :show, id: 'legal'
+          expect(response.body).to include site.host
+        end
+      end
+    end
   end
 end

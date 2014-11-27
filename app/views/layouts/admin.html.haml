@@ -1,5 +1,5 @@
 !!!5
-%html{html_attrs(defined?(@site)? @site.language : :en)}
+%html{html_attrs(@site ? @site.language : :en)}
   %head
     %meta{:charset => "utf-8"}
     - title = "#{(@site.title if @site)} #{yield(:section_title)} #{t('.title')}".strip
