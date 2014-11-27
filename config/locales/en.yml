@@ -124,6 +124,8 @@ en:
   confirm: 'Are you sure ?'
 
   pages:
+    legal:
+      powered_by: is powered by %{brand}.
     login:
       submit: Go
     show:

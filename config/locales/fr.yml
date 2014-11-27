@@ -116,6 +116,8 @@ fr:
   confirm: 'Are you sure ?'
 
   pages:
+    legal:
+      powered_by: est propulsé par %{brand}.
     login:
       submit: Go
     show:

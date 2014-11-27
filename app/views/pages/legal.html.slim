@@ -1,52 +1,62 @@
-.row
-  .col-md-8.col-md-offset-2.col-xs-12
-    - if I18n.locale == :fr
-      markdown:
-        # Information légales
-        ### Evlaa
-        Phone +33.610.232.999
+- if @site
+  .col-md-6.col-md-offset-1
+    -# = image_tag @site.favicon.url(:thumb, :thumb192)
+    h1
+      = link_to root_path, alt: @site.title do
+        = @site.host
+    = t('.powered_by', brand: link_to( t('brand'), root_url(host: "www.#{ENV['DOMAIN']}"))).html_safe
 
-        Publisher Luc Boissaye
+.col-md-3.col-md-offset-1
+  - if I18n.locale == :fr
+    markdown:
+      ## Information légales
+      ### Editeur
 
-        ### Siège social et boite postale :
+      Luc Boissaye
 
-        155 Avenue Ledru Rollin
+      +33.610.232.999
 
-        75011 Paris
+      contact@evlaa.com
 
-        France
+      ### Siège social et boite postale :
 
-        ### Juridiction
+      155 Avenue Ledru Rollin
 
-        Evlaa is subject to all applicable french laws and regulations.
+      75011 Paris
 
-        ### Hébergeur
+      France
 
-        Heroku, Inc. 321 11th Street  San Francisco, CA
+      ### Juridiction
 
-        <http://www.heroku.com/>
-    - else
-      markdown:
-        # Legal information
-        ### Evlaa
-        Phone +33.610.232.999
+      Evlaa est soumis au droit français.
 
-        Publisher Luc Boissaye
+      ### Hébergeur
 
-        ### Headquarter and postal adress:
+      Heroku, Inc. 321 11th Street  San Francisco, CA
 
-        155 Avenue Ledru Rollin
+      <http://www.heroku.com/>
+  - else
+    markdown:
+      ## Legal information
+      ### Evlaa
+      Phone +33.610.232.999
 
-        75011 Paris
+      Publisher Luc Boissaye
 
-        France
+      ### Headquarter and postal adress:
 
-        ### Jurisdiction
+      155 Avenue Ledru Rollin
 
-        Evlaa is subject to all applicable french laws and regulations.
+      75011 Paris
 
-        ### Hosting provider
+      France
 
-        Heroku, Inc. 321 11th Street  San Francisco, CA
+      ### Jurisdiction
 
-        <http://www.heroku.com/>
+      Evlaa is subject to all applicable french laws and regulations.
+
+      ### Hosting provider
+
+      Heroku, Inc. 321 11th Street  San Francisco, CA
+
+      <http://www.heroku.com/>

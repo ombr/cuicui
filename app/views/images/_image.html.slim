@@ -15,6 +15,8 @@
     .help-scroll-icon
       span.fa.fa-angle-double-down
   - else
+    = link_to page_path(id: 'legal'), class: 'legal' do
+      span.fa.fa-info-circle
     - if @site.sections.not_empty.count > 1
       = link_to sections_path , class: 'btn btn-default next preload' do
         span.fa.fa-angle-right
