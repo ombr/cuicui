@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
          :async
 
   has_many :sites, dependent: :destroy
-  has_many :pages, through: :sites
-  has_many :images, through: :pages
+  has_many :sections, through: :sites
+  has_many :images, through: :sections
 
   def only_if_unconfirmed
     pending_any_confirmation { yield }

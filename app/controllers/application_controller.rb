@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
   skip_after_filter :intercom_rails_auto_include
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    if @page
-      redirect_to page_url(@page) if @page
+    if @section
+      redirect_to section_url(@section) if @section
     else
       if @site
         redirect_to site_url(@site) if @site
@@ -39,12 +39,12 @@ class ApplicationController < ActionController::Base
     redirect_to host: @site.host if @site && @site.host != request.host
   end
 
-  def load_page
-    @page = @site.pages.friendly.find(params[:page_id])
+  def load_section
+    @section = @site.sections.friendly.find(params[:section_id])
   end
 
-  def redirect_if_page_slug_changed
-    redirect_to page_id: @page if @page.slug != params[:page_id]
+  def redirect_if_section_slug_changed
+    redirect_to section_id: @section if @section.slug != params[:section_id]
   end
 
   def set_locale

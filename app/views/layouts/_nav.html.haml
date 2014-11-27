@@ -1,4 +1,4 @@
-- if site and site.pages.not_empty.count > 1
-  = link_to pages_path, id: 'home' do
+- if site and site.sections.not_empty.count > 1
+  = link_to sections_path, id: 'home' do
     .fa.fa-home
     =t('.menu', default: 'Menu')

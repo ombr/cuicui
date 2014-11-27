@@ -1,0 +1,17 @@
+li
+  .section
+    = my_image_tag section, :full
+    = link_to edit_site_section_path(site_id: site, id: section) do
+      p= section.name
+    = simple_form_for section, method: :delete, html: { class: 'control delete' } do |f|
+      = f.submit 'x', class: 'btn btn-danger btn-link', data: { confirm: t('.delete_confirm') }
+    - unless section.first?
+      = simple_form_for section, method: :put, html: { class: 'control previous' } do |f|
+        = f.input :position, as: :hidden, input_html: { value: section.position-1, class: 'position' }
+        = f.submit '<', class: 'btn btn-link btn-primary'
+    - unless section.last?
+      = simple_form_for section, method: :put, html: { class: 'control next' } do |f|
+        = f.input :position, as: :hidden, input_html: { value: section.position+1, class: 'position' }
+        = f.submit '>', class: 'btn btn-link btn-primary'
+    .handle.control
+      span.fa.fa-arrows

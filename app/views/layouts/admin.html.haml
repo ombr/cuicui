@@ -2,7 +2,7 @@
 %html{html_attrs(defined?(@site)? @site.language : :en)}
   %head
     %meta{:charset => "utf-8"}
-    - title = "#{(@site.title if @site)} #{yield(:page_title)} #{t('.title')}".strip
+    - title = "#{(@site.title if @site)} #{yield(:section_title)} #{t('.title')}".strip
     %title= title.html_safe
     %meta{ name: 'description', content: title}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
@@ -35,7 +35,7 @@
     %meta{:content => "/mstile-144x144.png", :name => "msapplication-TileImage"}/
     %meta{:content => "Evlaa", :name => "application-name"}/
   %body{ class: body_class }
-    = render 'layouts/user_navbar', site: @site, page: @page, image: @image
+    = render 'layouts/user_navbar', site: @site, section: @section, image: @image
     = render 'layouts/breadcrumbs'
     = render 'layouts/flashs'
     = yield
@@ -43,4 +43,4 @@
     = intercom_script_tag({ user_id: Digest::SHA1.hexdigest("#{ENV['DOMAIN']}-#{current_user.email}"),
                             email: current_user.email,
                             created_at: current_user.created_at,
-                            custom_data: {pages: Page.count, images: Image.count, site: ENV['DOMAIN']}})
+                            custom_data: {sections: Section.count, images: Image.count, site: ENV['DOMAIN']}})

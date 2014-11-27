@@ -16,24 +16,24 @@ module RouteHelper
     end
   end
 
-  def page_url(page, *_args)
-    if page.site.domain?
-      s_page_url(host: page.site.domain, id: page)
+  def section_url(section, *_args)
+    if section.site.domain?
+      s_section_url(host: section.site.domain, id: section)
     else
-      s_page_url(subdomain: page.site, id: page)
+      s_section_url(subdomain: section.site, id: section)
     end
   end
 
-  def page_path(page, *_args)
-    site_page_path(id: page, site_id: page.site)
+  def section_path(section, *_args)
+    site_section_path(id: section, site_id: section.site)
   end
 
-  def next_page_path(page, *_args)
-    next_site_page_path(id: page, site_id: page.site)
+  def next_section_path(section, *_args)
+    next_site_section_path(id: section, site_id: section.site)
   end
 
-  def edit_page_path(page, *_args)
-    edit_site_page_path(id: page, site_id: page.site)
+  def edit_section_path(section, *_args)
+    edit_site_section_path(id: section, site_id: section.site)
   end
 
   def my_edit_site_path(site, *_args)
@@ -41,34 +41,34 @@ module RouteHelper
   end
 
   def edit_image_path(image, *_args)
-    edit_image_url(site_id: image.site, id: image, page_id: image.page)
+    edit_image_url(site_id: image.site, id: image, section_id: image.section)
   end
 
   def image_url(image, *_args)
     if image.site.domain?
-      s_image_url(host: image.site.domain, id: image, page_id: image.page)
+      s_image_url(host: image.site.domain, id: image, section_id: image.section)
     else
-      s_image_url(subdomain: image.site, id: image, page_id: image.page)
+      s_image_url(subdomain: image.site, id: image, section_id: image.section)
     end
   end
 
   def image_path(image, *_args)
-    site_page_image_path(id: image,
-                         page_id: image.page,
-                         site_id: image.site)
+    site_section_image_path(id: image,
+                            section_id: image.section,
+                            site_id: image.site)
   end
 
   def preview_image_path(image, *_args)
-    s_image_url(id: image, page_id: image.page, site_id: image.site)
+    s_image_url(id: image, section_id: image.section, site_id: image.site)
   end
 
   def edit_image_path(image, *_args)
-    edit_site_page_image_path(id: image,
-                              page_id: image.page,
-                              site_id: image.site)
+    edit_site_section_image_path(id: image,
+                                 section_id: image.section,
+                                 site_id: image.site)
   end
 
-  def add_images_url(page, *_args)
-    add_site_page_images_path(page_id: page, site_id: page.site)
+  def add_images_url(section, *_args)
+    add_site_section_images_path(section_id: section, site_id: section.site)
   end
 end

@@ -27,8 +27,8 @@
       - rescue Exception=> e
         /
           = e.message
-    - if @page
-      = stylesheet_link_tag "application-#{@page.theme}", media: 'all'
+    - if @section
+      = stylesheet_link_tag "application-#{@section.theme}", media: 'all'
     - else
       = stylesheet_link_tag 'application', media: 'all'
 
@@ -49,7 +49,7 @@
         %style{:'data-css' => asset_path('application.css')}
           =Rails.application.assets.find_asset('application.css').to_s.html_safe
     = csrf_meta_tags
-  %body{ class: "#{body_class} #{("page-#{@page.name.parameterize} #{@page.theme}" unless @page.nil?)}" }
+  %body{ class: "#{body_class} #{("section-#{@section.name.parameterize} #{@section.theme}" unless @section.nil?)}" }
     = render 'layouts/cache_update'
     = yield :nav
     = yield

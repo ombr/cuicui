@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :page do
+  factory :section do
     name 'Studio Cuicui'
     theme 'light'
     description '### Super description'

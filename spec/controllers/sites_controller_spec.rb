@@ -29,10 +29,10 @@ describe SitesController do
     end
 
     it '@urls include images url' do
-      page = create :page, site: site
-      create :image, page: page
+      section = create :section, site: site
+      create :image, section: section
       get :sitemap
-      urls = Image.all.map { |i| s_image_url(page_id: i.page, id: i) }
+      urls = Image.all.map { |i| s_image_url(section_id: i.section, id: i) }
       (urls - assigns(:urls).map { |u| u[:loc] }).length.should == 0
     end
 
@@ -216,20 +216,20 @@ describe SitesController do
       Site.last.user.should == user
     end
 
-    it 'create a first page' do
+    it 'create a first section' do
       sign_in user
       post :create, site: { title: 'My Amazing site' }
-      expect(user.sites.last.pages.first.name).to eq(
-        I18n.t('sites.create.first_page')
+      expect(user.sites.last.sections.first.name).to eq(
+        I18n.t('sites.create.first_section')
       )
     end
 
-    it 'redirects to the page creation' do
+    it 'redirects to the section creation' do
       sign_in user
       post :create, site: { title: 'My Amazing site' }
-      response.should redirect_to edit_site_page_path(
+      response.should redirect_to edit_site_section_path(
         site_id: Site.last,
-        id: Page.last
+        id: Section.last
       )
     end
   end
@@ -267,7 +267,7 @@ describe SitesController do
       expect(response).to redirect_to host: "hello-world.#{ENV['DOMAIN']}"
     end
 
-    context 'without page' do
+    context 'without section' do
       before :each do
         get :show, id: site
       end

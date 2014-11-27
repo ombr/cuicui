@@ -1,10 +1,10 @@
 # Image
 class Image < ActiveRecord::Base
-  has_one :site, through: :page
-  belongs_to :page, touch: true
+  has_one :site, through: :section
+  belongs_to :section, touch: true
   has_one :user, through: :site
 
-  acts_as_list scope: :page
+  acts_as_list scope: :section
   mount_uploader :cloudinary, CloudinaryUploader
 
   mount_uploader :original, FileUploader
@@ -42,7 +42,7 @@ class Image < ActiveRecord::Base
     Tempfile.open(['snapshot', '.png'], Rails.root.join('tmp'), encoding: 'ascii-8bit') do |file|
       Phantomjs.run(
         Rails.root.join('lib', 'rasterize.js').to_s,
-        Rails.application.routes.url_helpers.site_page_image_url(site_id: site, page_id: page, id: id),
+        Rails.application.routes.url_helpers.site_section_image_url(site_id: site, section_id: section, id: id),
         file.path,
         '1920px*1080px',
         '1'
@@ -68,9 +68,9 @@ class Image < ActiveRecord::Base
   end
 
   def self.reindex
-    Page.all.each do |page|
+    Section.all.each do |section|
       i = 1
-      page.images.each do |image|
+      section.images.each do |image|
         image.update(position: i)
         i += 1
       end
@@ -78,11 +78,11 @@ class Image < ActiveRecord::Base
   end
 
   def self.cleanup
-    Image.find_each { |i| i.destroy if i.page.nil? }
+    Image.find_each { |i| i.destroy if i.section.nil? }
   end
 
   def priority
-    total = page.images.count
+    total = section.images.count
     (total - position + 1).to_f / (total).to_f
   end
 
@@ -99,7 +99,7 @@ class Image < ActiveRecord::Base
     if title? || content? || legend?
       "#{title} #{content_string} #{legend}"
     else
-      page.name
+      section.name
     end
   end
 
@@ -140,7 +140,7 @@ class Image < ActiveRecord::Base
   end
 
   def favicon_changed?
-    return unless first? && page && page.first?
+    return unless first? && section && section.first?
     Resque.enqueue FaviconGeneration, site.id if focusx_changed? ||
                                                  focusy_changed? ||
                                                  position_changed?

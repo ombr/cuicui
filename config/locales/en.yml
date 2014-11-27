@@ -45,7 +45,7 @@ en:
       image: Image
       my_account: My Account
       new_site: Create site
-      new_page: Create page
+      new_section: Create section
     user_navbar:
       see: 'See my site'
   users:
@@ -57,30 +57,30 @@ en:
     zero: No images
     one: One image
     other: '%{count} Images'
-  page_count:
+  section_count:
     zero: No pges
-    one: One page
-    other: '%{count} pages'
+    one: One section
+    other: '%{count} sections'
   sites:
     index:
       sites: My sites
       name: Title
-      pages: Pages
+      sections: Sections
       images: Images
       open: Link
     new:
       title: New site
     create:
-      first_page: Home
-    page:
-      delete_confirm: Are you sure you want to delete the page ?
+      first_section: Home
+    section:
+      delete_confirm: Are you sure you want to delete the section ?
     edit:
-      no_pages: Your site is empty, click on the big plus to create a page.
-      pages: Pages
+      no_sections: Your site is empty, click on the big plus to create a section.
+      sections: Sections
       edit_site: Site
       advanced: Advanced options
-      new_page: New page
-      delete_warning: All the pages will be deleted
+      new_section: New section
+      delete_warning: All the sections will be deleted
       delete: Delete the site
     update:
       success: 'The site has been updated !'
@@ -104,18 +104,18 @@ en:
         content: The image will be cropped, in order to get the best result, please define the most important part of the picture.
     update:
       success: 'The image has been updated !'
-  pages:
+  sections:
     preview:
       go_back_to_edit: Back to edit
     new:
-      title: 'Create page'
-    add: 'Create a new page.'
+      title: 'Create section'
+    add: 'Create a new section.'
     create:
-      initial_description: "# %{page_name}\n\nThis is my amazing description."
+      initial_description: "# %{section_name}\n\nThis is my amazing description."
     update:
-      success: 'The page has been updated !'
+      success: 'The section has been updated !'
     edit:
-      edit_page: Page
+      edit_section: Section
       images: Images
       add_image: Add Images
       images_description: '(jpg, png, gif, pdf, ai, psd...)'
@@ -160,7 +160,7 @@ en:
       duration: "/month"
       argument1: Cancel anytime
       argument2: Domain name included
-      argument3: Unlimited pages and images
+      argument3: Unlimited sections and images
       argument4: No hidden fees
     examples:
       title: They are using Evlaa

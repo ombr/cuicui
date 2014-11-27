@@ -21,8 +21,8 @@ class SitesController < ApplicationController
     @site.user = current_user
     if @site.save
       analytics_track('Created Site', id: @site.id, name: @site.title)
-      @page = @site.pages.create name: I18n.t('sites.create.first_page')
-      redirect_to edit_site_page_path(site_id: @site, id: @page)
+      @section = @site.sections.create(name: t('sites.create.first_section'))
+      redirect_to edit_site_section_path(site_id: @site, id: @section)
     else
       render :new, layout: 'admin'
     end
@@ -34,11 +34,7 @@ class SitesController < ApplicationController
       format.html
       format.json do
         return render json: @site, include: {
-          pages: {
-            include: {
-              images: { methods: [:original_url] }
-            }
-          }
+          sections: { include: { images: {} } }
         }
       end
     end
@@ -74,10 +70,10 @@ class SitesController < ApplicationController
   end
 
   def sitemap_urls
-    @site.pages.each_with_object([]) do |page, urls|
-      page.images.each do |image|
+    @site.sections.each_with_object([]) do |section, urls|
+      section.images.each do |image|
         urls << {
-          loc: s_image_url(page_id: page, id: image),
+          loc: s_image_url(section_id: section, id: image),
           changefreq: :weekly,
           priority: image.priority
         }

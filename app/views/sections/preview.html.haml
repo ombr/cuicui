@@ -1,0 +1,4 @@
+.col-md-12
+  = link_to t('.go_back_to_edit'), edit_section_path(@section), class: 'btn btn-primary preview-back'
+  = render 'preview', url: section_path(@section)
+

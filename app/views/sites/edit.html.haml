@@ -1,14 +1,14 @@
 - breadcrumb @site
 .col-md-9.col-md-push-3
-  %h1= t '.pages'
-  - if @site.pages.count == 0
+  %h1= t '.sections'
+  - if @site.sections.count == 0
     .alert.alert-info
-      = t '.no_pages'
-  %ul.pages.sortable
-    = render partial: 'page', collection: @site.pages, as: :page, locals: { site: @site }
+      = t '.no_sections'
+  %ul.sections.sortable
+    = render partial: 'section', collection: @site.sections, as: :section, locals: { site: @site }
     %li.not-sortable
-      .page.new
-        = link_to new_site_page_path(site_id: @site), id: 'new_page' do
+      .section.new
+        = link_to new_site_section_path(site_id: @site), id: 'new_section' do
           .fa.fa-plus
 .col-md-3.col-md-pull-9
   .row

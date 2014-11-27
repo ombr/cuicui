@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Main features', :feature do
   include CarrierWaveDirect::Test::CapybaraHelpers
 
-  it 'User can register and create a page and upload a picture.' do
+  it 'User can register and create a section and upload a picture.' do
     user = build :user
     visit "http://www.#{ENV['DOMAIN']}"
     fill_in 'user[email]', with: user.email
@@ -14,7 +14,7 @@ describe 'Main features', :feature do
     fill_in :site_title, with: site.title
     find('.new-site-submit').click
 
-    Page.first.name.should eq I18n.t('sites.create.first_page')
+    Section.first.name.should eq I18n.t('sites.create.first_section')
     uploader = FileUploader.new
     upload_path = Rails.root.join('spec', 'fixtures', 'image.jpg')
     redirect_key = sample_key(
@@ -26,7 +26,9 @@ describe 'Main features', :feature do
     s3_url = uploader.direct_fog_url(with_path: true)
 
     redirect_url = URI.parse(
-      page.find("input[name='success_action_redirect']", visible: false).value
+      page
+      .find("input[name='success_action_redirect']", visible: false)
+      .value
     )
     redirect_url.query = Rack::Utils.build_nested_query(
       bucket: uploader.fog_directory,

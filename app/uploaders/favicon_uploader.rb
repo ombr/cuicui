@@ -57,7 +57,7 @@ class FaviconUploader < CarrierWave::Uploader::Base
       img.format('png', 1)
       cols, rows = img[:dimensions]
       size = img[:dimensions].min
-      image = model.pages.first.images.first
+      image = model.sections.first.images.first
       if rows != cols
         if image.focusx? && image.focusy?
           img.combine_options do |cmd|

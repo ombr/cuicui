@@ -7,12 +7,12 @@ class ManifestController < ApplicationController
     %w(eot ttf svg woff).each do |ext|
       @assets << "entypo.#{ext}"
     end
-    @pages = ['/']
-    @site.pages.each do |page|
-      @pages << page_path(page)
-      if page.images.first
-        @pages << image_path(page.images.first)
-        @pages << page.images.first.url(:full)
+    @sections = ['/']
+    @site.sections.each do |section|
+      @sections << section_path(section)
+      if section.images.first
+        @sections << image_path(section.images.first)
+        @sections << section.images.first.url(:full)
       end
     end
     render :show, format: :text, content_type: 'text/cache-manifest'

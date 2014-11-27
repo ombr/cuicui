@@ -1,8 +1,8 @@
 # ImagesHelper
 module ImagesHelper
   def my_image_tag(image, version = :full, options = {})
-    return my_image_tag(image.pages.first, version, options) if image.instance_of? Site
-    return my_image_tag(image.images.first, version, options) if image.instance_of? Page
+    return my_image_tag(image.sections.first, version, options) if image.instance_of? Site
+    return my_image_tag(image.images.first, version, options) if image.instance_of? Section
     # options[:size] ||= image.geometries[version.to_s] if image.geometries && image.geometries[version.to_s]
     if image
       options[:title] ||= image.seo_title
@@ -21,7 +21,7 @@ module ImagesHelper
     options[:class] ||= ''
     options[:class] += ' scroll'
     options[:'data-scroll'] = "#image-#{image.id}"
-    link_to s_image_path(id: image, page_id: image.page), options do
+    link_to s_image_path(id: image, section_id: image.section), options do
       if block_given?
         yield
       else

@@ -1,8 +1,8 @@
 # Site
 class Site < ActiveRecord::Base
   belongs_to :user
-  has_many :pages, -> { order('position') }, dependent: :destroy
-  has_many :images, through: :pages
+  has_many :sections, -> { order('position') }, dependent: :destroy
+  has_many :images, through: :sections
 
   LANGUAGES = LanguageList::COMMON_LANGUAGES.map(&:iso_639_1)
   validates :language, inclusion: LANGUAGES
@@ -29,8 +29,8 @@ class Site < ActiveRecord::Base
   end
 
   def favicon_process
-    return unless pages.first && pages.first.images.first
-    LocalFile.process(pages.first.images.first.url(:full)) do |file|
+    return unless sections.first && sections.first.images.first
+    LocalFile.process(sections.first.images.first.url(:full)) do |file|
       self.favicon = file
       save!
     end
@@ -40,12 +40,12 @@ class Site < ActiveRecord::Base
     site = Site.new
     site.json_import(json)
     site.save!
-    json['pages'].each do |json_page|
-      page = site.pages.new
-      page.json_import(json_page)
-      page.save!
-      json_page['images'].each do |json_image|
-        image = page.images.new
+    json['sections'].each do |json_section|
+      section = site.sections.new
+      section.json_import(json_section)
+      section.save!
+      json_section['images'].each do |json_image|
+        image = section.images.new
         image.json_import(json_image)
         image.save!
       end

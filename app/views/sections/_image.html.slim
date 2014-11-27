@@ -1,7 +1,7 @@
 li
   .image
     = my_image_tag image
-    = link_to edit_site_page_image_path(id: image, page_id: image.page, site_id: image.site) do
+    = link_to edit_site_section_image_path(id: image, section_id: image.section, site_id: image.site) do
       p.btn.btn-primary
         span.fa.fa-wrench
         = t '.edit'

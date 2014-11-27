@@ -45,7 +45,7 @@ fr:
       image: Image
       my_account: Mon compte
       new_site: Créer un site
-      new_page: Créer une page
+      new_section: Créer une section
     user_navbar:
       see: Voir mon site
   users:
@@ -57,38 +57,38 @@ fr:
     index:
       sites: Mes sites
       name: Titre
-      pages: Pages
+      sections: Sections
       images: Images
       open: Lien
-    page:
-      delete_confirm: Êtes-vous sûr de vouloir supprimer définitivement la page ?
+    section:
+      delete_confirm: Êtes-vous sûr de vouloir supprimer définitivement la section ?
     new:
       title: Créer un site
     create:
-      first_page: Accueil
+      first_section: Accueil
     edit:
-      no_pages: Votre site est vide, cliquez sur le gros plus pour créer une page.
-      pages: Pages
+      no_sections: Votre site est vide, cliquez sur le gros plus pour créer une section.
+      sections: Sections
       edit_site: Site
       advanced: Option avancées
-      new_page: Nouvelle page
-      delete_warning: Toutes les pages vont être supprimées
+      new_section: Nouvelle section
+      delete_warning: Toutes les sections vont être supprimées
       delete: Supprimer le site
     update:
       success: 'The site has been updated !'
-  pages:
+  sections:
     preview:
       go_back_to_edit: Retour à l'édition
     new:
-      title: 'Créez une page'
+      title: 'Créez une section'
     image:
       edit: " Editer"
     create:
-      initial_description: "# %{page_name}\n\nThis is my amazing description."
+      initial_description: "# %{section_name}\n\nThis is my amazing description."
     update:
-      success: 'The page has been updated !'
+      success: 'The section has been updated !'
     edit:
-      edit_page: Page
+      edit_section: Section
       images: Images
       add_image: Ajouter des images
       images_description: '(jpg, png, gif, pdf, ai, psd...)'
@@ -161,7 +161,7 @@ fr:
       duration: "/mois"
       argument1: Pas d'engagement
       argument2: Domaine inclus
-      argument3: Pages et images illimitées
+      argument3: Sections et images illimitées
       argument4: Pas de frais cachés
       title: Prix
       subtitle: Commencez immédiatement avec 15 jours d'essais

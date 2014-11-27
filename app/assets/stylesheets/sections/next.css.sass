@@ -1,11 +1,11 @@
-.next-page
+.next-section
   overflow: hidden
   h1
     display: none
     text-align: left
   .previous
     display: none
-  ul.next-page-nav
+  ul.next-section-nav
     padding: 0
     list-style-type: none
     img
@@ -24,7 +24,7 @@
       color: $menu-color
       background: $menu-background
 @media (min-width: $screen-md-min)
-  .next-page
+  .next-section
     h1
       padding-top: 50px
       display: block
@@ -44,7 +44,7 @@
       cursor: inline-image("arrows/left.svg"), pointer
       cursor: image-url("arrows/left.svg"), pointer\9
     text-align: center
-    ul.next-page-nav
+    ul.next-section-nav
       padding-top: 50px
       a
         background: none
@@ -52,7 +52,7 @@
         float: left
         position: relative
         height: auto
-      .page-name
+      .section-name
         padding: 10px
         left: 0
         right: 0
@@ -63,7 +63,7 @@
         // @include background-image(linear-gradient(to bottom, transparent 0%, $menu-background 100%))
         @include transition(all 0.3s $ease-in-quad)
       a:hover
-        .page-name
+        .section-name
           background: rgba($menu-background,0.9)
           // @include background-image(linear-gradient(to bottom, transparent 0%, $menu-background 100%))
       img

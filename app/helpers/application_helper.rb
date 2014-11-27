@@ -15,7 +15,7 @@ module ApplicationHelper
 
   def preview_link
     return image_url(@image) if @image && @image.id
-    return page_url(@page) if @page && @page.id
+    return section_url(@section) if @section && @section.id
     return site_url(@site) if @site && @site.id
     root_path
   end

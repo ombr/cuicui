@@ -2,20 +2,21 @@ require 'spec_helper'
 
 describe Site do
 
-  it { should have_many(:pages).dependent(:destroy) }
+  it { should have_many(:sections).dependent(:destroy) }
   it { should belong_to(:user) }
   it do
-    should validate_inclusion_of(:language)
-       .in_array(LanguageList::COMMON_LANGUAGES.map { |l| l.iso_639_1 })
+    should validate_inclusion_of(:language).in_array(
+      LanguageList::COMMON_LANGUAGES.map(&:iso_639_1)
+    )
   end
 
-  describe '#non_empty_pages' do
-    it 'returns non empty pages' do
+  describe '#non_empty_sections' do
+    it 'returns non empty sections' do
       site = create :site
-      create :page
-      page = create :page, site: site
-      create :image, page: page
-      expect(site.pages.not_empty).to eq [page]
+      create :section
+      section = create :section, site: site
+      create :image, section: section
+      expect(site.sections.not_empty).to eq [section]
     end
   end
 

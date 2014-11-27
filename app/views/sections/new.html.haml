@@ -1,0 +1,6 @@
+- breadcrumb @section
+.col-sm-4.col-md-offset-4
+  %h1= t('.title')
+  = simple_form_for @section, url: site_sections_path(site_id: @section.site) do |f|
+    = f.input :name, input_html: { autofocus: :autofocus }, label: false
+    = f.submit class: 'btn new-section-submit', data: { 'disable-with'=> t('loading') }

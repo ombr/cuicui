@@ -4,11 +4,11 @@ class ImagesController < ApplicationController
 
   load_and_authorize_resource :site
 
-  before_action :load_page, only: [:show]
-  load_and_authorize_resource :page, through: :site
-  before_action :redirect_if_page_slug_changed, only: [:show]
+  before_action :load_section, only: [:show]
+  load_and_authorize_resource :section, through: :site
+  before_action :redirect_if_section_slug_changed, only: [:show]
 
-  load_and_authorize_resource through: :page
+  load_and_authorize_resource through: :section
 
   def new
     respond_to do |format|
@@ -21,33 +21,33 @@ class ImagesController < ApplicationController
   end
 
   def add
-    @image = Image.new(page: @page)
+    @image = Image.new(section: @section)
     @uploader = @image.original.key = params[:key]
     @image.save
     flash[:error] = @image.errors.full_messages.to_sentence unless @image.save
     Resque.enqueue ImageConversion, @image.id
     analytics_track('Created Image', id: @image.id, position: @image.position,
-                                     page: @page.id, site: @site.id)
-    redirect_to edit_page_path(@page)
-    @page.images.race_fix if @page.images.race_test
+                                     section: @section.id, site: @site.id)
+    redirect_to edit_section_path(@section)
+    @section.images.race_fix if @section.images.race_test
   end
 
   def create
-    return redirect_to edit_page_path(@page),
+    return redirect_to edit_section_path(@section),
                        flash: { error: params[:error] } if params[:error]
-    @image = @page.images.build
+    @image = @section.images.build
     @image.image = cloudinary_path
     @image.save!
     @image.extract_exifs
-    @images = @page.images
+    @images = @section.images
     # with cloudinary we need to force the format ;-(
     return render 'create.js' if request.xhr?
-    redirect_to edit_page_path(@page)
+    redirect_to edit_section_path(@section)
   end
 
   def show
-    stale?([@site, @page, @image])do
-      render 'pages/show'
+    stale?([@site, @section, @image])do
+      render 'sections/show'
     end
   end
 
@@ -59,16 +59,16 @@ class ImagesController < ApplicationController
     previous_position = @image.position
     @image.update!(image_params)
     if @image.position != previous_position
-      redirect_to edit_page_path(@page)
+      redirect_to edit_section_path(@section)
     else
       redirect_to edit_image_path(@image)
     end
   end
 
   def destroy
-    @image.update page: nil
+    @image.update section: nil
     Resque.enqueue ObjectDeletion, 'Image', @image.id
-    redirect_to edit_page_path @page
+    redirect_to edit_section_path @section
   end
 
   def image_params

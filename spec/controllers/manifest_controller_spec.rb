@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe ManifestController do
   let(:site) { create :site, user: user }
-  let(:page) { create :page, site: site }
-  let(:image) { create :image, page: page }
+  let(:section) { create :section, site: site }
+  let(:image) { create :image, section: section }
   let(:user) { create :user }
 
   describe '#show' do

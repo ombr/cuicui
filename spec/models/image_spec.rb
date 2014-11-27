@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Image do
-  it { expect(subject).to belong_to(:page).touch(true) }
-  it { expect(subject).to have_one(:site).through(:page) }
+  it { expect(subject).to belong_to(:section).touch(true) }
+  it { expect(subject).to have_one(:site).through(:section) }
 
   let(:image) { FactoryGirl.create :image }
-  let(:image2) { FactoryGirl.create :image, page: image.page }
-  let(:image3) { FactoryGirl.create :image, page: image.page }
+  let(:image2) { FactoryGirl.create :image, section: image.section }
+  let(:image3) { FactoryGirl.create :image, section: image.section }
 
   describe '#extract_exifs' do
     it 'extract the exifs from cloudinary' do
@@ -37,9 +37,9 @@ describe Image do
       expect(image.seo_title).to include image.legend
     end
 
-    it 'returns page name if content, title and legend are empty' do
+    it 'returns section name if content, title and legend are empty' do
       image = build :image, title: '', content: '', legend: ''
-      expect(image.seo_title).to eq image.page.name
+      expect(image.seo_title).to eq image.section.name
     end
   end
 
@@ -57,10 +57,10 @@ describe Image do
 
   describe '#priority' do
     it 'return the right value' do
-      page = create :page
-      image1 = create :image, page: page
-      image2 = create :image, page: page
-      image3 = create :image, page: page
+      section = create :section
+      image1 = create :image, section: section
+      image2 = create :image, section: section
+      image3 = create :image, section: section
       image1.priority.should eql(1.0)
       image2.priority.should eql(0.6666666666666666)
       image3.priority.should eql(0.3333333333333333)

@@ -68,7 +68,7 @@ ALTER SEQUENCE friendly_id_slugs_id_seq OWNED BY friendly_id_slugs.id;
 
 CREATE TABLE images (
     id integer NOT NULL,
-    page_id integer,
+    section_id integer,
     cloudinary character varying(255),
     "position" integer,
     legend text,
@@ -109,10 +109,19 @@ ALTER SEQUENCE images_id_seq OWNED BY images.id;
 
 
 --
--- Name: pages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
-CREATE TABLE pages (
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+--
+-- Name: sections; Type: TABLE; Schema: public; Owner: -; Tablespace:
+--
+
+CREATE TABLE sections (
     id integer NOT NULL,
     name character varying(255),
     description text,
@@ -127,10 +136,10 @@ CREATE TABLE pages (
 
 
 --
--- Name: pages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: sections_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE pages_id_seq
+CREATE SEQUENCE sections_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -139,19 +148,10 @@ CREATE SEQUENCE pages_id_seq
 
 
 --
--- Name: pages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: sections_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE pages_id_seq OWNED BY pages.id;
-
-
---
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE schema_migrations (
-    version character varying(255) NOT NULL
-);
+ALTER SEQUENCE sections_id_seq OWNED BY sections.id;
 
 
 --
@@ -262,7 +262,7 @@ ALTER TABLE ONLY images ALTER COLUMN id SET DEFAULT nextval('images_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY pages ALTER COLUMN id SET DEFAULT nextval('pages_id_seq'::regclass);
+ALTER TABLE ONLY sections ALTER COLUMN id SET DEFAULT nextval('sections_id_seq'::regclass);
 
 
 --
@@ -299,7 +299,7 @@ ALTER TABLE ONLY images
 -- Name: pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY pages
+ALTER TABLE ONLY sections
     ADD CONSTRAINT pages_pkey PRIMARY KEY (id);
 
 
@@ -479,3 +479,5 @@ INSERT INTO schema_migrations (version) VALUES ('20141022143740');
 INSERT INTO schema_migrations (version) VALUES ('20141028151422');
 
 INSERT INTO schema_migrations (version) VALUES ('20141029084637');
+
+INSERT INTO schema_migrations (version) VALUES ('20141127084707');

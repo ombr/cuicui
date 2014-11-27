@@ -1,0 +1,15 @@
+- content_for :nav do
+  = render 'layouts/nav', site: @site
+.image.next-section.col-md-12.col-fullscreen{id: "next-section-#{@section.id}", 'data-url'=> next_section_path(@section), 'data-title' => 'asdadasd'}
+  - if @section.images.last
+    = link_to_image(@section.images.last, class: 'previous') do
+      back
+  .content
+    %h1= @section.site.title
+    %ul.next-section-nav
+      - @section.site.sections.each do |section|
+        %li{ class: (:active if section == @section) }
+          - if section.images.count > 0
+            = link_to section_path(section) do
+              = image_tag section.images.first.url(:thumbnail), alt: section.name, title: section.name, class: 'img-responsive', size: '250x200'
+              .section-name= section.name

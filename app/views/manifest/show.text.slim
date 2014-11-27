@@ -2,7 +2,7 @@
 = "# Last Update : #{@site.updated_at}\n"
 - @assets.each do |asset|
   = "#{ActionController::Base.helpers.asset_path(asset)}\n"
-- @pages.each do |page|
-  = "#{page}\n"
+- @sections.each do |section|
+  = "#{section}\n"
 = "NETWORK:\n"
 = "*\n"

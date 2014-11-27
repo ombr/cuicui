@@ -1,0 +1,16 @@
+- content_for :section_title, "#{@site.title} #{@sections.map(&:name).join(' ')}"
+.col-xs-12.preloadable.scrollhistory{ id: "main-nav", data: { url: sections_path, title: title } }
+  - x = Math.sqrt(@sections_count).ceil
+  - y = (@sections_count.to_f / x.to_f).ceil
+  - x,y = [y,x]
+  - @sections.each_slice(x).with_index do |sections, index|
+    - percent = (1/y.to_f*100).round
+    - if index+1 == y
+      - percent = 101 - index * percent
+    .sections-row{style: ("height: #{percent}%")}
+      - sections.each do |section|
+        .section
+          .wrapper
+            = link_to s_section_path(id: section) do
+              %h2= section.name
+            = my_image_tag section.images.first, :full, alt: section.name, title: section.name

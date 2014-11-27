@@ -6,7 +6,7 @@
     %thead
       %tr
         %td=t '.name'
-        %td=t '.pages'
+        %td=t '.sections'
         %td=t '.images'
         %td=t '.open'
     %tbody
@@ -15,7 +15,7 @@
           %td
             = link_to edit_site_path(id: site) do
               = site.title
-          %td= site.pages.count
+          %td= site.sections.count
           %td= site.images.count
           %td
             = link_to site_url(site), class: 'btn btn-link', target: '_blank' do

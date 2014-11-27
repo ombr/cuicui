@@ -1,5 +1,5 @@
-# Page
-class Page < ActiveRecord::Base
+# Section
+class Section < ActiveRecord::Base
   scope :not_empty, -> { joins(:images).distinct }
 
   validates :name, presence: true
@@ -39,8 +39,8 @@ class Page < ActiveRecord::Base
   def self.reindex
     Site.all.each do |site|
       i = 1
-      site.pages.each do |page|
-        page.update(position: i)
+      site.sections.each do |section|
+        section.update(position: i)
         i += 1
       end
     end

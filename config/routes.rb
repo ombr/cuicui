@@ -25,10 +25,10 @@ Cuicui::Application.routes.draw do
     get '/', to: 'home#show',
              as: 'home_root',
              constraints: { host: "www.#{ENV['DOMAIN']}" }
-    root 'pages#show'
+    root 'sections#show'
 
     resources :sites do
-      resources :pages do
+      resources :sections do
         member do
           get :preview
           get :next
@@ -53,8 +53,8 @@ Cuicui::Application.routes.draw do
                         defaults: { format: :xml }
     get 'favicon*all', to: 'favicons#show'
     get 'apple-touch-icon*all', to: 'favicons#show'
-    get '/pages', to: 'pages#index'
-    get '/:id', to: 'pages#show', as: :s_page
-    get '/:page_id/:id', to: 'images#show', as: :s_image
+    get '/sections', to: 'sections#index'
+    get '/:id', to: 'sections#show', as: :s_section
+    get '/:section_id/:id', to: 'images#show', as: :s_image
   end
 end

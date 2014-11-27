@@ -14,17 +14,17 @@ crumb :site do |site|
   end
 end
 
-crumb :page do |page|
-  parent :site, page.site
-  if page.new_record?
-    link t('.new_page'), new_site_path
+crumb :section do |section|
+  parent :site, section.site
+  if section.new_record?
+    link t('.new_section'), new_site_path
   else
-    link page.name, edit_page_path(page)
+    link section.name, edit_section_path(section)
   end
 end
 
 crumb :image do |image|
-  parent :page, image.page
+  parent :section, image.section
   link t('.image'), edit_image_path(image)
 end
 
