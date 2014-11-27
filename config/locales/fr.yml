@@ -115,7 +115,7 @@ fr:
       success: 'The image has been updated !'
   confirm: 'Are you sure ?'
 
-  home:
+  pages:
     login:
       submit: Go
     show:

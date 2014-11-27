@@ -22,9 +22,11 @@ Cuicui::Application.routes.draw do
       mount ResqueWeb::Engine => '/resque'
     end
 
-    get '/', to: 'home#show',
+    get '/', to: 'pages#show',
              as: 'home_root',
+             id: 'home',
              constraints: { host: "www.#{ENV['DOMAIN']}" }
+    get '/pages/*id' => 'pages#show', as: :page, format: false
     root 'sections#show'
 
     resources :sites do

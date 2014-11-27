@@ -1,3 +1,4 @@
+- content_for(:extra_body_classes, 'pages-home')
 .container-fluid
   = render 'header'
   = render 'features', features: { full: :expand, speed: :flash, devices: :mobile }, html_class: ''
@@ -20,9 +21,9 @@
   = render 'register'
   -# .background
     - if params['preview']
-      %video#header-video{poster: asset_path('home.png'), preload: 'auto', autoplay: 'true', loop: 'loop', muted: 'muted', volume: '0'}
-        %source{src: 'https://s3-eu-west-1.amazonaws.com/static.soslide.com/video/home.mp4', type:'video/mp4'}
-        %source{src: 'https://s3-eu-west-1.amazonaws.com/static.soslide.com/video/home.webm', type:'video/webm'}
+      %video#header-video{poster: asset_path('page.png'), preload: 'auto', autoplay: 'true', loop: 'loop', muted: 'muted', volume: '0'}
+        %source{src: 'https://s3-eu-west-1.amazonaws.com/static.soslide.com/video/page.mp4', type:'video/mp4'}
+        %source{src: 'https://s3-eu-west-1.amazonaws.com/static.soslide.com/video/page.webm', type:'video/webm'}
   -#%section#register.row
     .col-md-5.col-md-offset-1
       %h1
