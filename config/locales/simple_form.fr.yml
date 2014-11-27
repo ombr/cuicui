@@ -6,9 +6,9 @@ fr:
       site:
         create: Créer mon site
         update: Modifer le site
-      page:
-        create: Créer une page
-        update: Modifer la page
+      section:
+        create: Créer une section
+        update: Modifer la section
       image:
         update: Modifier l'image
   simple_form:

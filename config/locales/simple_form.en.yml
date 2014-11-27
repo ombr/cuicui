@@ -6,9 +6,9 @@ en:
       site:
         create: Create my site
         update: Update site
-      page:
-        create: Create my page
-        update: Update page
+      section:
+        create: Create my section
+        update: Update section
       image:
         update: Update image
   simple_form:
