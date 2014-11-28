@@ -62,5 +62,4 @@
 
         ga('create', '#{@site.google_analytics_id}', '#{ENV['DOMAIN']}');
         ga('send', 'pageview');
-    = render 'layouts/segment_io'
     = render 'layouts/async_js' ,path: 'application'
