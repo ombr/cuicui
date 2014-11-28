@@ -6,6 +6,21 @@
       = link_to root_path, alt: @site.title do
         = @site.host
     = t('.powered_by', brand: link_to( t('brand'), root_url(host: "www.#{ENV['DOMAIN']}"))).html_safe
+  .col-md-6.col-md-offset-1
+    h3 Offline
+    - if cookies[:offline]
+      span.offline-downloading
+        span.fa.fa-refresh.fa-spin
+        span Downloading...
+      span.offline-ready
+        span The site is offline
+      a.offline-cancel-btn src='#'
+        | (cancel)
+
+    - else
+      = link_to '#', class: 'offline-btn' do
+        | Download the site for offline use
+    p.offline-error
 
 .col-md-3.col-md-offset-1
   - if I18n.locale == :fr

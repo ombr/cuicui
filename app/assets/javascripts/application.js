@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery.cookie
 //= require jquery.hammer.min
 //= require jquery.mousewheel
 //= require jquery.zoomer
