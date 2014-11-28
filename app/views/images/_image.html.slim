@@ -23,7 +23,7 @@
       .help-scroll-icon
         span.fa.fa-angle-double-down
 
-- content_for :section_title, "#{@site.title} #{image.seo_title}"
+- content_for :page_title, "#{@site.title} #{image.seo_title}"
 - content_for :head do
   - description = image.seo_title
   - image_url = image.url(:social)
