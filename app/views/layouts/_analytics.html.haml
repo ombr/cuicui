@@ -4,7 +4,4 @@
     window.analytics.load("#{ENV['SEGMENT_IO']}");
     window.analytics.page();
 
-- if ENV['FB_PIXEL'].present?
-  = render 'layouts/facebook_pixel', pixel: ENV['FB_PIXEL']
-- if flash[:facebook_pixel].present?
-  = render 'layouts/facebook_pixel', pixel: flash[:facebook_pixel]
+= render 'layouts/facebook'
