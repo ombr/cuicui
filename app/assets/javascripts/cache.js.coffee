@@ -13,7 +13,6 @@ $ ->
     $(window.applicationCache).bind 'error', (e)->
       if $('.offline-error').length > 0
         $('.offline-error').html(e.originalEvent.message)
-      $.removeCookie('offline', path: '/')
 
   $body.on 'click', '.offline-cancel-btn', (e)->
     $.removeCookie('offline', path: '/')
