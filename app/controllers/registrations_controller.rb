@@ -10,6 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_flashing_format?
         sign_up(resource_name, resource)
+        flash[:facebook_pixel] = ENV['FB_PIXEL_REGISTRED'] if ENV['FB_PIXEL_REGISTRED'].present?
         analytics_track('Registred', email: resource.email)
         respond_with resource, location: after_sign_up_path_for(resource)
       else

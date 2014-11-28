@@ -1,4 +1,6 @@
+- contexts = { success: 'success', error: 'danger', alert: 'danger', notice: 'info' }
 - flash.each do |name, msg|
   .col-md-12
-    %div.alert{class: bootstrap_class_for(name)}
-      =msg
+    - context = contexts[name.to_sym]
+    - if context
+      = alert_box msg, context: context

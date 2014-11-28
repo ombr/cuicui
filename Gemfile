@@ -62,6 +62,7 @@ gem 'haml-rails'
 gem 'slim-rails'
 
 gem 'bootstrap-sass'
+gem 'bh'
 gem 'font_assets'
 gem 'gretel'
 gem 'font-awesome-rails'

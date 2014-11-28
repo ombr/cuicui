@@ -85,6 +85,9 @@ GEM
       parser (>= 2.2.0.pre.3, < 3.0)
     aws_cf_signer (0.1.3)
     bcrypt (3.1.9)
+    bh (1.2.0)
+      actionpack
+      activesupport
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     bourbon (3.2.3)
@@ -458,6 +461,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   analytics-ruby
+  bh
   bootstrap-sass
   bourbon
   cancancan
