@@ -36,7 +36,7 @@ fr:
   sign_out: Se déconnecter
   layouts:
     admin:
-      title: 'Evlaa : le plus simple pour bien présenter vos images.'
+      title: 'Evlaa : Créez un site à vos images.'
     cache_update:
       new_update: Une nouvelle version est disponible
     breadcrumbs:
@@ -150,7 +150,7 @@ fr:
       cuicui:
         name: Studio Cuicui
     header:
-      title: Le plus simple pour bien présenter vos images.
+      title: Créez un site à vos images.
       subtitle: ""
     outside:
       title: Hors-ligne
