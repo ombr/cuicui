@@ -14,6 +14,7 @@ describe ManifestController do
     render_views
 
     it 'respond 200' do
+      request.cookies['offline'] = 'true'
       image
       get :show, type: :basic, format: 'text'
       response.code.should == '200'
