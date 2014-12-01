@@ -24,6 +24,7 @@ fr:
       default_message: "Merci de corriger les erreurs suivantes :"
     labels:
       defaults:
+        language: Langue
         font_header: Police des titres
         font_body: Police du contenu
         full: Plein écran
@@ -38,6 +39,8 @@ fr:
         title: Titre
         name: Nom
         legend: Légende
+      site:
+        title: 'Nom de votre site'
     hints:
       image:
         content: you can drag and drop the text on the preview

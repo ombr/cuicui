@@ -10,23 +10,23 @@ fr:
       signed_up_but_password_reset_sent: Il semble que vous ayez oublié votre mot de passe. Vous allez recevoir sous quelques minutes un courriel vous indiquant comment réinitialiser votre mot de passe.
       signed_up_but_unconfirmed: Vous avez un compte et un message avec un lien de confirmation vous a été envoyé par mail. Veuillez suivre ce lien pour activer votre compte.
       edit:
-        update_email: Changer mon addresse email
-        update_password: Changer mon addresse mot de passe
+        update_email: Changer mon adresse email
+        update_password: Changer mon mot de passe
         sites: Mes sites
         my_account: Mon Compte
         change_email: Adresse Email
-        change_password: Password
-        waiting_confirmation: '%{email} doit être confirmé. Merci de verifier vos emails.'
+        change_password: Mot de passe
+        waiting_confirmation: '%{email} doit être confirmé. Merci de vérifier vos emails.'
         unhappy: Pas content ?
         cancel_warning: Toutes vos donnees seront supprimées si vous supprimer votre compte.
         cancel_last_warning: "Êtes-vous vraiment sur ??\nTOUTES VOS DONNEE VONT ETRE SUPPRIMEES."
         cancel: Supprimer mon compte et son contenu
       form:
         submit: 'S''inscrire'
-        trouble: Résoudre
+        trouble: Récuperer mon compte
       new:
-        trouble: Des problème ?
-        register: Commencons avec votre adresse E-mail
+        trouble: Des problème de connexion ?
+        register: Commençons avec votre adresse E-mail
     shared:
       links:
         trouble_signing_in: Je n'arrive pas à me connecter
@@ -44,7 +44,7 @@ fr:
       my_sites: Mes sites
       image: Image
       my_account: Mon compte
-      new_site: Créer un site
+      new_site: Créer mon site
       new_section: Créer une section
     user_navbar:
       see: Voir mon site
@@ -63,7 +63,7 @@ fr:
     section:
       delete_confirm: Êtes-vous sûr de vouloir supprimer définitivement la section ?
     new:
-      title: Créer un site
+      title: Créer mon site
     create:
       first_section: Accueil
     edit:
@@ -75,23 +75,23 @@ fr:
       delete_warning: Toutes les sections vont être supprimées
       delete: Supprimer le site
     update:
-      success: 'The site has been updated !'
+      success: 'Le site a été mis à jour.'
   sections:
     preview:
       go_back_to_edit: Retour à l'édition
     new:
-      title: 'Créez une section'
+      title: 'Créer une section'
     image:
       edit: " Editer"
     create:
       initial_description: "# %{section_name}\n\nThis is my amazing description."
     update:
-      success: 'The section has been updated !'
+      success: 'La section a été mis à jour.'
     edit:
       edit_section: Section
       images: Images
       add_image: Ajouter des images
-      images_description: '(jpg, png, gif, pdf, ai, psd...)'
+      images_description: ' (jpg, png, gif, pdf, ai, psd...)'
   images:
     form:
       upload: Envoyer
@@ -116,6 +116,8 @@ fr:
   confirm: 'Are you sure ?'
 
   pages:
+    about:
+      title: A propos
     legal:
       powered_by: est propulsé par %{brand}.
     login:
@@ -188,13 +190,13 @@ fr:
         description: pour mesurer la différence
       edit:
         title: Mise à jour
-        description: Simple à modifier à n'importe quel moment, même depuis votre téléphone.
+        description: à n'importe quel moment, même depuis votre téléphone
       ads:
         title: Votre marque
-        description: Et rien que votre marque.
+        description: et rien que votre marque
       font:
         title: De belles polices
-        description: Choissisez parmi plus de 600 polices.
+        description: parmi plus de 600
       love:
         title: A partager sans modération
         description: Nous testons notre service de manière intensive afin de vous garantir une experience optimale.
