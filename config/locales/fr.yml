@@ -35,6 +35,8 @@ fr:
   sign_in: Se connecter
   sign_out: Se déconnecter
   layouts:
+    update:
+      update: Votre navigateur (%{browser} %{version}) n'est pas à jour. Cliquez ici pour le mettre à jour et utiliser toutes les fonctionalités d'Evlaa.
     admin:
       title: 'Evlaa : Créez un site à vos images.'
     cache_update:

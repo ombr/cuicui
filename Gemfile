@@ -70,6 +70,7 @@ gem 'entypo-rails'
 gem 'bourbon'
 gem 'compass-rails'
 gem 'jquery-fileupload-rails'
+gem 'browser'
 gem 'intercom-rails'
 
 gem 'simple_form', '~> 3.1.0.rc1',

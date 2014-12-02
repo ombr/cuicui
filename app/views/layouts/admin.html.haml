@@ -35,6 +35,7 @@
     %meta{:content => "/mstile-144x144.png", :name => "msapplication-TileImage"}/
     %meta{:content => "Evlaa", :name => "application-name"}/
   %body{ class: body_class }
+    = render 'layouts/update'
     = render 'layouts/user_navbar', site: @site, section: @section, image: @image
     = render 'layouts/breadcrumbs'
     = render 'layouts/flashs'

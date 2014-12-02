@@ -35,6 +35,8 @@ en:
   sign_in: Sign In
   sign_out: Sign out
   layouts:
+    update:
+      update: Your Browser (%{browser} %{version}) is out-of-date. Some features are disabled. Click here to update.
     admin:
       title: Evlaa the simpliest way to present your images.
     cache_update:

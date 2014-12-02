@@ -1,0 +1,7 @@
+- unless browser.modern?
+  .container-fluid.browser-update
+    .row
+      .col-xs-12
+        = alert_box context: :danger do
+          = link_to 'https://browser-update.org/update.html', target: '_blank' do
+            = t('.update', browser: browser.name, version: browser.full_version)
