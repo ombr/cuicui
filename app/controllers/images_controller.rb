@@ -57,11 +57,14 @@ class ImagesController < ApplicationController
 
   def update
     previous_position = @image.position
-    @image.update!(image_params)
-    if @image.position != previous_position
-      redirect_to edit_section_path(@section)
+    if @image.update(image_params)
+      if @image.position != previous_position
+        redirect_to edit_section_path(@section)
+      else
+        redirect_to edit_image_path(@image)
+      end
     else
-      redirect_to edit_image_path(@image)
+      render :edit, layout: 'admin'
     end
   end
 

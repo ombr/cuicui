@@ -214,6 +214,18 @@ describe ImagesController do
       end.to change { image.reload.title }.to 'test'
     end
 
+    it 'render edit with errors when title is too long' do
+      sign_in user
+      put :update, site_id: site,
+                   section_id: section,
+                   id: image,
+                   image: { title: 't' * 251 }
+      expect(assigns(:image).errors).to_not be_empty
+      expect(response).to render_template :admin
+      expect(response).to render_template :edit
+      expect(response.code).to eq '200'
+    end
+
     context 'when update the position' do
       it 'update the position' do
         sign_in user

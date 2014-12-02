@@ -10,7 +10,7 @@ fr:
         create: Créer une section
         update: Modifer la section
       image:
-        update: Modifier l'image
+        update: Sauvegarder les changements
   simple_form:
     "yes": 'Oui'
     "no": 'Non'

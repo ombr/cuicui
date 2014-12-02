@@ -21,5 +21,4 @@
             = link_to site_url(site), class: 'btn btn-link', target: '_blank' do
               = site_url(site)
               .fa.fa-external-link
-  = link_to new_site_path, class: 'btn btn-success' do
-    .fa.fa-plus
+  = link_to t('.new'), new_site_path, class: 'btn btn-success'

@@ -196,6 +196,23 @@ describe SectionsController do
       end.to change { section.reload.name }.to 'test'
     end
 
+    context 'with a name to long' do
+      before :each do
+        sign_in user
+        put :update,
+            site_id: site,
+            id: section,
+            section: { name: 't' * 250 }
+      end
+
+      it('assigns errors') do
+        expect(assigns(:section).errors).to_not be_empty
+      end
+      it { expect(response).to render_template(:edit) }
+      it { expect(response).to render_template(:admin) }
+      it { expect(response.code).to eq '200' }
+    end
+
     it 'update the theme' do
       expect do
         sign_in user

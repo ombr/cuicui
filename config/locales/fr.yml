@@ -55,6 +55,7 @@ fr:
       sites: Mes sites
   sites:
     index:
+      new: Créer un nouveau site
       sites: Mes sites
       name: Titre
       sections: Sections

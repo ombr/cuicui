@@ -2,7 +2,9 @@
 class Section < ActiveRecord::Base
   scope :not_empty, -> { joins(:images).distinct }
 
-  validates :name, presence: true
+  validates :name, presence: true,
+                   length: { in: 3..30 },
+                   uniqueness: { case_sensitive: false, scope: :site }
   validates :theme, inclusion: { in: %w(light dark) }
   belongs_to :site, touch: true
   has_one :user, through: :site

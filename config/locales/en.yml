@@ -63,13 +63,14 @@ en:
     other: '%{count} sections'
   sites:
     index:
+      new: Create a new site
       sites: My sites
       name: Title
       sections: Sections
       images: Images
       open: Link
     new:
-      title: New site
+      title: Create site
     create:
       first_section: Home
     section:

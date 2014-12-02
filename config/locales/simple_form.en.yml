@@ -10,7 +10,7 @@ en:
         create: Create my section
         update: Update section
       image:
-        update: Update image
+        update: Save changes
   simple_form:
     "yes": 'Yes'
     "no": 'No'

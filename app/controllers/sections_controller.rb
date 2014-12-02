@@ -7,6 +7,7 @@ class SectionsController < ApplicationController
   before_action :load_section, only: [:show, :edit]
   before_action :redirect_if_section_slug_changed, only: [:show, :edit]
   load_and_authorize_resource through: :site
+  before_action :init_image, only: [:edit, :update]
 
   def autoload_if_no_ids
     @section = @site.sections.first if params[:id].blank?
@@ -38,8 +39,6 @@ class SectionsController < ApplicationController
   end
 
   def edit
-    @image = Image.new section: @section
-    @image.original.success_action_redirect = add_images_url(@section)
     render layout: 'admin'
   end
 
@@ -69,13 +68,21 @@ class SectionsController < ApplicationController
 
   def update
     previous_position = @section.position
-    @section.update(section_params)
-    flash[:success] = t('.success')
-    if @section.position != previous_position
-      redirect_to my_edit_site_path(@site)
+    if @section.update(section_params)
+      flash[:success] = t('.success')
+      if @section.position != previous_position
+        redirect_to my_edit_site_path(@site)
+      else
+        redirect_to edit_section_path(@section)
+      end
     else
-      redirect_to edit_section_path(@section)
+      render :edit, layout: 'admin'
     end
+  end
+
+  def init_image
+    @image = Image.new section: @section
+    @image.original.success_action_redirect = add_images_url(@section)
   end
 
   def section_params

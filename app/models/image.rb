@@ -4,6 +4,7 @@ class Image < ActiveRecord::Base
   belongs_to :section, touch: true
   has_one :user, through: :site
 
+  validates :title, length: { maximum: 250 }
   acts_as_list scope: :section
   mount_uploader :cloudinary, CloudinaryUploader
 
