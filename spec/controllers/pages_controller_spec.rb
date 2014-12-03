@@ -59,4 +59,17 @@ describe PagesController do
       end
     end
   end
+
+  describe 'all browsers can render the home page' do
+    YAML.load_file(
+      Rails.root.join('spec', 'fixtures', 'ua.yml')
+    ).each do |_browser, ua|
+      render_views
+      it 'responds 200' do
+        @request.env['HTTP_USER_AGENT'] = ua
+        get :show, id: 'home'
+        expect(response.code.to_i).to eq 200
+      end
+    end
+  end
 end
