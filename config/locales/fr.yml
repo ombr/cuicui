@@ -18,7 +18,7 @@ fr:
         change_password: Mot de passe
         waiting_confirmation: '%{email} doit être confirmé. Merci de vérifier vos emails.'
         unhappy: Pas content ?
-        cancel_warning: Toutes vos donnees seront supprimées si vous supprimer votre compte.
+        cancel_warning: Toutes vos données seront supprimées si vous supprimez votre compte.
         cancel_last_warning: "Êtes-vous vraiment sur ??\nTOUTES VOS DONNEE VONT ETRE SUPPRIMEES."
         cancel: Supprimer mon compte et son contenu
       form:
@@ -114,6 +114,7 @@ fr:
         btn: Définition du focus
         title: Focus
         content: L'image peut être recadré sur le site, vous pouvez définir sur le sujet principal pour que la découpe soit pertinente.
+        content: L'image est recadrée dans le menu ou lorsqu'elle est en plein écran. La découpe conservera toujours au mieux le point de focus.
     update:
       success: 'The image has been updated !'
   confirm: 'Are you sure ?'
