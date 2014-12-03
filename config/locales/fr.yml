@@ -229,3 +229,7 @@ fr:
       price: on demand
       description1: Your domain
       description2: unlimited images
+  errors:
+    attributes:
+      confirmation_token:
+        invalid: de votre lien de confirmation n'est pas valide.
