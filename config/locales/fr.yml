@@ -119,6 +119,11 @@ fr:
   confirm: 'Are you sure ?'
 
   pages:
+    offline:
+      title: Hors-ligne
+      download: Téléchager le site pour une utilisation hors-ligne.
+      ready: Le site peut maintentant être utilisé hors-ligne.
+      cancel: (annuler)
     about:
       title: A propos
     legal:

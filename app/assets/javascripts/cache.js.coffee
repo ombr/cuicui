@@ -18,7 +18,7 @@ $ ->
     $.removeCookie('offline', path: '/')
     window.location.reload()
   $body.on 'click', '.offline-btn', (e)->
-    $.cookie('offline', 'true', path: '/')
+    $.cookie('offline', 'true', { path: '/', expires: 365 })
     window.location.reload()
   $body.on 'click', '.cache-update', (e)->
     e.preventDefault()

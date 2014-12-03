@@ -127,6 +127,11 @@ en:
   confirm: 'Are you sure ?'
 
   pages:
+    offline:
+      title: Offline
+      download: Download the site for offline use.
+      ready: The site can now be used without internet.
+      cancel: (cancel)
     legal:
       powered_by: is powered by %{brand}.
     login:

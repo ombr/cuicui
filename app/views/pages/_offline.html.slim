@@ -1,0 +1,13 @@
+h3= t '.title'
+- if cookies[:offline]
+  span.offline-downloading
+    span.fa.fa-refresh.fa-spin
+    span = t '.download'
+  span.offline-ready
+    span = t '.ready'
+  a.offline-cancel-btn href='#'
+    = t '.cancel'
+- else
+  = link_to '#', class: 'offline-btn' do
+    = t '.download'
+p.offline-error
