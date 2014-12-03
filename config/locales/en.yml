@@ -1,6 +1,10 @@
 en:
   go: Register now and get 15 days trial
   loading: Processing...
+  confirmations:
+    show:
+      title: Set a password to confirm your account
+      submit: Confirm my account
   devise:
     sessions:
       new:

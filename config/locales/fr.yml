@@ -1,6 +1,10 @@
 fr:
   go: S'inscrire avec 15 jours gratuits
   loading: Chargement...
+  confirmations:
+    show:
+      title: Créer un mot de passe pour confirmer votre compte
+      submit: Confirmer mon compte
   devise:
     sessions:
       new:

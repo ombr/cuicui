@@ -1,7 +1,6 @@
 .col-md-4.col-md-offset-4
-  %h2 You're almost done! Now create a password to securely access your account.
+  %h2= t '.title'
   = simple_form_for resource, as: resource_name, url: update_user_confirmation_path, html: {method: 'patch'} do |f|
-    = devise_error_messages!
     = hidden_field_tag :confirmation_token, params['confirmation_token']
-    = f.input :password, autofocus: true
-    = f.submit class: 'btn btn-success btn-lg', data: { 'disable-with'=> t('loading') }
+    = f.input :password, autofocus: true, label: false
+    = f.submit t('.submit'), class: 'btn btn-success btn-lg', data: { 'disable-with'=> t('loading') }
